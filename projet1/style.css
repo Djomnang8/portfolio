@@ -1,0 +1,188 @@
+:root
+{
+   
+   --light: #f1f8ff;
+   --dark : #0f172b;
+}
+
+.hero-header
+{
+    background: linear-gradient(rgba(15, 23, 43, 0.297), rgba(15, 23, 43, 0.301)), url(image/multi.jpeg);
+    background-position: center center;
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+
+}
+
+.hero-header img
+{
+    animation: imgRotate 30s linear infinite;
+}
+
+@keyframes imgRotate
+{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.btn
+{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.btn-primary,
+.btn-secondary
+{
+    color: #fff;
+}
+
+.service-item
+{
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.9);
+    transition: 0.5s;
+}
+
+.service-item:hover{
+    background-color:orange; 
+} 
+.service-item *
+{
+    transition: 0.5s;
+}
+.service-item:hover *
+{
+    color: var(--light) !important;
+}
+
+.nav-pills .nav-items .active
+{
+    border-bottom: 2px solid var(--primary);
+}
+
+@keyframes pulse-border
+{
+    0%{
+        transform: translate(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: translate(-50%) translateY(-50%) translateZ(0) scale(1);
+        opacity: 0;
+    }
+}
+
+/*---------------------------------------------------------------section REservation---------------------*/
+
+.footer .btn.btn-social
+{
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    border: 1px solid #ffffff;
+    border-radius: 35px;
+    transition: 0.3s;
+}
+.footer .btn.btn-social:hover
+{
+    color: var(--primary);
+}
+.footer .btn.btn-link
+{
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: 0.3s;
+}
+.footer .btn.btn-link::before
+{
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+.footer .btn.btn-link::before
+{
+    letter-spacing: 2px;
+    box-shadow: none;
+}
+.footer .copyright
+{
+    padding: 25px 0;
+    font-size: 20px;
+    border-top: 2px solid rgba(256, 256, 256, 0.1);
+}
+.footer .copyright a
+{
+     color: var(--light);
+}
+.footer .footer-menu a:last-child
+{
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none;
+}
+
+.back-to-top
+{
+    position: fixed;
+    display: none;
+    right: 45px;
+}
+
+/*---------------------------------------------------------------------en tete----------------------------------------*/
+
+.navbar-dark .navbar-nav .nav-link
+{
+    position: relative;
+    margin-left: 25px;
+    padding: 35px 0;
+    font-size: 20px;
+    color: orange !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    outline: none;
+    transition: 0.5s;
+    
+}
+
+.navbar-dark .navbar-nav .nav-link a:hover
+{
+    background-color: orange;
+}
+
+@media(min-width: 992px)
+{
+    .navbar-dark{
+        position: relative;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: transparent !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
