@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Module e-learning accessible : 1 211 textes mesures, 0 non-conformite">
+  <defs>
+    <linearGradient id="gMod" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0.0" stop-color="#0F2B4C"/>
+      <stop offset="0.5" stop-color="#1D4ED8"/>
+      <stop offset="1.0" stop-color="#4338CA"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#gMod)"/>
+  <g opacity="0.35" stroke="#93C5FD" stroke-width="1.5" fill="none">
+    <path d="M0 300 H640 M0 240 H640 M0 120 H640 M0 60 H640"/>
+  </g>
+  <g font-family="'JetBrains Mono',ui-monospace,monospace" text-anchor="middle">
+    <text x="320" y="52" fill="#BFDBFE" font-size="15" letter-spacing="3">MODULE E-LEARNING ACCESSIBLE</text>
+
+    <rect x="90" y="76" width="460" height="150" rx="14" fill="#0B0D14" stroke="#60A5FA" stroke-width="2"/>
+    <text x="320" y="140" fill="#ECF0F8" font-size="52" font-weight="700">1 211</text>
+    <text x="320" y="170" fill="#93C5FD" font-size="15">textes dont le contraste a ete mesure</text>
+    <text x="320" y="200" fill="#93C5FD" font-size="13">7 ecrans x 5 modes d affichage</text>
+
+    <rect x="90" y="248" width="222" height="60" rx="12" fill="#0B0D14" stroke="#4ADE80" stroke-width="2"/>
+    <text x="201" y="278" fill="#4ADE80" font-size="26" font-weight="700">0</text>
+    <text x="201" y="298" fill="#D8FFE6" font-size="12">non-conformite</text>
+
+    <rect x="328" y="248" width="222" height="60" rx="12" fill="#0B0D14" stroke="#A78BFA" stroke-width="2"/>
+    <text x="439" y="278" fill="#C4B5FD" font-size="26" font-weight="700">7,64:1</text>
+    <text x="439" y="298" fill="#E9E4FF" font-size="12">contraste moyen · seuil AA 4,5:1</text>
+  </g>
+</svg>

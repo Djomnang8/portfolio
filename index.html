@@ -328,6 +328,176 @@
           </p>
 
           <div class="projects__grid">
+            <!-- ---------- MODULE E-LEARNING ACCESSIBLE ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-module-a11y.svg"
+                  alt="Module e-learning accessible : 1 211 textes mesurés, 0 non-conformité, contraste moyen 7,64:1"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Les bases de l'accessibilité numérique — module e-learning
+                </h3>
+                <p class="project__desc">
+                  Un module de 12 minutes qui enseigne l'accessibilité et qui l'applique
+                  à lui-même. 7 écrans, 4 exercices réellement jouables : un vérificateur
+                  de contraste qui applique la formule exacte de la norme WCAG, un
+                  exercice d'alternatives textuelles, un bac à sable clavier où un faux
+                  bouton ne reçoit jamais le focus, et une chasse aux titres fautifs.
+                  <strong>1 211 textes mesurés dans 5 modes d'affichage, 0
+                  non-conformité</strong>, contraste moyen 7,64:1 pour un seuil AA à
+                  4,5:1. Contenu pédagogique séparé du code, illustrations SVG générées
+                  par script (18,4 Ko les neuf), transcription intégrale produite depuis
+                  la source.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">HTML sémantique</span>
+                  <span class="tag">CSS variables</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">WCAG 2.1 AA</span>
+                  <span class="tag">ARIA</span>
+                  <span class="tag">SVG généré</span>
+                  <span class="tag">Zéro dépendance</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="https://github.com/Djomnang8/module-elearning-accessible"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/module-elearning-accessible/blob/main/04-accessibilite/audit-wcag.md"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Rapport WCAG</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- AUDIT D'ACCESSIBILITÉ ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-audit-a11y.svg"
+                  alt="Audit d'accessibilité : 46 non-conformités avant, 0 après, contraste moyen passé de 2,36:1 à 11,93:1"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>OUTIL</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Audit d'accessibilité de supports pédagogiques
+                </h3>
+                <p class="project__desc">
+                  Une fiche de cours auditée contre WCAG 2.1 AA, puis reconstruite. Les
+                  deux versions mesurées avec le même script :
+                  <strong>46 non-conformités ramenées à 0</strong>, contraste moyen passé
+                  de 2,36:1 à 11,93:1. Le chiffre qui frappe : sans balise viewport, la
+                  version d'origine rend son texte de 13 px à 3,6 px physiques sur un
+                  téléphone. Le dépôt contient aussi une checklist interactive de
+                  38 points à score pondéré — dès qu'un point bloquant échoue, le
+                  pourcentage cède la place au verdict « Non livrable ».
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">WCAG 2.1 AA</span>
+                  <span class="tag">RGAA</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Audit automatisé</span>
+                  <span class="tag">ARIA</span>
+                  <span class="tag">localStorage</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="https://github.com/Djomnang8/audit-accessibilite-supports-pedagogiques"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/audit-accessibilite-supports-pedagogiques/blob/main/audit/rapport-wcag.md"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ L'audit avant / après</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- KIT DESIGN PÉDAGOGIQUE & IA ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-kit-design.svg"
+                  alt="Kit design pédagogique : 40 paires de couleurs vérifiées, 0 non conforme, tout généré depuis tokens.json"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--code"
+                  ><span class="badge__dot"></span>DESIGN SYSTEM</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Kit Design Pédagogique &amp; IA — système de design vérifiable
+                </h3>
+                <p class="project__desc">
+                  Un système de design pour supports pédagogiques, où
+                  <strong>chaque paire de couleurs est mesurée</strong> : 40 paires
+                  vérifiées, 0 non conforme. Le script de contrôle sort en code d'erreur
+                  si une seule échoue — il se branche tel quel dans une CI. Source unique
+                  dans <code>tokens.json</code>, d'où sont générés le CSS, les 20 icônes,
+                  les 6 gabarits et le rapport de contraste. S'y ajoutent une
+                  bibliothèque de 12 prompts sur bloc de style figé, et une charte de
+                  production IA qui tranche ce qui est généré, ce qui ne l'est jamais, et
+                  comment tracer chaque visuel.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">Design tokens</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">CSS variables</span>
+                  <span class="tag">SVG</span>
+                  <span class="tag">WCAG 2.1</span>
+                  <span class="tag">IA générative</span>
+                  <span class="tag">Canva / Genially</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="https://github.com/Djomnang8/kit-design-pedagogique-ia"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/kit-design-pedagogique-ia/blob/main/charte-ia.md"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ La charte IA</a
+                  >
+                </div>
+              </div>
+            </article>
+
             <!-- ---------- PROJET 1 (conservé tel quel) ---------- -->
             <article class="project">
               <div class="project__media">
