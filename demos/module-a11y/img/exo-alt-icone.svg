@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Icône de disquette">
+  <style>
+    :root{--bg:#F1F5FB;--ink:#16213E;--soft:#4A5673;--pri:#1D4ED8;--acc:#B03A0B;--ok:#146C39;--ko:#A81E1E;--card:#FFFFFF;--line:#78859F;--pale:#C3CEE3}
+    @media (prefers-color-scheme: dark){:root{--bg:#1B2436;--ink:#EAF0FA;--soft:#AEBBD4;--pri:#8FB4FF;--acc:#FFAD7A;--ok:#7BD9A2;--ko:#FF9A9A;--card:#111827;--line:#68779A;--pale:#3C4A63}}
+    .s{stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    text{font-family:Segoe UI,system-ui,sans-serif;font-weight:700}
+  </style>
+
+  <rect width="200" height="200" rx="12" fill="var(--card,#FFFFFF)"/>
+  <rect x="44" y="44" width="112" height="112" rx="12" fill="var(--pri,#1D4ED8)"/>
+  <rect x="70" y="44" width="60" height="42" rx="4" fill="var(--card,#FFFFFF)"/>
+  <rect x="106" y="52" width="14" height="26" rx="3" fill="var(--pri,#1D4ED8)"/>
+  <rect x="66" y="104" width="68" height="52" rx="6" fill="var(--card,#FFFFFF)"/>
+  <path d="M78 120h44M78 134h44" stroke="var(--pri,#1D4ED8)" class="s"/>
+</svg>

@@ -1,0 +1,225 @@
+/* =============================================================================
+   style.css — Version corrigée de la fiche de cours.
+   Palette et échelles issues du Kit Design Pédagogique (tokens.css).
+   Chaque correctif renvoie à sa fiche C-xx dans audit/rapport-wcag.md.
+   ============================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  /* C-14 : plus de largeur fixe en pixels. La page se redistribue. */
+  padding: var(--pk-space-md);
+  max-width: 72rem;
+  margin-inline: auto;
+  background: var(--pk-surface);
+  color: var(--pk-ink);
+  font-family: var(--pk-font-body);
+  /* C-15 : 13 px et interlignage 1,2 remplacés par 18 px et 1,6. */
+  font-size: var(--pk-text-md);
+  line-height: var(--pk-leading-body);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--pk-font-title);
+  line-height: var(--pk-leading-title);
+  margin: 0 0 var(--pk-space-2xs);
+  text-wrap: balance;
+}
+h1 { font-size: clamp(1.5rem, 1.1rem + 1.9vw, var(--pk-text-2xl)); }
+h2 { font-size: var(--pk-text-lg); margin-top: var(--pk-space-lg); }
+h3 { font-size: var(--pk-text-md); margin-top: var(--pk-space-md); }
+h4 { font-size: var(--pk-text-sm); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* C-18 : la largeur de ligne est bornée. */
+p, li { max-width: var(--pk-measure); }
+p { margin: 0 0 var(--pk-space-sm); }
+
+a { color: var(--pk-primary); text-underline-offset: 0.2em; text-decoration-thickness: 0.08em; }
+a:hover { color: var(--pk-primary-dark); }
+
+img { max-width: 100%; height: auto; }
+
+/* C-06 : le focus est visible, partout. La règle « *:focus { outline:none } »
+   de la version initiale est le défaut le plus grave du support d'origine. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--pk-focus);
+  outline-offset: 3px;
+  border-radius: var(--pk-radius-sm);
+}
+
+/* C-13 : lien d'évitement */
+.lien-evitement {
+  position: absolute; top: 0; left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 100;
+  background: var(--pk-primary); color: var(--pk-on-primary);
+  padding: var(--pk-space-2xs) var(--pk-space-md);
+  border-radius: 0 0 var(--pk-radius-md) var(--pk-radius-md);
+  font-weight: 700; text-decoration: none;
+  transition: transform var(--pk-motion-fast) var(--pk-ease);
+}
+.lien-evitement:focus { transform: translate(-50%, 0); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* ------------------------------------------------------------- En-tête ---- */
+
+.entete {
+  background: var(--pk-surface-alt);
+  border: 1px solid var(--pk-border-soft);
+  border-radius: var(--pk-radius-lg);
+  padding: var(--pk-space-md) var(--pk-space-lg);
+  margin-bottom: var(--pk-space-md);
+}
+.entete__organisme {
+  display: flex; align-items: center; gap: var(--pk-space-2xs);
+  font-size: var(--pk-text-xs); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--pk-ink-soft); margin-bottom: var(--pk-space-2xs);
+}
+
+.fiche { display: flex; flex-wrap: wrap; gap: var(--pk-space-md); margin: var(--pk-space-sm) 0 0; }
+.fiche div { display: flex; gap: var(--pk-space-3xs); align-items: baseline; }
+.fiche dt { font-size: var(--pk-text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--pk-ink-soft); }
+.fiche dd { margin: 0; font-weight: 700; }
+
+/* ------------------------------------------------------------ Annonce ----- */
+
+.annonce {
+  background: var(--pk-accent-soft);
+  border-left: 5px solid var(--pk-accent);
+  border-radius: var(--pk-radius-md);
+  padding: var(--pk-space-sm) var(--pk-space-md);
+  margin-bottom: var(--pk-space-lg);
+}
+.annonce__titre { margin-top: 0; font-size: var(--pk-text-sm); text-transform: uppercase; letter-spacing: 0.05em; color: var(--pk-accent); }
+.annonce p { margin-bottom: 0; }
+
+/* ------------------------------------------------------------- Grille ----- */
+
+main:focus { outline: none; }
+.grille { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--pk-space-xl); align-items: start; }
+section { margin-bottom: var(--pk-space-lg); }
+section h2:first-child { margin-top: 0; }
+
+/* ----------------------------------------------------------- Encadrés ----- */
+
+.encadre {
+  border-radius: var(--pk-radius-md);
+  padding: var(--pk-space-sm) var(--pk-space-md);
+  border-left: 5px solid;
+  margin: var(--pk-space-md) 0;
+  max-width: var(--pk-measure);
+}
+.encadre h3, .encadre h4 { margin-top: 0; margin-bottom: var(--pk-space-3xs); }
+.encadre p:last-child { margin-bottom: 0; }
+.encadre--attention { background: var(--pk-danger-soft); border-color: var(--pk-danger); }
+.encadre--attention h4 { color: var(--pk-danger); }
+.encadre--info { background: var(--pk-surface-alt); border-color: var(--pk-primary); }
+.encadre--info h3 { color: var(--pk-primary); text-transform: uppercase; letter-spacing: 0.05em; font-size: var(--pk-text-sm); }
+
+/* ------------------------------------------------------------ Boutons ----- */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--pk-space-3xs);
+  /* C-19 : cibles de 44 px minimum, contre 23 px dans la version initiale. */
+  min-height: var(--pk-target-min); min-width: var(--pk-target-min);
+  padding: var(--pk-space-2xs) var(--pk-space-md);
+  border-radius: var(--pk-radius-md); border: 2px solid transparent;
+  font-family: inherit; font-size: var(--pk-text-sm); font-weight: 700; cursor: pointer;
+  transition: background var(--pk-motion-fast) var(--pk-ease);
+}
+.btn--principal { background: var(--pk-primary); color: var(--pk-on-primary); border-color: var(--pk-primary); }
+.btn--principal:hover { background: var(--pk-primary-dark); border-color: var(--pk-primary-dark); }
+.btn--secondaire { background: var(--pk-surface); color: var(--pk-primary); border-color: var(--pk-border); }
+.btn--secondaire:hover { background: var(--pk-surface-alt); border-color: var(--pk-primary); }
+
+.galerie {
+  background: var(--pk-surface-alt);
+  border: 1px solid var(--pk-border);
+  border-radius: var(--pk-radius-md);
+  padding: var(--pk-space-sm) var(--pk-space-md);
+  margin-bottom: var(--pk-space-sm);
+}
+.galerie[hidden] { display: none; }
+.galerie h4 { margin-top: 0; }
+.galerie ul { margin: 0; padding-left: 1.2em; font-size: var(--pk-text-sm); }
+
+/* ------------------------------------------------------------ Figures ----- */
+
+figure { margin: var(--pk-space-md) 0; }
+figure img { border: 1px solid var(--pk-border-soft); border-radius: var(--pk-radius-md); background: var(--pk-surface-alt); }
+figcaption { font-size: var(--pk-text-xs); color: var(--pk-ink-soft); margin-top: var(--pk-space-3xs); }
+
+.liens { padding-left: 0; list-style: none; }
+.liens li { margin-bottom: var(--pk-space-2xs); }
+.liens a { display: inline-flex; align-items: center; min-height: var(--pk-target-min); font-weight: 600; }
+
+/* ------------------------------------------------------------ Tableau ----- */
+
+.tableau { width: 100%; border-collapse: collapse; font-size: var(--pk-text-sm); }
+.tableau caption {
+  text-align: left; font-size: var(--pk-text-xs); color: var(--pk-ink-soft);
+  padding-bottom: var(--pk-space-3xs); font-weight: 600;
+}
+.tableau th, .tableau td { padding: var(--pk-space-2xs); border: 1px solid var(--pk-border); text-align: left; }
+.tableau thead th { background: var(--pk-surface-alt); font-size: var(--pk-text-xs); text-transform: uppercase; letter-spacing: 0.04em; }
+.tableau tbody th { font-weight: 400; }
+
+/* C-04 : couleur + pictogramme + texte. Trois canaux, pas un seul. */
+.statut {
+  display: inline-flex; align-items: center; gap: 0.35em;
+  padding: 0.15em 0.6em; border-radius: var(--pk-radius-pill);
+  font-size: var(--pk-text-xs); font-weight: 700; border: 2px solid; white-space: nowrap;
+}
+.statut--ok { background: var(--pk-success-soft); color: var(--pk-success); border-color: var(--pk-success); }
+.statut--ko { background: var(--pk-danger-soft); color: var(--pk-danger); border-color: var(--pk-danger); }
+
+/* -------------------------------------------------------- Progression ----- */
+
+.progression__piste { height: 0.65rem; background: var(--pk-surface-sunk); border-radius: var(--pk-radius-pill); overflow: hidden; }
+.progression__fill { height: 100%; background: var(--pk-primary); border-radius: var(--pk-radius-pill); }
+.aide { font-size: var(--pk-text-xs); color: var(--pk-ink-soft); margin: var(--pk-space-3xs) 0 0; }
+
+/* ------------------------------------------------------------ Formulaire -- */
+
+.formulaire { display: flex; flex-direction: column; gap: var(--pk-space-sm); max-width: 26rem; }
+.champ { display: flex; flex-direction: column; gap: var(--pk-space-3xs); }
+.champ label { font-size: var(--pk-text-sm); font-weight: 700; }
+.champ input {
+  min-height: var(--pk-target-min);
+  padding: 0 var(--pk-space-2xs);
+  font-family: inherit; font-size: var(--pk-text-sm);
+  background: var(--pk-surface); color: var(--pk-ink);
+  border: 2px solid var(--pk-border); border-radius: var(--pk-radius-sm);
+}
+.champ input[aria-invalid="true"] { border-color: var(--pk-danger); }
+
+.retour { border-radius: var(--pk-radius-md); padding: var(--pk-space-2xs) var(--pk-space-md); border-left: 5px solid; font-size: var(--pk-text-sm); }
+.retour[hidden] { display: none; }
+.retour[data-etat="erreur"] { background: var(--pk-danger-soft); border-color: var(--pk-danger); }
+.retour[data-etat="succes"] { background: var(--pk-success-soft); border-color: var(--pk-success); }
+.retour ul { margin: var(--pk-space-3xs) 0 0; padding-left: 1.2em; }
+.retour a { font-weight: 700; }
+
+/* ---------------------------------------------------------------- Pied ---- */
+
+.pied { margin-top: var(--pk-space-xl); padding-top: var(--pk-space-md); border-top: 1px solid var(--pk-border); font-size: var(--pk-text-sm); }
+.pied h2 { font-size: var(--pk-text-md); margin-top: 0; }
+.pied address { font-style: normal; }
+.pied a { display: inline-flex; align-items: center; min-height: 2rem; }
+
+/* ------------------------------------------------------------ Responsive -- */
+
+@media (max-width: 60rem) {
+  .grille { grid-template-columns: 1fr; gap: var(--pk-space-lg); }
+}
+
+@media print {
+  .lien-evitement { display: none !important; }
+  a::after { content: " (" attr(href) ")"; font-size: 0.85em; }
+}

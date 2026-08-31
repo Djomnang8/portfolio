@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G5 · Quiz — Kit Design Pédagogique</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="gabarit.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#rendu">Aller au gabarit</a>
+
+  <header class="gb-entete">
+    <p><a href="../../index.html">← Kit Design Pédagogique</a></p>
+    <p class="gb-id">G5</p>
+    <h1>Quiz</h1>
+    <p class="gb-sous">Question, options, retour commenté. Le retour est la partie qui enseigne — pas la question.</p>
+  </header>
+
+  <main>
+    <section id="rendu" tabindex="-1" class="gb-section">
+      <h2>Le rendu</h2>
+      <div class="gb-scene">
+        <div class="ec ec--quiz">
+          <p class="ec__chapitre">Question 2 sur 5</p>
+          <p class="ec__question">Vous ajoutez un logo cliquable qui renvoie vers l'accueil. Quel texte de remplacement lui donner ?</p>
+          <div class="ec__options">
+            <span class="ec__option"><span class="ec__lettre">A</span> Logo de l'entreprise</span>
+            <span class="ec__option ec__option--juste"><span class="ec__lettre">B</span> Accueil <span class="ec__marque">✓</span></span>
+            <span class="ec__option ec__option--faux"><span class="ec__lettre">C</span> Image du logo en PNG <span class="ec__marque">✕</span></span>
+          </div>
+          <div class="ec__retour">
+            <p class="ec__retour-titre">✓ Bonne réponse</p>
+            <p>Pour une image cliquable, l'alternative décrit <strong>la destination</strong>, pas le dessin. La personne veut savoir où le lien mène, pas à quoi ressemble le logo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Le montage</h2>
+      <div class="gb-deux">
+        <div>
+          <h3>Dans Canva</h3>
+          <ol>
+            <li>Question en 28 pt, options en 18 pt</li>
+            <li>Options en pleine largeur, hauteur minimale 44 px, espacement 8 px</li>
+            <li>États : bordure 2 px + fond en teinte pâle + pictogramme. Jamais la couleur seule</li>
+            <li>Le retour occupe un bloc distinct sous les options, filet gauche de 5 px</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Dans Genially</h3>
+          <ol>
+            <li>Utiliser le composant Question natif, puis <strong>réécrire les retours</strong> : ceux par défaut sont vides de contenu</li>
+            <li>Placer le calque de retour au-dessus des options</li>
+            <li>Vérifier que le retour est atteignable au clavier après validation</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Les règles propres à ce gabarit</h2>
+      <ul class="gb-regles">
+        <li><strong>Le retour explique, il ne félicite pas.</strong> « Bravo ! » n'apprend rien. Le retour doit donner la logique de la réponse, y compris quand la réponse est juste.</li>
+        <li><strong>Un retour pour l'erreur, un pour la réussite.</strong> Deux textes différents. Celui de l'erreur ne dit pas « faux », il dit pourquoi l'autre réponse est meilleure.</li>
+        <li><strong>Les lettres A / B / C sont décoratives.</strong> Le texte de l'option porte le sens. En aria-hidden, sinon on entend « A, Logo de l'entreprise, bouton ».</li>
+        <li><strong>Pas de minuteur.</strong> Contraire au critère WCAG 2.2.1. Une personne utilisant un lecteur d'écran met deux à trois fois plus de temps sur le même contenu.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="gb-pied">
+    <p>Kit Design Pédagogique &amp; IA — Joyce Djomnang ·
+       <a href="../README.md">Spécifications complètes</a></p>
+  </footer>
+</body>
+</html>

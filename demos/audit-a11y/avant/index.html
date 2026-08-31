@@ -1,0 +1,143 @@
+<!--
+  ============================================================================
+  VERSION « AVANT » — SUPPORT DÉLIBÉRÉMENT INACCESSIBLE
+
+  Ce fichier reproduit une fiche de cours telle qu'on en trouve réellement en
+  production. Chaque défaut qu'il contient a été observé sur de vrais supports :
+  aucun n'est caricatural, aucun n'est exagéré pour les besoins de la démonstration.
+
+  20 non-conformités WCAG 2.1 AA y sont plantées, dont 4 bloquantes. Elles sont
+  listées, chiffrées et corrigées une à une dans ../audit/rapport-wcag.md.
+
+  NE PAS UTILISER COMME MODÈLE. La version corrigée est dans ../apres/.
+  ============================================================================
+-->
+<html>
+<head>
+<title>Fiche</title>
+<style>
+body {
+  font-family: Helvetica, Arial;
+  background: #fff;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.2;
+  width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.entete { background: #eef2f7; padding: 25px; margin-bottom: 20px; }
+.gros-titre { font-size: 26px; font-weight: bold; color: #aab4c4; margin-bottom: 6px; }
+.sous { font-size: 16px; font-weight: bold; color: #b8c0cc; margin: 22px 0 8px 0; }
+.petit-titre { font-size: 14px; font-weight: bold; color: #b8c0cc; margin: 16px 0 6px 0; }
+a { color: #9db4e0; }
+.bouton {
+  background: #cfe0ff; color: #ffffff; padding: 6px 12px;
+  display: inline-block; cursor: pointer; font-size: 12px; border-radius: 3px;
+}
+.bouton:hover { background: #bdd4ff; }
+*:focus { outline: none; }
+.encadre { background: #fff8e1; padding: 12px; margin: 14px 0; font-size: 12px; }
+.grille { display: flex; gap: 18px; }
+.col { flex: 1; }
+.statut-ok { color: #7ec48f; font-weight: bold; }
+.statut-ko { color: #e39a9a; font-weight: bold; }
+table { border-collapse: collapse; width: 100%; font-size: 12px; }
+td { padding: 5px 8px; border: 1px solid #e8ecf2; }
+input { border: 1px solid #e0e4ea; padding: 4px; font-size: 12px; }
+.pied { margin-top: 26px; font-size: 11px; color: #bbb; }
+marquee { color: #c8a0a0; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="entete">
+  <img src="logo.png">
+  <div class="gros-titre">Structurer un document Word accessible</div>
+  <div style="font-size:13px">Module 3 &nbsp;•&nbsp; Durée 18 min &nbsp;•&nbsp; Niveau débutant</div>
+</div>
+
+<marquee>Nouveau : la session de rattrapage aura lieu le 12 septembre — inscrivez-vous vite !</marquee>
+
+<div class="grille">
+  <div class="col">
+
+    <div class="sous">Pourquoi structurer ?</div>
+    <p>Un document Word bien structuré se lit plus vite et s'exporte correctement. La structure, c'est ce qui permet de générer une table des matières, de naviguer dans un document long, et de produire un PDF utilisable.</p>
+
+    <div class="petit-titre">Les styles de titre</div>
+    <p>Dans Word, un titre n'est pas un texte agrandi et mis en gras. C'est un style, appliqué depuis le ruban Accueil. Cliquez sur <span class="bouton" onclick="alert('Styles')">Styles</span> pour voir la galerie.</p>
+
+    <div class="encadre">
+      Attention : une mise en forme manuelle ne produit aucun plan de document.
+    </div>
+
+    <div class="sous">Le texte de remplacement</div>
+    <p>Chaque image doit porter un texte de remplacement. Faites un clic droit sur l'image, puis « Modifier le texte de remplacement ».</p>
+
+    <img src="capture-word.png" width="420">
+
+    <div class="petit-titre">Vérifier avant d'envoyer</div>
+    <p>Word intègre un vérificateur d'accessibilité. Pour en savoir plus, <a href="https://support.microsoft.com">cliquez ici</a>.</p>
+
+    <p>Voir aussi <a href="https://accessibilite.numerique.gouv.fr">ici</a> et <a href="https://www.w3.org/WAI/">ici</a>.</p>
+
+  </div>
+  <div class="col">
+
+    <div class="sous">Récapitulatif</div>
+    <table>
+      <tr style="background:#eef2f7">
+        <td><b>Action</b></td>
+        <td><b>Statut</b></td>
+      </tr>
+      <tr><td>Styles de titre appliqués</td><td><span class="statut-ok">●</span></td></tr>
+      <tr><td>Textes de remplacement</td><td><span class="statut-ko">●</span></td></tr>
+      <tr><td>Vérificateur passé</td><td><span class="statut-ok">●</span></td></tr>
+      <tr><td>Export balisé</td><td><span class="statut-ko">●</span></td></tr>
+    </table>
+    <p style="font-size:11px">Vert = fait, rouge = à faire.</p>
+
+    <div class="sous">Progression</div>
+    <div style="background:#eef2f7;height:8px;border-radius:4px">
+      <div style="background:#cfe0ff;height:8px;width:60%;border-radius:4px"></div>
+    </div>
+    <p style="font-size:11px">60%</p>
+
+    <div class="sous">S'inscrire au rattrapage</div>
+    <p style="font-size:12px">Nom</p>
+    <input type="text">
+    <p style="font-size:12px">Email</p>
+    <input type="text">
+    <p style="font-size:12px">Nombre de participants</p>
+    <input type="text">
+    <br><br>
+    <div class="bouton" onclick="alert('Envoyé')">Envoyer</div>
+
+    <div class="encadre">
+      <b>Le saviez-vous ?</b><br>
+      Un document structuré se relit deux fois plus vite.
+    </div>
+
+  </div>
+</div>
+
+<div class="pied">
+  <div class="petit-titre">Contacts</div>
+  Service formation — formation@exemple.fr — 01 23 45 67 89<br>
+  <span id="compteur"></span>
+</div>
+
+<script>
+// Compte a rebours : la session ferme dans 5 minutes.
+var reste = 300;
+setInterval(function () {
+  reste--;
+  var m = Math.floor(reste / 60), s = reste % 60;
+  document.getElementById('compteur').innerHTML =
+    'Inscriptions closes dans ' + m + ':' + (s < 10 ? '0' : '') + s;
+}, 1000);
+</script>
+
+</body>
+</html>

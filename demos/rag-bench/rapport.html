@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rag-bench — Corpus documentaire DocuRAG</title>
+<style>
+  :root {
+    --bg:#f6f7fb; --surface:#fff; --border:#e2e5f0; --texte:#12141c; --doux:#5b6478;
+    --pale:#858da3; --violet:#6d3bf5; --bleu:#2563eb; --vert:#16a34a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0b0d14; --surface:#141826; --border:#262c40; --texte:#ecf0f8;
+             --doux:#98a0b5; --pale:#6f778d; --violet:#a78bfa; --bleu:#60a5fa; --vert:#4ade80; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:40px 24px; background:var(--bg); color:var(--texte);
+         font:15px/1.6 'Inter','Segoe UI',system-ui,sans-serif; }
+  .page { max-width:1060px; margin:0 auto; }
+  h1 { font-size:28px; margin:0 0 4px;
+        background:linear-gradient(120deg,var(--violet),var(--bleu));
+        -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .jeu { color:var(--doux); margin:0 0 28px; }
+  table { width:100%; border-collapse:collapse; background:var(--surface);
+           border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  th, td { padding:12px 14px; text-align:right; border-bottom:1px solid var(--border);
+            font-variant-numeric:tabular-nums; }
+  th { font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--pale);
+        font-weight:600; background:var(--bg); }
+  th:first-child, td.nom { text-align:left; }
+  td.nom { font-weight:600; }
+  tr.meilleure td { color:var(--vert); }
+  .barre { height:4px; background:var(--border); border-radius:2px; margin-top:5px; }
+  .barre span { display:block; height:100%; border-radius:2px;
+                 background:linear-gradient(90deg,var(--violet),var(--bleu)); }
+  h2 { font-size:17px; margin:36px 0 12px; }
+  ul { list-style:none; padding:0; margin:0; }
+  li { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--violet);
+        border-radius:10px; padding:12px 16px; margin-bottom:8px; color:var(--doux); }
+  code { font-family:ui-monospace,monospace; color:var(--violet); margin-right:8px; }
+  .attendu, .rang { display:inline-block; margin-left:10px; font-size:13px; color:var(--pale); }
+  footer { margin-top:32px; color:var(--pale); font-size:13px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>rag-bench</h1>
+  <p class="jeu">Corpus documentaire DocuRAG — 22 questions notées,
+     6 configurations comparées</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Configuration</th><th>R@1</th><th>R@3</th><th>MRR</th>
+        <th>Couverture</th><th>Ancrage</th><th>Refus</th><th>Latence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="meilleure">
+        <td class="nom">Hybride + reordonnancement (defaut)</td>
+        <td>77 %</td>
+        <td>91 %</td>
+        <td>0.841<div class="barre"><span style="width:100.0%"></span></div></td>
+        <td>77 %</td>
+        <td>59 %</td>
+        <td>90 %</td>
+        <td>39 ms</td>
+      </tr>
+      <tr class="">
+        <td class="nom">Hybride sans reordonnancement</td>
+        <td>77 %</td>
+        <td>91 %</td>
+        <td>0.833<div class="barre"><span style="width:99.1%"></span></div></td>
+        <td>75 %</td>
+        <td>58 %</td>
+        <td>90 %</td>
+        <td>42 ms</td>
+      </tr>
+      <tr class="meilleure">
+        <td class="nom">Vectoriel seul</td>
+        <td>77 %</td>
+        <td>91 %</td>
+        <td>0.841<div class="barre"><span style="width:100.0%"></span></div></td>
+        <td>77 %</td>
+        <td>59 %</td>
+        <td>90 %</td>
+        <td>36 ms</td>
+      </tr>
+      <tr class="">
+        <td class="nom">Lexical seul (BM25)</td>
+        <td>73 %</td>
+        <td>86 %</td>
+        <td>0.799<div class="barre"><span style="width:95.0%"></span></div></td>
+        <td>70 %</td>
+        <td>61 %</td>
+        <td>30 %</td>
+        <td>8 ms</td>
+      </tr>
+      <tr class="meilleure">
+        <td class="nom">Hybride, 3 passages</td>
+        <td>77 %</td>
+        <td>91 %</td>
+        <td>0.841<div class="barre"><span style="width:100.0%"></span></div></td>
+        <td>77 %</td>
+        <td>59 %</td>
+        <td>90 %</td>
+        <td>36 ms</td>
+      </tr>
+      <tr class="meilleure">
+        <td class="nom">Hybride, 10 passages</td>
+        <td>77 %</td>
+        <td>91 %</td>
+        <td>0.841<div class="barre"><span style="width:100.0%"></span></div></td>
+        <td>77 %</td>
+        <td>59 %</td>
+        <td>90 %</td>
+        <td>38 ms</td>
+      </tr></tbody>
+  </table>
+
+  <h2>Questions encore imparfaites — Hybride + reordonnancement (defaut)</h2>
+  <ul>
+        <li>
+          <code>Q04</code>
+          Quel est le délai de rétablissement pour un incident majeur ?
+          <span class="attendu">attendu : contrat-maintenance-CT-2024-118.md</span>
+          <span class="rang">non retrouvé</span>
+        </li>
+        <li>
+          <code>Q05</code>
+          Quel préavis faut-il pour dénoncer le contrat CT-2024-118 ?
+          <span class="attendu">attendu : contrat-maintenance-CT-2024-118.md</span>
+          <span class="rang">rang 2</span>
+        </li>
+        <li>
+          <code>Q12</code>
+          Qui valide une commande de 3 millions de francs ?
+          <span class="attendu">attendu : procedure-achats.md</span>
+          <span class="rang">non retrouvé</span>
+        </li>
+        <li>
+          <code>Q18</code>
+          Quel taux de TVA s&#x27;applique aux prestations ?
+          <span class="attendu">attendu : conditions-generales-vente.md</span>
+          <span class="rang">rang 2</span>
+        </li>
+        <li>
+          <code>Q19</code>
+          Quelles pénalités s&#x27;appliquent à une facture client payée en retard ?
+          <span class="attendu">attendu : conditions-generales-vente.md</span>
+          <span class="rang">rang 2</span>
+        </li></ul>
+
+  <footer>Généré par rag-bench le 18/08/2026 à 15:19. Aucune API payante n'a été appelée.</footer>
+</div>
+</body>
+</html>

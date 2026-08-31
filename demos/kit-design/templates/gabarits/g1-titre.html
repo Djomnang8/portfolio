@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G1 · Écran titre — Kit Design Pédagogique</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="gabarit.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#rendu">Aller au gabarit</a>
+
+  <header class="gb-entete">
+    <p><a href="../../index.html">← Kit Design Pédagogique</a></p>
+    <p class="gb-id">G1</p>
+    <h1>Écran titre</h1>
+    <p class="gb-sous">Ouverture de module. Il doit répondre en cinq secondes à : de quoi ça parle, combien de temps ça prend, ce que j'en retire.</p>
+  </header>
+
+  <main>
+    <section id="rendu" tabindex="-1" class="gb-section">
+      <h2>Le rendu</h2>
+      <div class="gb-scene">
+        <div class="ec ec--titre">
+          <p class="ec__marque"><span class="ec__pastille">MODULE 3</span> Parcours Bureautique accessible</p>
+          <h3 class="ec__h1">Structurer un document Word accessible</h3>
+          <p class="ec__accroche">Un document bien structuré se lit deux fois plus vite — à l'œil comme à l'oreille.</p>
+          <dl class="ec__fiche">
+            <dt>Durée</dt><dd>18 minutes</dd>
+            <dt>Public</dt><dd>Assistants de formation, rédacteurs</dd>
+            <dt>Prérequis</dt><dd>Savoir saisir du texte dans Word</dd>
+          </dl>
+          <p class="ec__objectifs-titre">À la fin de ce module, vous saurez :</p>
+          <ol class="ec__objectifs">
+            <li>Appliquer les styles de titre plutôt qu'une mise en forme manuelle</li>
+            <li>Rédiger le texte de remplacement d'une image</li>
+            <li>Exporter un PDF qui conserve la structure</li>
+          </ol>
+          <p><span class="ec__bouton">Commencer le module</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Le montage</h2>
+      <div class="gb-deux">
+        <div>
+          <h3>Dans Canva</h3>
+          <ol>
+            <li>Format <strong>1920 × 1080</strong>, marges de 96 px</li>
+            <li>Grille en 12 colonnes, contenu sur les 7 premières</li>
+            <li>Titre en <strong>44 pt</strong>, accroche en 24 pt, fiche en 18 pt</li>
+            <li>Pastille de module : rectangle arrondi 999 px, fond <code>#FDEEE6</code>, texte <code>#B03A0B</code></li>
+            <li>Zone droite libre pour le visuel — ne jamais y poser de texte</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Dans Genially</h3>
+          <ol>
+            <li>Page 1, fond uni <code>#FFFFFF</code></li>
+            <li>Ordre des calques, de bas en haut : fond, visuel, fiche, objectifs, accroche, titre, pastille</li>
+            <li>Bouton « Commencer » en dernier calque : il doit être le dernier atteint par Tab</li>
+            <li>Aucune animation d'entrée : c'est le premier écran, il doit être lisible immédiatement</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Les règles propres à ce gabarit</h2>
+      <ul class="gb-regles">
+        <li><strong>Un seul H1.</strong> C'est le titre du module. Le nom du parcours au-dessus est un paragraphe, pas un titre.</li>
+        <li><strong>Les objectifs en liste ordonnée.</strong> Un lecteur d'écran annonce alors « liste de 3 éléments », ce qui donne d'emblée la mesure de l'effort demandé.</li>
+        <li><strong>La pastille de module est décorative.</strong> Son information est reprise en toutes lettres dans le texte adjacent. Ne pas la laisser porter seule le numéro du module.</li>
+        <li><strong>Le bouton est un vrai bouton.</strong> Pas une image cliquable. S'il faut absolument un visuel, l'alternative décrit l'action : « Commencer le module ».</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="gb-pied">
+    <p>Kit Design Pédagogique &amp; IA — Joyce Djomnang ·
+       <a href="../README.md">Spécifications complètes</a></p>
+  </footer>
+</body>
+</html>

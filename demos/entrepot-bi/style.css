@@ -1,0 +1,142 @@
+/* =============================================================
+   Kit Design Pédagogique — tokens.css
+   GÉNÉRÉ AUTOMATIQUEMENT par outils/build-css.js — NE PAS ÉDITER.
+   Source : tokens/tokens.json   |   Build : 2026-08-27
+
+   Contrastes vérifiés : node outils/check-contrast.js
+   ============================================================= */
+
+/* ---------- Thème clair (défaut) ---------- */
+:root {
+  --pk-ink: #16213E; /* Texte principal */
+  --pk-ink-soft: #4A5673; /* Texte secondaire, légendes */
+  --pk-surface: #FFFFFF; /* Fond principal */
+  --pk-surface-alt: #F1F5FB; /* Fond de section, encadré */
+  --pk-surface-sunk: #E3EAF6; /* Fond de champ, piste de progression */
+  --pk-border: #78859F; /* Bordure porteuse de sens (champ, carte cliquable) — doit atteindre 3:1 */
+  --pk-border-soft: #C3CEE3; /* Séparateur purement décoratif — exempté de 1.4.11 */
+  --pk-primary: #1D4ED8; /* Action principale, liens */
+  --pk-primary-dark: #1B3FA8; /* Survol / actif de l'action principale */
+  --pk-on-primary: #FFFFFF; /* Texte sur fond primaire */
+  --pk-accent: #B03A0B; /* Mise en avant, badge pédagogique */
+  --pk-accent-soft: #FDEEE6; /* Fond d'encadré accent */
+  --pk-success: #146C39; /* Bonne réponse, conformité */
+  --pk-success-soft: #E4F5EA; /* Fond de feedback positif */
+  --pk-danger: #A81E1E; /* Erreur, non-conformité */
+  --pk-danger-soft: #FCEAEA; /* Fond de feedback négatif */
+  --pk-focus: #B45309; /* Anneau de focus clavier */
+
+  /* Typographie */
+  --pk-font-body: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --pk-font-title: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  --pk-font-mono: 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
+  --pk-text-xs: 0.875rem;
+  --pk-text-sm: 1rem;
+  --pk-text-md: 1.125rem;
+  --pk-text-lg: 1.375rem;
+  --pk-text-xl: 1.75rem;
+  --pk-text-2xl: 2.25rem;
+  --pk-text-3xl: 2.875rem;
+  --pk-leading-body: 1.6;
+  --pk-leading-title: 1.2;
+  --pk-measure: 68ch;
+
+  /* Espacement */
+  --pk-space-3xs: 0.25rem;
+  --pk-space-2xs: 0.5rem;
+  --pk-space-xs: 0.75rem;
+  --pk-space-sm: 1rem;
+  --pk-space-md: 1.5rem;
+  --pk-space-lg: 2rem;
+  --pk-space-xl: 3rem;
+  --pk-space-2xl: 4.5rem;
+
+  /* Rayons */
+  --pk-radius-sm: 6px;
+  --pk-radius-md: 12px;
+  --pk-radius-lg: 20px;
+  --pk-radius-pill: 999px;
+
+  /* Cible tactile */
+
+/* ---------------------------------------------------------------------------
+   Habillage du tableau de bord. Palette reprise du Kit Design Pedagogique du
+   meme portfolio : les couleurs sont deja verifiees WCAG AA, inutile de
+   recommencer le travail.
+   --------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--pk-surface);
+  color: var(--pk-ink);
+  font-family: var(--pk-font-body);
+  font-size: var(--pk-text-md);
+  line-height: var(--pk-leading-body);
+}
+
+.conteneur { max-width: 70rem; margin-inline: auto; padding-inline: var(--pk-space-md); }
+
+h1, h2, h3 { font-family: var(--pk-font-title); line-height: var(--pk-leading-title); margin: 0 0 var(--pk-space-2xs); text-wrap: balance; }
+h1 { font-size: clamp(1.6rem, 1.2rem + 2vw, var(--pk-text-2xl)); }
+h2 { font-size: var(--pk-text-xl); margin-top: var(--pk-space-xl); }
+h3 { font-size: var(--pk-text-md); margin-top: var(--pk-space-md); color: var(--pk-ink-soft); }
+p { margin: 0 0 var(--pk-space-sm); max-width: var(--pk-measure); }
+code { font-family: var(--pk-font-mono); font-size: 0.9em; background: var(--pk-surface-sunk); padding: 0.1em 0.4em; border-radius: var(--pk-radius-sm); }
+
+:where(a, button):focus-visible { outline: 3px solid var(--pk-focus); outline-offset: 3px; }
+
+.evitement {
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -120%); z-index: 50;
+  background: var(--pk-primary); color: var(--pk-on-primary);
+  padding: var(--pk-space-2xs) var(--pk-space-md);
+  border-radius: 0 0 var(--pk-radius-md) var(--pk-radius-md);
+  font-weight: 700; text-decoration: none;
+}
+.evitement:focus { transform: translate(-50%, 0); }
+
+.entete { background: var(--pk-surface-alt); border-bottom: 1px solid var(--pk-border); padding: var(--pk-space-xl) 0 var(--pk-space-lg); }
+.surtitre { font-size: var(--pk-text-xs); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pk-accent); margin-bottom: var(--pk-space-3xs); }
+.accroche { color: var(--pk-ink-soft); font-size: var(--pk-text-md); }
+.aide { font-size: var(--pk-text-sm); color: var(--pk-ink-soft); }
+.vide { color: var(--pk-ink-soft); font-style: italic; }
+
+section { margin-bottom: var(--pk-space-xl); }
+
+/* --- Chiffres cles --- */
+.chiffres { display: grid; gap: var(--pk-space-sm); grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+.chiffre { background: var(--pk-surface-alt); border: 1px solid var(--pk-border-soft); border-left: 5px solid var(--pk-primary); border-radius: var(--pk-radius-md); padding: var(--pk-space-sm) var(--pk-space-md); margin: 0; }
+.chiffre b { display: block; font-size: var(--pk-text-xl); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.chiffre span { font-size: var(--pk-text-xs); color: var(--pk-ink-soft); }
+.chiffre--ok { border-left-color: var(--pk-success); } .chiffre--ok b { color: var(--pk-success); }
+.chiffre--ko { border-left-color: var(--pk-danger); } .chiffre--ko b { color: var(--pk-danger); }
+.chiffre--attention { border-left-color: var(--pk-accent); } .chiffre--attention b { color: var(--pk-accent); }
+.chiffre--signal { border-left-color: var(--pk-accent); } .chiffre--signal b { color: var(--pk-accent); }
+
+/* --- Encadre d'alerte --- */
+.encadre { background: var(--pk-accent-soft); border: 2px solid var(--pk-accent); border-left-width: 6px; border-radius: var(--pk-radius-md); padding: var(--pk-space-md) var(--pk-space-lg); }
+.encadre h2 { margin-top: 0; color: var(--pk-accent); font-size: var(--pk-text-lg); }
+
+/* --- Barres --- */
+.barres { display: flex; flex-direction: column; gap: var(--pk-space-2xs); margin-bottom: var(--pk-space-md); }
+.barre { display: grid; grid-template-columns: 9rem 1fr 9rem; gap: var(--pk-space-2xs); align-items: center; }
+.barre__lib { font-size: var(--pk-text-sm); font-weight: 600; }
+.barre__piste { background: var(--pk-surface-sunk); border-radius: var(--pk-radius-pill); height: 1.4rem; overflow: hidden; }
+.barre__jauge { display: block; height: 100%; background: var(--pk-primary); border-radius: var(--pk-radius-pill); }
+.barre__val { font-size: var(--pk-text-sm); font-variant-numeric: tabular-nums; text-align: right; color: var(--pk-ink-soft); }
+
+/* --- Tableaux --- */
+.cadre-table { overflow-x: auto; border: 1px solid var(--pk-border); border-radius: var(--pk-radius-md); margin-bottom: var(--pk-space-md); }
+table { width: 100%; border-collapse: collapse; font-size: var(--pk-text-sm); }
+th, td { padding: var(--pk-space-2xs); text-align: left; border-bottom: 1px solid var(--pk-border-soft); }
+thead th { background: var(--pk-surface-alt); font-size: var(--pk-text-xs); text-transform: uppercase; letter-spacing: 0.04em; position: sticky; top: 0; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.pied { background: var(--pk-surface-alt); border-top: 1px solid var(--pk-border); padding: var(--pk-space-lg) 0; font-size: var(--pk-text-sm); color: var(--pk-ink-soft); margin-top: var(--pk-space-2xl); }
+
+@media (max-width: 44rem) {
+  .barre { grid-template-columns: 1fr; gap: 2px; }
+  .barre__val { text-align: left; }
+}

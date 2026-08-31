@@ -1,0 +1,106 @@
+{
+  "$description": "Catalogue du jeu d'icônes pédagogiques. Le libellé est le nom accessible à utiliser quand l'icône porte du sens ; quand elle est purement décorative, la laisser en aria-hidden.",
+  "grille": "24 × 24, trait 2, extrémités arrondies, currentColor",
+  "icones": [
+    {
+      "nom": "objectif",
+      "libelle": "Objectif pédagogique",
+      "fichier": "objectif.svg"
+    },
+    {
+      "nom": "duree",
+      "libelle": "Durée",
+      "fichier": "duree.svg"
+    },
+    {
+      "nom": "prerequis",
+      "libelle": "Prérequis",
+      "fichier": "prerequis.svg"
+    },
+    {
+      "nom": "competence",
+      "libelle": "Compétence acquise",
+      "fichier": "competence.svg"
+    },
+    {
+      "nom": "evaluation",
+      "libelle": "Évaluation",
+      "fichier": "evaluation.svg"
+    },
+    {
+      "nom": "quiz",
+      "libelle": "Quiz",
+      "fichier": "quiz.svg"
+    },
+    {
+      "nom": "certificat",
+      "libelle": "Attestation",
+      "fichier": "certificat.svg"
+    },
+    {
+      "nom": "lecture",
+      "libelle": "Lecture",
+      "fichier": "lecture.svg"
+    },
+    {
+      "nom": "video",
+      "libelle": "Vidéo",
+      "fichier": "video.svg"
+    },
+    {
+      "nom": "audio",
+      "libelle": "Audio",
+      "fichier": "audio.svg"
+    },
+    {
+      "nom": "exercice",
+      "libelle": "Exercice pratique",
+      "fichier": "exercice.svg"
+    },
+    {
+      "nom": "ressource",
+      "libelle": "Ressource complémentaire",
+      "fichier": "ressource.svg"
+    },
+    {
+      "nom": "telecharger",
+      "libelle": "Télécharger",
+      "fichier": "telecharger.svg"
+    },
+    {
+      "nom": "groupe",
+      "libelle": "Activité de groupe",
+      "fichier": "groupe.svg"
+    },
+    {
+      "nom": "individuel",
+      "libelle": "Activité individuelle",
+      "fichier": "individuel.svg"
+    },
+    {
+      "nom": "progression",
+      "libelle": "Progression",
+      "fichier": "progression.svg"
+    },
+    {
+      "nom": "astuce",
+      "libelle": "Astuce",
+      "fichier": "astuce.svg"
+    },
+    {
+      "nom": "attention",
+      "libelle": "Point de vigilance",
+      "fichier": "attention.svg"
+    },
+    {
+      "nom": "info",
+      "libelle": "Information",
+      "fichier": "info.svg"
+    },
+    {
+      "nom": "accessibilite",
+      "libelle": "Accessibilité",
+      "fichier": "accessibilite.svg"
+    }
+  ]
+}

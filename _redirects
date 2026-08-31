@@ -1,0 +1,9 @@
+# Genere par outils/construire-demos.js — ne pas editer a la main.
+#
+# Les applications a routage interne servent leur index.html pour toute
+# route profonde. Le code 200 est important : une redirection 301 changerait
+# l'URL affichee et casserait la navigation arriere.
+
+/demos/buildtrack/*   /demos/buildtrack/index.html   200
+/demos/devispro/*   /demos/devispro/index.html   200
+/demos/mecatrack/*   /demos/mecatrack/index.html   200

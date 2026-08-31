@@ -1,0 +1,104 @@
+{
+  "genere_le": "2026-08-31",
+  "demos": [
+    {
+      "slug": "audit-a11y",
+      "titre": "Audit d'accessibilite : avant / apres",
+      "sous_titre": "Le meme support en 46 non-conformites, puis en zero",
+      "depot": "audit-accessibilite-supports-pedagogiques",
+      "url": "demos/audit-a11y/",
+      "hors_ligne": "Statique. La grille des 38 points s'utilise sans rien installer.",
+      "spa": false,
+      "ko": 136,
+      "fichiers": 18
+    },
+    {
+      "slug": "buildtrack",
+      "titre": "BuildTrack",
+      "sous_titre": "Suivi de chantiers BTP : taches, stock, depenses, rapports",
+      "depot": "BuildTrack",
+      "url": "demos/buildtrack/",
+      "hors_ligne": "Sans API joignable, l'application bascule sur le depot local et le jeu shared/demo-data.json.",
+      "spa": true,
+      "ko": 905,
+      "fichiers": 3
+    },
+    {
+      "slug": "devispro",
+      "titre": "DevisPro",
+      "sous_titre": "Devis, factures, encaissements et relances",
+      "depot": "DevisPro",
+      "url": "demos/devispro/",
+      "hors_ligne": "Sans API joignable, l'application bascule sur le depot local et le jeu shared/demo-data.json.",
+      "spa": true,
+      "ko": 240,
+      "fichiers": 16
+    },
+    {
+      "slug": "entrepot-bi",
+      "titre": "Entrepot de donnees et qualite",
+      "sous_titre": "Tableau de bord produit par le pipeline, 76 defauts traces",
+      "depot": "entrepot-donnees-qualite",
+      "url": "demos/entrepot-bi/",
+      "hors_ligne": "Le tableau de bord est un fichier HTML autonome genere par le pipeline.",
+      "spa": false,
+      "ko": 38,
+      "fichiers": 3
+    },
+    {
+      "slug": "kit-design",
+      "titre": "Kit design pedagogique",
+      "sous_titre": "Styleguide vivant : 20 paires de contraste recalculees a l'affichage",
+      "depot": "kit-design-pedagogique-ia",
+      "url": "demos/kit-design/",
+      "hors_ligne": "Les ratios sont recalcules par la page elle-meme, pas lus dans un fichier.",
+      "spa": false,
+      "ko": 148,
+      "fichiers": 41
+    },
+    {
+      "slug": "mecatrack",
+      "titre": "MecaTrack",
+      "sous_titre": "GMAO d'un parc d'engins : interventions, pieces, QR",
+      "depot": "MecaTrack",
+      "url": "demos/mecatrack/",
+      "hors_ligne": "Sans API joignable, l'application bascule sur le depot local et le jeu shared/demo-data.json.",
+      "spa": true,
+      "ko": 449,
+      "fichiers": 17
+    },
+    {
+      "slug": "module-a11y",
+      "titre": "Module e-learning accessible",
+      "sous_titre": "7 ecrans, 4 exercices jouables, contraste mesure en direct",
+      "depot": "module-elearning-accessible",
+      "url": "demos/module-a11y/",
+      "hors_ligne": "Tout est statique : le module fonctionne entierement dans le navigateur.",
+      "spa": false,
+      "ko": 118,
+      "fichiers": 14
+    },
+    {
+      "slug": "rag-bench",
+      "titre": "Banc d'essai RAG",
+      "sous_titre": "Rapport de campagne : 6 configurations comparees",
+      "depot": "rag-bench",
+      "url": "demos/rag-bench/rapport.html",
+      "hors_ligne": "Le rapport est autonome ; il est regenere par outils/rapport.py.",
+      "spa": false,
+      "ko": 23,
+      "fichiers": 2
+    },
+    {
+      "slug": "stock",
+      "titre": "Gestion des stocks et des commandes",
+      "sous_titre": "Console de pilotage : mouvements, seuils d'alerte, commandes",
+      "depot": "Gestion_Produit_Commandes",
+      "url": "demos/stock/",
+      "hors_ligne": "La console sonde la passerelle ; sans reponse elle bascule sur un jeu de demonstration local.",
+      "spa": false,
+      "ko": 55,
+      "fichiers": 6
+    }
+  ]
+}

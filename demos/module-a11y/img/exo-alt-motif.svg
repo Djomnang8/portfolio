@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 90" role="img" aria-label="Frise décorative">
+  <style>
+    :root{--bg:#F1F5FB;--ink:#16213E;--soft:#4A5673;--pri:#1D4ED8;--acc:#B03A0B;--ok:#146C39;--ko:#A81E1E;--card:#FFFFFF;--line:#78859F;--pale:#C3CEE3}
+    @media (prefers-color-scheme: dark){:root{--bg:#1B2436;--ink:#EAF0FA;--soft:#AEBBD4;--pri:#8FB4FF;--acc:#FFAD7A;--ok:#7BD9A2;--ko:#FF9A9A;--card:#111827;--line:#68779A;--pale:#3C4A63}}
+    .s{stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    text{font-family:Segoe UI,system-ui,sans-serif;font-weight:700}
+  </style>
+
+  <rect width="320" height="90" rx="12" fill="var(--card,#FFFFFF)"/>
+  <path d="M10 32q20-24 40 0t40 0 40 0 40 0 40 0 40 0 40 0" stroke="var(--acc,#B03A0B)" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M10 46q20-24 40 0t40 0 40 0 40 0 40 0 40 0 40 0" stroke="var(--pri,#1D4ED8)" stroke-width="3" fill="none" opacity="0.85"/>
+  <path d="M10 60q20-24 40 0t40 0 40 0 40 0 40 0 40 0 40 0" stroke="var(--pri,#1D4ED8)" stroke-width="3" fill="none" opacity="0.45"/>
+</svg>

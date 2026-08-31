@@ -1,0 +1,137 @@
+{
+  "_lisezmoi": [
+    "Manifeste des demos integrees au portfolio.",
+    "",
+    "Chaque entree decrit comment fabriquer le dossier demos/<slug>/ a partir du",
+    "depot d'origine, qui reste la seule source de verite. Le dossier demos/ est",
+    "un produit de construction : il est versionne parce que Netlify deploie ce",
+    "depot seul, sans acces aux depots voisins, mais il ne doit jamais etre",
+    "modifie a la main.",
+    "",
+    "  node outils/construire-demos.js          reconstruit tout",
+    "  node outils/construire-demos.js stock    reconstruit une seule demo",
+    "",
+    "Champs :",
+    "  slug      nom du dossier sous demos/ et de l'URL publique",
+    "  depot     dossier du depot voisin, relatif au parent du portfolio",
+    "  mode      copie | vite | angular",
+    "  sources   (mode copie) fichiers et dossiers a recopier",
+    "  racine    (mode copie) prefixe a retirer des chemins copies",
+    "  dossier   (modes vite/angular) sous-dossier ou lancer la construction",
+    "  spa       true si l'application gere ses propres routes (redirection 200)",
+    "  hors_ligne  ce que la demo fait sans serveur : elle doit rester utile"
+  ],
+
+  "demos": [
+    {
+      "slug": "module-a11y",
+      "titre": "Module e-learning accessible",
+      "sous_titre": "7 ecrans, 4 exercices jouables, contraste mesure en direct",
+      "depot": "module-elearning-accessible",
+      "mode": "copie",
+      "racine": "03-module-web",
+      "sources": ["03-module-web"],
+      "spa": false,
+      "hors_ligne": "Tout est statique : le module fonctionne entierement dans le navigateur.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "kit-design",
+      "titre": "Kit design pedagogique",
+      "sous_titre": "Styleguide vivant : 20 paires de contraste recalculees a l'affichage",
+      "depot": "kit-design-pedagogique-ia",
+      "mode": "copie",
+      "racine": "",
+      "sources": [
+        "index.html", "styleguide.css", "styleguide.js",
+        "tokens", "icones", "templates", "exemples",
+        "charte-ia.md", "rapport-contraste.md", "prompts"
+      ],
+      "spa": false,
+      "hors_ligne": "Les ratios sont recalcules par la page elle-meme, pas lus dans un fichier.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "audit-a11y",
+      "titre": "Audit d'accessibilite : avant / apres",
+      "sous_titre": "Le meme support en 46 non-conformites, puis en zero",
+      "depot": "audit-accessibilite-supports-pedagogiques",
+      "mode": "copie",
+      "racine": "",
+      "sources": ["index.html", "avant", "apres", "outil-checklist", "audit"],
+      "spa": false,
+      "hors_ligne": "Statique. La grille des 38 points s'utilise sans rien installer.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "entrepot-bi",
+      "titre": "Entrepot de donnees et qualite",
+      "sous_titre": "Tableau de bord produit par le pipeline, 76 defauts traces",
+      "depot": "entrepot-donnees-qualite",
+      "mode": "copie",
+      "racine": "tableau-de-bord",
+      "sources": ["tableau-de-bord"],
+      "spa": false,
+      "hors_ligne": "Le tableau de bord est un fichier HTML autonome genere par le pipeline.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "rag-bench",
+      "titre": "Banc d'essai RAG",
+      "sous_titre": "Rapport de campagne : 6 configurations comparees",
+      "depot": "rag-bench",
+      "mode": "copie",
+      "racine": "",
+      "sources": ["rapport.html", "resultats.json"],
+      "spa": false,
+      "hors_ligne": "Le rapport est autonome ; il est regenere par outils/rapport.py.",
+      "entree": "rapport.html"
+    },
+    {
+      "slug": "stock",
+      "titre": "Gestion des stocks et des commandes",
+      "sous_titre": "Console de pilotage : mouvements, seuils d'alerte, commandes",
+      "depot": "Gestion_Produit_Commandes",
+      "mode": "copie",
+      "racine": "console",
+      "sources": ["console"],
+      "spa": false,
+      "hors_ligne": "La console sonde la passerelle ; sans reponse elle bascule sur un jeu de demonstration local.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "buildtrack",
+      "titre": "BuildTrack",
+      "sous_titre": "Suivi de chantiers BTP : taches, stock, depenses, rapports",
+      "depot": "BuildTrack",
+      "mode": "vite",
+      "dossier": "frontend",
+      "spa": true,
+      "hors_ligne": "Sans API joignable, l'application bascule sur le depot local et le jeu shared/demo-data.json.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "devispro",
+      "titre": "DevisPro",
+      "sous_titre": "Devis, factures, encaissements et relances",
+      "depot": "DevisPro",
+      "mode": "vite",
+      "dossier": "frontend",
+      "spa": true,
+      "hors_ligne": "Sans API joignable, l'application bascule sur le depot local et le jeu shared/demo-data.json.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "mecatrack",
+      "titre": "MecaTrack",
+      "sous_titre": "GMAO d'un parc d'engins : interventions, pieces, QR",
+      "depot": "MecaTrack",
+      "mode": "angular",
+      "dossier": "frontend",
+      "sortie": "dist/frontend/browser",
+      "spa": true,
+      "hors_ligne": "Sans API joignable, l'application bascule sur le depot local et le jeu shared/demo-data.json.",
+      "entree": "index.html"
+    }
+  ]
+}

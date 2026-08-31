@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checklist accessibilité — supports pédagogiques</title>
+  <meta name="description" content="38 points de contrôle WCAG 2.1 AA pour auditer un support pédagogique, avec score pondéré et export du rapport.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>✅</text></svg>">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="checklist.css">
+</head>
+<body>
+
+  <a class="lien-evitement" href="#points">Aller aux points de contrôle</a>
+
+  <header class="cl-entete">
+    <div class="cl-conteneur">
+      <p class="cl-surtitre">Outil d'audit</p>
+      <h1>Checklist accessibilité</h1>
+      <p class="cl-accroche">
+        38 points de contrôle pour un support pédagogique, répartis en 7 familles, tirés de WCAG 2.1 niveau AA.
+        Chaque point dit <strong>comment vérifier en 30 secondes</strong> et
+        <strong>pourquoi ça compte</strong> — parce qu'un point de contrôle qu'on ne
+        comprend pas est un point qu'on coche au hasard.
+      </p>
+
+      <div class="cl-projet">
+        <label for="nom-projet">Support audité</label>
+        <input type="text" id="nom-projet" placeholder="Module 3 — Word accessible"
+               autocomplete="off" aria-describedby="projet-aide">
+        <p class="cl-aide" id="projet-aide">Apparaîtra en tête du rapport exporté.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Le score suit le défilement : c'est l'information qu'on consulte en permanence -->
+  <div class="cl-barre">
+    <div class="cl-conteneur cl-barre__inner">
+      <div class="cl-score">
+        <p class="cl-score__val" id="score-val">—</p>
+        <p class="cl-score__lib">de conformité<br><span id="score-detail">Aucun point évalué</span></p>
+      </div>
+
+      <div class="cl-jauge">
+        <div class="cl-jauge__piste" role="progressbar" id="jauge"
+             aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+             aria-valuetext="Aucun point évalué" aria-label="Score de conformité">
+          <div class="cl-jauge__fill" id="jauge-fill"></div>
+        </div>
+        <p class="cl-jauge__legende" id="compteurs">
+          <span class="cl-pastille cl-pastille--ok"><span aria-hidden="true">✓</span> <span id="nb-ok">0</span> conformes</span>
+          <span class="cl-pastille cl-pastille--ko"><span aria-hidden="true">✕</span> <span id="nb-ko">0</span> non conformes</span>
+          <span class="cl-pastille cl-pastille--na"><span aria-hidden="true">—</span> <span id="nb-na">0</span> non applicables</span>
+          <span class="cl-pastille cl-pastille--todo"><span aria-hidden="true">?</span> <span id="nb-todo">38</span> à évaluer</span>
+        </p>
+      </div>
+
+      <div class="cl-actions">
+        <button type="button" class="btn btn--principal" id="btn-rapport">Générer le rapport</button>
+        <button type="button" class="btn btn--secondaire" id="btn-exemple">Charger un exemple</button>
+        <button type="button" class="btn btn--secondaire" id="btn-reset">Tout réinitialiser</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="cl-conteneur">
+
+    <div class="cl-alerte" id="alerte-bloquants" hidden>
+      <h2><span aria-hidden="true">⚠</span> <span id="alerte-titre"></span></h2>
+      <p id="alerte-texte"></p>
+    </div>
+
+    <section id="points" tabindex="-1">
+      <h2 class="sr-only">Points de contrôle</h2>
+      <div id="familles"></div>
+    </section>
+
+    <section class="cl-methode">
+      <h2>Comment s'en servir</h2>
+      <div class="cl-methode__grille">
+        <div>
+          <h3>Le score est pondéré</h3>
+          <p>
+            Un point <strong>bloquant</strong> pèse 3, un <strong>majeur</strong> 2, un
+            <strong>mineur</strong> 1. Et dès qu'un point bloquant est non conforme, le
+            score cède la place au verdict <strong>« Non livrable »</strong> : afficher
+            95 % alors qu'une fonction est inaccessible serait un mensonge par arrondi.
+          </p>
+        </div>
+        <div>
+          <h3>« Non applicable » est une réponse</h3>
+          <p>
+            Un support sans vidéo n'a pas à être pénalisé sur le sous-titrage. Les points
+            marqués non applicables sortent entièrement du calcul, au lieu d'être comptés
+            comme conformes — ce qui gonflerait le score.
+          </p>
+        </div>
+        <div>
+          <h3>Cette liste ne suffit pas</h3>
+          <p>
+            Elle couvre les défauts qui reviennent en production. Elle ne remplace ni un
+            audit complet sur les 50 critères AA, ni un test au lecteur d'écran, ni surtout
+            un test avec des personnes concernées.
+          </p>
+        </div>
+        <div>
+          <h3>Vos réponses restent chez vous</h3>
+          <p>
+            Tout est enregistré dans votre navigateur, sur cet appareil. Rien n'est envoyé
+            nulle part. Fermer l'onglet ne perd rien ; changer d'ordinateur, si.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Le rapport : affiché dans la page, copiable, imprimable. Pas de téléchargement,
+       qui serait bloqué dans plusieurs contextes d'intégration. -->
+  <div class="cl-modale" id="modale-rapport" hidden>
+    <div class="cl-modale__boite" role="dialog" aria-modal="true" aria-labelledby="modale-titre">
+      <div class="cl-modale__entete">
+        <h2 id="modale-titre">Rapport d'audit</h2>
+        <button type="button" class="btn btn--discret" id="btn-fermer">Fermer</button>
+      </div>
+      <p class="cl-aide">
+        Format Markdown, prêt à coller dans un dépôt, un ticket ou un compte rendu.
+      </p>
+      <div class="cl-modale__actions">
+        <button type="button" class="btn btn--principal" id="btn-copier">Copier le rapport</button>
+        <button type="button" class="btn btn--secondaire" id="btn-imprimer">Imprimer</button>
+        <span class="cl-copie" id="copie-retour" role="status"></span>
+      </div>
+      <textarea id="rapport-texte" readonly aria-label="Rapport d'audit au format Markdown"></textarea>
+    </div>
+  </div>
+
+  <footer class="cl-pied">
+    <div class="cl-conteneur">
+      <p>
+        <strong>Checklist accessibilité</strong> — Joyce Djomnang ·
+        <a href="../audit/rapport-wcag.md">Étude de cas avant / après</a> ·
+        <a href="../README.md">À propos du projet</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="annonces" role="status" aria-live="polite" class="sr-only"></div>
+
+  <script src="data.js"></script>
+  <script src="checklist.js"></script>
+</body>
+</html>

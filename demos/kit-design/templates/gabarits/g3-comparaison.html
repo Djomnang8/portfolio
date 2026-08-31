@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G3 · Comparaison — Kit Design Pédagogique</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="gabarit.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#rendu">Aller au gabarit</a>
+
+  <header class="gb-entete">
+    <p><a href="../../index.html">← Kit Design Pédagogique</a></p>
+    <p class="gb-id">G3</p>
+    <h1>Comparaison</h1>
+    <p class="gb-sous">Avant / après, à faire / à éviter. Le gabarit le plus efficace pour corriger une habitude.</p>
+  </header>
+
+  <main>
+    <section id="rendu" tabindex="-1" class="gb-section">
+      <h2>Le rendu</h2>
+      <div class="gb-scene">
+        <div class="ec ec--comparaison">
+          <div class="ec__carte ec__carte--ko">
+            <p class="ec__badge ec__badge--ko"><span aria-hidden="true">✕</span> À éviter</p>
+            <p class="ec__demo-titre" style="font-size:1.4rem;font-weight:700">Chapitre 1 : les bases</p>
+            <p class="ec__demo-note">Texte agrandi et mis en gras à la main.</p>
+            <p class="ec__consequence"><strong>Conséquence :</strong> le sommaire du PDF exporté est vide. Une personne aveugle doit écouter tout le document en linéaire.</p>
+          </div>
+          <div class="ec__carte ec__carte--ok">
+            <p class="ec__badge ec__badge--ok"><span aria-hidden="true">✓</span> À faire</p>
+            <!-- Niveau 3 et non 4 : le titre précédent de la page est un H2,
+                 sauter au niveau 4 créerait ici l'erreur que ce gabarit dénonce.
+                 L'apparence, elle, ne bouge pas : la taille vient du CSS. -->
+            <h3 class="ec__demo-titre">Chapitre 1 : les bases</h3>
+            <p class="ec__demo-note">Style « Titre 2 » appliqué depuis le ruban.</p>
+            <p class="ec__consequence"><strong>Conséquence :</strong> le plan est généré, la navigation par titres fonctionne, et la table des matières se met à jour toute seule.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Le montage</h2>
+      <div class="gb-deux">
+        <div>
+          <h3>Dans Canva</h3>
+          <ol>
+            <li>Deux cartes de largeur égale, gouttière de 32 px</li>
+            <li>« À éviter » à gauche, « À faire » à droite — le sens de lecture veut qu'on finisse sur la bonne pratique</li>
+            <li>Badges : fond en teinte pâle, texte et bordure dans la couleur pleine</li>
+            <li>Même hauteur pour les deux cartes, sinon l'œil lit un déséquilibre de valeur</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Dans Genially</h3>
+          <ol>
+            <li>Deux conteneurs distincts, jamais une image unique découpée</li>
+            <li>Ordre des calques : carte gauche entière, puis carte droite entière</li>
+            <li>Si les cartes apparaissent successivement, gauche d'abord</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Les règles propres à ce gabarit</h2>
+      <ul class="gb-regles">
+        <li><strong>Jamais rouge et vert seuls.</strong> Chaque carte porte un pictogramme (✕ / ✓) et un libellé écrit. Environ 8 % des hommes ne distinguent pas ces deux teintes.</li>
+        <li><strong>Toujours nommer la conséquence.</strong> « À éviter » n'apprend rien. « Le sommaire du PDF est vide » fait changer de comportement.</li>
+        <li><strong>Le mauvais exemple ne doit pas être un vrai titre.</strong> Ici il est en paragraphe stylé — ce qui est précisément le défaut montré. Le bon exemple, lui, est un vrai titre.</li>
+        <li><strong>Sur mobile, les cartes s'empilent.</strong> Vérifier que « À éviter » reste au-dessus : l'ordre porte le sens.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="gb-pied">
+    <p>Kit Design Pédagogique &amp; IA — Joyce Djomnang ·
+       <a href="../README.md">Spécifications complètes</a></p>
+  </footer>
+</body>
+</html>

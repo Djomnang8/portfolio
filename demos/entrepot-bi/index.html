@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tableau de bord — Consommation et qualité des données</title>
+<meta name="description" content="Pipeline ETL avec contrôle qualité tracé : 796 lignes lues, 75 rejetées, chaque rejet motivé.">
+<meta name="color-scheme" content="light dark">
+<style>
+/* =============================================================
+   Kit Design Pédagogique — tokens.css
+   GÉNÉRÉ AUTOMATIQUEMENT par outils/build-css.js — NE PAS ÉDITER.
+   Source : tokens/tokens.json   |   Build : 2026-08-27
+
+   Contrastes vérifiés : node outils/check-contrast.js
+   ============================================================= */
+
+/* ---------- Thème clair (défaut) ---------- */
+:root {
+  --pk-ink: #16213E; /* Texte principal */
+  --pk-ink-soft: #4A5673; /* Texte secondaire, légendes */
+  --pk-surface: #FFFFFF; /* Fond principal */
+  --pk-surface-alt: #F1F5FB; /* Fond de section, encadré */
+  --pk-surface-sunk: #E3EAF6; /* Fond de champ, piste de progression */
+  --pk-border: #78859F; /* Bordure porteuse de sens (champ, carte cliquable) — doit atteindre 3:1 */
+  --pk-border-soft: #C3CEE3; /* Séparateur purement décoratif — exempté de 1.4.11 */
+  --pk-primary: #1D4ED8; /* Action principale, liens */
+  --pk-primary-dark: #1B3FA8; /* Survol / actif de l'action principale */
+  --pk-on-primary: #FFFFFF; /* Texte sur fond primaire */
+  --pk-accent: #B03A0B; /* Mise en avant, badge pédagogique */
+  --pk-accent-soft: #FDEEE6; /* Fond d'encadré accent */
+  --pk-success: #146C39; /* Bonne réponse, conformité */
+  --pk-success-soft: #E4F5EA; /* Fond de feedback positif */
+  --pk-danger: #A81E1E; /* Erreur, non-conformité */
+  --pk-danger-soft: #FCEAEA; /* Fond de feedback négatif */
+  --pk-focus: #B45309; /* Anneau de focus clavier */
+
+  /* Typographie */
+  --pk-font-body: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --pk-font-title: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  --pk-font-mono: 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
+  --pk-text-xs: 0.875rem;
+  --pk-text-sm: 1rem;
+  --pk-text-md: 1.125rem;
+  --pk-text-lg: 1.375rem;
+  --pk-text-xl: 1.75rem;
+  --pk-text-2xl: 2.25rem;
+  --pk-text-3xl: 2.875rem;
+  --pk-leading-body: 1.6;
+  --pk-leading-title: 1.2;
+  --pk-measure: 68ch;
+
+  /* Espacement */
+  --pk-space-3xs: 0.25rem;
+  --pk-space-2xs: 0.5rem;
+  --pk-space-xs: 0.75rem;
+  --pk-space-sm: 1rem;
+  --pk-space-md: 1.5rem;
+  --pk-space-lg: 2rem;
+  --pk-space-xl: 3rem;
+  --pk-space-2xl: 4.5rem;
+
+  /* Rayons */
+  --pk-radius-sm: 6px;
+  --pk-radius-md: 12px;
+  --pk-radius-lg: 20px;
+  --pk-radius-pill: 999px;
+
+  /* Cible tactile */
+
+/* ---------------------------------------------------------------------------
+   Habillage du tableau de bord. Palette reprise du Kit Design Pedagogique du
+   meme portfolio : les couleurs sont deja verifiees WCAG AA, inutile de
+   recommencer le travail.
+   --------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--pk-surface);
+  color: var(--pk-ink);
+  font-family: var(--pk-font-body);
+  font-size: var(--pk-text-md);
+  line-height: var(--pk-leading-body);
+}
+
+.conteneur { max-width: 70rem; margin-inline: auto; padding-inline: var(--pk-space-md); }
+
+h1, h2, h3 { font-family: var(--pk-font-title); line-height: var(--pk-leading-title); margin: 0 0 var(--pk-space-2xs); text-wrap: balance; }
+h1 { font-size: clamp(1.6rem, 1.2rem + 2vw, var(--pk-text-2xl)); }
+h2 { font-size: var(--pk-text-xl); margin-top: var(--pk-space-xl); }
+h3 { font-size: var(--pk-text-md); margin-top: var(--pk-space-md); color: var(--pk-ink-soft); }
+p { margin: 0 0 var(--pk-space-sm); max-width: var(--pk-measure); }
+code { font-family: var(--pk-font-mono); font-size: 0.9em; background: var(--pk-surface-sunk); padding: 0.1em 0.4em; border-radius: var(--pk-radius-sm); }
+
+:where(a, button):focus-visible { outline: 3px solid var(--pk-focus); outline-offset: 3px; }
+
+.evitement {
+  position: absolute; top: 0; left: 50%; transform: translate(-50%, -120%); z-index: 50;
+  background: var(--pk-primary); color: var(--pk-on-primary);
+  padding: var(--pk-space-2xs) var(--pk-space-md);
+  border-radius: 0 0 var(--pk-radius-md) var(--pk-radius-md);
+  font-weight: 700; text-decoration: none;
+}
+.evitement:focus { transform: translate(-50%, 0); }
+
+.entete { background: var(--pk-surface-alt); border-bottom: 1px solid var(--pk-border); padding: var(--pk-space-xl) 0 var(--pk-space-lg); }
+.surtitre { font-size: var(--pk-text-xs); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pk-accent); margin-bottom: var(--pk-space-3xs); }
+.accroche { color: var(--pk-ink-soft); font-size: var(--pk-text-md); }
+.aide { font-size: var(--pk-text-sm); color: var(--pk-ink-soft); }
+.vide { color: var(--pk-ink-soft); font-style: italic; }
+
+section { margin-bottom: var(--pk-space-xl); }
+
+/* --- Chiffres cles --- */
+.chiffres { display: grid; gap: var(--pk-space-sm); grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); }
+.chiffre { background: var(--pk-surface-alt); border: 1px solid var(--pk-border-soft); border-left: 5px solid var(--pk-primary); border-radius: var(--pk-radius-md); padding: var(--pk-space-sm) var(--pk-space-md); margin: 0; }
+.chiffre b { display: block; font-size: var(--pk-text-xl); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.chiffre span { font-size: var(--pk-text-xs); color: var(--pk-ink-soft); }
+.chiffre--ok { border-left-color: var(--pk-success); } .chiffre--ok b { color: var(--pk-success); }
+.chiffre--ko { border-left-color: var(--pk-danger); } .chiffre--ko b { color: var(--pk-danger); }
+.chiffre--attention { border-left-color: var(--pk-accent); } .chiffre--attention b { color: var(--pk-accent); }
+.chiffre--signal { border-left-color: var(--pk-accent); } .chiffre--signal b { color: var(--pk-accent); }
+
+/* --- Encadre d'alerte --- */
+.encadre { background: var(--pk-accent-soft); border: 2px solid var(--pk-accent); border-left-width: 6px; border-radius: var(--pk-radius-md); padding: var(--pk-space-md) var(--pk-space-lg); }
+.encadre h2 { margin-top: 0; color: var(--pk-accent); font-size: var(--pk-text-lg); }
+
+/* --- Barres --- */
+.barres { display: flex; flex-direction: column; gap: var(--pk-space-2xs); margin-bottom: var(--pk-space-md); }
+.barre { display: grid; grid-template-columns: 9rem 1fr 9rem; gap: var(--pk-space-2xs); align-items: center; }
+.barre__lib { font-size: var(--pk-text-sm); font-weight: 600; }
+.barre__piste { background: var(--pk-surface-sunk); border-radius: var(--pk-radius-pill); height: 1.4rem; overflow: hidden; }
+.barre__jauge { display: block; height: 100%; background: var(--pk-primary); border-radius: var(--pk-radius-pill); }
+.barre__val { font-size: var(--pk-text-sm); font-variant-numeric: tabular-nums; text-align: right; color: var(--pk-ink-soft); }
+
+/* --- Tableaux --- */
+.cadre-table { overflow-x: auto; border: 1px solid var(--pk-border); border-radius: var(--pk-radius-md); margin-bottom: var(--pk-space-md); }
+table { width: 100%; border-collapse: collapse; font-size: var(--pk-text-sm); }
+th, td { padding: var(--pk-space-2xs); text-align: left; border-bottom: 1px solid var(--pk-border-soft); }
+thead th { background: var(--pk-surface-alt); font-size: var(--pk-text-xs); text-transform: uppercase; letter-spacing: 0.04em; position: sticky; top: 0; }
+tbody tr:last-child td { border-bottom: 0; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.pied { background: var(--pk-surface-alt); border-top: 1px solid var(--pk-border); padding: var(--pk-space-lg) 0; font-size: var(--pk-text-sm); color: var(--pk-ink-soft); margin-top: var(--pk-space-2xl); }
+
+@media (max-width: 44rem) {
+  .barre { grid-template-columns: 1fr; gap: 2px; }
+  .barre__val { text-align: left; }
+}
+
+</style>
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<header class="entete">
+  <div class="conteneur">
+    <p class="surtitre">Entrepôt de données · exécution du 2026-08-30T22:30:18</p>
+    <h1>Consommation et qualité des données</h1>
+    <p class="accroche">
+      796 lignes lues depuis 3 sources en 3 formats.
+      75 rejetées, 19 corrigées,
+      5 signalées — <strong>chacune avec son motif</strong>.
+    </p>
+  </div>
+</header>
+
+<main id="contenu" class="conteneur">
+
+  <section aria-labelledby="t-pipeline">
+    <h2 id="t-pipeline">L'exécution du pipeline</h2>
+    <div class="chiffres">
+      <p class="chiffre"><b>796</b><span>lignes lues</span></p>
+      <p class="chiffre chiffre--ok"><b>721</b><span>chargées — 90.6 %</span></p>
+      <p class="chiffre chiffre--ko"><b>75</b><span>rejetées, motif tracé</span></p>
+      <p class="chiffre chiffre--attention"><b>19</b><span>corrigées automatiquement</span></p>
+      <p class="chiffre chiffre--signal"><b>5</b><span>signalées, conservées</span></p>
+      <p class="chiffre"><b>200 ms</b><span>durée totale</span></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="t-alerte" class="encadre">
+    <h2 id="t-alerte">Le chiffre qu'il ne faut pas publier tel quel</h2>
+    <p>
+      Les <strong>5 relevés signalés</strong> — fuites probables,
+      conservés volontairement — représentent <strong>92 %</strong> de la
+      consommation totale, pour 5 lignes sur 721.
+    </p>
+    <p>
+      <strong>Conséquence directe : le classement des zones s’inverse selon qu’on les inclut ou non.</strong> 
+      En brut, l'ordre est Deïdo &gt; Ndokotti &gt; Bonapriso.
+      Hors signalés, il devient Ndokotti &gt; Bonabéri &gt; Akwa.
+      Un tableau de bord qui n'afficherait que le total brut donnerait une image fausse
+      de la consommation ordinaire — et masquerait les fuites, noyées dans un total
+      qu'elles constituent.
+    </p>
+  </section>
+
+  <section aria-labelledby="t-zones">
+    <h2 id="t-zones">Consommation par zone</h2>
+    <h3>Hors relevés signalés — la consommation ordinaire</h3>
+    <div class="barres">
+<div class="barre"><span class="barre__lib">Ndokotti</span><span class="barre__piste"><span class="barre__jauge" style="width:100.0%"></span></span><span class="barre__val">9 348 m³</span></div>
+<div class="barre"><span class="barre__lib">Bonabéri</span><span class="barre__piste"><span class="barre__jauge" style="width:99.0%"></span></span><span class="barre__val">9 258 m³</span></div>
+<div class="barre"><span class="barre__lib">Akwa</span><span class="barre__piste"><span class="barre__jauge" style="width:95.3%"></span></span><span class="barre__val">8 911 m³</span></div>
+<div class="barre"><span class="barre__lib">Deïdo</span><span class="barre__piste"><span class="barre__jauge" style="width:90.9%"></span></span><span class="barre__val">8 493 m³</span></div>
+<div class="barre"><span class="barre__lib">Bonapriso</span><span class="barre__piste"><span class="barre__jauge" style="width:85.5%"></span></span><span class="barre__val">7 994 m³</span></div>
+</div>
+    <h3>Total brut — signalés inclus</h3>
+    <div class="barres">
+<div class="barre"><span class="barre__lib">Deïdo</span><span class="barre__piste"><span class="barre__jauge" style="width:100.0%"></span></span><span class="barre__val">187 371 m³</span></div>
+<div class="barre"><span class="barre__lib">Ndokotti</span><span class="barre__piste"><span class="barre__jauge" style="width:79.2%"></span></span><span class="barre__val">148 424 m³</span></div>
+<div class="barre"><span class="barre__lib">Bonapriso</span><span class="barre__piste"><span class="barre__jauge" style="width:71.7%"></span></span><span class="barre__val">134 416 m³</span></div>
+<div class="barre"><span class="barre__lib">Akwa</span><span class="barre__piste"><span class="barre__jauge" style="width:39.3%"></span></span><span class="barre__val">73 664 m³</span></div>
+<div class="barre"><span class="barre__lib">Bonabéri</span><span class="barre__piste"><span class="barre__jauge" style="width:4.9%"></span></span><span class="barre__val">9 258 m³</span></div>
+</div>
+    <div class='cadre-table'><table><thead><tr><th scope='col'>zone</th><th scope='col'>releves</th><th scope='col'>total brut m3</th><th scope='col'>total hors signales m3</th><th scope='col'>moyenne hors signales m3</th><th scope='col'>releves signales</th></tr></thead><tbody><tr><td>Ndokotti</td><td class='num'>142</td><td class='num'>148 424.0</td><td class='num'>9 348.0</td><td class='num'>66.3</td><td class='num'>1</td></tr><tr><td>Bonabéri</td><td class='num'>102</td><td class='num'>9 258.0</td><td class='num'>9 258.0</td><td class='num'>90.8</td><td class='num'>0</td></tr><tr><td>Akwa</td><td class='num'>118</td><td class='num'>73 664.0</td><td class='num'>8 911.0</td><td class='num'>76.2</td><td class='num'>1</td></tr><tr><td>Deïdo</td><td class='num'>125</td><td class='num'>187 371.0</td><td class='num'>8 493.0</td><td class='num'>69.0</td><td class='num'>2</td></tr><tr><td>Bonapriso</td><td class='num'>97</td><td class='num'>134 416.0</td><td class='num'>7 994.0</td><td class='num'>83.3</td><td class='num'>1</td></tr></tbody></table></div>
+  </section>
+
+  <section aria-labelledby="t-mois">
+    <h2 id="t-mois">Évolution mensuelle</h2>
+    <div class="barres">
+<div class="barre"><span class="barre__lib">janvier</span><span class="barre__piste"><span class="barre__jauge" style="width:0.7%"></span></span><span class="barre__val">1 619 m³</span></div>
+<div class="barre"><span class="barre__lib">février</span><span class="barre__piste"><span class="barre__jauge" style="width:100.0%"></span></span><span class="barre__val">240 340 m³</span></div>
+<div class="barre"><span class="barre__lib">mars</span><span class="barre__piste"><span class="barre__jauge" style="width:3.6%"></span></span><span class="barre__val">8 562 m³</span></div>
+<div class="barre"><span class="barre__lib">avril</span><span class="barre__piste"><span class="barre__jauge" style="width:30.4%"></span></span><span class="barre__val">72 958 m³</span></div>
+<div class="barre"><span class="barre__lib">mai</span><span class="barre__piste"><span class="barre__jauge" style="width:62.3%"></span></span><span class="barre__val">149 715 m³</span></div>
+<div class="barre"><span class="barre__lib">juin</span><span class="barre__piste"><span class="barre__jauge" style="width:33.3%"></span></span><span class="barre__val">79 939 m³</span></div>
+</div>
+  </section>
+
+  <section aria-labelledby="t-top">
+    <h2 id="t-top">Les dix plus gros consommateurs</h2>
+    <div class='cadre-table'><table><thead><tr><th scope='col'>reference client</th><th scope='col'>client</th><th scope='col'>zone</th><th scope='col'>type contrat</th><th scope='col'>releves</th><th scope='col'>consommation totale m3</th></tr></thead><tbody><tr><td>CLI-0093</td><td>Abonné 093</td><td>Ndokotti</td><td>professionnel</td><td class='num'>5</td><td class='num'>139 546.0</td></tr><tr><td>CLI-0034</td><td>Abonné 034</td><td>Bonapriso</td><td>residentiel</td><td class='num'>2</td><td class='num'>126 440.0</td></tr><tr><td>CLI-0019</td><td>Abonné 019</td><td>Deïdo</td><td>residentiel</td><td class='num'>2</td><td class='num'>106 664.0</td></tr><tr><td>CLI-0008</td><td>Abonné 008</td><td>Deïdo</td><td>residentiel</td><td class='num'>6</td><td class='num'>72 365.0</td></tr><tr><td>CLI-0065</td><td>Abonné 065</td><td>Akwa</td><td>residentiel</td><td class='num'>4</td><td class='num'>64 822.0</td></tr><tr><td>CLI-0005</td><td>Abonné 005</td><td>Bonapriso</td><td>collectif</td><td class='num'>5</td><td class='num'>1 610.0</td></tr><tr><td>CLI-0058</td><td>Abonné 058</td><td>Akwa</td><td>collectif</td><td class='num'>5</td><td class='num'>1 570.0</td></tr><tr><td>CLI-0057</td><td>Abonné 057</td><td>Deïdo</td><td>collectif</td><td class='num'>5</td><td class='num'>1 486.0</td></tr><tr><td>CLI-0015</td><td>Abonné 015</td><td>Akwa</td><td>collectif</td><td class='num'>5</td><td class='num'>1 463.0</td></tr><tr><td>CLI-0031</td><td>Abonné 031</td><td>Akwa</td><td>collectif</td><td class='num'>5</td><td class='num'>1 440.0</td></tr></tbody></table></div>
+  </section>
+
+  <section aria-labelledby="t-signales">
+    <h2 id="t-signales">Relevés signalés — à examiner en priorité</h2>
+    <p class="aide">
+      Conservés et marqués plutôt que rejetés : une consommation multipliée par cent
+      est peut-être une fuite réelle. La rejeter reviendrait à jeter l'information
+      qui compte le plus.
+    </p>
+    <div class='cadre-table'><table><thead><tr><th scope='col'>reference client</th><th scope='col'>client</th><th scope='col'>zone</th><th scope='col'>date releve</th><th scope='col'>consommation m3</th><th scope='col'>motif signalement</th></tr></thead><tbody><tr><td>CLI-0093</td><td>Abonné 093</td><td>Ndokotti</td><td>2026-05-18</td><td class='num'>139 076.0</td><td>consommation de 139076 m3 contre une médiane de 123 m3 pour ce client — fuite possible, ligne conservée</td></tr><tr><td>CLI-0034</td><td>Abonné 034</td><td>Bonapriso</td><td>2026-02-16</td><td class='num'>126 422.0</td><td>consommation de 126422 m3 contre une médiane de 23 m3 pour ce client — fuite possible, ligne conservée</td></tr><tr><td>CLI-0019</td><td>Abonné 019</td><td>Deïdo</td><td>2026-02-19</td><td class='num'>106 634.0</td><td>consommation de 106634 m3 contre une médiane de 27 m3 pour ce client — fuite possible, ligne conservée</td></tr><tr><td>CLI-0008</td><td>Abonné 008</td><td>Deïdo</td><td>2026-06-18</td><td class='num'>72 244.0</td><td>consommation de 72244 m3 contre une médiane de 26 m3 pour ce client — fuite possible, ligne conservée</td></tr><tr><td>CLI-0065</td><td>Abonné 065</td><td>Akwa</td><td>2026-04-19</td><td class='num'>64 753.0</td><td>consommation de 64753 m3 contre une médiane de 28 m3 pour ce client — fuite possible, ligne conservée</td></tr></tbody></table></div>
+  </section>
+
+  <section aria-labelledby="t-qualite">
+    <h2 id="t-qualite">Qualité par règle</h2>
+    <p class="aide">
+      76 défauts ont été injectés dans les sources par
+      <code>sources/generer-sources.py</code>. Le rapport de réconciliation
+      (<code>qualite/reconcilier.py</code>) vérifie qu'aucun n'a échappé au pipeline.
+    </p>
+    <div class='cadre-table'><table><thead><tr><th scope='col'>code regle</th><th scope='col'>issue</th><th scope='col'>lignes concernees</th></tr></thead><tbody><tr><td>Q-01</td><td>rejet</td><td class='num'>7</td></tr><tr><td>Q-02</td><td>rejet</td><td class='num'>11</td></tr><tr><td>Q-03</td><td>rejet</td><td class='num'>20</td></tr><tr><td>Q-04</td><td>correction</td><td class='num'>17</td></tr><tr><td>Q-05</td><td>rejet</td><td class='num'>20</td></tr><tr><td>Q-06</td><td>signalement</td><td class='num'>5</td></tr><tr><td>Q-07</td><td>rejet</td><td class='num'>4</td></tr><tr><td>Q-08</td><td>correction</td><td class='num'>8</td></tr><tr><td>Q-09</td><td>rejet</td><td class='num'>10</td></tr><tr><td>Q-10</td><td>rejet</td><td class='num'>3</td></tr></tbody></table></div>
+  </section>
+
+  <section aria-labelledby="t-sources">
+    <h2 id="t-sources">Qualité par source</h2>
+    <p class="aide">
+      La requête qui permet d'aller corriger le problème à la racine, au lieu de
+      nettoyer indéfiniment en aval.
+    </p>
+    <div class='cadre-table'><table><thead><tr><th scope='col'>source</th><th scope='col'>lignes en defaut</th><th scope='col'>rejets</th><th scope='col'>corrections</th><th scope='col'>signalements</th></tr></thead><tbody><tr><td>releves_mobile.json</td><td class='num'>39</td><td class='num'>30</td><td class='num'>9</td><td class='num'>2</td></tr><tr><td>releves_agence_sud.tsv</td><td class='num'>31</td><td class='num'>22</td><td class='num'>11</td><td class='num'>1</td></tr><tr><td>releves_agence_nord.csv</td><td class='num'>29</td><td class='num'>23</td><td class='num'>5</td><td class='num'>2</td></tr></tbody></table></div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <p>
+      Généré par <code>tableau-de-bord/generer.py</code> depuis l'entrepôt —
+      aucune donnée saisie à la main.
+      Les requêtes affichées sont celles de <code>entrepot/requetes/</code>.
+    </p>
+    <p>Joyce Djomnang · Licence MIT</p>
+  </div>
+</footer>
+</body>
+</html>

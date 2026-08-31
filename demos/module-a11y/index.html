@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les bases de l'accessibilité numérique — Module d'initiation</title>
+  <meta name="description" content="Module e-learning d'initiation à l'accessibilité numérique : contraste, alternatives textuelles, navigation clavier, structure des titres. 12 minutes.">
+  <meta name="author" content="Joyce Djomnang">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>♿</text></svg>">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/module.css">
+</head>
+<body>
+
+  <!-- WCAG 2.4.1 Contournement de blocs : premier élément focusable de la page. -->
+  <a class="lien-evitement" href="#contenu">Aller directement au contenu</a>
+
+  <header class="entete">
+    <div class="entete__haut">
+      <p class="entete__marque">
+        <span class="entete__pastille" aria-hidden="true">A11Y</span>
+        Module d'initiation
+      </p>
+
+      <button type="button" id="btn-reglages" class="btn btn--discret"
+              aria-expanded="false" aria-controls="panneau-reglages">
+        <span class="btn__icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/>
+          </svg>
+        </span>
+        Réglages d'affichage
+      </button>
+    </div>
+
+    <h1 id="titre-module">Les bases de l'accessibilité numérique</h1>
+
+    <!-- Réglages : panneau replié par défaut, piloté par aria-expanded ci-dessus. -->
+    <div id="panneau-reglages" class="reglages" hidden>
+      <h2 class="reglages__titre">Réglages d'affichage</h2>
+      <p class="reglages__aide">Ces réglages sont mémorisés dans votre navigateur. Ils n'affectent que cet appareil.</p>
+
+      <div class="reglages__grille">
+        <fieldset class="champ">
+          <legend>Thème</legend>
+          <div class="segment" role="radiogroup" aria-label="Thème">
+            <label class="segment__option"><input type="radio" name="theme" value="auto" checked> <span>Système</span></label>
+            <label class="segment__option"><input type="radio" name="theme" value="light"> <span>Clair</span></label>
+            <label class="segment__option"><input type="radio" name="theme" value="dark"> <span>Sombre</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="champ">
+          <legend>Taille du texte</legend>
+          <div class="segment" role="radiogroup" aria-label="Taille du texte">
+            <label class="segment__option"><input type="radio" name="textsize" value="normal" checked> <span>Normale</span></label>
+            <label class="segment__option"><input type="radio" name="textsize" value="large"> <span>Grande</span></label>
+            <label class="segment__option"><input type="radio" name="textsize" value="xlarge"> <span>Très grande</span></label>
+          </div>
+        </fieldset>
+
+        <div class="champ champ--interrupteurs">
+          <label class="interrupteur">
+            <input type="checkbox" id="opt-contraste">
+            <span class="interrupteur__piste" aria-hidden="true"></span>
+            <span class="interrupteur__libelle">Contraste renforcé</span>
+          </label>
+
+          <label class="interrupteur">
+            <input type="checkbox" id="opt-lisible">
+            <span class="interrupteur__piste" aria-hidden="true"></span>
+            <span class="interrupteur__libelle">
+              Confort de lecture
+              <span class="interrupteur__note">Interlignage et espacement des mots augmentés</span>
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <p class="reglages__motion" id="etat-animations"></p>
+    </div>
+  </header>
+
+  <!-- Progression. role="progressbar" pour que le lecteur d'écran annonce l'avancement. -->
+  <div class="progression">
+    <div class="progression__piste"
+         role="progressbar"
+         id="barre-progression"
+         aria-labelledby="etiquette-progression"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+         aria-valuetext="Écran 1 sur 7">
+      <div class="progression__remplissage" id="progression-remplissage"></div>
+    </div>
+    <p class="progression__etiquette" id="etiquette-progression">
+      <span id="progression-texte">Écran 1 sur 7</span>
+      <span class="progression__separateur" aria-hidden="true">·</span>
+      <span id="progression-pct">0 %</span>
+    </p>
+  </div>
+
+  <!-- tabindex="-1" : cible du lien d'évitement et point de reprise du focus. -->
+  <main id="contenu" tabindex="-1">
+    <article id="ecran" class="ecran">
+      <!-- Injecté par js/module.js -->
+      <noscript>
+        <div class="encadre encadre--attention">
+          <h2>JavaScript est désactivé</h2>
+          <p>
+            Ce module est interactif et nécessite JavaScript. La version textuelle intégrale
+            reste disponible dans le fichier
+            <a href="../04-accessibilite/transcriptions/transcription-integrale.md">transcription-integrale.md</a>,
+            qui contient l'ensemble du contenu pédagogique sous forme linéaire.
+          </p>
+        </div>
+      </noscript>
+    </article>
+  </main>
+
+  <nav class="nav-module" aria-label="Navigation dans le module">
+    <button type="button" id="btn-prec" class="btn btn--secondaire">
+      <span aria-hidden="true">←</span> Précédent
+    </button>
+
+    <ol class="fil" id="fil" aria-label="Étapes du module"></ol>
+
+    <button type="button" id="btn-suiv" class="btn btn--principal">
+      Suivant <span aria-hidden="true">→</span>
+    </button>
+  </nav>
+
+  <footer class="pied">
+    <details class="pied__details">
+      <summary>Version texte intégrale du module</summary>
+      <div id="version-texte" class="pied__texte">
+        <p>Chargement…</p>
+      </div>
+    </details>
+
+    <p class="pied__meta">
+      Module conçu et développé par Joyce Djomnang ·
+      Conforme WCAG 2.1 niveau AA ·
+      <a href="../04-accessibilite/audit-wcag.md">Rapport d'accessibilité</a>
+    </p>
+  </footer>
+
+  <!-- Région d'annonces pour lecteur d'écran. Ne jamais la masquer avec display:none. -->
+  <div id="annonces" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <script src="data/contenu.js"></script>
+  <script src="js/module.js"></script>
+</body>
+</html>

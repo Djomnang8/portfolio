@@ -777,6 +777,29 @@ html[data-theme='dark'] .hero__glow--blue {
   gap: 0.9rem;
 }
 
+.project__link--demo {
+  /* La demo est l'action principale d'une carte : c'est elle qui permet de
+     juger le travail en trente secondes, alors que le code demande dix
+     minutes. Elle est traitee comme un bouton pour se distinguer des liens
+     secondaires, qui restent volontairement discrets. */
+  background: var(--blue);
+  /* --on-accent, et non une couleur ecrite en dur : le jeton vaut blanc en
+     theme clair et presque noir en theme sombre, ou --blue passe de #2563EB a
+     #60A5FA. Avec un noir fixe, le libelle tombait a 3,76:1 sur le bleu clair
+     du theme clair — sous le seuil AA de 4,5:1 pour du texte de 13 px. Avec le
+     jeton : 5,17:1 en clair, 7,63:1 en sombre. */
+  color: var(--on-accent);
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+}
+
+.project__link--demo:hover {
+  background: var(--violet);
+  color: var(--on-accent);
+  gap: 0.9rem;
+}
+
 .project__link--muted {
   color: var(--text-dim);
   cursor: not-allowed;

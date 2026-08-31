@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Console de pilotage — Gestion des stocks et des commandes</title>
+    <meta
+      name="description"
+      content="Console de pilotage du stock : catalogue, seuils d’alerte, journal des mouvements, commandes et contrôle de cohérence."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>📦</text></svg>"
+    />
+    <link rel="stylesheet" href="console.css" />
+  </head>
+  <body>
+    <a class="saut" href="#principal">Aller au contenu</a>
+
+    <header class="entete">
+      <div class="entete__zone">
+        <p class="entete__marque"><span aria-hidden="true">📦</span> Gestion des stocks</p>
+        <p class="entete__sous">Console de pilotage · produit-service + commande-service</p>
+      </div>
+      <div class="entete__zone entete__zone--droite">
+        <p class="source" id="source" role="status">
+          <span class="source__pastille" id="source-pastille"></span>
+          <span id="source-texte">Détection de la passerelle…</span>
+        </p>
+        <button type="button" class="btn btn--fin" id="btn-source">
+          Changer de source
+        </button>
+      </div>
+    </header>
+
+    <nav class="onglets" aria-label="Sections de la console">
+      <button type="button" class="onglet" data-vue="tableau" aria-current="page">Tableau de bord</button>
+      <button type="button" class="onglet" data-vue="catalogue">Catalogue</button>
+      <button type="button" class="onglet" data-vue="mouvements">Mouvements</button>
+      <button type="button" class="onglet" data-vue="commandes">Commandes</button>
+      <button type="button" class="onglet" data-vue="coherence">Contrôle</button>
+    </nav>
+
+    <main id="principal">
+      <!-- Les messages de resultat d'action arrivent ici. aria-live pour que
+           l'information soit annoncee : un refus de stock affiche uniquement en
+           couleur n'existe pas pour une partie des utilisateurs. -->
+      <div id="messages" class="messages" role="status" aria-live="polite"></div>
+
+      <!-- ================================================ TABLEAU DE BORD -->
+      <section class="vue" id="vue-tableau">
+        <h1>Tableau de bord</h1>
+        <div class="stats" id="stats"></div>
+
+        <h2>Articles à réapprovisionner</h2>
+        <p class="aide">
+          Un article apparait ici dès que sa quantité passe sous son seuil
+          d’alerte. Sans ce seuil, une rupture se constate le jour où un client
+          la subit.
+        </p>
+        <div class="tableau-cadre">
+          <table class="tableau" id="t-alertes">
+            <caption class="sr">Articles dont la quantité est inférieure ou égale au seuil d’alerte</caption>
+            <thead>
+              <tr>
+                <th scope="col">Référence</th>
+                <th scope="col">Article</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col" class="num">Stock</th>
+                <th scope="col" class="num">Seuil</th>
+                <th scope="col">État</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <h2>Valeur du stock par catégorie</h2>
+        <div class="barres" id="barres"></div>
+      </section>
+
+      <!-- ====================================================== CATALOGUE -->
+      <section class="vue" id="vue-catalogue" hidden>
+        <h1>Catalogue</h1>
+        <p class="aide">
+          La quantité n’est pas modifiable directement : elle change uniquement
+          par un mouvement d’entrée ou de sortie, qui laisse une trace datée et
+          motivée. C’est ce qui rend l’inventaire auditable.
+        </p>
+        <div class="tableau-cadre">
+          <table class="tableau" id="t-catalogue">
+            <caption class="sr">Catalogue des articles</caption>
+            <thead>
+              <tr>
+                <th scope="col">Référence</th>
+                <th scope="col">Article</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col" class="num">Prix</th>
+                <th scope="col" class="num">Stock</th>
+                <th scope="col" class="num">Seuil</th>
+                <th scope="col">Mouvement</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===================================================== MOUVEMENTS -->
+      <section class="vue" id="vue-mouvements" hidden>
+        <h1>Journal des mouvements</h1>
+        <p class="aide">
+          Chaque ligne conserve le stock avant et après l’opération. La quantité
+          courante d’un article doit être exactement la somme de ses mouvements :
+          l’onglet <strong>Contrôle</strong> le vérifie.
+        </p>
+        <div class="tableau-cadre">
+          <table class="tableau" id="t-mouvements">
+            <caption class="sr">Journal des entrées et sorties de stock</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="num">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Article</th>
+                <th scope="col">Sens</th>
+                <th scope="col" class="num">Quantité</th>
+                <th scope="col" class="num">Avant</th>
+                <th scope="col" class="num">Après</th>
+                <th scope="col">Motif</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ====================================================== COMMANDES -->
+      <section class="vue" id="vue-commandes" hidden>
+        <h1>Commandes</h1>
+
+        <form class="carte carte--form" id="form-commande">
+          <h2>Passer une commande</h2>
+          <p class="aide">
+            Le stock est engagé avant l’enregistrement de la commande. Si le
+            stock est insuffisant, la commande est refusée et rien n’est écrit.
+          </p>
+          <div class="champs">
+            <p class="champ">
+              <label for="c-produit">Article</label>
+              <select id="c-produit" required></select>
+            </p>
+            <p class="champ champ--court">
+              <label for="c-quantite">Quantité</label>
+              <input type="number" id="c-quantite" min="1" step="1" value="1" required />
+            </p>
+            <p class="champ champ--bouton">
+              <button type="submit" class="btn btn--primaire">Commander</button>
+            </p>
+          </div>
+        </form>
+
+        <div class="tableau-cadre">
+          <table class="tableau" id="t-commandes">
+            <caption class="sr">Commandes enregistrées</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="num">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Article</th>
+                <th scope="col" class="num">Quantité</th>
+                <th scope="col" class="num">Montant</th>
+                <th scope="col">Statut</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================= CONTROLE -->
+      <section class="vue" id="vue-coherence" hidden>
+        <h1>Contrôle de cohérence</h1>
+        <p class="aide">
+          Le contrôle compare, pour chaque article, la quantité affichée et la
+          somme de ses mouvements. Un écart signifie qu’un stock a changé sans
+          justification : c’est exactement ce que produit une sur-vente.
+        </p>
+        <p>
+          <button type="button" class="btn btn--primaire" id="btn-controle">
+            Lancer le contrôle
+          </button>
+        </p>
+        <div id="resultat-controle"></div>
+
+        <h2>Reproduire la sur-vente</h2>
+        <p class="aide">
+          Le bouton ci-dessous envoie deux commandes simultanées sur le même
+          article, en quantité supérieure à la moitié du stock. Dans la version
+          d’origine, les deux passaient. Dans la version actuelle, la seconde est
+          refusée : la vérification et l’écriture se font dans la même
+          transaction, chez le service propriétaire du stock.
+        </p>
+        <p>
+          <button type="button" class="btn" id="btn-concurrence">
+            Envoyer deux commandes simultanées
+          </button>
+        </p>
+        <div id="resultat-concurrence"></div>
+      </section>
+    </main>
+
+    <footer class="pied">
+      <p id="pied-texte">Console de pilotage — dépôt <code>Gestion_Produit_Commandes</code>.</p>
+    </footer>
+
+    <!-- Boite de dialogue de mouvement de stock. -->
+    <dialog id="dlg-mouvement">
+      <form method="dialog" id="form-mouvement">
+        <h2 id="dlg-titre">Mouvement de stock</h2>
+        <p class="aide" id="dlg-contexte"></p>
+        <p class="champ">
+          <label for="m-sens">Sens</label>
+          <select id="m-sens">
+            <option value="ENTREE">Entrée — réception, retour, correction à la hausse</option>
+            <option value="SORTIE">Sortie — vente, casse, correction à la baisse</option>
+          </select>
+        </p>
+        <p class="champ champ--court">
+          <label for="m-quantite">Quantité</label>
+          <input type="number" id="m-quantite" min="1" step="1" value="1" />
+        </p>
+        <p class="champ">
+          <label for="m-motif">Motif</label>
+          <input type="text" id="m-motif" placeholder="réception fournisseur" />
+        </p>
+        <p class="dlg-actions">
+          <button type="button" class="btn btn--fin" id="m-annuler">Annuler</button>
+          <button type="submit" class="btn btn--primaire" id="m-valider">Appliquer</button>
+        </p>
+      </form>
+    </dialog>
+
+    <!-- Boite de dialogue de choix de source. -->
+    <dialog id="dlg-source">
+      <form method="dialog">
+        <h2>Source des données</h2>
+        <p class="aide">
+          La console interroge la passerelle si elle répond. Sinon elle bascule
+          sur un dépôt local qui applique exactement les mêmes règles — refus de
+          stock insuffisant, journal des mouvements, contrôle de cohérence.
+        </p>
+        <p class="champ">
+          <label for="s-url">Adresse de la passerelle</label>
+          <input type="url" id="s-url" placeholder="http://localhost:8080" />
+        </p>
+        <p class="dlg-actions">
+          <button type="button" class="btn btn--fin" id="s-local">Forcer le mode local</button>
+          <button type="submit" class="btn btn--primaire" id="s-tester">Tester et utiliser</button>
+        </p>
+      </form>
+    </dialog>
+
+    <script src="donnees-demo.js"></script>
+    <script src="depot-local.js"></script>
+    <script src="depot-api.js"></script>
+    <script src="console.js"></script>
+  </body>
+</html>

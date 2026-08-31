@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G2 · Contenu illustré — Kit Design Pédagogique</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="gabarit.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#rendu">Aller au gabarit</a>
+
+  <header class="gb-entete">
+    <p><a href="../../index.html">← Kit Design Pédagogique</a></p>
+    <p class="gb-id">G2</p>
+    <h1>Contenu illustré</h1>
+    <p class="gb-sous">La mise en page de travail, celle qui sert 60 % des écrans d'un module.</p>
+  </header>
+
+  <main>
+    <section id="rendu" tabindex="-1" class="gb-section">
+      <h2>Le rendu</h2>
+      <div class="gb-scene">
+        <div class="ec ec--contenu">
+          <div>
+            <p class="ec__chapitre">Chapitre 2 sur 5</p>
+            <h3 class="ec__h2">Les styles de titre</h3>
+            <p>Dans Word, un titre n'est pas un texte agrandi et mis en gras. C'est un <strong>style</strong> appliqué depuis le ruban Accueil.</p>
+            <p>La différence est invisible à l'écran et décisive à l'export : seuls les styles produisent un plan de document.</p>
+            <aside class="ec__encadre">
+              <h4>Point de vigilance</h4>
+              <p>Un titre mis en forme à la main donne un PDF dont le sommaire est vide pour un lecteur d'écran.</p>
+            </aside>
+          </div>
+          <figure class="ec__figure">
+            <div class="ec__visuel" aria-hidden="true">
+              <span class="ec__ligne ec__ligne--titre"></span>
+              <span class="ec__ligne"></span><span class="ec__ligne"></span>
+              <span class="ec__ligne ec__ligne--st"></span>
+              <span class="ec__ligne"></span><span class="ec__ligne ec__ligne--court"></span>
+            </div>
+            <figcaption>Le plan d'un document structuré : un titre principal, deux sous-titres, du corps de texte.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Le montage</h2>
+      <div class="gb-deux">
+        <div>
+          <h3>Dans Canva</h3>
+          <ol>
+            <li>Deux colonnes : <strong>58 % / 42 %</strong>, gouttière de 48 px</li>
+            <li>Texte à gauche, visuel à droite — jamais l'inverse, la lecture démarre à gauche</li>
+            <li>Bloc de texte : ne pas dépasser 68 caractères par ligne</li>
+            <li>Encadré : filet gauche de 5 px dans la couleur du type, fond en teinte pâle correspondante</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Dans Genially</h3>
+          <ol>
+            <li>Colonnes en deux zones distinctes, pas en un seul bloc texte</li>
+            <li>Renseigner le texte de remplacement du visuel dans le panneau de droite</li>
+            <li>Si l'encadré apparaît au clic, le placer <strong>au-dessus</strong> du bouton dans les calques</li>
+            <li>Animation d'entrée : fondu uniquement, 200 ms maximum</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Les règles propres à ce gabarit</h2>
+      <ul class="gb-regles">
+        <li><strong>L'ordre visuel doit être l'ordre du DOM.</strong> Sur mobile, le visuel passe au-dessus du texte. Vérifier que l'ordre de lecture reste cohérent après redistribution.</li>
+        <li><strong>La légende porte l'information.</strong> Si la figure a une légende explicite, l'alternative de l'image peut rester vide : sinon la même chose est dite deux fois.</li>
+        <li><strong>L'encadré est un aside avec un titre.</strong> Pas un paragraphe coloré. Le titre permet la navigation par titres du lecteur d'écran.</li>
+        <li><strong>Le numéro de chapitre est du texte.</strong> Pas une image, pas une police décorative rastérisée.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="gb-pied">
+    <p>Kit Design Pédagogique &amp; IA — Joyce Djomnang ·
+       <a href="../README.md">Spécifications complètes</a></p>
+  </footer>
+</body>
+</html>

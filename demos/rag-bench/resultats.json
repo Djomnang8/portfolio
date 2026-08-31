@@ -1,0 +1,534 @@
+[
+  {
+    "configuration": {
+      "nom": "Hybride + reordonnancement (defaut)",
+      "canal": "hybride",
+      "sans_reordonnancement": false,
+      "passages_retenus": 5
+    },
+    "metriques": {
+      "recall_at_1": 0.7727,
+      "recall_at_3": 0.9091,
+      "recall_at_5": 0.9091,
+      "mrr": 0.8409,
+      "document_recall_at_1": 0.9091,
+      "document_mrr": 0.9318,
+      "couverture": 0.7727,
+      "ancrage": 0.5901,
+      "refus_correct": 0.9,
+      "refus_abusif": 0.0455,
+      "latence_mediane_ms": 38.8,
+      "latence_p90_ms": 48.8,
+      "questions": 22
+    },
+    "echecs": [
+      {
+        "id": "Q04",
+        "question": "Quel est le délai de rétablissement pour un incident majeur ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": null,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "charte-securite-informatique.md",
+          "procedure-achats.md",
+          "politique-conges.md",
+          "procedure-achats.md"
+        ]
+      },
+      {
+        "id": "Q05",
+        "question": "Quel préavis faut-il pour dénoncer le contrat CT-2024-118 ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q12",
+        "question": "Qui valide une commande de 3 millions de francs ?",
+        "attendu": "procedure-achats.md",
+        "rang": null,
+        "retrouves": []
+      },
+      {
+        "id": "Q18",
+        "question": "Quel taux de TVA s'applique aux prestations ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q19",
+        "question": "Quelles pénalités s'appliquent à une facture client payée en retard ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md"
+        ]
+      }
+    ]
+  },
+  {
+    "configuration": {
+      "nom": "Hybride sans reordonnancement",
+      "canal": "hybride",
+      "sans_reordonnancement": true,
+      "passages_retenus": 5
+    },
+    "metriques": {
+      "recall_at_1": 0.7727,
+      "recall_at_3": 0.9091,
+      "recall_at_5": 0.9091,
+      "mrr": 0.8333,
+      "document_recall_at_1": 0.9091,
+      "document_mrr": 0.9318,
+      "couverture": 0.75,
+      "ancrage": 0.5835,
+      "refus_correct": 0.9,
+      "refus_abusif": 0.0455,
+      "latence_mediane_ms": 41.8,
+      "latence_p90_ms": 52.9,
+      "questions": 22
+    },
+    "echecs": [
+      {
+        "id": "Q04",
+        "question": "Quel est le délai de rétablissement pour un incident majeur ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": null,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "charte-securite-informatique.md",
+          "procedure-achats.md",
+          "politique-conges.md",
+          "procedure-achats.md"
+        ]
+      },
+      {
+        "id": "Q05",
+        "question": "Quel préavis faut-il pour dénoncer le contrat CT-2024-118 ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": 3,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q12",
+        "question": "Qui valide une commande de 3 millions de francs ?",
+        "attendu": "procedure-achats.md",
+        "rang": null,
+        "retrouves": []
+      },
+      {
+        "id": "Q18",
+        "question": "Quel taux de TVA s'applique aux prestations ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md"
+        ]
+      },
+      {
+        "id": "Q19",
+        "question": "Quelles pénalités s'appliquent à une facture client payée en retard ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md"
+        ]
+      }
+    ]
+  },
+  {
+    "configuration": {
+      "nom": "Vectoriel seul",
+      "canal": "vectoriel",
+      "sans_reordonnancement": false,
+      "passages_retenus": 5
+    },
+    "metriques": {
+      "recall_at_1": 0.7727,
+      "recall_at_3": 0.9091,
+      "recall_at_5": 0.9091,
+      "mrr": 0.8409,
+      "document_recall_at_1": 0.9091,
+      "document_mrr": 0.9318,
+      "couverture": 0.7727,
+      "ancrage": 0.5901,
+      "refus_correct": 0.9,
+      "refus_abusif": 0.0455,
+      "latence_mediane_ms": 36.2,
+      "latence_p90_ms": 42.7,
+      "questions": 22
+    },
+    "echecs": [
+      {
+        "id": "Q04",
+        "question": "Quel est le délai de rétablissement pour un incident majeur ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": null,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "charte-securite-informatique.md",
+          "politique-conges.md",
+          "procedure-achats.md",
+          "procedure-achats.md"
+        ]
+      },
+      {
+        "id": "Q05",
+        "question": "Quel préavis faut-il pour dénoncer le contrat CT-2024-118 ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q12",
+        "question": "Qui valide une commande de 3 millions de francs ?",
+        "attendu": "procedure-achats.md",
+        "rang": null,
+        "retrouves": []
+      },
+      {
+        "id": "Q18",
+        "question": "Quel taux de TVA s'applique aux prestations ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q19",
+        "question": "Quelles pénalités s'appliquent à une facture client payée en retard ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md"
+        ]
+      }
+    ]
+  },
+  {
+    "configuration": {
+      "nom": "Lexical seul (BM25)",
+      "canal": "lexical",
+      "sans_reordonnancement": false,
+      "passages_retenus": 5
+    },
+    "metriques": {
+      "recall_at_1": 0.7273,
+      "recall_at_3": 0.8636,
+      "recall_at_5": 0.9091,
+      "mrr": 0.7992,
+      "document_recall_at_1": 0.8636,
+      "document_mrr": 0.9318,
+      "couverture": 0.7045,
+      "ancrage": 0.6128,
+      "refus_correct": 0.3,
+      "refus_abusif": 0.0,
+      "latence_mediane_ms": 7.9,
+      "latence_p90_ms": 9.1,
+      "questions": 22
+    },
+    "echecs": [
+      {
+        "id": "Q04",
+        "question": "Quel est le délai de rétablissement pour un incident majeur ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": null,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "charte-securite-informatique.md",
+          "procedure-achats.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md"
+        ]
+      },
+      {
+        "id": "Q05",
+        "question": "Quel préavis faut-il pour dénoncer le contrat CT-2024-118 ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": 3,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q12",
+        "question": "Qui valide une commande de 3 millions de francs ?",
+        "attendu": "procedure-achats.md",
+        "rang": null,
+        "retrouves": [
+          "conditions-generales-vente.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md",
+          "guide-integration-nouveaux-arrivants.md"
+        ]
+      },
+      {
+        "id": "Q16",
+        "question": "Combien de temps les sauvegardes sont-elles conservées ?",
+        "attendu": "charte-securite-informatique.md",
+        "rang": 2,
+        "retrouves": [
+          "politique-conges.md",
+          "charte-securite-informatique.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q18",
+        "question": "Quel taux de TVA s'applique aux prestations ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 4,
+        "retrouves": [
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md"
+        ]
+      },
+      {
+        "id": "Q19",
+        "question": "Quelles pénalités s'appliquent à une facture client payée en retard ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md"
+        ]
+      }
+    ]
+  },
+  {
+    "configuration": {
+      "nom": "Hybride, 3 passages",
+      "canal": "hybride",
+      "sans_reordonnancement": false,
+      "passages_retenus": 3
+    },
+    "metriques": {
+      "recall_at_1": 0.7727,
+      "recall_at_3": 0.9091,
+      "recall_at_5": 0.9091,
+      "mrr": 0.8409,
+      "document_recall_at_1": 0.9091,
+      "document_mrr": 0.9318,
+      "couverture": 0.7727,
+      "ancrage": 0.5901,
+      "refus_correct": 0.9,
+      "refus_abusif": 0.0455,
+      "latence_mediane_ms": 35.8,
+      "latence_p90_ms": 46.6,
+      "questions": 22
+    },
+    "echecs": [
+      {
+        "id": "Q04",
+        "question": "Quel est le délai de rétablissement pour un incident majeur ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": null,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "charte-securite-informatique.md",
+          "procedure-achats.md"
+        ]
+      },
+      {
+        "id": "Q05",
+        "question": "Quel préavis faut-il pour dénoncer le contrat CT-2024-118 ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q12",
+        "question": "Qui valide une commande de 3 millions de francs ?",
+        "attendu": "procedure-achats.md",
+        "rang": null,
+        "retrouves": []
+      },
+      {
+        "id": "Q18",
+        "question": "Quel taux de TVA s'applique aux prestations ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q19",
+        "question": "Quelles pénalités s'appliquent à une facture client payée en retard ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md"
+        ]
+      }
+    ]
+  },
+  {
+    "configuration": {
+      "nom": "Hybride, 10 passages",
+      "canal": "hybride",
+      "sans_reordonnancement": false,
+      "passages_retenus": 10
+    },
+    "metriques": {
+      "recall_at_1": 0.7727,
+      "recall_at_3": 0.9091,
+      "recall_at_5": 0.9091,
+      "mrr": 0.8409,
+      "document_recall_at_1": 0.9091,
+      "document_mrr": 0.9318,
+      "couverture": 0.7727,
+      "ancrage": 0.5901,
+      "refus_correct": 0.9,
+      "refus_abusif": 0.0455,
+      "latence_mediane_ms": 38.1,
+      "latence_p90_ms": 53.3,
+      "questions": 22
+    },
+    "echecs": [
+      {
+        "id": "Q04",
+        "question": "Quel est le délai de rétablissement pour un incident majeur ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": null,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "charte-securite-informatique.md",
+          "procedure-achats.md",
+          "politique-conges.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md",
+          "politique-conges.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md"
+        ]
+      },
+      {
+        "id": "Q05",
+        "question": "Quel préavis faut-il pour dénoncer le contrat CT-2024-118 ?",
+        "attendu": "contrat-maintenance-CT-2024-118.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md"
+        ]
+      },
+      {
+        "id": "Q12",
+        "question": "Qui valide une commande de 3 millions de francs ?",
+        "attendu": "procedure-achats.md",
+        "rang": null,
+        "retrouves": []
+      },
+      {
+        "id": "Q18",
+        "question": "Quel taux de TVA s'applique aux prestations ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "procedure-achats.md",
+          "procedure-achats.md",
+          "procedure-achats.md",
+          "procedure-achats.md",
+          "procedure-achats.md"
+        ]
+      },
+      {
+        "id": "Q19",
+        "question": "Quelles pénalités s'appliquent à une facture client payée en retard ?",
+        "attendu": "conditions-generales-vente.md",
+        "rang": 2,
+        "retrouves": [
+          "contrat-maintenance-CT-2024-118.md",
+          "conditions-generales-vente.md",
+          "procedure-achats.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md",
+          "conditions-generales-vente.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "contrat-maintenance-CT-2024-118.md",
+          "procedure-achats.md",
+          "conditions-generales-vente.md"
+        ]
+      }
+    ]
+  }
+]

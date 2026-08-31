@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G6 · Récapitulatif — Kit Design Pédagogique</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="gabarit.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#rendu">Aller au gabarit</a>
+
+  <header class="gb-entete">
+    <p><a href="../../index.html">← Kit Design Pédagogique</a></p>
+    <p class="gb-id">G6</p>
+    <h1>Récapitulatif</h1>
+    <p class="gb-sous">Le bilan de fin. Il doit tenir sur un seul écran et pouvoir être photographié.</p>
+  </header>
+
+  <main>
+    <section id="rendu" tabindex="-1" class="gb-section">
+      <h2>Le rendu</h2>
+      <div class="gb-scene">
+        <div class="ec ec--recap">
+          <h3 class="ec__h2">Ce qu'il faut retenir</h3>
+          <div class="ec__cartes">
+            <div class="ec__mini"><h4>Les styles de titre</h4><p>Toujours depuis le ruban. Une mise en forme manuelle ne produit aucun plan.</p></div>
+            <div class="ec__mini"><h4>Le texte de remplacement</h4><p>Décrire la fonction dans le contexte, pas l'apparence.</p></div>
+            <div class="ec__mini"><h4>Le vérificateur intégré</h4><p>Révision → Vérifier l'accessibilité, avant chaque envoi.</p></div>
+            <div class="ec__mini"><h4>L'export balisé</h4><p>Cocher « Balises de structure » : c'est ce qui transporte le plan dans le PDF.</p></div>
+          </div>
+          <p class="ec__ressources-titre">Pour aller plus loin</p>
+          <ul class="ec__ressources">
+            <li>Référentiel RGAA 4.1 — accessibilite.numerique.gouv.fr</li>
+            <li>NVDA, lecteur d'écran libre — nvaccess.org</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Le montage</h2>
+      <div class="gb-deux">
+        <div>
+          <h3>Dans Canva</h3>
+          <ol>
+            <li>Grille de 4 cartes en 2 × 2, gouttière de 24 px</li>
+            <li>Titre de carte en 20 pt gras, corps en 16 pt</li>
+            <li>Filet gauche de 5 px sur chaque carte, dans la couleur d'action</li>
+            <li>Prévoir une version 1080 × 1350 pour la reprise en fiche imprimable</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Dans Genially</h3>
+          <ol>
+            <li>Quatre conteneurs distincts, ordre de lecture en Z (haut-gauche, haut-droite, bas-gauche, bas-droite)</li>
+            <li>Liens de ressources en vrais liens, avec l'URL visible</li>
+            <li>Prévoir le bouton « Recommencer » en dernier calque</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Les règles propres à ce gabarit</h2>
+      <ul class="gb-regles">
+        <li><strong>Quatre cartes maximum.</strong> Un récapitulatif de dix points n'est pas un récapitulatif, c'est une table des matières.</li>
+        <li><strong>Chaque carte a un vrai titre.</strong> Niveau H4 ici, sous le H3 de la section. La navigation par titres doit fonctionner sur le bilan aussi.</li>
+        <li><strong>Les liens affichent leur destination.</strong> « accessibilite.numerique.gouv.fr » plutôt que « cliquez ici ». Le lien doit être compréhensible sorti de son contexte.</li>
+        <li><strong>L'ordre en Z doit correspondre à l'ordre du DOM.</strong> En grille 2 × 2, on lit haut-gauche, haut-droite, bas-gauche, bas-droite. Le code doit suivre exactement.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="gb-pied">
+    <p>Kit Design Pédagogique &amp; IA — Joyce Djomnang ·
+       <a href="../README.md">Spécifications complètes</a></p>
+  </footer>
+</body>
+</html>

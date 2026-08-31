@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--
+  Page d'accueil du dépôt, pour GitHub Pages.
+  Pas de redirection automatique : voir la note dans le dépôt du module.
+  Un <meta http-equiv="refresh"> serait une non-conformité au critère 2.2.1.
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audit d'accessibilité — supports pédagogiques</title>
+  <meta name="description" content="Étude de cas avant/après sur une fiche de cours : 46 non-conformités ramenées à 0, et une checklist interactive de 38 points.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🔍</text></svg>">
+  <link rel="stylesheet" href="outil-checklist/tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; padding: var(--pk-space-lg) var(--pk-space-md);
+      background: var(--pk-surface); color: var(--pk-ink);
+      font-family: var(--pk-font-body); font-size: var(--pk-text-md);
+      line-height: var(--pk-leading-body);
+      display: flex; flex-direction: column; min-height: 100vh;
+    }
+    .enveloppe { max-width: 52rem; width: 100%; margin-inline: auto; flex: 1 1 auto; }
+    h1 { font-family: var(--pk-font-title); font-size: clamp(1.6rem, 1.2rem + 2vw, var(--pk-text-2xl)); line-height: var(--pk-leading-title); margin: 0 0 var(--pk-space-2xs); text-wrap: balance; }
+    h2 { font-family: var(--pk-font-title); font-size: var(--pk-text-lg); margin: var(--pk-space-lg) 0 var(--pk-space-2xs); }
+    p { margin: 0 0 var(--pk-space-sm); max-width: var(--pk-measure); }
+    .surtitre { font-size: var(--pk-text-xs); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pk-accent); margin-bottom: var(--pk-space-3xs); }
+    .accroche { color: var(--pk-ink-soft); }
+    a { color: var(--pk-primary); text-underline-offset: 0.2em; }
+    a:hover { color: var(--pk-primary-dark); }
+    :where(a):focus-visible { outline: 3px solid var(--pk-focus); outline-offset: 3px; border-radius: var(--pk-radius-sm); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: var(--pk-space-2xs); margin: var(--pk-space-md) 0 var(--pk-space-lg); }
+    .bouton {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: var(--pk-target-min); padding: var(--pk-space-2xs) var(--pk-space-md);
+      border-radius: var(--pk-radius-md); border: 2px solid var(--pk-primary);
+      font-weight: 700; font-size: var(--pk-text-sm); text-decoration: none;
+      background: var(--pk-primary); color: var(--pk-on-primary);
+    }
+    .bouton:hover { background: var(--pk-primary-dark); border-color: var(--pk-primary-dark); color: var(--pk-on-primary); }
+    .bouton--second { background: transparent; color: var(--pk-primary); border-color: var(--pk-border); }
+    .bouton--second:hover { background: var(--pk-surface-alt); border-color: var(--pk-primary); color: var(--pk-primary); }
+
+    table { width: 100%; border-collapse: collapse; font-size: var(--pk-text-sm); margin-bottom: var(--pk-space-lg); }
+    caption { text-align: left; font-size: var(--pk-text-xs); color: var(--pk-ink-soft); padding-bottom: var(--pk-space-3xs); font-weight: 600; }
+    th, td { padding: var(--pk-space-2xs); border: 1px solid var(--pk-border); text-align: left; }
+    thead th { background: var(--pk-surface-alt); font-size: var(--pk-text-xs); text-transform: uppercase; letter-spacing: 0.04em; }
+    tbody th { font-weight: 400; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+    .ko { color: var(--pk-danger); }
+    .ok { color: var(--pk-success); }
+
+    .comparatif { display: grid; gap: var(--pk-space-sm); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin-bottom: var(--pk-space-lg); }
+    .carte { border-radius: var(--pk-radius-md); padding: var(--pk-space-sm) var(--pk-space-md); border: 2px solid; }
+    .carte--avant { background: var(--pk-danger-soft); border-color: var(--pk-danger); }
+    .carte--apres { background: var(--pk-success-soft); border-color: var(--pk-success); }
+    .carte h3 { font-family: var(--pk-font-title); font-size: var(--pk-text-md); margin: 0 0 var(--pk-space-3xs); }
+    .carte--avant h3 { color: var(--pk-danger); }
+    .carte--apres h3 { color: var(--pk-success); }
+    .carte p { font-size: var(--pk-text-sm); margin-bottom: var(--pk-space-2xs); }
+    .carte a { font-weight: 700; display: inline-flex; align-items: center; min-height: 2.5rem; }
+
+    footer { max-width: 52rem; width: 100%; margin-inline: auto; padding-top: var(--pk-space-lg); font-size: var(--pk-text-xs); color: var(--pk-ink-soft); }
+  </style>
+</head>
+<body>
+  <div class="enveloppe">
+    <p class="surtitre">Étude de cas · Avant / après</p>
+    <h1>Audit d'accessibilité de supports pédagogiques</h1>
+    <p class="accroche">
+      Une fiche de cours auditée, puis reconstruite. Les deux versions mesurées avec
+      le même outil, dans les mêmes conditions. Et l'outil est dans le dépôt.
+    </p>
+
+    <div class="actions">
+      <a class="bouton" href="outil-checklist/">Ouvrir la checklist interactive</a>
+      <a class="bouton bouton--second" href="audit/rapport-wcag.md">Lire le rapport d'audit</a>
+      <a class="bouton bouton--second" href="https://github.com/Djomnang8/audit-accessibilite-supports-pedagogiques">Code source</a>
+    </div>
+
+    <h2>Comparer les deux versions</h2>
+    <div class="comparatif">
+      <div class="carte carte--avant">
+        <h3><span aria-hidden="true">✕</span> La version d'origine</h3>
+        <p>
+          20 non-conformités, dont 4 bloquantes. Posez votre souris et essayez
+          d'atteindre le bouton « Envoyer » avec la touche Tab : c'est impossible.
+        </p>
+        <a href="avant/index.html">Ouvrir la version d'origine</a>
+      </div>
+      <div class="carte carte--apres">
+        <h3><span aria-hidden="true">✓</span> La version corrigée</h3>
+        <p>
+          Même contenu, même densité d'information. Reconstruite avec la palette du
+          Kit Design Pédagogique et un balisage sémantique complet.
+        </p>
+        <a href="apres/index.html">Ouvrir la version corrigée</a>
+      </div>
+    </div>
+
+    <h2>Les mesures</h2>
+    <table>
+      <caption>Les deux versions mesurées avec le même script, dans les mêmes conditions</caption>
+      <thead>
+        <tr><th scope="col">Indicateur</th><th scope="col">Avant</th><th scope="col">Après</th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Non-conformités détectées automatiquement</th><td class="num ko">46</td><td class="num ok">0</td></tr>
+        <tr><th scope="row">Textes échouant au contraste</th><td class="num ko">37 / 37</td><td class="num ok">0 / 65</td></tr>
+        <tr><th scope="row">Ratio de contraste moyen</th><td class="num ko">2,36:1</td><td class="num ok">11,93:1</td></tr>
+        <tr><th scope="row">Vrais titres dans le document</th><td class="num ko">0</td><td class="num ok">14</td></tr>
+        <tr><th scope="row">Éléments avec un focus visible</th><td class="num ko">0 / 8</td><td class="num ok">12 / 12</td></tr>
+        <tr><th scope="row">Largeur de rendu sur un écran de 320 px</th><td class="num ko">1 140 px</td><td class="num ok">320 px</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      Le chiffre qui résume tout : la version d'origine n'a pas de balise viewport et
+      impose 1 100 px de large. Sur un téléphone de 320 px, le navigateur réduit la page
+      à <strong>28 % de son échelle</strong> — le corps de texte, déjà à 13 px, s'affiche
+      à <strong>3,6 px physiques</strong>.
+    </p>
+  </div>
+
+  <footer>
+    <p>
+      Réalisé par <strong>Joyce Djomnang</strong> ·
+      MIT pour le code, CC BY 4.0 pour la documentation ·
+      <a href="README.md">README</a> ·
+      <a href="audit/tests/audit-page.js">Le vérificateur automatique</a>
+    </p>
+  </footer>
+</body>
+</html>

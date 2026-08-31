@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="Une image reliée à une bulle de texte">
+  <style>
+    :root{--bg:#F1F5FB;--ink:#16213E;--soft:#4A5673;--pri:#1D4ED8;--acc:#B03A0B;--ok:#146C39;--ko:#A81E1E;--card:#FFFFFF;--line:#78859F;--pale:#C3CEE3}
+    @media (prefers-color-scheme: dark){:root{--bg:#1B2436;--ink:#EAF0FA;--soft:#AEBBD4;--pri:#8FB4FF;--acc:#FFAD7A;--ok:#7BD9A2;--ko:#FF9A9A;--card:#111827;--line:#68779A;--pale:#3C4A63}}
+    .s{stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    text{font-family:Segoe UI,system-ui,sans-serif;font-weight:700}
+  </style>
+
+  <rect width="420" height="300" rx="18" fill="var(--bg,#F1F5FB)"/>
+  <rect x="28" y="84" width="150" height="118" rx="12" fill="var(--card,#FFFFFF)" stroke="var(--line,#78859F)" class="s"/>
+  <circle cx="66" cy="118" r="13" fill="var(--acc,#B03A0B)"/>
+  <path d="M38 186l38-42 26 28 22-24 44 38" stroke="var(--pri,#1D4ED8)" class="s"/>
+  <text x="103" y="70" text-anchor="middle" font-size="12" font-weight="400" fill="var(--soft,#4A5673)">ce que l’œil voit</text>
+
+  <path d="M186 143h44" stroke="var(--line,#78859F)" stroke-dasharray="4 5" class="s"/>
+  <path d="M224 137l8 6-8 6" stroke="var(--line,#78859F)" class="s"/>
+
+  <path d="M244 92h148a10 10 0 0 1 10 10v72a10 10 0 0 1-10 10h-96l-20 22v-22h-32a10 10 0 0 1-10-10v-72a10 10 0 0 1 10-10z" fill="var(--card,#FFFFFF)" stroke="var(--pri,#1D4ED8)" class="s"/>
+  <rect x="262" y="114" width="112" height="8" rx="4" fill="var(--ink,#16213E)"/>
+  <rect x="262" y="132" width="94" height="6" rx="3" fill="var(--soft,#4A5673)"/>
+  <rect x="262" y="146" width="104" height="6" rx="3" fill="var(--soft,#4A5673)"/>
+  <rect x="262" y="160" width="72" height="6" rx="3" fill="var(--soft,#4A5673)"/>
+  <text x="323" y="70" text-anchor="middle" font-size="12" font-weight="400" fill="var(--soft,#4A5673)">ce que l’oreille reçoit</text>
+
+  <text x="210" y="266" text-anchor="middle" font-size="14" fill="var(--ink,#16213E)">La même information, par un autre canal</text>
+</svg>

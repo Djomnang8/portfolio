@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="Comparaison entre un texte peu contrasté et un texte contrasté">
+  <style>
+    :root{--bg:#F1F5FB;--ink:#16213E;--soft:#4A5673;--pri:#1D4ED8;--acc:#B03A0B;--ok:#146C39;--ko:#A81E1E;--card:#FFFFFF;--line:#78859F;--pale:#C3CEE3}
+    @media (prefers-color-scheme: dark){:root{--bg:#1B2436;--ink:#EAF0FA;--soft:#AEBBD4;--pri:#8FB4FF;--acc:#FFAD7A;--ok:#7BD9A2;--ko:#FF9A9A;--card:#111827;--line:#68779A;--pale:#3C4A63}}
+    .s{stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    text{font-family:Segoe UI,system-ui,sans-serif;font-weight:700}
+  </style>
+
+  <rect width="420" height="300" rx="18" fill="var(--bg,#F1F5FB)"/>
+
+  <rect x="24" y="52" width="176" height="196" rx="14" fill="var(--card,#FFFFFF)" stroke="var(--ko,#A81E1E)" class="s"/>
+  <rect x="44" y="80" width="96" height="10" rx="5" fill="var(--pale,#C3CEE3)"/>
+  <rect x="44" y="102" width="132" height="7" rx="3.5" fill="var(--pale,#C3CEE3)"/>
+  <rect x="44" y="118" width="124" height="7" rx="3.5" fill="var(--pale,#C3CEE3)"/>
+  <rect x="44" y="134" width="136" height="7" rx="3.5" fill="var(--pale,#C3CEE3)"/>
+  <circle cx="112" cy="192" r="26" fill="none" stroke="var(--ko,#A81E1E)" class="s"/>
+  <path d="M103 183l18 18M121 183l-18 18" stroke="var(--ko,#A81E1E)" class="s"/>
+  <text x="112" y="238" text-anchor="middle" font-size="15" fill="var(--ko,#A81E1E)">1,9:1</text>
+
+  <rect x="220" y="52" width="176" height="196" rx="14" fill="var(--card,#FFFFFF)" stroke="var(--ok,#146C39)" class="s"/>
+  <rect x="240" y="80" width="96" height="10" rx="5" fill="var(--ink,#16213E)"/>
+  <rect x="240" y="102" width="132" height="7" rx="3.5" fill="var(--soft,#4A5673)"/>
+  <rect x="240" y="118" width="124" height="7" rx="3.5" fill="var(--soft,#4A5673)"/>
+  <rect x="240" y="134" width="136" height="7" rx="3.5" fill="var(--soft,#4A5673)"/>
+  <circle cx="308" cy="192" r="26" fill="none" stroke="var(--ok,#146C39)" class="s"/>
+  <path d="M297 192l8 9 15-17" stroke="var(--ok,#146C39)" class="s"/>
+  <text x="308" y="238" text-anchor="middle" font-size="15" fill="var(--ok,#146C39)">8,6:1</text>
+
+  <text x="210" y="32" text-anchor="middle" font-size="15" fill="var(--ink,#16213E)">Le seuil AA est de 4,5:1</text>
+  <text x="210" y="278" text-anchor="middle" font-size="12" font-weight="400" fill="var(--soft,#4A5673)">Même mise en page. Une seule différence : la couleur.</text>
+</svg>

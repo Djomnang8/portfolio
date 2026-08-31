@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kit Design Pédagogique &amp; IA — Styleguide</title>
+  <meta name="description" content="Système de design pour supports pédagogiques : palette validée WCAG, échelle typographique, 20 icônes, 6 gabarits et charte de production IA.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🎨</text></svg>">
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="styleguide.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <header class="sg-entete">
+    <div class="sg-conteneur sg-entete__inner">
+      <div>
+        <p class="sg-surtitre">Système de design</p>
+        <h1>Kit Design Pédagogique &amp; IA</h1>
+        <p class="sg-accroche">
+          Une palette dont chaque paire est mesurée, une échelle typographique pensée
+          pour la lisibilité, 20 icônes, 6 gabarits, et une charte de production IA.
+          Tout est généré depuis <code>tokens/tokens.json</code> — source unique.
+        </p>
+      </div>
+
+      <div class="sg-reglages">
+        <fieldset>
+          <legend>Thème</legend>
+          <div class="sg-segment">
+            <label><input type="radio" name="theme" value="auto" checked><span>Système</span></label>
+            <label><input type="radio" name="theme" value="light"><span>Clair</span></label>
+            <label><input type="radio" name="theme" value="dark"><span>Sombre</span></label>
+          </div>
+        </fieldset>
+        <label class="sg-bascule">
+          <input type="checkbox" id="opt-contraste">
+          <span class="sg-bascule__piste" aria-hidden="true"></span>
+          <span>Contraste renforcé</span>
+        </label>
+        <label class="sg-bascule">
+          <input type="checkbox" id="opt-lisible">
+          <span class="sg-bascule__piste" aria-hidden="true"></span>
+          <span>Confort de lecture</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <nav class="sg-nav" aria-label="Sommaire du styleguide">
+    <div class="sg-conteneur">
+      <ol>
+        <li><a href="#couleurs">Couleurs</a></li>
+        <li><a href="#contrastes">Contrastes</a></li>
+        <li><a href="#typographie">Typographie</a></li>
+        <li><a href="#espacement">Espacement</a></li>
+        <li><a href="#icones">Icônes</a></li>
+        <li><a href="#composants">Composants</a></li>
+        <li><a href="#gabarits">Gabarits</a></li>
+        <li><a href="#regles">Règles d'usage</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="contenu" tabindex="-1" class="sg-conteneur">
+
+    <!-- ============================================================ Couleurs -->
+    <section id="couleurs" class="sg-section">
+      <h2>Couleurs</h2>
+      <p class="sg-intro">
+        Chaque couleur porte un <strong>rôle</strong>, pas un nom de teinte.
+        On n'écrit jamais « le bleu » : on écrit « l'action principale ». Le jour où
+        la marque change, une seule valeur bouge et rien ne casse.
+      </p>
+      <div id="palette" class="sg-palette"></div>
+    </section>
+
+    <!-- =========================================================== Contrastes -->
+    <section id="contrastes" class="sg-section">
+      <h2>Contrastes vérifiés</h2>
+      <p class="sg-intro">
+        Les 20 paires ci-dessous sont recalculées <strong>en direct dans cette page</strong>,
+        avec la formule exacte de la norme WCAG 2.1. Elles sont aussi vérifiées hors
+        navigateur par <code>outils/check-contrast.js</code>, qui sort en erreur si
+        une seule échoue — de quoi le brancher dans une CI.
+      </p>
+      <div id="synthese-contraste" class="sg-synthese"></div>
+      <div class="sg-tableau-cadre">
+        <table class="sg-tableau">
+          <caption class="sr-only">Ratios de contraste de chaque paire de couleurs du système</caption>
+          <thead>
+            <tr>
+              <th scope="col">Aperçu</th>
+              <th scope="col">Paire</th>
+              <th scope="col">Usage</th>
+              <th scope="col" class="sg-num">Ratio</th>
+              <th scope="col" class="sg-num">Seuil</th>
+              <th scope="col">Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="paires"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================================= Typographie -->
+    <section id="typographie" class="sg-section">
+      <h2>Typographie</h2>
+      <p class="sg-intro">
+        Trois règles non négociables sur un support pédagogique :
+        <strong>jamais moins de 16 px</strong>, <strong>interlignage 1,5 minimum</strong>,
+        <strong>68 caractères par ligne au maximum</strong>. Au-delà de cette largeur,
+        l'œil perd la ligne au retour chariot — et le lecteur en difficulté abandonne.
+      </p>
+      <div id="echelle" class="sg-echelle"></div>
+
+      <h3>Largeur de ligne</h3>
+      <div class="sg-mesure-demo">
+        <div>
+          <p class="sg-etiquette sg-etiquette--ok">68 caractères — confortable</p>
+          <p class="sg-bloc-mesure">L'accessibilité numérique consiste à rendre les contenus utilisables par le plus grand nombre, quelles que soient les conditions de consultation ou les capacités de la personne.</p>
+        </div>
+        <div>
+          <p class="sg-etiquette sg-etiquette--ko">110 caractères — l'œil décroche</p>
+          <p class="sg-bloc-mesure sg-bloc-mesure--large">L'accessibilité numérique consiste à rendre les contenus utilisables par le plus grand nombre, quelles que soient les conditions de consultation ou les capacités de la personne.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== Espacement -->
+    <section id="espacement" class="sg-section">
+      <h2>Espacement et rayons</h2>
+      <p class="sg-intro">
+        Une échelle géométrique, pas des valeurs choisies au cas par cas. Le rythme
+        vertical d'un support se voit immédiatement quand il est irrégulier.
+      </p>
+      <div id="espaces" class="sg-espaces"></div>
+      <h3>Rayons de bordure</h3>
+      <div id="rayons" class="sg-rayons"></div>
+      <h3>Cible de pointage</h3>
+      <p>
+        Toute zone cliquable fait <strong>44 × 44 px minimum</strong>. Le critère WCAG 2.5.8
+        n'exige que 24 px : on double, parce qu'un support pédagogique est massivement
+        consulté sur mobile, souvent en déplacement.
+      </p>
+      <div class="sg-cibles">
+        <span class="sg-cible sg-cible--ko">24 px<br><small>seuil AA</small></span>
+        <span class="sg-cible sg-cible--ok">44 px<br><small>notre règle</small></span>
+      </div>
+    </section>
+
+    <!-- ============================================================== Icônes -->
+    <section id="icones" class="sg-section">
+      <h2>Icônes pédagogiques</h2>
+      <p class="sg-intro">
+        20 icônes sur grille 24 × 24, trait uniforme de 2, en <code>currentColor</code> :
+        elles prennent la couleur de leur texte, donc elles héritent d'un contraste
+        déjà validé. Chaque icône est nommée par son <strong>usage pédagogique</strong>,
+        jamais par sa forme — « objectif », pas « cible ». Un rédacteur choisit alors
+        par le sens, pas par le dessin.
+      </p>
+      <div id="grille-icones" class="sg-icones"></div>
+      <div class="sg-encadre sg-encadre--info">
+        <h3>Une icône ne se suffit jamais à elle-même</h3>
+        <p>
+          Décorative, elle porte <code>aria-hidden="true"</code> et le texte à côté fait le travail.
+          Porteuse de sens et seule, elle a besoin d'un nom accessible — le libellé du catalogue.
+          Une icône seule sans libellé est un rébus : le sens d'un pictogramme n'est
+          jamais universel.
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================== Composants -->
+    <section id="composants" class="sg-section">
+      <h2>Composants</h2>
+      <p class="sg-intro">Les briques réutilisables, dans leurs états.</p>
+
+      <h3>Boutons</h3>
+      <div class="sg-demo">
+        <button type="button" class="btn btn--principal">Action principale</button>
+        <button type="button" class="btn btn--secondaire">Action secondaire</button>
+        <button type="button" class="btn btn--discret">Action discrète</button>
+        <button type="button" class="btn btn--principal" disabled>Désactivé</button>
+      </div>
+      <p class="sg-note">
+        Tabulez jusqu'à ces boutons : l'anneau de focus fait 3 px avec 3 px de décalage,
+        et contraste à au moins 4,59:1 sur tous les fonds du système.
+      </p>
+
+      <h3>Encadrés</h3>
+      <div class="sg-demo sg-demo--colonne">
+        <aside class="sg-encadre sg-encadre--info"><h4>Information</h4><p>Une précision utile qui ne change pas l'action attendue.</p></aside>
+        <aside class="sg-encadre sg-encadre--astuce"><h4>Astuce</h4><p>Un raccourci de praticien, qui fait gagner du temps sans être indispensable.</p></aside>
+        <aside class="sg-encadre sg-encadre--attention"><h4>Point de vigilance</h4><p>Une erreur fréquente et ses conséquences réelles.</p></aside>
+        <aside class="sg-encadre sg-encadre--retenir"><h4>À retenir</h4><p>La phrase que l'apprenant doit emporter s'il ne retient qu'une chose.</p></aside>
+      </div>
+      <p class="sg-note">
+        Chaque type porte une couleur <strong>et</strong> un pictogramme <strong>et</strong> un titre
+        explicite. Trois canaux, parce que la couleur seule exclut 8 % des hommes.
+      </p>
+
+      <h3>Champs de formulaire</h3>
+      <div class="sg-demo sg-demo--colonne">
+        <div class="sg-champ">
+          <label for="demo-nom">Intitulé du module</label>
+          <input type="text" id="demo-nom" placeholder="Les bases de…" aria-describedby="demo-aide">
+          <p class="sg-aide" id="demo-aide">80 caractères maximum, verbe à l'infinitif proscrit.</p>
+        </div>
+        <div class="sg-champ sg-champ--erreur">
+          <label for="demo-duree">Durée en minutes</label>
+          <input type="text" id="demo-duree" value="abc" aria-describedby="demo-err" aria-invalid="true">
+          <p class="sg-erreur" id="demo-err"><span aria-hidden="true">✕</span> Saisissez un nombre entier de minutes.</p>
+        </div>
+      </div>
+      <p class="sg-note">
+        L'erreur est signalée par la couleur, un pictogramme, un texte explicite,
+        <em>et</em> l'attribut <code>aria-invalid</code>. Le message dit ce qu'il faut faire,
+        pas seulement ce qui ne va pas.
+      </p>
+
+      <h3>Progression</h3>
+      <div class="sg-demo sg-demo--colonne">
+        <div class="sg-progression">
+          <div class="sg-progression__piste" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" aria-valuetext="Écran 4 sur 7" aria-label="Progression dans le module">
+            <div class="sg-progression__fill" style="width:60%"></div>
+          </div>
+          <p class="sg-aide">Écran 4 sur 7 · 60 %</p>
+        </div>
+      </div>
+      <p class="sg-note">
+        <code>aria-valuetext</code> prime sur <code>aria-valuenow</code> : entendre
+        « Écran 4 sur 7 » est bien plus utile qu'entendre « 60 pour cent ».
+      </p>
+
+      <h3>Réponses de quiz</h3>
+      <div class="sg-demo sg-demo--colonne">
+        <button type="button" class="sg-choix" data-etat="juste"><span class="sg-choix__lettre">A</span><span>Une alternative textuelle vide</span><span class="sg-choix__marque"><span aria-hidden="true">✓</span><span class="sr-only">Bonne réponse</span></span></button>
+        <button type="button" class="sg-choix" data-etat="faux"><span class="sg-choix__lettre">B</span><span>Aucun attribut d'alternative</span><span class="sg-choix__marque"><span aria-hidden="true">✕</span><span class="sr-only">Réponse incorrecte</span></span></button>
+        <button type="button" class="sg-choix"><span class="sg-choix__lettre">C</span><span>Le texte « ligne de séparation »</span></button>
+      </div>
+    </section>
+
+    <!-- ============================================================ Gabarits -->
+    <section id="gabarits" class="sg-section">
+      <h2>Gabarits</h2>
+      <p class="sg-intro">
+        Six mises en page couvrant l'essentiel d'un module. Chacune existe en trois
+        formes : <strong>aperçu HTML</strong> (ci-dessous), <strong>spécification</strong>
+        pour montage dans Canva ou Genially, et <strong>règles d'accessibilité</strong>
+        propres au gabarit.
+      </p>
+      <div class="sg-gabarits">
+        <a class="sg-gabarit" href="templates/gabarits/g1-titre.html">
+          <span class="sg-gabarit__apercu sg-gabarit__apercu--titre" aria-hidden="true"><i></i><i></i></span>
+          <span class="sg-gabarit__nom">G1 · Écran titre</span>
+          <span class="sg-gabarit__desc">Ouverture de module : titre, durée, objectifs</span>
+        </a>
+        <a class="sg-gabarit" href="templates/gabarits/g2-contenu.html">
+          <span class="sg-gabarit__apercu sg-gabarit__apercu--contenu" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="sg-gabarit__nom">G2 · Contenu illustré</span>
+          <span class="sg-gabarit__desc">Texte à gauche, visuel à droite, encadré</span>
+        </a>
+        <a class="sg-gabarit" href="templates/gabarits/g3-comparaison.html">
+          <span class="sg-gabarit__apercu sg-gabarit__apercu--comparaison" aria-hidden="true"><i></i><i></i></span>
+          <span class="sg-gabarit__nom">G3 · Comparaison</span>
+          <span class="sg-gabarit__desc">Avant / après, à faire / à éviter</span>
+        </a>
+        <a class="sg-gabarit" href="templates/gabarits/g4-etapes.html">
+          <span class="sg-gabarit__apercu sg-gabarit__apercu--etapes" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="sg-gabarit__nom">G4 · Étapes</span>
+          <span class="sg-gabarit__desc">Processus en 3 à 5 temps</span>
+        </a>
+        <a class="sg-gabarit" href="templates/gabarits/g5-quiz.html">
+          <span class="sg-gabarit__apercu sg-gabarit__apercu--quiz" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="sg-gabarit__nom">G5 · Quiz</span>
+          <span class="sg-gabarit__desc">Question, options, retour commenté</span>
+        </a>
+        <a class="sg-gabarit" href="templates/gabarits/g6-recap.html">
+          <span class="sg-gabarit__apercu sg-gabarit__apercu--recap" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="sg-gabarit__nom">G6 · Récapitulatif</span>
+          <span class="sg-gabarit__desc">Bilan en cartes, ressources</span>
+        </a>
+      </div>
+      <p class="sg-note">
+        <a href="templates/README.md">Spécifications de montage Canva et Genially →</a>
+      </p>
+    </section>
+
+    <!-- ============================================================== Règles -->
+    <section id="regles" class="sg-section">
+      <h2>Règles d'usage</h2>
+      <p class="sg-intro">Ce qui rend le système utilisable par quelqu'un d'autre que son auteur.</p>
+
+      <div class="sg-regles">
+        <div class="sg-regle">
+          <h3><span class="sg-regle__num">1</span> Une seule source de vérité</h3>
+          <p><code>tokens/tokens.json</code>. Le CSS, le rapport de contraste et la version JS en sont <strong>générés</strong>. Modifier le CSS à la main, c'est créer une divergence silencieuse qu'on découvrira six mois plus tard.</p>
+        </div>
+        <div class="sg-regle">
+          <h3><span class="sg-regle__num">2</span> Aucune couleur hors palette</h3>
+          <p>Un besoin non couvert n'est pas une exception : c'est un rôle manquant. On l'ajoute au JSON, avec sa paire de contraste, et il devient vérifiable comme les autres.</p>
+        </div>
+        <div class="sg-regle">
+          <h3><span class="sg-regle__num">3</span> La couleur ne porte jamais seule une information</h3>
+          <p>Toujours doublée d'un pictogramme et d'un texte. Environ 8 % des hommes ont une déficience de la vision des couleurs — et personne ne distingue quoi que ce soit en plein soleil.</p>
+        </div>
+        <div class="sg-regle">
+          <h3><span class="sg-regle__num">4</span> 44 px minimum pour toute cible</h3>
+          <p>Le double du seuil AA. Un support pédagogique se consulte massivement sur mobile, souvent debout, souvent d'une main.</p>
+        </div>
+        <div class="sg-regle">
+          <h3><span class="sg-regle__num">5</span> Le mouvement est une option, jamais un acquis</h3>
+          <p>Toute transition est neutralisée sous <code>prefers-reduced-motion</code>. Une animation qui déclenche une nausée n'est pas un détail de confort.</p>
+        </div>
+        <div class="sg-regle">
+          <h3><span class="sg-regle__num">6</span> Un visuel IA n'entre pas sans sa fiche</h3>
+          <p>Prompt, outil, seed, retouches, alternative textuelle rédigée à la main. Sans cette fiche, l'image est irreproductible et « la même chose en vert » devient un chantier.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="sg-pied">
+    <div class="sg-conteneur">
+      <p>
+        <strong>Kit Design Pédagogique &amp; IA</strong> — Joyce Djomnang ·
+        <a href="rapport-contraste.md">Rapport de contraste</a> ·
+        <a href="charte-ia.md">Charte de production IA</a> ·
+        <a href="prompts/bibliotheque-prompts.md">Bibliothèque de prompts</a>
+      </p>
+      <p class="sg-aide">
+        Palette : <span id="pied-stats">…</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="tokens/tokens.js"></script>
+  <script src="icones/icones.js"></script>
+  <script src="styleguide.js"></script>
+</body>
+</html>

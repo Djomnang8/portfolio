@@ -1,0 +1,7 @@
+# Le dossier demos/ est un produit de construction, mais il DOIT etre versionne :
+# Netlify ne deploie que ce depot et n'a aucun acces aux depots voisins d'ou les
+# demos sont fabriquees. Il n'est donc pas ignore ici.
+
+node_modules/
+.DS_Store
+*.log

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-label="Quatre moyens d accès au même écran">
+  <style>
+    :root{--bg:#F1F5FB;--ink:#16213E;--soft:#4A5673;--pri:#1D4ED8;--acc:#B03A0B;--ok:#146C39;--ko:#A81E1E;--card:#FFFFFF;--line:#78859F;--pale:#C3CEE3}
+    @media (prefers-color-scheme: dark){:root{--bg:#1B2436;--ink:#EAF0FA;--soft:#AEBBD4;--pri:#8FB4FF;--acc:#FFAD7A;--ok:#7BD9A2;--ko:#FF9A9A;--card:#111827;--line:#68779A;--pale:#3C4A63}}
+    .s{stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
+    text{font-family:Segoe UI,system-ui,sans-serif;font-weight:700}
+  </style>
+
+  <rect width="420" height="300" rx="18" fill="var(--bg,#F1F5FB)"/>
+  <rect x="130" y="80" width="160" height="118" rx="10" fill="var(--card,#FFFFFF)" stroke="var(--line,#78859F)" class="s"/>
+  <rect x="146" y="98" width="90" height="8" rx="4" fill="var(--ink,#16213E)"/>
+  <rect x="146" y="116" width="128" height="6" rx="3" fill="var(--pale,#C3CEE3)"/>
+  <rect x="146" y="130" width="112" height="6" rx="3" fill="var(--pale,#C3CEE3)"/>
+  <rect x="146" y="144" width="120" height="6" rx="3" fill="var(--pale,#C3CEE3)"/>
+  <rect x="146" y="166" width="62" height="18" rx="9" fill="var(--pri,#1D4ED8)"/>
+
+  <circle cx="62" cy="70" r="30" fill="var(--card,#FFFFFF)" stroke="var(--pri,#1D4ED8)" class="s"/>
+  <circle cx="57" cy="65" r="12" stroke="var(--pri,#1D4ED8)" class="s"/>
+  <path d="M66 74 76 84" stroke="var(--pri,#1D4ED8)" class="s"/>
+  <path d="M92 78 128 104" stroke="var(--line,#78859F)" stroke-dasharray="4 5" class="s"/>
+
+  <circle cx="358" cy="70" r="30" fill="var(--card,#FFFFFF)" stroke="var(--acc,#B03A0B)" class="s"/>
+  <rect x="344" y="60" width="28" height="20" rx="4" stroke="var(--acc,#B03A0B)" class="s"/>
+  <path d="M350 66h4M358 66h4M366 66h1M350 73h16" stroke="var(--acc,#B03A0B)" class="s"/>
+  <path d="M328 78 292 104" stroke="var(--line,#78859F)" stroke-dasharray="4 5" class="s"/>
+
+  <circle cx="62" cy="230" r="30" fill="var(--card,#FFFFFF)" stroke="var(--ok,#146C39)" class="s"/>
+  <path d="M52 222v16M58 216v28M64 224v12M70 219v22" stroke="var(--ok,#146C39)" class="s"/>
+  <path d="M92 222 128 190" stroke="var(--line,#78859F)" stroke-dasharray="4 5" class="s"/>
+
+  <circle cx="358" cy="230" r="30" fill="var(--card,#FFFFFF)" stroke="var(--ink,#16213E)" class="s"/>
+  <rect x="342" y="219" width="32" height="22" rx="4" stroke="var(--ink,#16213E)" class="s"/>
+  <path d="M348 233h8M360 233h8" stroke="var(--ink,#16213E)" class="s"/>
+  <path d="M328 222 292 190" stroke="var(--line,#78859F)" stroke-dasharray="4 5" class="s"/>
+
+  <text x="210" y="42" text-anchor="middle" font-size="17" fill="var(--ink,#16213E)">Un seul contenu</text>
+  <text x="210" y="63" text-anchor="middle" font-size="13" font-weight="400" fill="var(--soft,#4A5673)">quatre façons de le recevoir</text>
+</svg>

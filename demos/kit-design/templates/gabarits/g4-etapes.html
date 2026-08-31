@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G4 · Étapes — Kit Design Pédagogique</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="gabarit.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#rendu">Aller au gabarit</a>
+
+  <header class="gb-entete">
+    <p><a href="../../index.html">← Kit Design Pédagogique</a></p>
+    <p class="gb-id">G4</p>
+    <h1>Étapes</h1>
+    <p class="gb-sous">Un processus en 3 à 5 temps. Au-delà de 5, découper en deux écrans.</p>
+  </header>
+
+  <main>
+    <section id="rendu" tabindex="-1" class="gb-section">
+      <h2>Le rendu</h2>
+      <div class="gb-scene">
+        <div class="ec ec--etapes">
+          <h3 class="ec__h2">Exporter un PDF accessible</h3>
+          <ol class="ec__etapes">
+            <li>
+              <span class="ec__num">1</span>
+              <div><h4>Vérifier le plan</h4>
+              <p>Affichage → Volet de navigation. Si le volet est vide, aucun style de titre n'a été appliqué.</p></div>
+            </li>
+            <li>
+              <span class="ec__num">2</span>
+              <div><h4>Lancer le vérificateur</h4>
+              <p>Révision → Vérifier l'accessibilité. Traiter les alertes « Texte de remplacement manquant ».</p></div>
+            </li>
+            <li>
+              <span class="ec__num">3</span>
+              <div><h4>Exporter avec les balises</h4>
+              <p>Fichier → Enregistrer sous → PDF → Options → cocher « Balises de structure pour l'accessibilité ».</p></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Le montage</h2>
+      <div class="gb-deux">
+        <div>
+          <h3>Dans Canva</h3>
+          <ol>
+            <li>Trois blocs alignés verticalement, espacement de 24 px</li>
+            <li>Pastille numérotée : cercle de 44 px, fond <code>#1D4ED8</code>, chiffre blanc en 18 pt gras</li>
+            <li>Ne pas relier les étapes par une flèche décorative : elle sera lue par certains lecteurs d'écran</li>
+          </ol>
+        </div>
+        <div>
+          <h3>Dans Genially</h3>
+          <ol>
+            <li>Chaque étape est un groupe : pastille + titre + texte</li>
+            <li>Ordre des calques strictement croissant : étape 1, puis 2, puis 3</li>
+            <li>Si les étapes apparaissent au clic, prévoir un bouton « Tout afficher »</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="gb-section">
+      <h2>Les règles propres à ce gabarit</h2>
+      <ul class="gb-regles">
+        <li><strong>Une vraie liste ordonnée.</strong> Le lecteur d'écran annonce « liste de 3 éléments » et le rang de chacun. Trois blocs indépendants ne disent rien de la séquence.</li>
+        <li><strong>Les pastilles chiffrées sont décoratives.</strong> Le numéro est déjà porté par la liste ordonnée. En aria-hidden, sinon on entend « un, un, Vérifier le plan ».</li>
+        <li><strong>Un verbe à l'infinitif par étape.</strong> « Vérifier le plan », pas « Le plan ». Une étape est une action.</li>
+        <li><strong>Trois à cinq étapes, pas plus.</strong> Au-delà, la mémoire de travail décroche. Découper en deux écrans coûte moins cher qu'une étape oubliée.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="gb-pied">
+    <p>Kit Design Pédagogique &amp; IA — Joyce Djomnang ·
+       <a href="../README.md">Spécifications complètes</a></p>
+  </footer>
+</body>
+</html>

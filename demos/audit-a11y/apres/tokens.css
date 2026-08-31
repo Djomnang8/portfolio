@@ -1,0 +1,183 @@
+/* =============================================================
+   Kit Design Pédagogique — tokens.css
+   GÉNÉRÉ AUTOMATIQUEMENT par outils/build-css.js — NE PAS ÉDITER.
+   Source : tokens/tokens.json   |   Build : 2026-08-27
+
+   Contrastes vérifiés : node outils/check-contrast.js
+   ============================================================= */
+
+/* ---------- Thème clair (défaut) ---------- */
+:root {
+  --pk-ink: #16213E; /* Texte principal */
+  --pk-ink-soft: #4A5673; /* Texte secondaire, légendes */
+  --pk-surface: #FFFFFF; /* Fond principal */
+  --pk-surface-alt: #F1F5FB; /* Fond de section, encadré */
+  --pk-surface-sunk: #E3EAF6; /* Fond de champ, piste de progression */
+  --pk-border: #78859F; /* Bordure porteuse de sens (champ, carte cliquable) — doit atteindre 3:1 */
+  --pk-border-soft: #C3CEE3; /* Séparateur purement décoratif — exempté de 1.4.11 */
+  --pk-primary: #1D4ED8; /* Action principale, liens */
+  --pk-primary-dark: #1B3FA8; /* Survol / actif de l'action principale */
+  --pk-on-primary: #FFFFFF; /* Texte sur fond primaire */
+  --pk-accent: #B03A0B; /* Mise en avant, badge pédagogique */
+  --pk-accent-soft: #FDEEE6; /* Fond d'encadré accent */
+  --pk-success: #146C39; /* Bonne réponse, conformité */
+  --pk-success-soft: #E4F5EA; /* Fond de feedback positif */
+  --pk-danger: #A81E1E; /* Erreur, non-conformité */
+  --pk-danger-soft: #FCEAEA; /* Fond de feedback négatif */
+  --pk-focus: #B45309; /* Anneau de focus clavier */
+
+  /* Typographie */
+  --pk-font-body: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --pk-font-title: 'Atkinson Hyperlegible', 'Segoe UI', system-ui, sans-serif;
+  --pk-font-mono: 'Cascadia Mono', 'SFMono-Regular', Consolas, monospace;
+  --pk-text-xs: 0.875rem;
+  --pk-text-sm: 1rem;
+  --pk-text-md: 1.125rem;
+  --pk-text-lg: 1.375rem;
+  --pk-text-xl: 1.75rem;
+  --pk-text-2xl: 2.25rem;
+  --pk-text-3xl: 2.875rem;
+  --pk-leading-body: 1.6;
+  --pk-leading-title: 1.2;
+  --pk-measure: 68ch;
+
+  /* Espacement */
+  --pk-space-3xs: 0.25rem;
+  --pk-space-2xs: 0.5rem;
+  --pk-space-xs: 0.75rem;
+  --pk-space-sm: 1rem;
+  --pk-space-md: 1.5rem;
+  --pk-space-lg: 2rem;
+  --pk-space-xl: 3rem;
+  --pk-space-2xl: 4.5rem;
+
+  /* Rayons */
+  --pk-radius-sm: 6px;
+  --pk-radius-md: 12px;
+  --pk-radius-lg: 20px;
+  --pk-radius-pill: 999px;
+
+  /* Cible tactile */
+  --pk-target-min: 44px;
+
+  /* Mouvement */
+  --pk-motion-fast: 140ms;
+  --pk-motion-base: 240ms;
+  --pk-motion-slow: 420ms;
+  --pk-ease: cubic-bezier(.2,.7,.3,1);
+}
+
+/* ---------- Thème sombre : préférence système ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pk-ink: #EAF0FA; /* Texte principal */
+    --pk-ink-soft: #AEBBD4; /* Texte secondaire, légendes */
+    --pk-surface: #111827; /* Fond principal */
+    --pk-surface-alt: #1B2436; /* Fond de section, encadré */
+    --pk-surface-sunk: #243044; /* Fond de champ, piste de progression */
+    --pk-border: #68779A; /* Bordure porteuse de sens (champ, carte cliquable) — doit atteindre 3:1 */
+    --pk-border-soft: #2E3A50; /* Séparateur purement décoratif — exempté de 1.4.11 */
+    --pk-primary: #8FB4FF; /* Action principale, liens */
+    --pk-primary-dark: #B3CCFF; /* Survol / actif de l'action principale */
+    --pk-on-primary: #0B1220; /* Texte sur fond primaire */
+    --pk-accent: #FFAD7A; /* Mise en avant, badge pédagogique */
+    --pk-accent-soft: #3A2418; /* Fond d'encadré accent */
+    --pk-success: #7BD9A2; /* Bonne réponse, conformité */
+    --pk-success-soft: #12301F; /* Fond de feedback positif */
+    --pk-danger: #FF9A9A; /* Erreur, non-conformité */
+    --pk-danger-soft: #3A1A1A; /* Fond de feedback négatif */
+    --pk-focus: #FFC46B; /* Anneau de focus clavier */
+  }
+}
+
+/* ---------- Thème sombre : choix explicite de l'utilisateur ---------- */
+:root[data-theme="dark"] {
+  --pk-ink: #EAF0FA; /* Texte principal */
+  --pk-ink-soft: #AEBBD4; /* Texte secondaire, légendes */
+  --pk-surface: #111827; /* Fond principal */
+  --pk-surface-alt: #1B2436; /* Fond de section, encadré */
+  --pk-surface-sunk: #243044; /* Fond de champ, piste de progression */
+  --pk-border: #68779A; /* Bordure porteuse de sens (champ, carte cliquable) — doit atteindre 3:1 */
+  --pk-border-soft: #2E3A50; /* Séparateur purement décoratif — exempté de 1.4.11 */
+  --pk-primary: #8FB4FF; /* Action principale, liens */
+  --pk-primary-dark: #B3CCFF; /* Survol / actif de l'action principale */
+  --pk-on-primary: #0B1220; /* Texte sur fond primaire */
+  --pk-accent: #FFAD7A; /* Mise en avant, badge pédagogique */
+  --pk-accent-soft: #3A2418; /* Fond d'encadré accent */
+  --pk-success: #7BD9A2; /* Bonne réponse, conformité */
+  --pk-success-soft: #12301F; /* Fond de feedback positif */
+  --pk-danger: #FF9A9A; /* Erreur, non-conformité */
+  --pk-danger-soft: #3A1A1A; /* Fond de feedback négatif */
+  --pk-focus: #FFC46B; /* Anneau de focus clavier */
+}
+
+/* ---------- Mode contraste renforcé (bascule manuelle) ---------- */
+:root[data-contrast="high"] {
+  --pk-ink: #000000;
+  --pk-ink-soft: #1A1A1A;
+  --pk-surface: #FFFFFF;
+  --pk-surface-alt: #FFFFFF;
+  --pk-surface-sunk: #F0F0F0;
+  --pk-border: #000000;
+  --pk-border-soft: #000000;
+  --pk-primary: #0000CC;
+  --pk-primary-dark: #000099;
+  --pk-accent: #8B2500;
+  --pk-accent-soft: #FFFFFF;
+  --pk-success: #005A26;
+  --pk-success-soft: #FFFFFF;
+  --pk-danger: #8B0000;
+  --pk-danger-soft: #FFFFFF;
+  --pk-focus: #8B2500;
+}
+:root[data-theme="dark"][data-contrast="high"] {
+  --pk-ink: #FFFFFF;
+  --pk-ink-soft: #F0F0F0;
+  --pk-surface: #000000;
+  --pk-surface-alt: #000000;
+  --pk-surface-sunk: #1A1A1A;
+  --pk-border: #FFFFFF;
+  --pk-border-soft: #FFFFFF;
+  --pk-primary: #9CCBFF;
+  --pk-on-primary: #000000;
+  --pk-accent: #FFC08A;
+  --pk-accent-soft: #000000;
+  --pk-success: #8FF0B4;
+  --pk-success-soft: #000000;
+  --pk-danger: #FFB3B3;
+  --pk-danger-soft: #000000;
+  --pk-focus: #FFD98A;
+}
+
+/* ---------- Échelle typographique pilotable par l'apprenant ----------
+   WCAG 1.4.4 : le texte doit pouvoir grossir de 200 % sans perte de contenu.
+   L'utilisateur peut zoomer, mais on offre aussi un réglage interne.        */
+:root[data-textsize="large"]  { font-size: 112.5%; }
+:root[data-textsize="xlarge"] { font-size: 125%; }
+
+/* ---------- Confort de lecture (WCAG 1.4.12 Espacement du texte) ---------- */
+.u-lisible {
+  line-height: 1.8 !important;
+  letter-spacing: 0.01em !important;
+  word-spacing: 0.16em !important;
+}
+:root[data-lisible="on"] p,
+:root[data-lisible="on"] li {
+  line-height: 1.8;
+  word-spacing: 0.16em;
+}
+
+/* ---------- Respect de prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --pk-motion-fast: 0.01ms;
+    --pk-motion-base: 0.01ms;
+    --pk-motion-slow: 0.01ms;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Structurer un document Word accessible — Module 3</title>
+  <meta name="description" content="Fiche de cours : appliquer les styles de titre, rédiger un texte de remplacement, exporter un PDF balisé.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- C-13 : contournement de blocs -->
+  <a class="lien-evitement" href="#contenu">Aller directement au contenu</a>
+
+  <header class="entete">
+    <!-- C-02 : l'image porte une alternative. Ici le logo est décoratif,
+         le nom de l'organisme étant écrit juste à côté : alternative vide. -->
+    <p class="entete__organisme">
+      <img src="logo.svg" alt="" width="32" height="32">
+      Service formation
+    </p>
+
+    <!-- C-01 : un vrai H1, un seul, en tête du document -->
+    <h1>Structurer un document Word accessible</h1>
+
+    <!-- C-11 : l'information n'est plus portée par des puces décoratives
+         mais par une liste de définitions, qui exprime la relation. -->
+    <dl class="fiche">
+      <div><dt>Module</dt><dd>3</dd></div>
+      <div><dt>Durée</dt><dd>18 minutes</dd></div>
+      <div><dt>Niveau</dt><dd>Débutant</dd></div>
+    </dl>
+  </header>
+
+  <!-- C-16 : le marquee est remplacé par une information statique.
+       Aucun défilement automatique, aucun mouvement imposé. -->
+  <aside class="annonce" aria-labelledby="annonce-titre">
+    <h2 id="annonce-titre" class="annonce__titre">
+      <span aria-hidden="true">ℹ</span> Session de rattrapage
+    </h2>
+    <p>
+      La prochaine session a lieu le <strong>12 septembre</strong>.
+      Le formulaire d'inscription figure en bas de cette page.
+    </p>
+  </aside>
+
+  <main id="contenu" tabindex="-1">
+    <div class="grille">
+
+      <div>
+        <section aria-labelledby="t-pourquoi">
+          <h2 id="t-pourquoi">Pourquoi structurer&nbsp;?</h2>
+          <p>
+            Un document Word bien structuré se lit plus vite et s'exporte correctement.
+            La structure permet de générer une table des matières, de naviguer dans un
+            document long, et de produire un PDF utilisable par un lecteur d'écran.
+          </p>
+
+          <!-- C-01 : niveau 3 sous un niveau 2, sans saut -->
+          <h3>Les styles de titre</h3>
+          <p>
+            Dans Word, un titre n'est pas un texte agrandi et mis en gras. C'est un
+            <strong>style</strong>, appliqué depuis le ruban Accueil.
+          </p>
+
+          <!-- C-06 : un vrai <button>, atteignable au clavier -->
+          <p>
+            <button type="button" class="btn btn--secondaire" id="btn-styles"
+                    aria-expanded="false" aria-controls="galerie-styles">
+              Voir la galerie de styles
+            </button>
+          </p>
+          <div id="galerie-styles" class="galerie" hidden>
+            <h4>Les styles à connaître</h4>
+            <ul>
+              <li><strong>Titre 1</strong> — le titre du document, une seule fois</li>
+              <li><strong>Titre 2</strong> — les grandes parties</li>
+              <li><strong>Titre 3</strong> — les sous-parties</li>
+              <li><strong>Normal</strong> — le corps de texte</li>
+            </ul>
+          </div>
+
+          <aside class="encadre encadre--attention">
+            <h4><span aria-hidden="true">⚠</span> Point de vigilance</h4>
+            <p>
+              Une mise en forme manuelle ne produit aucun plan de document.
+              Le PDF exporté aura un sommaire vide, et une personne aveugle devra
+              écouter l'intégralité du texte en linéaire.
+            </p>
+          </aside>
+        </section>
+
+        <section aria-labelledby="t-alt">
+          <h2 id="t-alt">Le texte de remplacement</h2>
+          <p>
+            Chaque image porteuse d'information doit avoir un texte de remplacement.
+            Clic droit sur l'image, puis « Modifier le texte de remplacement ».
+          </p>
+
+          <!-- C-02 : image informative, alternative descriptive rédigée -->
+          <figure>
+            <img src="capture-word.svg"
+                 alt="Le volet « Texte de remplacement » de Word, ouvert à droite de la fenêtre : une zone de saisie de deux lignes, surmontée du titre du volet, et une case à cocher « Marquer comme décoratif » en dessous."
+                 width="420" height="260">
+            <figcaption>
+              Le volet de saisie du texte de remplacement, dans Word 365.
+            </figcaption>
+          </figure>
+
+          <h3>Vérifier avant d'envoyer</h3>
+          <p>
+            Word intègre un vérificateur d'accessibilité, dans l'onglet Révision.
+            Il signale les images sans texte de remplacement et les titres manquants.
+          </p>
+
+          <!-- C-12 : intitulés de liens explicites, compréhensibles hors contexte -->
+          <h3>Ressources</h3>
+          <ul class="liens">
+            <li><a href="https://support.microsoft.com">Documentation Microsoft sur l'accessibilité dans Word</a></li>
+            <li><a href="https://accessibilite.numerique.gouv.fr">RGAA 4.1 — référentiel français d'accessibilité</a></li>
+            <li><a href="https://www.w3.org/WAI/">W3C Web Accessibility Initiative</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div>
+        <section aria-labelledby="t-recap">
+          <h2 id="t-recap">Récapitulatif</h2>
+
+          <!-- C-03 : vrai tableau avec en-têtes déclarés et légende.
+               C-04 : le statut n'est plus une pastille colorée seule :
+               couleur + pictogramme + texte. -->
+          <table class="tableau">
+            <caption>Avancement des quatre actions du module</caption>
+            <thead>
+              <tr><th scope="col">Action</th><th scope="col">Statut</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Styles de titre appliqués</th>
+                  <td><span class="statut statut--ok"><span aria-hidden="true">✓</span> Fait</span></td></tr>
+              <tr><th scope="row">Textes de remplacement</th>
+                  <td><span class="statut statut--ko"><span aria-hidden="true">✕</span> À faire</span></td></tr>
+              <tr><th scope="row">Vérificateur passé</th>
+                  <td><span class="statut statut--ok"><span aria-hidden="true">✓</span> Fait</span></td></tr>
+              <tr><th scope="row">Export balisé</th>
+                  <td><span class="statut statut--ko"><span aria-hidden="true">✕</span> À faire</span></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section aria-labelledby="t-prog">
+          <h2 id="t-prog">Progression</h2>
+          <!-- C-05 : rôle et valeur exposés, valeur en clair -->
+          <div class="progression__piste" role="progressbar"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"
+               aria-valuetext="2 actions terminées sur 4, soit 60 pour cent"
+               aria-labelledby="t-prog">
+            <div class="progression__fill" style="width:60%"></div>
+          </div>
+          <p class="aide">2 actions terminées sur 4 — 60&nbsp;%</p>
+        </section>
+
+        <section aria-labelledby="t-inscription">
+          <h2 id="t-inscription">S'inscrire au rattrapage</h2>
+
+          <!-- C-07 : chaque champ a un label lié.
+               C-08 : le format attendu est indiqué.
+               C-09 : autocomplete renseigné (WCAG 1.3.5). -->
+          <form class="formulaire" novalidate>
+            <div class="champ">
+              <label for="f-nom">Nom et prénom</label>
+              <input type="text" id="f-nom" name="nom" autocomplete="name" required aria-required="true">
+            </div>
+
+            <div class="champ">
+              <label for="f-email">Adresse électronique</label>
+              <input type="email" id="f-email" name="email" autocomplete="email"
+                     required aria-required="true" aria-describedby="f-email-aide">
+              <p class="aide" id="f-email-aide">Elle servira uniquement à confirmer l'inscription.</p>
+            </div>
+
+            <div class="champ">
+              <label for="f-nb">Nombre de participants</label>
+              <input type="number" id="f-nb" name="participants" min="1" max="20" value="1"
+                     inputmode="numeric" aria-describedby="f-nb-aide">
+              <p class="aide" id="f-nb-aide">Entre 1 et 20.</p>
+            </div>
+
+            <button type="submit" class="btn btn--principal">S'inscrire</button>
+
+            <!-- C-10 : les erreurs sont annoncées dans une région live -->
+            <div id="retour-formulaire" role="status" aria-live="polite" class="retour" hidden></div>
+          </form>
+        </section>
+
+        <aside class="encadre encadre--info">
+          <h3><span aria-hidden="true">ℹ</span> Le saviez-vous&nbsp;?</h3>
+          <p>Un document structuré se relit deux fois plus vite.</p>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="pied">
+    <h2>Contacts</h2>
+    <address>
+      Service formation<br>
+      <a href="mailto:formation@exemple.fr">formation@exemple.fr</a><br>
+      <a href="tel:+33123456789">01 23 45 67 89</a>
+    </address>
+    <!-- C-17 : le compte à rebours imposé a été supprimé.
+         L'information de délai reste, sous forme de date fixe. -->
+    <p class="aide">Inscriptions ouvertes jusqu'au 10 septembre inclus.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
