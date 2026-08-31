@@ -87,6 +87,16 @@
       return Promise.resolve();
     }
     var base = baseChoisie();
+
+    // Une page servie en HTTPS ne peut pas appeler http://localhost : le
+    // navigateur bloque la requete comme contenu mixte, avant meme qu'elle
+    // parte. Sonder quand meme ne ferait que remplir la console d'erreurs sans
+    // aucune chance de succes — la demo en ligne va directement au mode local.
+    if (location.protocol === 'https:' && /^http:\/\//.test(base)) {
+      depot = new window.DepotLocal();
+      return Promise.resolve();
+    }
+
     return window.DepotApi.joignable(base).then(function (ok) {
       depot = ok ? new window.DepotApi(base) : new window.DepotLocal();
     });
