@@ -1,8 +1,8 @@
 # Les démos du portfolio
 
-Neuf projets se lancent directement depuis le portfolio, sans installation,
+Dix projets se lancent directement depuis le portfolio, sans installation,
 sans compte et sans serveur à démarrer. C'est le point qui change tout :
-un recruteur ne clonera pas neuf dépôts pour vérifier si le travail tient.
+un recruteur ne clonera pas dix dépôts pour vérifier si le travail tient.
 
 | Démo | Ce qu'on peut faire | Sans serveur ? |
 |---|---|---|
@@ -12,6 +12,7 @@ un recruteur ne clonera pas neuf dépôts pour vérifier si le travail tient.
 | [Entrepôt de données](demos/entrepot-bi/) | Lire le tableau de bord produit par le pipeline | HTML généré, autonome |
 | [Banc d'essai RAG](demos/rag-bench/rapport.html) | Comparer les 6 configurations mesurées | Rapport autonome |
 | [Gestion des stocks](demos/stock/) | Piloter le stock, commander, contrôler la cohérence | Dépôt local, mêmes règles |
+| [Assistant Ops](demos/assistant-ops/) | Poser une question, voir l'outil appelé, confirmer une action sensible | L'agent tourne dans l'onglet |
 | [BuildTrack](demos/buildtrack/) | Chantiers, tâches, stock, dépenses | Bascule sur `localStorage` |
 | [DevisPro](demos/devispro/) | Devis, factures, encaissements | Bascule sur `localStorage` |
 | [MecaTrack](demos/mecatrack/) | Interventions, pièces, QR | Bascule sur `localStorage` |
@@ -44,7 +45,7 @@ Trois modes de fabrication :
 | Mode | Ce qu'il fait | Démos concernées |
 |---|---|---|
 | `copie` | Recopie les fichiers statiques | les six premières |
-| `vite` | `vite build --base=/demos/<slug>/` | BuildTrack, DevisPro |
+| `vite` | `vite build --base=/demos/<slug>/` | Assistant Ops, BuildTrack, DevisPro |
 | `angular` | `ng build --base-href=/demos/<slug>/` | MecaTrack |
 
 Le `--base` n'est pas un détail : sans lui, le HTML produit pointe vers
@@ -74,9 +75,9 @@ cassés jusqu'au déploiement.
 
 ## Le mode dégradé, et pourquoi il compte
 
-Cinq démos ont normalement besoin d'une API. Aucune n'en a besoin ici :
-elles sondent leur serveur au démarrage et, sans réponse, basculent sur un
-dépôt local qui applique **les mêmes règles**, refus compris.
+Six démos ont normalement besoin d'une API. Aucune n'en a besoin ici : elles
+sondent leur serveur au démarrage et, sans réponse, basculent sur une version
+locale qui applique **les mêmes règles**, refus compris.
 
 Pour la gestion des stocks, cela va jusqu'au bout : le dépôt local du
 navigateur refuse une sortie supérieure au stock (409), refuse une quantité
@@ -123,9 +124,30 @@ d'y laisser un lien mort.
 | `energytrack-api` | API pure — la documentation `/docs` **est** l'interface ; déployable sur Render en quelques minutes |
 | `factures-insights` | Streamlit : demande un exécuteur Python, pas hébergeable en statique |
 | `websec-audit` | Outil en ligne de commande ; le rapport HTML produit peut être publié tel quel |
-| `docurag`, `assistant-ops` | Le frontend n'a pas de mode dégradé : sans serveur, il n'a rien à afficher |
+| `docurag` | Le frontend n'a pas de mode dégradé : sans serveur, il n'a rien à afficher |
 | `api-contrat-reference` | Deux implémentations à lancer côte à côte ; le rapport de conformité tient lieu de preuve |
 
-Pour `docurag` et `assistant-ops`, ajouter un dépôt local comme celui de la
-gestion des stocks est la suite logique — c'est ce qui les rendrait
-démontrables sans rien installer.
+`assistant-ops` était dans ce cas ; il n'y est plus. Plutôt qu'un dépôt local
+écrit à part, l'application web **importe les sources du serveur** — `Session`,
+le catalogue d'outils, les schémas de validation, le portefeuille — et les
+exécute dans l'onglet. Il n'y a donc pas deux implémentations à maintenir : la
+démonstration hors ligne ne peut pas diverger du produit, puisque c'est le même
+code.
+
+Trois obstacles ont dû être levés côté serveur, tous par des changements qui
+l'améliorent :
+
+- `config.ts` lisait `process.env` et chargeait `dotenv` à l'import. Le
+  chargement du `.env` appartient désormais à `index.ts`, seul module propre à
+  Node ; un module de configuration ne devrait de toute façon pas avoir d'effet
+  de bord à l'import.
+- `Portefeuille` prenait un **chemin de fichier**. Il prend maintenant le
+  **contenu** ; le chargement disque vit dans `donnees-fichier.ts`. Une seule
+  implémentation d'analyse pour les deux côtés.
+- `agent.ts` importait `node:crypto`. Il utilise `globalThis.crypto`, présent
+  des deux côtés, avec un repli qui produit la même forme qu'un UUID — sans quoi
+  la validation `z.string().uuid()` des jetons de confirmation échouerait.
+
+Les 54 tests du serveur passent après ces changements.
+
+Reste `docurag`, pour lequel la même approche s'appliquerait.

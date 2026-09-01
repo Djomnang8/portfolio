@@ -1,6 +1,17 @@
 {
-  "genere_le": "2026-08-31",
+  "genere_le": "2026-09-01",
   "demos": [
+    {
+      "slug": "assistant-ops",
+      "titre": "Assistant Ops",
+      "sous_titre": "Agent a appels d'outils : arguments valides, actions sensibles confirmees",
+      "depot": "assistant-ops",
+      "url": "demos/assistant-ops/",
+      "hors_ligne": "L'agent s'execute dans le navigateur : les sources du serveur sont importees telles quelles, garde-fous compris.",
+      "spa": false,
+      "ko": 303,
+      "fichiers": 3
+    },
     {
       "slug": "audit-a11y",
       "titre": "Audit d'accessibilite : avant / apres",
