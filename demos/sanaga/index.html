@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanaga — auto-battler tactique</title>
+<meta name="description" content="Auto-battler tactique jouable dans le navigateur : composez une armée, placez-la, et regardez le combat se résoudre. Équilibrage prouvé par 11 200 combats simulés.">
+<meta property="og:title" content="Sanaga — auto-battler tactique">
+<meta property="og:description" content="Jeu jouable et son banc d'équilibrage : 8 unités, 11 200 combats simulés, aucune unité hors de la fourchette 45–55 %.">
+<link rel="stylesheet" href="jeu/style.css">
+</head>
+<body>
+
+<a class="evitement" href="#plateau">Aller au plateau</a>
+
+<div class="enveloppe">
+
+  <header class="entete">
+    <div>
+      <h1>Sanaga</h1>
+      <p>Auto-battler tactique. Composez, placez, laissez le combat se résoudre.</p>
+    </div>
+    <div class="jauges">
+      <span class="jauge jauge--or">Or <b id="or">10</b></span>
+      <span class="jauge jauge--vie">Vie <b id="vie">12</b></span>
+      <span class="jauge">Manche <b id="manche">1/8</b></span>
+      <span class="jauge">Unités <b id="effectif">0/8</b></span>
+    </div>
+  </header>
+
+  <div class="colonnes">
+
+    <div>
+      <div class="plateau-cadre">
+        <canvas id="plateau" width="768" height="480"
+                aria-label="Plateau de jeu : huit colonnes sur cinq lignes. Votre zone de déploiement est constituée des trois colonnes de gauche."></canvas>
+      </div>
+
+      <div class="barre-actions">
+        <button type="button" class="btn btn--principal" id="combattre">Lancer le combat</button>
+        <button type="button" class="btn" id="rejouer-combat" disabled>Revoir le combat</button>
+        <label class="jauge" for="vitesse">Vitesse
+          <select id="vitesse" class="btn" style="padding:.35rem .5rem;min-height:36px">
+            <option value="1">×1</option>
+            <option value="2">×2</option>
+            <option value="4">×4</option>
+            <option value="12">Instantané</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="etat" id="etat" role="status" aria-live="polite"></p>
+
+      <div class="fin" id="fin" hidden></div>
+    </div>
+
+    <aside>
+      <section class="panneau">
+        <h2>Boutique</h2>
+        <ul class="boutique" id="boutique"></ul>
+        <p class="aide">Cliquez une unité, puis une case des trois colonnes de gauche.
+           Cliquer une de vos unités la revend au prix d'achat.</p>
+      </section>
+
+      <section class="panneau">
+        <h2>Journal du combat</h2>
+        <ul class="journal" id="journal" aria-live="off"></ul>
+      </section>
+    </aside>
+
+  </div>
+
+  <footer class="pied">
+    <span>Les 8 unités tiennent dans 45–55 % de victoires, vérifié sur 11 200 combats et 5 graines.</span>
+    <span>Conçu et développé par Joyce Djomnang.</span>
+  </footer>
+
+</div>
+
+<script src="jeu/reglages.js"></script>
+<script src="moteur/aleatoire.js"></script>
+<script src="moteur/combat.js"></script>
+<script src="jeu/rendu.js"></script>
+<script src="jeu/jeu.js"></script>
+</body>
+</html>

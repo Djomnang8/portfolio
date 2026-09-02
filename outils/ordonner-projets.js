@@ -54,7 +54,10 @@ const ORDRE = [
   'Factures Insights',              // pandas + Plotly + Streamlit
   'rag-bench',                      // banc d'essai Python
 
-  // 4. Front, contenu et design
+  // 4. Jeu : simulation deterministe, tests, barriere d'integration
+  'Sanaga',                         // moteur de combat + banc d'equilibrage
+
+  // 5. Front, contenu et design
   'Fait Main',                      // generateur statique Node + editorial
   'accessibilité numérique',        // module e-learning
   'Kit Design Pédagogique',         // systeme de design verifiable

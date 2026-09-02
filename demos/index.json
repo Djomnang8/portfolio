@@ -123,6 +123,17 @@
       "fichiers": 2
     },
     {
+      "slug": "sanaga",
+      "titre": "Sanaga",
+      "sous_titre": "Auto-battler tactique : composez, placez, le combat se resout",
+      "depot": "sanaga",
+      "url": "demos/sanaga/",
+      "hors_ligne": "Entierement statique. Le moteur de combat tourne dans l'onglet : c'est le meme fichier que celui du banc d'equilibrage.",
+      "spa": false,
+      "ko": 45,
+      "fichiers": 7
+    },
+    {
       "slug": "stock",
       "titre": "Gestion des stocks et des commandes",
       "sous_titre": "Console de pilotage : mouvements, seuils d'alerte, commandes",

@@ -1,8 +1,8 @@
 # Les démos du portfolio
 
-Douze projets se lancent directement depuis le portfolio, sans installation,
+Treize projets se lancent directement depuis le portfolio, sans installation,
 sans compte et sans serveur à démarrer. C'est le point qui change tout :
-un recruteur ne clonera pas douze dépôts pour vérifier si le travail tient.
+un recruteur ne clonera pas treize dépôts pour vérifier si le travail tient.
 
 Chaque bouton « Lancer la démo » ouvre l'application **dans un nouvel onglet** :
 le portfolio reste ouvert derrière, et revenir ne coûte pas de retrouver sa
@@ -12,6 +12,7 @@ annoncé à qui ne le voit pas se produire.
 
 | Démo | Ce qu'on peut faire | Sans serveur ? |
 |---|---|---|
+| [Sanaga](demos/sanaga/) | Composer une armée, la placer, lancer le combat | Le moteur tourne dans l'onglet |
 | [Cuisine Locale](demos/cuisine-locale/) | Filtrer la carte, remplir un panier, commander, réserver une table | Panier et validations dans le navigateur |
 | [Fait Main](demos/fait-main/) | Lire les 6 articles, parcourir les numéros de la lettre, basculer le thème | Site généré, entièrement statique |
 | [Module e-learning](demos/module-a11y/) | Suivre les 7 écrans, jouer les 4 exercices | Entièrement statique |

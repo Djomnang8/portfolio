@@ -1,0 +1,174 @@
+/* =============================================================================
+   Sanaga — habillage du jeu.
+   Aucune bibliothèque, aucune police téléchargée : la page doit s'ouvrir vite
+   sur une connexion lente, et le jeu tient dans un onglet sans rien installer.
+   ============================================================================= */
+
+:root {
+  --fond:        #14181A;
+  --panneau:     #1D2426;
+  --panneau-clair:#28312F;
+  --bord:        #4A5A55;
+  --bord-doux:   #2E3A37;
+  --texte:       #ECE7DC;
+  --texte-doux:  #A8AFA6;
+  --or:          #E0A93C;
+  --camp-a:      #4FA3A3;
+  --camp-b:      #C8663A;
+  --vie:         #6BBF6B;
+  --alerte:      #D9534F;
+  --rayon:       6px;
+  --mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  --sans: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+a { color: var(--or); }
+
+:focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }
+
+.evitement {
+  position: absolute; left: -9999px; top: 0; z-index: 50;
+  background: var(--or); color: #14181A; padding: .5rem 1rem; font-weight: 700;
+}
+.evitement:focus { left: 0; }
+
+.cache {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Mise en page ---------- */
+
+.enveloppe { max-width: 1180px; margin: 0 auto; padding: 1.25rem; }
+
+.entete {
+  display: flex; flex-wrap: wrap; gap: 1rem;
+  align-items: baseline; justify-content: space-between;
+  border-bottom: 1px solid var(--bord-doux); padding-bottom: .75rem; margin-bottom: 1.25rem;
+}
+.entete h1 { font-size: 1.35rem; margin: 0; letter-spacing: .02em; }
+.entete p { margin: 0; color: var(--texte-doux); font-size: .9rem; }
+
+.jauges { display: flex; gap: 1.25rem; font-family: var(--mono); font-size: .95rem; }
+.jauge { display: flex; align-items: baseline; gap: .4rem; }
+.jauge b { font-size: 1.2rem; }
+.jauge--or b { color: var(--or); }
+.jauge--vie b { color: var(--vie); }
+
+.colonnes { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1.25rem; align-items: start; }
+@media (max-width: 900px) { .colonnes { grid-template-columns: 1fr; } }
+
+/* ---------- Plateau ---------- */
+
+.plateau-cadre {
+  background: var(--panneau);
+  border: 1px solid var(--bord-doux);
+  border-radius: var(--rayon);
+  padding: .75rem;
+}
+canvas { display: block; width: 100%; height: auto; border-radius: 4px; touch-action: none; }
+
+.barre-actions {
+  display: flex; flex-wrap: wrap; gap: .6rem; align-items: center;
+  margin-top: .75rem;
+}
+
+.btn {
+  font: inherit; font-weight: 600; font-size: .92rem;
+  padding: .55rem 1.1rem; min-height: 42px;
+  border-radius: var(--rayon); border: 1px solid var(--bord);
+  background: var(--panneau-clair); color: var(--texte);
+  cursor: pointer;
+}
+.btn:hover:not([disabled]) { border-color: var(--or); color: var(--or); }
+.btn--principal { background: var(--or); border-color: var(--or); color: #14181A; }
+.btn--principal:hover:not([disabled]) { filter: brightness(1.1); color: #14181A; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+.etat {
+  margin: 0; color: var(--texte-doux); font-size: .9rem;
+  flex: 1 1 14rem; min-width: 0;
+}
+.etat b { color: var(--texte); }
+.etat--victoire b { color: var(--vie); }
+.etat--defaite b { color: var(--alerte); }
+
+/* ---------- Boutique ---------- */
+
+.panneau {
+  background: var(--panneau);
+  border: 1px solid var(--bord-doux);
+  border-radius: var(--rayon);
+  padding: 1rem;
+}
+.panneau + .panneau { margin-top: 1rem; }
+.panneau h2 { font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; color: var(--texte-doux); margin: 0 0 .75rem; }
+
+.boutique { display: grid; gap: .45rem; list-style: none; padding: 0; margin: 0; }
+
+.carte-unite {
+  width: 100%; text-align: left;
+  display: grid; grid-template-columns: auto 1fr auto; gap: .6rem; align-items: center;
+  font: inherit; cursor: pointer;
+  background: var(--panneau-clair); color: var(--texte);
+  border: 1px solid var(--bord-doux); border-radius: var(--rayon);
+  padding: .5rem .6rem;
+}
+.carte-unite:hover:not([disabled]) { border-color: var(--bord); }
+.carte-unite[aria-pressed="true"] { border-color: var(--or); background: #33301F; }
+.carte-unite[disabled] { opacity: .4; cursor: not-allowed; }
+
+.pastille {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: .78rem; font-weight: 700;
+  background: var(--camp-a); color: #10201F;
+}
+.carte-unite b { display: block; font-size: .9rem; }
+.carte-unite small { display: block; color: var(--texte-doux); font-size: .74rem; line-height: 1.3; }
+.cout { font-family: var(--mono); font-weight: 700; color: var(--or); white-space: nowrap; }
+
+.aide { color: var(--texte-doux); font-size: .82rem; margin: .75rem 0 0; }
+
+/* ---------- Journal ---------- */
+
+.journal {
+  font-family: var(--mono); font-size: .78rem; line-height: 1.5;
+  max-height: 220px; overflow-y: auto;
+  margin: 0; padding: 0; list-style: none;
+  color: var(--texte-doux);
+}
+.journal li { padding: .15rem 0; border-bottom: 1px solid var(--bord-doux); }
+.journal li:last-child { border-bottom: 0; }
+.journal .a { color: var(--camp-a); }
+.journal .b { color: var(--camp-b); }
+
+/* ---------- Fin de partie ---------- */
+
+.fin { text-align: center; padding: 1rem 0; }
+.fin h2 { font-size: 1.6rem; margin: 0 0 .5rem; }
+.fin p { color: var(--texte-doux); margin: 0 0 1rem; }
+
+/* ---------- Pied ---------- */
+
+.pied {
+  margin-top: 1.5rem; padding-top: 1rem;
+  border-top: 1px solid var(--bord-doux);
+  color: var(--texte-doux); font-size: .84rem;
+  display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
