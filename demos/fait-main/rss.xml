@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fait Main</title>
+    <link>https://fait-main-joyce.netlify.app</link>
+    <description>Un carnet d&#39;atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l&#39;appui.</description>
+    <language>fr</language>
+    <atom:link href="https://fait-main-joyce.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Le test de la phrase supprimée</title>
+      <link>https://fait-main-joyce.netlify.app/articles/le-test-de-la-phrase-supprimee/</link>
+      <guid isPermaLink="true">https://fait-main-joyce.netlify.app/articles/le-test-de-la-phrase-supprimee/</guid>
+      <pubDate>Tue, 25 Aug 2026 09:00:00 GMT</pubDate>
+      <description>Une méthode de relecture en une règle, appliquée à mes cinq derniers articles. Elle en a retiré 14 %, et pas les passages que je croyais.</description>
+      <!-- Les liens du corps sont rendus absolus : un flux est lu hors du site,
+           où un chemin relatif ne désigne plus rien. -->
+      <content:encoded><![CDATA[<p>Je relis mes articles avec une seule règle.</p>
+<blockquote><p>Je supprime une phrase. Je relis le paragraphe. <strong>Si le sens n&#39;a pas changé, la
+phrase reste supprimée.</strong></p></blockquote>
+<p>C&#39;est tout. Pas de grille de style, pas de score de lisibilité. Une phrase, une
+question, une décision.</p>
+<h2 id="pourquoi-ca-marche-mieux-qu-une-relecture-normale">Pourquoi ça marche mieux qu&#39;une relecture normale</h2>
+<p>Une relecture ordinaire pose la question « est-ce que cette phrase est bonne ? ».
+C&#39;est une mauvaise question, pour une raison simple : <strong>on répond presque toujours
+oui.</strong> On a écrit la phrase, on sait ce qu&#39;on voulait dire, et on la lit avec
+cette intention en tête. La phrase paraît donc claire — pour son auteur.</p>
+<p>La suppression pose une question différente : « qu&#39;est-ce que le texte perd ? »
+Celle-là a une réponse observable. Soit le paragraphe raconte encore la même
+chose, soit il ne la raconte plus. Aucune interprétation n&#39;est nécessaire.</p>
+<p>Le changement, c&#39;est qu&#39;on ne juge plus la phrase. <strong>On mesure son absence.</strong></p>
+<h2 id="ce-que-ca-a-donne-sur-cinq-articles">Ce que ça a donné sur cinq articles</h2>
+<p>J&#39;ai gardé les premiers jets et les versions publiées. Voici l&#39;écart.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Article</th><th scope="col" style="text-align:right">Premier jet</th><th scope="col" style="text-align:right">Publié</th><th scope="col" style="text-align:right">Retiré</th></tr></thead><tbody><tr><td>Sept défauts dans un projet déjà rendu</td><td style="text-align:right">1 324</td><td style="text-align:right">1 139</td><td style="text-align:right">14 %</td></tr><tr><td>Votre texte de 13 px en fait 3,6</td><td style="text-align:right">1 035</td><td style="text-align:right">880</td><td style="text-align:right">15 %</td></tr><tr><td>Apprendre à un RAG à dire « je ne sais pas »</td><td style="text-align:right">1 291</td><td style="text-align:right">1 136</td><td style="text-align:right">12 %</td></tr><tr><td>J&#39;ai saboté mes données</td><td style="text-align:right">1 076</td><td style="text-align:right">893</td><td style="text-align:right">17 %</td></tr><tr><td>Une couleur qui fait échouer la CI</td><td style="text-align:right">1 001</td><td style="text-align:right">871</td><td style="text-align:right">13 %</td></tr></tbody></table></div>
+<p><strong>14 % en moyenne.</strong> Un article sur sept ne sert à rien, et je ne saurais pas
+lequel sans passer phrase par phrase.</p>
+<h2 id="les-quatre-choses-qui-tombent-toujours">Les quatre choses qui tombent toujours</h2>
+<p>Après cinq articles, les suppressions se répètent. Elles ont des formes
+reconnaissables.</p>
+<p><strong>L&#39;annonce de ce qu&#39;on va dire.</strong> « Voyons maintenant comment ce problème se
+corrige. » Le lecteur le verra en lisant le paragraphe suivant. Une phrase qui
+annonce une phrase coûte le double et n&#39;informe pas.</p>
+<p><strong>La reformulation de ce qu&#39;on vient de dire.</strong> Elle vient d&#39;un doute — ai-je été
+claire ? Si la réponse est non, la solution est de réécrire la première version,
+pas d&#39;en ajouter une seconde. Deux formulations moyennes ne font pas une bonne
+explication ; elles font hésiter sur laquelle est la vraie.</p>
+<p><strong>Le raccord poli.</strong> <code>il est important de noter que</code>, <code>comme nous l&#39;avons vu</code>,
+<code>n&#39;hésitez pas à</code>. Ces formules occupent la place d&#39;une transition sans en être
+une. On les supprime et la phrase suivante commence directement — presque toujours
+mieux.</p>
+<p>Elles sont d&#39;ailleurs listées dans ma <a href="https://github.com/Djomnang8/fait-main/blob/main/ligne-editoriale.md" rel="noopener">ligne éditoriale</a>,
+et un script refuse la publication quand l&#39;une d&#39;elles apparaît. Il a fallu lui
+apprendre qu&#39;une formule <strong>citée</strong> n&#39;est pas une formule <strong>employée</strong> — c&#39;est
+précisément le paragraphe que vous lisez qui a fait échouer la vérification.</p>
+<p><strong>La justification d&#39;une décision que personne ne conteste.</strong> J&#39;expliquais
+longuement pourquoi j&#39;avais choisi telle bibliothèque. Personne ne me le
+demandait. Une décision se justifie quand elle surprend, pas par principe.</p>
+<h2 id="ce-qui-resiste">Ce qui résiste</h2>
+<p>Un motif m&#39;a surprise. Les paragraphes qui survivent entièrement sont presque
+tous des <strong>récits d&#39;échec</strong>.</p>
+<p>Le moment où le test passait alors qu&#39;il n&#39;aurait pas dû. La ligne de
+configuration jamais écrite. Le seuil réglé sur une grandeur qui ne mesurait rien.
+Ces passages ne contiennent aucune phrase supprimable, parce qu&#39;ils racontent un
+enchaînement : chaque phrase apporte un fait dont dépend la suivante.</p>
+<p>Ce qui gonfle, à l&#39;inverse, c&#39;est ce qui explique. Dès que je passe du « voici ce
+qui s&#39;est passé » au « voici ce qu&#39;il faut comprendre », je me mets à tourner
+autour. Le récit se tient tout seul. Le commentaire a besoin d&#39;être tenu.</p>
+<p>C&#39;est devenu un signal de rédaction : <strong>quand un paragraphe résiste mal à la
+suppression, c&#39;est en général que j&#39;aurais dû raconter au lieu d&#39;expliquer.</strong></p>
+<h2 id="les-deux-limites">Les deux limites</h2>
+<p>La règle a un angle mort. Elle évalue chaque phrase contre son paragraphe, jamais
+contre l&#39;article entier. On peut donc obtenir cinq paragraphes parfaitement
+serrés qui, ensemble, disent trois fois la même chose. Ça m&#39;est arrivé.</p>
+<p>Je fais donc un second passage, au niveau supérieur : je supprime un <strong>titre de
+section</strong> complet et je regarde si l&#39;article tient encore debout. Le résultat est
+plus brutal — deux sections entières sont tombées sur les cinq articles, dont une
+que j&#39;avais mis une soirée à écrire.</p>
+<p>Deuxième limite : la règle ne dit rien de ce qui <strong>manque</strong>. Un texte peut être
+parfaitement dense et incomplet. Pour ça, je n&#39;ai qu&#39;une méthode, et elle n&#39;est
+pas automatisable : donner l&#39;article à quelqu&#39;un qui ne connaît pas le projet, et
+noter à quel endroit exact il pose une question.</p>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Écrire court n&#39;est pas écrire moins. C&#39;est écrire, puis retirer — et le retrait
+demande un critère, sinon on coupe ce qui gêne au lieu de ce qui est inutile.</p>
+<p>La suppression est un bon critère parce qu&#39;elle est objective et qu&#39;elle ne
+demande aucun talent. Elle demande de la patience : une passe sérieuse sur
+1 500 mots me prend quarante minutes.</p>
+<p>C&#39;est le meilleur rapport que je connaisse entre le temps passé et ce que le
+lecteur y gagne.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Une couleur qui fait échouer l&#39;intégration continue</title>
+      <link>https://fait-main-joyce.netlify.app/articles/une-couleur-qui-fait-echouer-la-ci/</link>
+      <guid isPermaLink="true">https://fait-main-joyce.netlify.app/articles/une-couleur-qui-fait-echouer-la-ci/</guid>
+      <pubDate>Tue, 11 Aug 2026 09:00:00 GMT</pubDate>
+      <description>J&#39;ai mis mes couleurs sous contrôle automatique. Le script a refusé ma palette dès le premier jour — et il avait raison sur un point que je n&#39;avais pas vu.</description>
+      <!-- Les liens du corps sont rendus absolus : un flux est lu hors du site,
+           où un chemin relatif ne désigne plus rien. -->
+      <content:encoded><![CDATA[<p>Le contraste d&#39;une couleur n&#39;est pas une opinion. C&#39;est un quotient.</p>
+<pre><code>ratio = (L_claire + 0,05) / (L_sombre + 0,05)</code></pre>
+<p>Où <code>L</code> est la luminance relative, calculée à partir des trois composantes de la
+couleur avec une correction gamma. Quinze lignes de code. Le résultat va de 1:1
+(deux couleurs identiques) à 21:1 (noir sur blanc).</p>
+<p>La norme WCAG 2.1 fixe les seuils : <strong>4,5:1</strong> pour du texte courant, <strong>3:1</strong> pour
+du texte large et pour les éléments d&#39;interface porteurs de sens — bordures de
+champs, icônes fonctionnelles.</p>
+<p>Tout cela est connu. Ce qui l&#39;est moins, c&#39;est ce qui arrive quand on branche ce
+calcul dans une intégration continue et qu&#39;on lui donne le droit de refuser une
+fusion.</p>
+<h2 id="le-script-qui-bloque">Le script qui bloque</h2>
+<p>Le principe tient en une décision : le vérificateur ne produit pas un
+avertissement, il <strong>sort avec un code d&#39;erreur</strong>.</p>
+<pre data-langue="js"><code class="langue-js">const echecs = paires.filter((p) =&gt; p.ratio &lt; p.min);
+process.exit(echecs.length ? 1 : 0);</code></pre>
+<p>Trois lignes. C&#39;est tout ce qui sépare un rapport qu&#39;on lit quand on y pense d&#39;une
+règle qui s&#39;applique.</p>
+<pre data-langue="yaml"><code class="langue-yaml"># .github/workflows/verification.yml
+- name: Contraste des couleurs
+  run: node outils/check-contrast.js</code></pre>
+<p>À partir de là, une couleur non conforme ne peut plus entrer dans la branche
+principale. Pas « ne devrait plus ». Ne peut plus.</p>
+<h2 id="premier-jour-premier-refus">Premier jour, premier refus</h2>
+<p>J&#39;ai lancé le script sur ma palette initiale, plutôt fière de l&#39;avoir choisie
+avec soin.</p>
+<pre><code>FAIL    1.58:1  min 3    border / bg    Bordure de champ (critère 1.4.11)</code></pre>
+<p><strong>1,58:1</strong> pour un seuil à 3. J&#39;utilisais <code>#C3CEE3</code> — un bleu-gris très pâle —
+pour toutes les bordures du système. Sur mon écran, le résultat était élégant :
+des cadres discrets, une interface qui respire.</p>
+<p>Sur un écran moins bon, dans une pièce éclairée, ou pour quelqu&#39;un dont la vision
+des contrastes est réduite, ces cadres n&#39;existent pas. Or un champ de formulaire
+dont on ne distingue pas la bordure n&#39;est pas discret : il est invisible. On ne
+sait plus où cliquer, ni combien de champs il y a.</p>
+<p>Ma première réaction a été mauvaise. J&#39;ai pensé : *le seuil est trop sévère pour
+un simple filet.*</p>
+<h2 id="le-seuil-n-etait-pas-le-probleme-ma-categorie-l-etait">Le seuil n&#39;était pas le problème — ma catégorie l&#39;était</h2>
+<p>En relisant le critère 1.4.11, j&#39;ai vu ce que j&#39;avais raté. Il ne s&#39;applique pas
+à « toutes les bordures ». Il s&#39;applique aux éléments <strong>porteurs d&#39;information</strong> :
+ceux qui indiquent où se trouve un composant, quel est son état, quelle est sa
+limite.</p>
+<p>Un filet purement décoratif — un séparateur entre deux paragraphes, une ligne sous
+un titre — n&#39;informe de rien. Il n&#39;est soumis à aucun seuil.</p>
+<p>J&#39;avais un seul token <code>border</code> pour deux intentions différentes. La norme ne me
+demandait pas d&#39;assombrir tous mes filets. Elle me demandait de <strong>savoir lesquels
+disent quelque chose.</strong></p>
+<p>La correction n&#39;a donc pas été de baisser le seuil, ni d&#39;assombrir toute
+l&#39;interface. Elle a été de couper le token en deux :</p>
+<pre data-langue="json"><code class="langue-json">&quot;border&quot;:      { &quot;value&quot;: &quot;#8C8275&quot;, &quot;usage&quot;: &quot;Bordures porteuses de sens — champs, séparateurs d&#39;articles&quot; },
+&quot;border-soft&quot;: { &quot;value&quot;: &quot;#E3DCD0&quot;, &quot;usage&quot;: &quot;Filets purement décoratifs (hors exigence 1.4.11)&quot; }</code></pre>
+<p><code>border</code> passe à 3,59:1 : on voit où sont les champs. <code>border-soft</code> reste pâle :
+les séparations décoratives ne crient pas.</p>
+<p>Le résultat visuel est <strong>meilleur</strong> qu&#39;avant. Avant, tout avait la même
+importance, donc rien n&#39;en avait. Maintenant la hiérarchie est visible : ce qui
+délimite un objet manipulable se distingue de ce qui aère une page.</p>
+<blockquote><p>La contrainte n&#39;a pas appauvri la palette. Elle m&#39;a obligée à nommer une
+distinction que je faisais déjà sans le savoir — et un système de design, c&#39;est
+exactement ça : des distinctions nommées.</p></blockquote>
+<h2 id="le-champ-usage-qui-fait-tout-le-travail">Le champ <code>usage</code>, qui fait tout le travail</h2>
+<p>Chaque couleur du fichier porte un texte qui décrit <strong>son rôle</strong>, jamais sa
+teinte :</p>
+<pre data-langue="json"><code class="langue-json">&quot;accent&quot;: { &quot;value&quot;: &quot;#A63D26&quot;, &quot;usage&quot;: &quot;Liens, filets de section, étiquettes de rubrique&quot; }</code></pre>
+<p>C&#39;est une petite discipline, avec deux effets disproportionnés.</p>
+<p>D&#39;abord, elle rend le thème sombre possible sans réécriture. <code>accent</code> vaut
+<code>#A63D26</code> en clair et <code>#E8845F</code> en sombre. Si le token s&#39;appelait <code>terracotta</code>,
+la valeur sombre serait un mensonge — ce n&#39;est plus la même couleur. Comme il
+s&#39;appelle <code>accent</code>, les deux valeurs sont deux réponses correctes à la même
+question.</p>
+<p>Ensuite, elle rend les revues possibles. « Est-ce que ce gris est bien ? » n&#39;a pas
+de réponse. « Est-ce que ce gris convient pour une date de publication ? » en a
+une, et le script la donne.</p>
+<h2 id="une-source-tout-le-reste-genere">Une source, tout le reste généré</h2>
+<p>Le fichier <code>tokens.json</code> est la seule chose qu&#39;on modifie à la main. Trois
+artefacts en sont dérivés :</p>
+<pre><code>02-design/tokens.json
+  ├── assets/style.css        généré · variables CSS, thèmes clair et sombre
+  ├── rapport-contraste.md    généré · le tableau de conformité
+  └── visuels sociaux         générés · aux mêmes couleurs, par construction</code></pre>
+<p>L&#39;intérêt n&#39;est pas d&#39;économiser des frappes. C&#39;est qu&#39;<strong>il devient impossible de
+diverger</strong>. Le cas que ce montage empêche est précis : quelqu&#39;un ajuste une
+couleur directement dans le CSS, parce que c&#39;est plus rapide, et le rapport de
+contraste continue d&#39;afficher l&#39;ancienne valeur. Le rapport n&#39;est pas faux — il
+est <em>périmé</em>, ce qui est pire, parce qu&#39;il inspire toujours confiance.</p>
+<p>Une source unique et un script qui bloque suppriment cette possibilité, au lieu de
+demander à chacun d&#39;y penser.</p>
+<h2 id="le-bilan-actuel">Le bilan actuel</h2>
+<pre><code>✔ 32 paires testées, toutes conformes.</code></pre>
+<p>Seize paires par thème, deux thèmes. Ratio moyen sur les paires de texte :
+<strong>8,45:1</strong>, pour un seuil AA à 4,5:1. Onze paires sur seize atteignent AAA.</p>
+<p>Ces chiffres ne sont pas un objectif que je me serais fixé. Ce sont les valeurs
+qu&#39;a produites une palette conçue sous contrainte — et c&#39;est le point de tout
+l&#39;article.</p>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Une règle qu&#39;on peut ignorer n&#39;est pas une règle. Le même calcul de contraste,
+dans un document de recommandations, aurait été respecté quelques semaines puis
+oublié à la première urgence. Branché sur une CI avec un code de sortie, il tient
+tout seul.</p>
+<p>Et quand une vérification automatique refuse votre travail, le premier réflexe —
+assouplir le seuil — est presque toujours le mauvais. La question utile est :
+<strong>qu&#39;est-ce que ce seuil sait de mon système que je n&#39;ai pas encore formulé ?</strong></p>
+<p>Ici, il savait que j&#39;avais deux sortes de bordures. Je ne le savais pas.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>J&#39;ai saboté mes données pour tester mon contrôle qualité</title>
+      <link>https://fait-main-joyce.netlify.app/articles/saboter-ses-donnees-pour-tester-son-controle/</link>
+      <guid isPermaLink="true">https://fait-main-joyce.netlify.app/articles/saboter-ses-donnees-pour-tester-son-controle/</guid>
+      <pubDate>Tue, 28 Jul 2026 09:00:00 GMT</pubDate>
+      <description>Un rapport qui annonce zéro anomalie ne prouve rien. J&#39;ai planté 137 défauts connus pour vérifier que mon contrôle les trouvait tous. Il en a trouvé 131.</description>
+      <!-- Les liens du corps sont rendus absolus : un flux est lu hors du site,
+           où un chemin relatif ne désigne plus rien. -->
+      <content:encoded><![CDATA[<p>Un contrôle qualité qui annonce « 0 anomalie détectée » a deux explications
+possibles.</p>
+<p>Soit les données sont propres. Soit le contrôle ne fonctionne pas.</p>
+<p>Rien, dans le rapport lui-même, ne permet de trancher — et c&#39;est un problème,
+parce que le second cas est le plus fréquent. Un contrôle qualité qui ne trouve
+rien ne dérange personne. Il passe les revues. Il tourne pendant des mois.</p>
+<p>J&#39;ai donc pris le problème à l&#39;envers : au lieu de faire confiance au rapport,
+j&#39;ai <strong>fabriqué les défauts moi-même, en quantités connues</strong>, et j&#39;ai demandé au
+contrôle de les retrouver.</p>
+<h2 id="le-dispositif">Le dispositif</h2>
+<p>La chaîne va de trois fichiers sources hétérogènes jusqu&#39;à un tableau de bord :</p>
+<ul><li>un <strong>CSV</strong> en UTF-8, séparateur virgule ;</li><li>un <strong>TSV</strong> en latin-1, séparateur tabulation, avec des accents mal encodés ;</li><li>un <strong>JSON</strong> imbriqué.</li></ul>
+<p>Entre les deux, dix règles de qualité, puis un entrepôt en étoile.</p>
+<p>Le générateur produit 5 000 lignes propres, puis y injecte <strong>137 défauts répartis
+en huit catégories</strong> — et il écrit ce qu&#39;il a fait dans un fichier à part :</p>
+<pre data-langue="json"><code class="langue-json">{
+  &quot;lignes_totales&quot;: 5000,
+  &quot;defauts_plantes&quot;: {
+    &quot;doublons&quot;: 12,
+    &quot;dates_impossibles&quot;: 19,
+    &quot;montants_non_numeriques&quot;: 24,
+    &quot;cles_orphelines&quot;: 17,
+    &quot;champs_obligatoires_vides&quot;: 21,
+    &quot;emails_malformes&quot;: 15,
+    &quot;valeurs_hors_domaine&quot;: 18,
+    &quot;encodage_casse&quot;: 11
+  },
+  &quot;total&quot;: 137
+}</code></pre>
+<p>Ce fichier est la <strong>vérité de référence</strong>. Le contrôle qualité ne le lit jamais.
+Une troisième pièce compare les deux, à la fin, et c&#39;est elle qui rend le verdict.</p>
+<p>Le test tient alors en une phrase : *le contrôle doit signaler 137 lignes, et ce
+doivent être exactement les 137 mêmes.*</p>
+<h2 id="premier-passage-131-sur-137">Premier passage : 131 sur 137</h2>
+<pre><code>Défauts plantés  : 137
+Défauts détectés : 131
+Manqués          :   6   ← doublons
+Faux positifs    :   0</code></pre>
+<p>Six doublons sur douze. Le contrôle en trouvait exactement la moitié.</p>
+<p>Sans le générateur, ce rapport aurait annoncé « 131 anomalies détectées sur
+5 000 lignes » et j&#39;aurais trouvé le chiffre satisfaisant. Il n&#39;y a aucune façon
+de deviner, en lisant un rapport, ce qu&#39;il ne dit pas.</p>
+<h2 id="la-cause-le-controle-tournait-au-mauvais-endroit">La cause : le contrôle tournait au mauvais endroit</h2>
+<p>En regardant quels doublons étaient manqués, le motif est apparu immédiatement.
+Les six trouvés étaient des doublons <strong>à l&#39;intérieur d&#39;un même fichier</strong>. Les six
+manqués étaient répartis <strong>entre deux fichiers</strong> : une ligne dans le CSV, sa
+jumelle dans le JSON.</p>
+<p>Le code disait pourquoi :</p>
+<pre data-langue="python"><code class="langue-python">for chemin in sources:
+    lignes = lire(chemin)
+    lignes = normaliser(lignes)
+    lignes = retirer_doublons(lignes)   # ← à l&#39;intérieur de la boucle
+    tout.extend(lignes)</code></pre>
+<p><code>retirer_doublons</code> s&#39;exécutait <strong>par fichier</strong>, avant la fusion. Deux lignes
+identiques dans deux fichiers différents n&#39;étaient jamais comparées entre elles :
+au moment où la première était examinée, la seconde n&#39;avait pas encore été lue.</p>
+<p>Le correctif est un déplacement de deux lignes :</p>
+<pre data-langue="python"><code class="langue-python">for chemin in sources:
+    tout.extend(normaliser(lire(chemin)))
+
+tout = retirer_doublons(tout)           # ← après la fusion</code></pre>
+<p>Deuxième passage : <strong>137 sur 137, zéro faux positif.</strong></p>
+<p>Ce défaut est intéressant parce qu&#39;il n&#39;est pas une faute de logique. La fonction
+<code>retirer_doublons</code> était juste, et testée. Elle était appelée au mauvais moment.
+Aucun test de la fonction ne pouvait le révéler — il fallait tester la <strong>chaîne</strong>,
+avec des données dont on connaissait la réponse.</p>
+<h2 id="pourquoi-les-faux-positifs-comptent-autant-que-les-manques">Pourquoi les faux positifs comptent autant que les manqués</h2>
+<p>J&#39;ai suivi deux chiffres, et j&#39;insiste sur le second parce qu&#39;on l&#39;oublie
+volontiers.</p>
+<ul><li><strong>Les manqués</strong> : des défauts plantés que le contrôle n&#39;a pas vus. Ils passent dans l&#39;entrepôt, et faussent silencieusement les indicateurs.</li><li><strong>Les faux positifs</strong> : des lignes correctes que le contrôle a écartées. Elles ne faussent rien — elles disparaissent, ce qui est pire, parce que personne ne cherche une ligne dont on ignore l&#39;existence.</li></ul>
+<p>Un contrôle trop strict est facile à écrire et se remarque tard. C&#39;est même la
+pente naturelle : quand on renforce une règle après un incident, on n&#39;a en général
+aucun moyen de savoir combien de lignes saines on vient d&#39;écarter au passage. Le
+générateur donne ce moyen, gratuitement, puisqu&#39;il connaît les 4 863 lignes qui
+doivent passer.</p>
+<h2 id="la-regle-chaque-ligne-ecartee-garde-la-trace-de-sa-regle">La règle : chaque ligne écartée garde la trace de sa règle</h2>
+<p>Le contrôle n&#39;écrit jamais « ligne rejetée ». Il écrit quelle règle a décidé, et
+sur quelle valeur :</p>
+<pre><code>ligne 3312 | R04 cle_orpheline    | client_id=C-9981 absent du référentiel
+ligne 3487 | R07 email_malforme   | &quot;marie.fotso@&quot; — domaine manquant
+ligne 3902 | R02 date_impossible  | 2026-02-30 — jour hors du mois</code></pre>
+<p>Cette trace sert deux fois. Elle permet à quelqu&#39;un de contester une règle sur un
+cas précis. Et elle permet de <strong>recompter par règle</strong> : si R04 rejette d&#39;un coup
+trois cents lignes au lieu de dix-sept, ce n&#39;est pas la qualité des données qui
+s&#39;est effondrée, c&#39;est le référentiel qui n&#39;a pas été chargé.</p>
+<h2 id="la-reconciliation-qui-doit-tomber-juste">La réconciliation, qui doit tomber juste</h2>
+<p>Dernière pièce, et la plus simple : un script indépendant qui recompte tout depuis
+les fichiers sources, sans réutiliser une seule ligne du code de chargement.</p>
+<pre><code>lignes lues        5 000
+lignes rejetées      137
+lignes chargées    4 863
+                   ─────
+contrôle          5 000  ✔
+
+somme des montants en source   184 302 500 FCFA
+somme dans l&#39;entrepôt          184 302 500 FCFA   ✔</code></pre>
+<p>Il n&#39;y a rien de sophistiqué là-dedans. C&#39;est une addition. Mais elle doit tomber
+<strong>exactement</strong> juste, et le script sort en erreur au moindre écart — pas au-delà
+d&#39;une tolérance, à l&#39;unité près. Une chaîne de données qui perd sept lignes sans
+le dire est une chaîne qui perdra sept mille lignes le jour où le volume changera.</p>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>La question n&#39;est pas « mes données sont-elles propres ». C&#39;est <strong>« mon instrument
+de mesure fonctionne-t-il »</strong> — et on n&#39;y répond qu&#39;en lui présentant quelque chose
+dont on connaît déjà la réponse.</p>
+<p>Trois choses valent pour n&#39;importe quel contrôle, pas seulement pour des données :</p>
+<ul><li><strong>Fabriquez les défauts avant d&#39;écrire le contrôle.</strong> L&#39;ordre compte : écrire le générateur en premier vous force à énumérer ce que vous prétendez détecter, avant de savoir comment vous allez le détecter.</li><li><strong>Comptez les deux erreurs.</strong> Ce qui est manqué, et ce qui est écarté à tort. Un contrôle ne s&#39;améliore que si les deux chiffres descendent ensemble.</li><li><strong>Recomptez avec un autre code.</strong> Une vérification qui partage des fonctions avec ce qu&#39;elle vérifie hérite de ses erreurs, et confirme ce qu&#39;elle devait contredire.</li></ul>
+<p>Le générateur fait 180 lignes. Il a trouvé un défaut que dix règles, un entrepôt
+et un tableau de bord entier n&#39;avaient pas vu — parce qu&#39;il était la seule pièce
+du système à connaître la bonne réponse.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Apprendre à un RAG à dire « je ne sais pas »</title>
+      <link>https://fait-main-joyce.netlify.app/articles/apprendre-a-un-rag-a-se-taire/</link>
+      <guid isPermaLink="true">https://fait-main-joyce.netlify.app/articles/apprendre-a-un-rag-a-se-taire/</guid>
+      <pubDate>Tue, 14 Jul 2026 09:00:00 GMT</pubDate>
+      <description>Mon assistant documentaire refusait de répondre au mauvais moment. Le banc d&#39;essai a montré que le seuil de refus ne mesurait rien du tout.</description>
+      <!-- Les liens du corps sont rendus absolus : un flux est lu hors du site,
+           où un chemin relatif ne désigne plus rien. -->
+      <content:encoded><![CDATA[<p>Un assistant documentaire qui répond toujours est un assistant dangereux.</p>
+<p>Posez-lui une question dont la réponse n&#39;est nulle part dans le corpus : il
+répondra quand même. Poliment, dans le bon format, avec une citation qui a l&#39;air
+juste. C&#39;est le comportement par défaut d&#39;un modèle de langage, et sur des
+documents métier, c&#39;est le pire des comportements possibles — une erreur
+reconnaissable est moins coûteuse qu&#39;une erreur crédible.</p>
+<p>Je voulais donc que le mien sache se taire. J&#39;ai mis un seuil. Le seuil marchait
+mal, et il m&#39;a fallu un banc d&#39;essai pour comprendre que <strong>il ne pouvait pas
+marcher.</strong></p>
+<h2 id="le-seuil-que-j-avais-pose">Le seuil que j&#39;avais posé</h2>
+<p>L&#39;architecture était classique. Deux recherches en parallèle sur le corpus :</p>
+<ul><li><strong>BM25</strong>, lexicale, qui trouve les documents partageant les mots de la question.</li><li><strong>Vectorielle</strong>, sémantique, qui trouve ceux qui parlent de la même chose avec d&#39;autres mots.</li></ul>
+<p>Les deux listes sont ensuite fusionnées par <strong>rang réciproque</strong> (RRF), une
+méthode simple et efficace : chaque document reçoit, pour chaque liste où il
+apparaît, un score de <code>1 / (60 + rang)</code>, et on additionne.</p>
+<pre data-langue="js"><code class="langue-js">const scoreRRF = (rangBM25, rangVecteur) =&gt;
+  1 / (60 + rangBM25) + 1 / (60 + rangVecteur);</code></pre>
+<p>Le document trouvé premier par les deux méthodes obtient
+<code>1/61 + 1/61 ≈ 0,0328</code>. Un document trouvé dixième par les deux obtient
+<code>1/70 + 1/70 ≈ 0,0286</code>. Le classement fonctionne très bien.</p>
+<p>J&#39;ai donc fait ce qui semblait évident : <strong>si le meilleur score RRF passe sous un
+seuil, on refuse de répondre.</strong> J&#39;ai réglé ce seuil à la main, sur une dizaine
+d&#39;essais, et je suis passée à autre chose.</p>
+<h2 id="le-banc-d-essai-et-le-chiffre-qui-n-allait-pas">Le banc d&#39;essai, et le chiffre qui n&#39;allait pas</h2>
+<p>Quelques semaines plus tard, j&#39;ai écrit un banc d&#39;essai pour comparer six
+configurations de recherche. Il me fallait, pour ça, un jeu de questions.</p>
+<p>J&#39;en ai construit deux, et c&#39;est la seule décision vraiment importante de tout
+cet article :</p>
+<ul><li><strong>90 questions dont la réponse est dans le corpus.</strong> Pour mesurer si le bon passage remonte.</li><li><strong>30 questions dont la réponse n&#39;y est pas.</strong> Formulées dans le même vocabulaire métier, sur des sujets voisins, pour qu&#39;elles soient réellement difficiles à distinguer. Ce sont elles qui mesurent le refus.</li></ul>
+<p>Sans le second jeu, on ne mesure jamais le silence. On mesure la parole, et on
+suppose le reste.</p>
+<p>Le premier passage a donné ceci :</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Mesure</th><th scope="col" style="text-align:right">Résultat</th></tr></thead><tbody><tr><td>Questions sans réponse, correctement refusées</td><td style="text-align:right"><strong>37 %</strong></td></tr><tr><td>Questions avec réponse, refusées à tort</td><td style="text-align:right"><strong>12 %</strong></td></tr></tbody></table></div>
+<p>Autrement dit : sur trente questions auxquelles il ne pouvait pas répondre,
+l&#39;assistant en fabriquait dix-neuf. Et il refusait onze questions parfaitement
+légitimes. Le seuil ne triait pas mal — <strong>il ne triait pas.</strong></p>
+<h2 id="pourquoi-ce-seuil-ne-pouvait-pas-fonctionner">Pourquoi ce seuil ne pouvait pas fonctionner</h2>
+<p>En regardant la distribution des scores RRF sur les deux jeux, j&#39;ai vu le
+problème. Les deux courbes se superposaient presque exactement.</p>
+<p>La raison est dans la formule, et j&#39;aurais pu la voir sans aucune mesure :</p>
+<blockquote><p><strong>Le score RRF ne dépend que du rang. Jamais de la ressemblance.</strong></p></blockquote>
+<p>Une recherche renvoie toujours un premier résultat. Toujours. Que le corpus
+contienne la réponse parfaite ou une collection de textes sans rapport, il existe
+un document mieux classé que les autres — et <strong>ce document reçoit exactement le
+même score RRF dans les deux cas.</strong></p>
+<p><code>1/61 + 1/61</code> vaut 0,0328 pour un document qui répond mot pour mot à la question,
+et 0,0328 pour un document qui n&#39;a rien à voir. C&#39;est un classement, pas une
+mesure de qualité. J&#39;avais posé mon seuil sur une grandeur qui, par construction,
+ne contient pas l&#39;information que je lui demandais.</p>
+<p>Aucun test unitaire ne pouvait attraper ça. J&#39;en avais une trentaine, tous verts.
+Ils vérifiaient que la fusion classait dans le bon ordre — ce qu&#39;elle faisait
+parfaitement. <strong>Ils prenaient tous un corpus contenant la réponse</strong>, parce que
+c&#39;est ce qu&#39;on écrit spontanément quand on teste une recherche. Le cas absent
+n&#39;était testé nulle part.</p>
+<h2 id="le-correctif-separer-classer-et-decider">Le correctif : séparer classer et décider</h2>
+<p>Ce sont deux questions différentes, et elles demandent deux grandeurs différentes.</p>
+<ul><li><strong>Classer</strong> — quel document présenter en premier ? Le rang suffit, RRF reste parfait pour ça.</li><li><strong>Décider</strong> — ce document mérite-t-il qu&#39;on réponde ? Il faut une grandeur <strong>absolue</strong>, comparable d&#39;une question à l&#39;autre.</li></ul>
+<p>J&#39;ai gardé RRF pour l&#39;ordre, et déplacé la décision de refus sur la <strong>similarité
+cosinus brute du meilleur résultat vectoriel</strong> — un nombre entre 0 et 1 qui dit
+réellement à quel point le passage ressemble à la question.</p>
+<pre data-langue="js"><code class="langue-js">// Classer : rang réciproque, inchangé.
+const ordonnes = fusionRRF(resultatsBM25, resultatsVecteur);
+
+// Décider : une grandeur absolue, calibrée sur les deux jeux de questions.
+const meilleureSimilarite = Math.max(...resultatsVecteur.map((r) =&gt; r.cosinus));
+if (meilleureSimilarite &lt; SEUIL_REFUS) {
+  return reponseDeRefus();
+}</code></pre>
+<h2 id="choisir-le-seuil-par-balayage-pas-au-juge">Choisir le seuil par balayage, pas au jugé</h2>
+<p>Restait à fixer <code>SEUIL_REFUS</code>. Cette fois, je ne l&#39;ai pas deviné : j&#39;ai fait
+tourner les 120 questions pour chaque valeur de 0,20 à 0,50, par pas de 0,01, et
+j&#39;ai regardé les deux courbes.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col" style="text-align:right">Seuil</th><th scope="col" style="text-align:right">Refus corrects (sur 30)</th><th scope="col" style="text-align:right">Refus abusifs (sur 90)</th></tr></thead><tbody><tr><td style="text-align:right">0,25</td><td style="text-align:right">18 (60 %)</td><td style="text-align:right">1 (1 %)</td></tr><tr><td style="text-align:right">0,31</td><td style="text-align:right"><strong>27 (90 %)</strong></td><td style="text-align:right"><strong>4 (4 %)</strong></td></tr><tr><td style="text-align:right">0,38</td><td style="text-align:right">29 (97 %)</td><td style="text-align:right">17 (19 %)</td></tr><tr><td style="text-align:right">0,45</td><td style="text-align:right">30 (100 %)</td><td style="text-align:right">41 (46 %)</td></tr></tbody></table></div>
+<p>Le tableau rend l&#39;arbitrage visible, et il montre surtout qu&#39;<strong>il n&#39;existe pas de
+bonne valeur dans l&#39;absolu</strong>. À 0,45, l&#39;assistant ne fabrique plus jamais rien :
+il refuse aussi près d&#39;une question légitime sur deux. À 0,25, il répond presque
+toujours, y compris quand il ne devrait pas.</p>
+<p>J&#39;ai retenu <strong>0,31</strong>. Pas parce que c&#39;est un optimum mathématique, mais parce que
+sur un corpus de documents métier, une réponse inventée coûte plus cher qu&#39;un
+« je ne trouve pas » de trop. C&#39;est une décision de produit, prise avec le tableau
+sous les yeux — pas une constante trouvée au jugé.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Mesure</th><th scope="col" style="text-align:right">Avant</th><th scope="col" style="text-align:right">Après</th></tr></thead><tbody><tr><td>Refus corrects</td><td style="text-align:right">37 %</td><td style="text-align:right"><strong>90 %</strong></td></tr><tr><td>Refus abusifs</td><td style="text-align:right">12 %</td><td style="text-align:right"><strong>4 %</strong></td></tr></tbody></table></div>
+<h2 id="ce-que-j-ai-change-dans-ma-facon-de-tester">Ce que j&#39;ai changé dans ma façon de tester</h2>
+<p>Le banc d&#39;essai a trouvé en une campagne ce que trente tests unitaires n&#39;ont pas
+vu en trois mois. La différence n&#39;est pas la quantité, c&#39;est la <strong>direction</strong>.</p>
+<p>Mes tests unitaires étaient tous écrits depuis l&#39;intérieur du code : je savais
+comment la fusion marchait, je vérifiais qu&#39;elle marchait comme je le pensais. Le
+banc d&#39;essai était écrit depuis l&#39;extérieur : je ne savais pas ce qu&#39;il allait
+donner. C&#39;est la seule espèce de test qui peut vous apprendre quelque chose.</p>
+<p>Trois habitudes en sont sorties :</p>
+<ol><li><strong>Toujours constituer un jeu de cas négatifs</strong>, et le constituer en premier. Ce qu&#39;un système doit refuser est aussi spécifié que ce qu&#39;il doit accepter.</li><li><strong>Vérifier qu&#39;une grandeur contient l&#39;information qu&#39;on lui demande</strong>, avant de poser un seuil dessus. La question « de quoi ce nombre dépend-il ? » aurait suffi ici, et elle ne demandait aucune mesure.</li><li><strong>Publier la courbe de l&#39;arbitrage</strong>, pas seulement la valeur retenue. Le seuil change avec le corpus et avec l&#39;usage ; le tableau, lui, permet à la personne suivante de le rechoisir sans tout refaire.</li></ol>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Un seuil est une affirmation sur une grandeur. Avant de le régler, il faut
+vérifier que la grandeur mesure bien ce qu&#39;on croit — sinon on règle finement un
+instrument débranché, et on obtient exactement ce que j&#39;avais : un dispositif de
+refus qui rassure, qui a l&#39;air travaillé, et qui laisse passer deux erreurs sur
+trois.</p>
+<p>La capacité à se taire ne s&#39;ajoute pas à un système documentaire. Elle se mesure,
+au même titre que la capacité à répondre.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Votre texte de 13 px en fait 3,6 sur un téléphone</title>
+      <link>https://fait-main-joyce.netlify.app/articles/texte-13px-rendu-3-6px/</link>
+      <guid isPermaLink="true">https://fait-main-joyce.netlify.app/articles/texte-13px-rendu-3-6px/</guid>
+      <pubDate>Tue, 30 Jun 2026 09:00:00 GMT</pubDate>
+      <description>Une fiche de cours passait sur ordinateur et devenait illisible sur mobile. La cause n&#39;était pas la taille de police, mais une balise absente.</description>
+      <!-- Les liens du corps sont rendus absolus : un flux est lu hors du site,
+           où un chemin relatif ne désigne plus rien. -->
+      <content:encoded><![CDATA[<p>On m&#39;a demandé d&#39;auditer une fiche de cours en HTML. Sur mon écran, elle était
+correcte : lisible, structurée, un peu terne. J&#39;ai ouvert la même page sur mon
+téléphone.</p>
+<p>Le texte était réduit à une trame grise. Pas petit — <strong>illisible</strong>, au sens où on
+ne distingue plus les lettres les unes des autres.</p>
+<p>La feuille de style annonçait <code>font-size: 13px</code>. Sur le téléphone, chaque
+caractère occupait <strong>3,6 px</strong>. Voici pourquoi, et pourquoi je n&#39;ai pas corrigé ça
+en augmentant la police.</p>
+<h2 id="ce-que-fait-un-navigateur-mobile-quand-la-balise-manque">Ce que fait un navigateur mobile quand la balise manque</h2>
+<p>Une page conçue pour un écran d&#39;ordinateur reste consultable sur un téléphone.
+Les navigateurs mobiles l&#39;ont rendu possible avec une astuce, en 2007, et cette
+astuce est toujours active par défaut.</p>
+<p>Le navigateur commence par <strong>mettre en page dans une fenêtre virtuelle large</strong> —
+980 px de large par défaut, ou davantage si le contenu l&#39;exige. Puis il
+<strong>réduit l&#39;ensemble</strong> pour le faire tenir dans la largeur réelle de l&#39;écran.
+C&#39;est ce qui vous donne, sur un vieux site, la page entière en miniature qu&#39;il
+faut agrandir aux doigts.</p>
+<p>La fiche contenait un tableau à largeur fixe :</p>
+<pre data-langue="css"><code class="langue-css">.tableau-notes { width: 1160px; }</code></pre>
+<p>Le navigateur ne peut pas mettre ça en page dans 980 px. Il élargit la fenêtre
+virtuelle à 1 160 px, puis réduit le tout pour tenir dans les 320 px de l&#39;écran.</p>
+<p>Le facteur de réduction se calcule sans mystère :</p>
+<pre><code>facteur = largeur écran / largeur de mise en page
+        = 320 / 1160
+        = 0,276
+
+taille rendue = 13 px × 0,276
+              = 3,6 px</code></pre>
+<p><strong>3,6 px.</strong> Une minuscule y occupe environ deux pixels de haut. Aucune police ne
+survit à ça.</p>
+<h2 id="la-correction-tient-en-une-ligne">La correction tient en une ligne</h2>
+<pre data-langue="html"><code class="langue-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code></pre>
+<p>Cette balise dit au navigateur : ne construis pas de fenêtre virtuelle, mets en
+page directement à la largeur de l&#39;appareil, et n&#39;applique aucune réduction. Le
+13 px redevient 13 px.</p>
+<p>Elle ne suffit pas. Elle <strong>révèle</strong> le problème suivant : le tableau de 1 160 px
+déborde maintenant de l&#39;écran et fait défiler la page horizontalement. Il a fallu
+le laisser défiler dans son propre cadre :</p>
+<pre data-langue="css"><code class="langue-css">.tableau-defilant { overflow-x: auto; }
+.tableau-notes { width: 100%; min-width: 36rem; }</code></pre>
+<p>Le tableau défile ; la page, non. C&#39;est la règle : <strong>un contenu large défile dans
+son cadre, jamais le corps de la page.</strong></p>
+<h2 id="pourquoi-augmenter-la-police-aurait-ete-une-erreur">Pourquoi augmenter la police aurait été une erreur</h2>
+<p>Ma première idée avait été de passer de 13 px à 16 px. Elle était mauvaise, pour
+une raison arithmétique.</p>
+<p>Le facteur 0,276 s&#39;applique à <strong>tout</strong>. Passer à 16 px donne 16 × 0,276 = 4,4 px.
+On gagne huit dixièmes de pixel et on dégrade la mise en page sur ordinateur, où
+elle n&#39;avait aucun problème. Pour obtenir 16 px réels sous ce facteur, il aurait
+fallu déclarer une police de 58 px.</p>
+<p>C&#39;est le piège des symptômes : <strong>le nombre visible n&#39;est pas le nombre en cause.</strong>
+La police n&#39;était pas trop petite, elle était multipliée par 0,276. Tant qu&#39;on ne
+retire pas le facteur, aucune valeur de police n&#39;est bonne.</p>
+<h2 id="les-46-non-conformites-et-ce-que-les-mesurer-a-change">Les 46 non-conformités, et ce que les mesurer a changé</h2>
+<p>La balise manquante n&#39;était qu&#39;un point sur 46. J&#39;ai audité la version d&#39;origine
+avec un script, reconstruit la fiche, puis <strong>audité la version reconstruite avec
+le même script</strong>. C&#39;est ce point qui compte : deux mesures ne se comparent que si
+l&#39;instrument est identique.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Mesure</th><th scope="col" style="text-align:right">Version d&#39;origine</th><th scope="col" style="text-align:right">Version reconstruite</th></tr></thead><tbody><tr><td>Non-conformités WCAG 2.1 AA</td><td style="text-align:right">46</td><td style="text-align:right">0</td></tr><tr><td>Contraste moyen du texte</td><td style="text-align:right">2,36:1</td><td style="text-align:right">11,93:1</td></tr><tr><td>Textes sous le seuil AA de 4,5:1</td><td style="text-align:right">31</td><td style="text-align:right">0</td></tr><tr><td>Images sans alternative textuelle</td><td style="text-align:right">9</td><td style="text-align:right">0</td></tr><tr><td>Balise viewport</td><td style="text-align:right">absente</td><td style="text-align:right">présente</td></tr></tbody></table></div>
+<p>Le contraste moyen de 2,36:1 mérite un mot. Le seuil AA pour du texte courant est
+4,5:1. La fiche n&#39;en était pas à un cheveu : elle était <strong>à peu près à la moitié</strong>
+de ce qu&#39;exige la norme. Du gris clair sur blanc, choisi parce que c&#39;est
+« élégant » — et validé sur l&#39;écran d&#39;un ordinateur portable neuf, dans un bureau
+éclairé.</p>
+<p>C&#39;est là qu&#39;un chiffre remplace utilement une discussion. « Ce gris est un peu
+clair » est une opinion, à laquelle on peut opposer une autre opinion. « Ce gris
+est à 2,36:1 pour un seuil de 4,5:1 » n&#39;est pas discutable — c&#39;est une soustraction.</p>
+<h2 id="ce-que-je-verifie-maintenant-en-premier">Ce que je vérifie maintenant en premier</h2>
+<p>L&#39;audit m&#39;a laissé un ordre de passage. Ces quatre points prennent moins de deux
+minutes et attrapent la majorité des dégâts :</p>
+<ol><li><strong>La balise viewport est-elle là ?</strong> Une ligne. Sans elle, tout le reste de l&#39;audit mobile mesure des valeurs fausses.</li><li><strong>La page défile-t-elle horizontalement à 320 px de large ?</strong> Si oui, un élément a une largeur fixe. C&#39;est presque toujours un tableau ou une image.</li><li><strong>Quel est le contraste du texte le plus clair de la page ?</strong> Le calcul est dans la norme, il tient en quinze lignes de code.</li><li><strong>Les titres descendent-ils sans saut ?</strong> Un <code>h1</code> suivi d&#39;un <code>h4</code> casse la navigation par titres, seul moyen de parcourir une page au lecteur d&#39;écran.</li></ol>
+<p>Les points 1 et 2 se testent en redimensionnant une fenêtre. Le 3 et le 4
+demandent un script — et un script se rejoue, ce qui est exactement l&#39;intérêt.</p>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Une page « qui marche sur mon écran » ne dit rien de ce qu&#39;elle fait ailleurs.
+L&#39;écran de la personne qui produit un support est presque toujours le meilleur
+écran de la chaîne : grand, neuf, bien éclairé, à cinquante centimètres des yeux.
+C&#39;est le pire endroit d&#39;où juger de la lisibilité.</p>
+<p>Et une correction utile s&#39;attaque au facteur, pas au symptôme. Avant de changer
+une valeur qui vous déplaît, cherchez ce qui la multiplie.</p>]]></content:encoded>
+    </item>
+    <item>
+      <title>Sept défauts dans un projet que j&#39;avais déjà rendu</title>
+      <link>https://fait-main-joyce.netlify.app/articles/sept-defauts-projet-deja-rendu/</link>
+      <guid isPermaLink="true">https://fait-main-joyce.netlify.app/articles/sept-defauts-projet-deja-rendu/</guid>
+      <pubDate>Tue, 16 Jun 2026 09:00:00 GMT</pubDate>
+      <description>J&#39;ai rouvert un projet noté et livré. En trois jours de relecture, j&#39;ai trouvé sept défauts — dont trois qui rendaient le système faux.</description>
+      <!-- Les liens du corps sont rendus absolus : un flux est lu hors du site,
+           où un chemin relatif ne désigne plus rien. -->
+      <content:encoded><![CDATA[<p>Le projet était rendu. Noté. Rangé.</p>
+<p>Quatre services Spring Boot — découverte, passerelle, produits, commandes — un
+<code>docker-compose.yml</code> qui démarre, une démonstration qui passe. J&#39;avais coché la
+grille d&#39;évaluation ligne à ligne.</p>
+<p>Six mois plus tard, j&#39;ai voulu le remettre dans mon portfolio. Avant de le
+montrer, j&#39;ai relu le code comme si quelqu&#39;un d&#39;autre l&#39;avait écrit. <strong>Trois jours
+plus tard, j&#39;avais sept défauts.</strong> Trois d&#39;entre eux ne dégradaient pas le
+système : ils le rendaient faux.</p>
+<p>Voici les trois, et ce que leur découverte a changé dans ma façon de relire.</p>
+<h2 id="defaut-n-1-la-passerelle-repondait-404-sur-toutes-les-routes">Défaut n° 1 : la passerelle répondait 404 sur toutes les routes</h2>
+<p>Le plus embarrassant, parce que le plus visible — et que personne ne l&#39;avait vu,
+moi comprise.</p>
+<p>L&#39;architecture prévoyait que tout passe par la passerelle : le client appelle
+<code>localhost:8080/api/produits</code>, Spring Cloud Gateway consulte Eureka, trouve le
+service <code>produits</code>, et transmet. Pendant la démonstration, j&#39;avais appelé les
+services <strong>directement sur leurs ports</strong>, parce que c&#39;était ce que j&#39;avais sous
+la main dans Postman. La passerelle démarrait. Elle apparaissait dans Eureka.
+Elle était verte.</p>
+<p>Elle ne routait rien.</p>
+<p>La cause tenait en une ligne de configuration :</p>
+<pre data-langue="yaml"><code class="langue-yaml">spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false</code></pre>
+<p><code>enabled: false</code>. La valeur par défaut. Je n&#39;avais jamais écrit <code>true</code>, et rien
+ne me l&#39;avait signalé — une passerelle sans route n&#39;est pas une passerelle en
+erreur, c&#39;est une passerelle vide. Elle démarre parfaitement.</p>
+<p><strong>Ce que j&#39;en retiens :</strong> un composant qui démarre n&#39;est pas un composant qui
+fonctionne. « Vert dans Eureka » répond à la question « est-ce que le processus
+tourne », pas à la question « est-ce qu&#39;il fait son travail ». Ce sont deux
+questions distinctes, et je n&#39;en avais posé qu&#39;une.</p>
+<p>Le dépôt contient maintenant un script qui appelle <strong>chaque route via la
+passerelle</strong> et compare le résultat à un appel direct. Il tourne dans la CI. Si
+la passerelle redevient vide, la fusion est bloquée.</p>
+<h2 id="defaut-n-2-deux-commandes-simultanees-vendaient-le-meme-arti">Défaut n° 2 : deux commandes simultanées vendaient le même article</h2>
+<p>Celui-là ne se voit pas en cliquant. Il faut le chercher.</p>
+<p>Le service <code>commandes</code> réservait le stock en trois temps :</p>
+<pre data-langue="java"><code class="langue-java">Produit p = produitClient.getProduit(id);   // 1. lire
+if (p.getQuantite() &lt; demande) {            // 2. vérifier
+    throw new StockInsuffisantException();
+}
+produitClient.decrementer(id, demande);     // 3. écrire</code></pre>
+<p>Lire, vérifier, écrire. Trois appels réseau séparés, et <strong>rien entre eux</strong>.</p>
+<p>Avec un seul client, ce code est juste. Avec deux clients simultanés sur le
+dernier article en stock, les deux lisent <code>quantite = 1</code>, les deux passent la
+vérification, les deux décrémentent. Le stock tombe à <code>-1</code>, et deux personnes
+ont acheté le même objet.</p>
+<p>Je ne l&#39;ai pas trouvé en lisant. Je l&#39;ai trouvé en écrivant un test qui lance
+deux commandes en parallèle sur un stock de 1 :</p>
+<pre data-langue="java"><code class="langue-java">@Test
+void deuxCommandesSimultanees_uneSeuleDoitReussir() throws Exception {
+    creerProduit(&quot;P1&quot;, 1);
+    var pool = Executors.newFixedThreadPool(2);
+    var barriere = new CyclicBarrier(2);
+
+    List&lt;Future&lt;Boolean&gt;&gt; resultats = List.of(
+        pool.submit(() -&gt; { barriere.await(); return commander(&quot;P1&quot;, 1); }),
+        pool.submit(() -&gt; { barriere.await(); return commander(&quot;P1&quot;, 1); })
+    );
+
+    long reussies = resultats.stream().filter(this::sansErreur).count();
+    assertEquals(1, reussies);      // avant correctif : 2
+    assertEquals(0, stockDe(&quot;P1&quot;)); // avant correctif : -1
+}</code></pre>
+<p>La <code>CyclicBarrier</code> est la partie importante. Sans elle, les deux tâches
+démarrent à quelques millisecondes d&#39;écart et la première a le temps de finir :
+le test passe, et il ne prouve rien. La barrière les fait partir <strong>au même
+instant</strong>. C&#39;est ce qui rend le défaut reproductible au lieu d&#39;intermittent.</p>
+<p>Le correctif n&#39;a pas été de mettre un verrou dans le service <code>commandes</code> — il
+aurait protégé une instance et une seule. Il a été de déplacer la décision là où
+se trouve la donnée : le service <code>produits</code> décrémente désormais de façon
+conditionnelle, en une seule requête.</p>
+<pre data-langue="sql"><code class="langue-sql">UPDATE produit
+   SET quantite = quantite - :demande
+ WHERE id = :id
+   AND quantite &gt;= :demande</code></pre>
+<p>Zéro ligne modifiée signifie stock insuffisant. La base tranche, une seule fois,
+et le résultat ne dépend plus de l&#39;ordre d&#39;arrivée.</p>
+<p><strong>Ce que j&#39;en retiens :</strong> dès qu&#39;une décision porte sur une donnée partagée, la
+séquence lire-vérifier-écrire est fausse par construction. Elle n&#39;est pas
+« risquée sous forte charge » : elle est fausse. Deux requêtes suffisent à le
+démontrer.</p>
+<h2 id="defaut-n-3-une-quantite-negative-augmentait-le-stock">Défaut n° 3 : une quantité négative augmentait le stock</h2>
+<p>Celui-ci m&#39;a coûté le plus en amour-propre, parce qu&#39;il est trivial.</p>
+<p>Commander <code>-5</code> articles appelait <code>decrementer(id, -5)</code>, qui exécutait
+<code>quantite = quantite - (-5)</code>. <strong>Le stock montait.</strong> Le total de la commande, lui,
+devenait négatif.</p>
+<p>Il n&#39;y avait aucune validation sur la quantité entrante. Aucune. J&#39;avais annoté
+mes DTO avec <code>@NotNull</code> et je m&#39;étais arrêtée là, en confondant deux questions :
+« le champ est-il présent ? » et « la valeur a-t-elle un sens ? »</p>
+<pre data-langue="java"><code class="langue-java">public record LigneCommande(
+    @NotNull String produitId,
+    @NotNull @Min(1) Integer quantite   // @Min(1) : ajouté après coup
+) {}</code></pre>
+<p>Une annotation. Le correctif fait un caractère de plus que le défaut.</p>
+<p><strong>Ce que j&#39;en retiens :</strong> la validation d&#39;entrée n&#39;est pas une politesse
+défensive, c&#39;est une règle métier écrite à l&#39;endroit où elle se vérifie. « Une
+quantité commandée est un entier strictement positif » est une phrase du domaine
+autant que « une commande appartient à un client ». Je traitais la première comme
+de la plomberie et la seconde comme du métier. C&#39;est la même chose.</p>
+<h2 id="ce-que-ces-trois-defauts-ont-en-commun">Ce que ces trois défauts ont en commun</h2>
+<p>En les alignant, un motif est apparu — et c&#39;est ça, le vrai enseignement.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Défaut</th><th scope="col">Ce que je testais</th><th scope="col">Ce que je ne testais pas</th></tr></thead><tbody><tr><td>Passerelle vide</td><td>Le service démarre</td><td>Le service remplit son rôle</td></tr><tr><td>Vente double</td><td>Un utilisateur à la fois</td><td>Deux utilisateurs au même instant</td></tr><tr><td>Quantité négative</td><td>Les valeurs plausibles</td><td>Les valeurs hostiles</td></tr></tbody></table></div>
+<p>Trois fois la même erreur : <strong>j&#39;avais testé le cas que j&#39;avais en tête en
+écrivant le code.</strong> Or c&#39;est exactement le cas qui ne peut rien révéler. Le code
+et le test sortaient de la même hypothèse ; ils ne pouvaient que s&#39;accorder.</p>
+<p>Un test n&#39;a de valeur que s&#39;il vient d&#39;ailleurs que du code qu&#39;il vérifie.</p>
+<h2 id="la-question-que-je-pose-maintenant-a-chaque-fonctionnalite">La question que je pose maintenant à chaque fonctionnalité</h2>
+<p>J&#39;ai gardé trois questions de cette relecture. Elles tiennent en une ligne
+chacune et elles ont trouvé des défauts dans tous les projets où je les ai
+posées depuis.</p>
+<ol><li><strong>Si ce composant tombait en panne silencieusement, est-ce que je le verrais ?</strong> Si la seule preuve de bon fonctionnement est « ça démarre », la réponse est non.</li><li><strong>Que se passe-t-il si deux personnes font ça au même instant ?</strong> Pas « en forte charge ». Deux personnes. Un test à deux fils suffit à répondre.</li><li><strong>Quelle est la valeur la plus hostile que ce champ accepte ?</strong> Zéro, négatif, vide, très grand, la chaîne vide. Une par une.</li></ol>
+<p>Aucune ne demande d&#39;outil. Elles demandent de se placer ailleurs qu&#39;à l&#39;endroit
+d&#39;où on a écrit le code.</p>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Un projet rendu et noté n&#39;est pas un projet vérifié. La note évalue ce qui a été
+montré ; la relecture évalue ce qui a été écrit. Ce ne sont pas les mêmes objets.</p>
+<p>Ce que je referais dans cet ordre :</p>
+<ul><li><strong>Relire à froid</strong>, plusieurs mois après, en se donnant le rôle d&#39;une personne extérieure. Trois jours ont suffi pour sept défauts.</li><li><strong>Écrire le test avant le correctif</strong>, et vérifier qu&#39;il échoue. Un test qui n&#39;a jamais échoué ne prouve rien — il documente une intention, pas un comportement.</li><li><strong>Faire de la démonstration une commande</strong>, pas une séquence de clics. Ce qui n&#39;est pas scripté n&#39;est pas reproductible, et ce qui n&#39;est pas reproductible finit par ne plus être vrai sans que personne ne le remarque.</li></ul>
+<p>Les sept défauts sont documentés un par un dans le dépôt, chacun avec le script
+qui le démontre et le correctif qui le ferme. Les quatre que je n&#39;ai pas racontés
+ici sont plus ennuyeux — mais ils sont là aussi, parce qu&#39;un post-mortem qui ne
+garde que les défauts intéressants n&#39;est plus un post-mortem.</p>]]></content:encoded>
+    </item>
+  </channel>
+</rss>

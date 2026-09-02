@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuisine Locale — la cuisine camerounaise à Douala</title>
+<meta name="description" content="Ndolé, mbongo tchobi, poulet braisé et taro préparés le jour même à Akwa. Commande en ligne, livraison dans neuf quartiers de Douala, réservation de table.">
+<link rel="canonical" href="https://github.com/Djomnang8/Cuisine_Locale">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cuisine Locale — la cuisine camerounaise à Douala">
+<meta property="og:description" content="Ndolé, mbongo tchobi, poulet braisé et taro préparés le jour même à Akwa. Commande en ligne et livraison à Douala.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="36" height="36">
+      Cuisine Locale
+    </a>
+    <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="nav-principale">Menu</button>
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Accueil</a>
+      <a href="menu.html">Menu</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="reservation.html">Réserver</a>
+      <a href="contact.html">Contact</a>
+      <a class="lien-panier" href="panier.html">
+        <span data-libelle-panier>Panier vide</span>
+        <span class="pastille" data-pastille-panier hidden>0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+  <section class="banniere">
+    <div class="conteneur banniere__grille">
+      <div>
+        <h1>La cuisine camerounaise, préparée le jour même</h1>
+        <p>Ndolé aux crevettes, mbongo tchobi, poulet braisé au feu de bois. Rien n'est
+           réchauffé, rien n'est congelé — et ce qui n'est pas vendu le soir n'est pas
+           servi le lendemain.</p>
+        <p style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem">
+          <a class="btn btn--principal" href="menu.html">Voir le menu</a>
+          <a class="btn btn--clair" href="reservation.html">Réserver une table</a>
+        </p>
+      </div>
+      <div class="banniere__image">
+        <img src="assets/img/plats/restaurant.jpg"
+             alt="Salle du restaurant Cuisine Locale, tables dressées sous une lumière chaude"
+             width="800" height="600" fetchpriority="high">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="conteneur">
+      <h2 class="cache">Nos engagements</h2>
+      <ul class="grille-3" style="list-style:none;padding:0;margin:0">
+        <li class="atout">
+          <img src="assets/img/icones/qualite.svg" alt="" width="56" height="56" style="color:var(--orange)">
+          <h3>Marché tous les matins</h3>
+          <p>Les achats se font à six heures au marché de Nkololoun. Le menu du jour dépend de ce qu'on y trouve.</p>
+        </li>
+        <li class="atout">
+          <img src="assets/img/icones/livraison.svg" alt="" width="56" height="56" style="color:var(--orange)">
+          <h3>Livraison dans 9 quartiers</h3>
+          <p>D'Akwa à Bonabéri, entre 25 et 55 minutes. Livraison offerte au-delà de 15 000 FCFA.</p>
+        </li>
+        <li class="atout">
+          <img src="assets/img/icones/horaires.svg" alt="" width="56" height="56" style="color:var(--orange)">
+          <h3>De 8 h à 22 h</h3>
+          <p>Sept jours sur sept, du petit-déjeuner au dîner. Jusqu'à 23 h le samedi.</p>
+        </li>
+        <li class="atout">
+          <img src="assets/img/icones/feuille.svg" alt="" width="56" height="56" style="color:var(--orange)">
+          <h3>Produits d'ici</h3>
+          <p>Huile de palme de Bonabéri, poisson du port, taro des Grassfields. Aucun ingrédient importé.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--calme">
+    <div class="conteneur">
+      <h2>Les plus commandés</h2>
+      <p style="color:var(--gris);max-width:56ch">Six plats représentent la moitié des commandes.
+         Si vous venez pour la première fois, commencez par là.</p>
+      <ul class="grille-plats" id="plats-populaires"></ul>
+      <p style="margin-top:2rem">
+        <a class="btn btn--secondaire" href="menu.html">Voir les 14 plats du menu</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="conteneur grille-2">
+      <div>
+        <h2>Une adresse à Akwa depuis 2016</h2>
+        <p>Cuisine Locale est née d'un constat simple : à Douala, on mange très bien
+           chez soi et très mal à l'extérieur. Entre le maquis qui sert la même sauce
+           depuis trois jours et le restaurant qui « revisite » le ndolé jusqu'à le
+           rendre méconnaissable, il manquait quelque chose.</p>
+        <p>Nous cuisinons les plats comme ils se font à la maison, avec le temps que
+           ça demande. Le koki cuit trois heures en feuilles de bananier. Les haricots
+           mijotent depuis la veille. C'est plus lent, et c'est le sujet.</p>
+        <p><a class="btn btn--secondaire" href="a-propos.html">Notre histoire</a></p>
+      </div>
+      <div class="chiffres">
+        <div><div class="chiffre__valeur">10</div><div class="chiffre__libelle">ans d'ouverture</div></div>
+        <div><div class="chiffre__valeur">5</div><div class="chiffre__libelle">chefs en cuisine</div></div>
+        <div><div class="chiffre__valeur">14</div><div class="chiffre__libelle">plats au menu</div></div>
+        <div><div class="chiffre__valeur">9</div><div class="chiffre__libelle">quartiers livrés</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--calme">
+    <div class="conteneur" style="text-align:center">
+      <h2>Commander, réserver, ou passer</h2>
+      <p style="color:var(--gris);max-width:52ch;margin-inline:auto">
+        La commande en ligne se règle à la livraison, en espèces ou par Mobile Money.
+        Pour une table, la réservation en ligne est confirmée en moins d'une heure.</p>
+      <p style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:1.5rem">
+        <a class="btn btn--principal" href="menu.html">Commander en ligne</a>
+        <a class="btn btn--secondaire" href="reservation.html">Réserver une table</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <h3>Cuisine Locale</h3>
+        <p>La cuisine camerounaise, préparée le jour même. Rue Joss, Akwa — Douala.</p>
+      </div>
+      <div>
+        <h3>Le site</h3>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="reservation.html">Réserver une table</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Mon panier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nous joindre</h3>
+        <ul>
+          <li><a href="tel:+237659271281">+237 6 59 27 12 81</a></li>
+          <li><a href="mailto:bonjour@cuisinelocale.cm">bonjour@cuisinelocale.cm</a></li>
+          <li>Rue Joss, Akwa — Douala</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ouverture</h3>
+        <ul>
+          <li>Lundi à vendredi : 8 h – 22 h</li>
+          <li>Samedi : 8 h – 23 h</li>
+          <li>Dimanche : 10 h – 21 h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© <span data-annee>2026</span> Cuisine Locale — site de démonstration.</span>
+      <span>Conçu et développé par Joyce Djomnang.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/donnees.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const cible = document.getElementById('plats-populaires');
+    PLATS.filter((p) => p.populaire).forEach((p) => cible.appendChild(cartePlat(p)));
+  });
+</script>
+</body>
+</html>

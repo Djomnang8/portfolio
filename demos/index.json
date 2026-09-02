@@ -1,5 +1,5 @@
 {
-  "genere_le": "2026-09-01",
+  "genere_le": "2026-09-02",
   "demos": [
     {
       "slug": "assistant-ops",
@@ -35,6 +35,17 @@
       "fichiers": 3
     },
     {
+      "slug": "cuisine-locale",
+      "titre": "Cuisine Locale",
+      "sous_titre": "Site de restaurant : carte filtrable, panier persistant, commande et reservation",
+      "depot": "Cuisine_Locale",
+      "url": "demos/cuisine-locale/",
+      "hors_ligne": "Entierement statique. Le panier, les favoris et les validations vivent dans le navigateur : rien n'a besoin d'un serveur.",
+      "spa": false,
+      "ko": 1182,
+      "fichiers": 41
+    },
+    {
       "slug": "devispro",
       "titre": "DevisPro",
       "sous_titre": "Devis, factures, encaissements et relances",
@@ -55,6 +66,17 @@
       "spa": false,
       "ko": 38,
       "fichiers": 3
+    },
+    {
+      "slug": "fait-main",
+      "titre": "Fait Main — blog technique et newsletter",
+      "sous_titre": "6 articles, une ligne editoriale executable, 468 controles",
+      "depot": "fait-main",
+      "url": "demos/fait-main/",
+      "hors_ligne": "Entierement statique : le blog est genere avant publication, rien ne s'execute cote serveur.",
+      "spa": false,
+      "ko": 216,
+      "fichiers": 15
     },
     {
       "slug": "kit-design",

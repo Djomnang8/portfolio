@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le menu — Cuisine Locale</title>
+<meta name="description" content="Les 14 plats de Cuisine Locale : petit-déjeuner, déjeuner, dîner et boissons. Filtrez par catégorie, cherchez par ingrédient, commandez en ligne à Douala.">
+<meta property="og:title" content="Le menu — Cuisine Locale">
+<meta property="og:description" content="Les 14 plats de Cuisine Locale, du beignet-haricot au mbongo tchobi. Commande en ligne à Douala.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="36" height="36">
+      Cuisine Locale
+    </a>
+    <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="nav-principale">Menu</button>
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="menu.html" aria-current="page">Menu</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="reservation.html">Réserver</a>
+      <a href="contact.html">Contact</a>
+      <a class="lien-panier" href="panier.html">
+        <span data-libelle-panier>Panier vide</span>
+        <span class="pastille" data-pastille-panier hidden>0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="conteneur">
+    <nav class="fil" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a> › <span aria-current="page">Menu</span>
+    </nav>
+
+    <h1>Le menu</h1>
+    <p style="color:var(--gris);max-width:60ch">Quatorze plats, préparés le jour même.
+       Les prix sont en francs CFA, taxes comprises. La recherche porte aussi sur les
+       ingrédients : tapez « arachide » ou « piment » pour voir ce qui en contient.</p>
+
+    <section aria-labelledby="titre-filtres" style="margin-top:2rem">
+      <h2 id="titre-filtres" class="cache">Filtrer la carte</h2>
+
+      <ul class="onglets">
+        <li><button type="button" class="onglet" data-categorie="tous" aria-pressed="true">Tous</button></li>
+        <li><button type="button" class="onglet" data-categorie="petit-dejeuner" aria-pressed="false">Petit-déjeuner</button></li>
+        <li><button type="button" class="onglet" data-categorie="dejeuner" aria-pressed="false">Déjeuner</button></li>
+        <li><button type="button" class="onglet" data-categorie="diner" aria-pressed="false">Dîner</button></li>
+        <li><button type="button" class="onglet" data-categorie="boissons" aria-pressed="false">Boissons</button></li>
+        <li><button type="button" class="onglet" data-categorie="favoris" aria-pressed="false">★ Mes favoris</button></li>
+      </ul>
+
+      <div class="filtres">
+        <div class="champ champ--large">
+          <label for="recherche">Chercher un plat ou un ingrédient</label>
+          <input type="search" id="recherche" placeholder="ndolé, arachide, poisson…" autocomplete="off">
+        </div>
+        <div class="champ">
+          <label for="tri">Trier par</label>
+          <select id="tri">
+            <option value="populaire">Les plus commandés</option>
+            <option value="prix-croissant">Prix croissant</option>
+            <option value="prix-decroissant">Prix décroissant</option>
+            <option value="nom">Ordre alphabétique</option>
+          </select>
+        </div>
+        <div class="champ">
+          <label for="vegetarien" style="display:flex;align-items:center;gap:.5rem;min-height:44px;cursor:pointer">
+            <input type="checkbox" id="vegetarien" style="width:20px;height:20px;min-height:20px">
+            Végétarien seulement
+          </label>
+        </div>
+      </div>
+
+      <p class="compteur-resultats" id="compteur" role="status" aria-live="polite"></p>
+    </section>
+
+    <ul class="grille-plats" id="liste-plats"></ul>
+
+    <section class="carte" style="margin-top:3rem">
+      <h2>Livraison à Douala</h2>
+      <p style="color:var(--gris)">Les frais dépendent du quartier. Au-delà de
+         <strong>15 000 FCFA</strong> de commande, la livraison est offerte.</p>
+      <div class="tableau-defilant">
+        <table>
+          <caption class="cache">Frais et délais de livraison par quartier</caption>
+          <thead><tr><th scope="col">Quartier</th><th scope="col">Frais</th><th scope="col">Délai estimé</th></tr></thead>
+          <tbody id="table-quartiers"></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <h3>Cuisine Locale</h3>
+        <p>La cuisine camerounaise, préparée le jour même. Rue Joss, Akwa — Douala.</p>
+      </div>
+      <div>
+        <h3>Le site</h3>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="reservation.html">Réserver une table</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Mon panier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nous joindre</h3>
+        <ul>
+          <li><a href="tel:+237659271281">+237 6 59 27 12 81</a></li>
+          <li><a href="mailto:bonjour@cuisinelocale.cm">bonjour@cuisinelocale.cm</a></li>
+          <li>Rue Joss, Akwa — Douala</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ouverture</h3>
+        <ul>
+          <li>Lundi à vendredi : 8 h – 22 h</li>
+          <li>Samedi : 8 h – 23 h</li>
+          <li>Dimanche : 10 h – 21 h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© <span data-annee>2026</span> Cuisine Locale — site de démonstration.</span>
+      <span>Conçu et développé par Joyce Djomnang.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/donnees.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/menu.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('table-quartiers').innerHTML = QUARTIERS.map((q) =>
+      `<tr><th scope="row" style="font-weight:600">${q.nom}</th><td>${prixFCFA(q.frais)}</td><td>${q.delai} min</td></tr>`).join('');
+  });
+</script>
+</body>
+</html>

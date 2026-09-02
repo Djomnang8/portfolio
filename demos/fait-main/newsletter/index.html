@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La lettre de l&#39;atelier — Fait Main</title>
+<meta name="description" content="Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.">
+<meta name="author" content="Emmanuella Joyce Djomnang">
+<link rel="canonical" href="https://fait-main-joyce.netlify.app/newsletter/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fait Main">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="La lettre de l&#39;atelier">
+<meta property="og:description" content="Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.">
+<meta property="og:url" content="https://fait-main-joyce.netlify.app/newsletter/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La lettre de l&#39;atelier">
+<meta name="twitter:description" content="Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.">
+
+<link rel="alternate" type="application/rss+xml" title="Fait Main" href="/demos/fait-main/rss.xml">
+<link rel="stylesheet" href="/demos/fait-main/assets/style.css">
+<link rel="icon" href="/demos/fait-main/assets/favicon.svg" type="image/svg+xml">
+
+<script>
+/* Appliqué avant le premier rendu : sans ça, une page sombre clignoterait en clair. */
+(function () {
+  try {
+    var choix = localStorage.getItem('fm-theme');
+    if (choix) document.documentElement.setAttribute('data-theme', choix);
+  } catch (e) { /* navigation privée : on garde le réglage système */ }
+})();
+</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Fait Main","description":"Un carnet d'atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l'appui.","url":"https://fait-main-joyce.netlify.app","inLanguage":"fr","author":{"@type":"Person","name":"Emmanuella Joyce Djomnang","url":"https://djomnang-portfolio-1.netlify.app"}}</script>
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="site-entete">
+  <div class="enveloppe">
+    <div>
+      <p class="site-titre"><a href="/demos/fait-main/">Fait Main</a></p>
+      <p class="site-accroche">Comment les logiciels sont réellement fabriqués</p>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="/demos/fait-main/">Articles</a>
+          <a href="/demos/fait-main/newsletter/" aria-current="page">Newsletter</a>
+          <a href="/demos/fait-main/a-propos/">À propos</a>
+      <button type="button" class="bascule-theme" id="bascule-theme" aria-live="polite">Thème</button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="enveloppe">
+    <div class="accueil-intro">
+      <h1 class="accueil-titre">La lettre de l&#39;atelier</h1>
+      <p class="accueil-texte">Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.</p>
+    </div>
+
+  <section class="encart-lettre" aria-labelledby="titre-lettre">
+    <h2 id="titre-lettre">La lettre de l&#39;atelier</h2>
+    <p>Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.</p>
+    <form class="formulaire-lettre" action="https://buttondown.email/api/emails/embed-subscribe/fait-main" method="post" target="_blank">
+      <label class="visuellement-cache" for="courriel">Votre adresse e-mail</label>
+      <input type="email" id="courriel" name="email" required
+             placeholder="vous@exemple.com" autocomplete="email">
+      <button type="submit">S'abonner</button>
+    </form>
+  </section>
+
+    <h2 class="visuellement-cache">Archives</h2>
+    <ul class="liste-articles">
+      <li>
+        <a class="carte-article" href="/demos/fait-main/newsletter/3/">
+          <p class="meta">
+            <span class="etiquette">N° 3</span>
+            <time datetime="2026-07-29">29 juillet 2026</time>
+          </p>
+          <h2 class="carte-titre">Ce que le rapport ne dit pas</h2>
+        </a>
+      </li>
+      <li>
+        <a class="carte-article" href="/demos/fait-main/newsletter/2/">
+          <p class="meta">
+            <span class="etiquette">N° 2</span>
+            <time datetime="2026-07-15">15 juillet 2026</time>
+          </p>
+          <h2 class="carte-titre">Le jeu de questions sans réponse</h2>
+        </a>
+      </li>
+      <li>
+        <a class="carte-article" href="/demos/fait-main/newsletter/1/">
+          <p class="meta">
+            <span class="etiquette">N° 1</span>
+            <time datetime="2026-06-17">17 juin 2026</time>
+          </p>
+          <h2 class="carte-titre">Ce qui démarre et ce qui marche</h2>
+        </a>
+      </li>
+    </ul>
+  </div>
+</main>
+
+<footer class="site-pied">
+  <div class="enveloppe">
+    <p>Fait Main — écrit par Joyce Djomnang, Douala, Cameroun.<br>
+       Textes sous CC BY 4.0, code sous licence MIT.</p>
+    <ul>
+      <li><a href="/demos/fait-main/rss.xml">Flux RSS</a></li>
+      <li><a href="https://github.com/Djomnang8" rel="noopener">GitHub</a></li>
+      <li><a href="https://djomnang-portfolio-1.netlify.app" rel="noopener">Portfolio</a></li>
+      <li><a href="mailto:joycedjomnang@gmail.com">Écrire</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Bascule de thème : système -> clair -> sombre -> système. */
+(function () {
+  var bouton = document.getElementById('bascule-theme');
+  if (!bouton) return;
+  var etats = ['systeme', 'light', 'dark'];
+  var libelles = { systeme: 'Thème : système', light: 'Thème : clair', dark: 'Thème : sombre' };
+
+  function lire() {
+    try { return localStorage.getItem('fm-theme') || 'systeme'; } catch (e) { return 'systeme'; }
+  }
+  function appliquer(etat) {
+    if (etat === 'systeme') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', etat);
+    bouton.textContent = libelles[etat];
+    try {
+      if (etat === 'systeme') localStorage.removeItem('fm-theme');
+      else localStorage.setItem('fm-theme', etat);
+    } catch (e) { /* réglage non mémorisable : la page reste correcte */ }
+  }
+  appliquer(lire());
+  bouton.addEventListener('click', function () {
+    appliquer(etats[(etats.indexOf(lire()) + 1) % etats.length]);
+  });
+})();
+</script>
+</body>
+</html>

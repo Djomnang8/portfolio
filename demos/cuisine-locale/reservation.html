@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réserver une table — Cuisine Locale</title>
+<meta name="description" content="Réservez une table chez Cuisine Locale à Akwa, Douala. Jusqu'à 12 couverts, du lundi au dimanche. Confirmation par téléphone en moins d'une heure.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="36" height="36">
+      Cuisine Locale
+    </a>
+    <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="nav-principale">Menu</button>
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="menu.html">Menu</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="reservation.html" aria-current="page">Réserver</a>
+      <a href="contact.html">Contact</a>
+      <a class="lien-panier" href="panier.html">
+        <span data-libelle-panier>Panier vide</span>
+        <span class="pastille" data-pastille-panier hidden>0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="conteneur">
+    <nav class="fil" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a> › <span aria-current="page">Réserver</span>
+    </nav>
+
+    <div id="zone-reservation">
+      <h1>Réserver une table</h1>
+      <p style="color:var(--gris);max-width:58ch">Jusqu'à 12 couverts en ligne. Au-delà,
+         appelez-nous : nous réorganisons la salle, et ça se décide de vive voix.
+         Toute réservation est confirmée par téléphone en moins d'une heure.</p>
+
+      <div class="grille-2" style="margin-top:2rem">
+        <section class="carte" aria-labelledby="titre-form">
+          <h2 id="titre-form" style="margin-top:0">Votre demande</h2>
+          <form id="form-reservation" novalidate>
+            <div class="champ" style="margin-bottom:1.25rem">
+              <label for="nom">Nom complet</label>
+              <input type="text" id="nom" required autocomplete="name">
+              <p class="erreur-champ" id="err-nom" hidden></p>
+            </div>
+            <div class="champ" style="margin-bottom:1.25rem">
+              <label for="telephone">Téléphone</label>
+              <input type="tel" id="telephone" placeholder="6 XX XX XX XX" required autocomplete="tel">
+              <p class="erreur-champ" id="err-telephone" hidden></p>
+            </div>
+            <div class="champ" style="margin-bottom:1.25rem">
+              <label for="date">Date</label>
+              <input type="date" id="date" required>
+              <p class="erreur-champ" id="err-date" hidden></p>
+            </div>
+            <div class="champ" style="margin-bottom:1.25rem">
+              <label for="heure">Heure</label>
+              <input type="time" id="heure" step="900" required>
+              <p class="erreur-champ" id="err-heure" hidden></p>
+              <p style="font-size:.85rem;color:var(--gris);margin:.25rem 0 0" id="rappel-horaires"></p>
+            </div>
+            <div class="champ" style="margin-bottom:1.25rem">
+              <label for="couverts">Nombre de couverts</label>
+              <input type="number" id="couverts" min="1" max="12" value="2" required>
+              <p class="erreur-champ" id="err-couverts" hidden></p>
+            </div>
+            <div class="champ" style="margin-bottom:1.25rem">
+              <label for="occasion">Occasion (facultatif)</label>
+              <select id="occasion">
+                <option value="">Aucune en particulier</option>
+                <option>Anniversaire</option>
+                <option>Repas d'affaires</option>
+                <option>Retrouvailles en famille</option>
+                <option>Première visite</option>
+              </select>
+            </div>
+            <div class="champ" style="margin-bottom:1.5rem">
+              <label for="remarques">Remarques (facultatif)</label>
+              <textarea id="remarques" placeholder="Allergie, table à l'ombre, chaise haute…"></textarea>
+            </div>
+            <button type="submit" class="btn btn--principal">Demander cette table</button>
+          </form>
+        </section>
+
+        <aside>
+          <div class="carte" style="margin-bottom:1.5rem">
+            <h2 style="margin-top:0">Horaires</h2>
+            <table>
+              <caption class="cache">Heures d'ouverture de la semaine</caption>
+              <tbody id="table-horaires"></tbody>
+            </table>
+          </div>
+          <div class="carte">
+            <h2 style="margin-top:0">Bon à savoir</h2>
+            <ul style="padding-left:1.25rem;color:var(--gris);margin:0">
+              <li style="margin-bottom:.5rem">La table est gardée <strong>20 minutes</strong> après l'heure réservée.</li>
+              <li style="margin-bottom:.5rem">Les plats longs — taro, nkôk — se commandent à la réservation.</li>
+              <li style="margin-bottom:.5rem">Terrasse couverte disponible, utile en saison des pluies.</li>
+              <li>Annulation gratuite, par téléphone, jusqu'à 2 h avant.</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <h3>Cuisine Locale</h3>
+        <p>La cuisine camerounaise, préparée le jour même. Rue Joss, Akwa — Douala.</p>
+      </div>
+      <div>
+        <h3>Le site</h3>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="reservation.html">Réserver une table</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Mon panier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nous joindre</h3>
+        <ul>
+          <li><a href="tel:+237659271281">+237 6 59 27 12 81</a></li>
+          <li><a href="mailto:bonjour@cuisinelocale.cm">bonjour@cuisinelocale.cm</a></li>
+          <li>Rue Joss, Akwa — Douala</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ouverture</h3>
+        <ul>
+          <li>Lundi à vendredi : 8 h – 22 h</li>
+          <li>Samedi : 8 h – 23 h</li>
+          <li>Dimanche : 10 h – 21 h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© <span data-annee>2026</span> Cuisine Locale — site de démonstration.</span>
+      <span>Conçu et développé par Joyce Djomnang.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/donnees.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/reservation.js"></script>
+</body>
+</html>

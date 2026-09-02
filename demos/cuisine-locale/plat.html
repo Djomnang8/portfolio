@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le plat — Cuisine Locale</title>
+<meta name="description" content="Composition, allergènes, temps de préparation et niveau de piment de chaque plat de Cuisine Locale, restaurant camerounais à Douala.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="36" height="36">
+      Cuisine Locale
+    </a>
+    <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="nav-principale">Menu</button>
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="menu.html">Menu</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="reservation.html">Réserver</a>
+      <a href="contact.html">Contact</a>
+      <a class="lien-panier" href="panier.html">
+        <span data-libelle-panier>Panier vide</span>
+        <span class="pastille" data-pastille-panier hidden>0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="conteneur">
+    <nav class="fil" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a> › <a href="menu.html">Menu</a> ›
+      <span aria-current="page" id="fil-plat">Le plat</span>
+    </nav>
+    <div id="fiche"></div>
+    <section id="suggestions-bloc" hidden style="margin-top:3.5rem">
+      <h2>Dans la même catégorie</h2>
+      <ul class="grille-plats" id="suggestions"></ul>
+    </section>
+  </div>
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <h3>Cuisine Locale</h3>
+        <p>La cuisine camerounaise, préparée le jour même. Rue Joss, Akwa — Douala.</p>
+      </div>
+      <div>
+        <h3>Le site</h3>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="reservation.html">Réserver une table</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Mon panier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nous joindre</h3>
+        <ul>
+          <li><a href="tel:+237659271281">+237 6 59 27 12 81</a></li>
+          <li><a href="mailto:bonjour@cuisinelocale.cm">bonjour@cuisinelocale.cm</a></li>
+          <li>Rue Joss, Akwa — Douala</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ouverture</h3>
+        <ul>
+          <li>Lundi à vendredi : 8 h – 22 h</li>
+          <li>Samedi : 8 h – 23 h</li>
+          <li>Dimanche : 10 h – 21 h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© <span data-annee>2026</span> Cuisine Locale — site de démonstration.</span>
+      <span>Conçu et développé par Joyce Djomnang.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/donnees.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const id = new URLSearchParams(location.search).get('id');
+  const plat = platParId(id);
+  const fiche = document.getElementById('fiche');
+
+  // Un identifiant absent ou inventé ne doit pas donner une page cassée : on
+  // le dit, et on propose la sortie.
+  if (!plat) {
+    document.title = 'Plat introuvable — Cuisine Locale';
+    fiche.innerHTML = `<div class="vide">
+        <h1>Ce plat n'existe pas</h1>
+        <p>Il a peut-être été retiré de la carte, ou l'adresse est incomplète.</p>
+        <a class="btn btn--principal" href="menu.html">Voir le menu</a>
+      </div>`;
+    return;
+  }
+
+  document.title = `${plat.nom} — Cuisine Locale`;
+  document.querySelector('meta[name="description"]').setAttribute('content', `${plat.resume} ${prixFCFA(plat.prix)}. ${plat.description}`.slice(0, 158));
+  document.getElementById('fil-plat').textContent = plat.nom;
+
+  const categorie = categorieParId(plat.categorie);
+  const piments = plat.piment === 0 ? 'Doux' : '🌶️'.repeat(plat.piment);
+  const favori = Favoris.contient(plat.id);
+
+  fiche.innerHTML = `
+    <article class="fiche">
+      <div class="fiche__image">
+        <img src="assets/img/plats/${plat.image}" alt="${plat.alt}" width="800" height="600" fetchpriority="high">
+      </div>
+      <div>
+        <p class="badges" style="margin-bottom:.75rem">
+          <span class="badge badge--vert">${categorie.nom}</span>
+          ${plat.vegetarien ? '<span class="badge badge--vert">Végétarien</span>' : ''}
+          ${plat.populaire ? '<span class="badge">Populaire</span>' : ''}
+        </p>
+        <h1>${plat.nom}</h1>
+        <p class="fiche__prix">${prixFCFA(plat.prix)}</p>
+        <p>${plat.description}</p>
+
+        <dl>
+          <dt>Composition</dt><dd>${plat.ingredients.join(', ')}.</dd>
+          <dt>Allergènes</dt><dd>${plat.allergenes.length ? plat.allergenes.join(', ') : 'Aucun allergène déclaré.'}</dd>
+          <dt>Préparation</dt><dd>${plat.preparation} minutes après commande.</dd>
+          <dt>Piment</dt><dd>${piments}</dd>
+        </dl>
+
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center">
+          <div class="quantite">
+            <button type="button" id="moins" aria-label="Diminuer la quantité">−</button>
+            <span id="qte" aria-live="polite">1</span>
+            <button type="button" id="plus" aria-label="Augmenter la quantité">+</button>
+          </div>
+          <button type="button" class="btn btn--principal" id="ajouter">Ajouter au panier</button>
+          <button type="button" class="btn btn--secondaire" id="favori-fiche" aria-pressed="${favori}">
+            ${favori ? '★ En favori' : '☆ Mettre en favori'}
+          </button>
+        </div>
+
+        <p style="margin-top:1.5rem"><a href="menu.html">← Revenir au menu</a></p>
+      </div>
+    </article>`;
+
+  let quantite = 1;
+  const affichage = document.getElementById('qte');
+  const majQuantite = (n) => { quantite = Math.min(Math.max(1, n), 99); affichage.textContent = quantite; };
+  document.getElementById('moins').addEventListener('click', () => majQuantite(quantite - 1));
+  document.getElementById('plus').addEventListener('click', () => majQuantite(quantite + 1));
+
+  document.getElementById('ajouter').addEventListener('click', () => {
+    Panier.ajouter(plat.id, quantite);
+    notifier(`${quantite} × ${plat.nom} ajouté au panier`);
+  });
+
+  const boutonFavori = document.getElementById('favori-fiche');
+  boutonFavori.addEventListener('click', () => {
+    const actif = Favoris.basculer(plat.id);
+    boutonFavori.setAttribute('aria-pressed', String(actif));
+    boutonFavori.textContent = actif ? '★ En favori' : '☆ Mettre en favori';
+    notifier(actif ? 'Ajouté aux favoris' : 'Retiré des favoris');
+  });
+
+  const voisins = PLATS.filter((p) => p.categorie === plat.categorie && p.id !== plat.id).slice(0, 3);
+  if (voisins.length) {
+    document.getElementById('suggestions-bloc').hidden = false;
+    const cible = document.getElementById('suggestions');
+    voisins.forEach((p) => cible.appendChild(cartePlat(p)));
+  }
+});
+</script>
+</body>
+</html>

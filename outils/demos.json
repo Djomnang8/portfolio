@@ -14,9 +14,11 @@
     "Champs :",
     "  slug      nom du dossier sous demos/ et de l'URL publique",
     "  depot     dossier du depot voisin, relatif au parent du portfolio",
-    "  mode      copie | vite | angular",
+    "  mode      copie | node | vite | angular",
     "  sources   (mode copie) fichiers et dossiers a recopier",
     "  racine    (mode copie) prefixe a retirer des chemins copies",
+    "  commande  (mode node) arguments passes a node, {slug} est substitue",
+    "  sortie    (mode node) dossier produit par la commande, efface apres copie",
     "  dossier   (modes vite/angular) sous-dossier ou lancer la construction",
     "  spa       true si l'application gere ses propres routes (redirection 200)",
     "  hors_ligne  ce que la demo fait sans serveur : elle doit rester utile"
@@ -49,6 +51,33 @@
       ],
       "spa": false,
       "hors_ligne": "Les ratios sont recalcules par la page elle-meme, pas lus dans un fichier.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "cuisine-locale",
+      "titre": "Cuisine Locale",
+      "sous_titre": "Site de restaurant : carte filtrable, panier persistant, commande et reservation",
+      "depot": "Cuisine_Locale",
+      "mode": "copie",
+      "racine": "",
+      "sources": [
+        "index.html", "menu.html", "plat.html", "panier.html",
+        "reservation.html", "contact.html", "a-propos.html", "assets"
+      ],
+      "spa": false,
+      "hors_ligne": "Entierement statique. Le panier, les favoris et les validations vivent dans le navigateur : rien n'a besoin d'un serveur.",
+      "entree": "index.html"
+    },
+    {
+      "slug": "fait-main",
+      "titre": "Fait Main — blog technique et newsletter",
+      "sous_titre": "6 articles, une ligne editoriale executable, 468 controles",
+      "depot": "fait-main",
+      "mode": "node",
+      "commande": ["outils/build-site.js", "--base=/demos/{slug}", "--sortie=dist-demo"],
+      "sortie": "dist-demo",
+      "spa": false,
+      "hors_ligne": "Entierement statique : le blog est genere avant publication, rien ne s'execute cote serveur.",
       "entree": "index.html"
     },
     {

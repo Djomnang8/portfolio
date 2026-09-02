@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fait Main — Comment les logiciels sont réellement fabriqués</title>
+<meta name="description" content="Un carnet d&#39;atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l&#39;appui.">
+<meta name="author" content="Emmanuella Joyce Djomnang">
+<link rel="canonical" href="https://fait-main-joyce.netlify.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fait Main">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Fait Main">
+<meta property="og:description" content="Un carnet d&#39;atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l&#39;appui.">
+<meta property="og:url" content="https://fait-main-joyce.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fait Main">
+<meta name="twitter:description" content="Un carnet d&#39;atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l&#39;appui.">
+
+<link rel="alternate" type="application/rss+xml" title="Fait Main" href="/demos/fait-main/rss.xml">
+<link rel="stylesheet" href="/demos/fait-main/assets/style.css">
+<link rel="icon" href="/demos/fait-main/assets/favicon.svg" type="image/svg+xml">
+
+<script>
+/* Appliqué avant le premier rendu : sans ça, une page sombre clignoterait en clair. */
+(function () {
+  try {
+    var choix = localStorage.getItem('fm-theme');
+    if (choix) document.documentElement.setAttribute('data-theme', choix);
+  } catch (e) { /* navigation privée : on garde le réglage système */ }
+})();
+</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Fait Main","description":"Un carnet d'atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l'appui.","url":"https://fait-main-joyce.netlify.app","inLanguage":"fr","author":{"@type":"Person","name":"Emmanuella Joyce Djomnang","url":"https://djomnang-portfolio-1.netlify.app"}}</script>
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="site-entete">
+  <div class="enveloppe">
+    <div>
+      <p class="site-titre"><a href="/demos/fait-main/">Fait Main</a></p>
+      <p class="site-accroche">Comment les logiciels sont réellement fabriqués</p>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="/demos/fait-main/" aria-current="page">Articles</a>
+          <a href="/demos/fait-main/newsletter/">Newsletter</a>
+          <a href="/demos/fait-main/a-propos/">À propos</a>
+      <button type="button" class="bascule-theme" id="bascule-theme" aria-live="polite">Thème</button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="enveloppe">
+    <div class="accueil-intro">
+      <h1 class="accueil-titre">Comment les logiciels sont réellement fabriqués</h1>
+      <p class="accueil-texte">Un carnet d&#39;atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l&#39;appui.</p>
+    </div>
+
+    <h2 class="visuellement-cache">Articles</h2>
+    <ul class="liste-articles">
+      <li>
+        <a class="carte-article" href="/demos/fait-main/articles/le-test-de-la-phrase-supprimee/">
+          <p class="meta">
+            <span class="etiquette">Carnet</span>
+            <time datetime="2026-08-25">25 août 2026</time>
+            <span>5 min de lecture</span>
+          </p>
+          <h2 class="carte-titre">Le test de la phrase supprimée</h2>
+          <p class="carte-chapeau">Une méthode de relecture en une règle, appliquée à mes cinq derniers articles. Elle en a retiré 14 %, et pas les passages que je croyais.</p>
+        </a>
+      </li>
+      <li>
+        <a class="carte-article" href="/demos/fait-main/articles/une-couleur-qui-fait-echouer-la-ci/">
+          <p class="meta">
+            <span class="etiquette">Accessibilité</span>
+            <time datetime="2026-08-11">11 août 2026</time>
+            <span>5 min de lecture</span>
+          </p>
+          <h2 class="carte-titre">Une couleur qui fait échouer l&#39;intégration continue</h2>
+          <p class="carte-chapeau">J&#39;ai mis mes couleurs sous contrôle automatique. Le script a refusé ma palette dès le premier jour — et il avait raison sur un point que je n&#39;avais pas vu.</p>
+        </a>
+      </li>
+      <li>
+        <a class="carte-article" href="/demos/fait-main/articles/saboter-ses-donnees-pour-tester-son-controle/">
+          <p class="meta">
+            <span class="etiquette">Mesure</span>
+            <time datetime="2026-07-28">28 juillet 2026</time>
+            <span>5 min de lecture</span>
+          </p>
+          <h2 class="carte-titre">J&#39;ai saboté mes données pour tester mon contrôle qualité</h2>
+          <p class="carte-chapeau">Un rapport qui annonce zéro anomalie ne prouve rien. J&#39;ai planté 137 défauts connus pour vérifier que mon contrôle les trouvait tous. Il en a trouvé 131.</p>
+        </a>
+      </li>
+      <li>
+        <a class="carte-article" href="/demos/fait-main/articles/apprendre-a-un-rag-a-se-taire/">
+          <p class="meta">
+            <span class="etiquette">IA appliquée</span>
+            <time datetime="2026-07-14">14 juillet 2026</time>
+            <span>6 min de lecture</span>
+          </p>
+          <h2 class="carte-titre">Apprendre à un RAG à dire « je ne sais pas »</h2>
+          <p class="carte-chapeau">Mon assistant documentaire refusait de répondre au mauvais moment. Le banc d&#39;essai a montré que le seuil de refus ne mesurait rien du tout.</p>
+        </a>
+      </li>
+      <li>
+        <a class="carte-article" href="/demos/fait-main/articles/texte-13px-rendu-3-6px/">
+          <p class="meta">
+            <span class="etiquette">Accessibilité</span>
+            <time datetime="2026-06-30">30 juin 2026</time>
+            <span>5 min de lecture</span>
+          </p>
+          <h2 class="carte-titre">Votre texte de 13 px en fait 3,6 sur un téléphone</h2>
+          <p class="carte-chapeau">Une fiche de cours passait sur ordinateur et devenait illisible sur mobile. La cause n&#39;était pas la taille de police, mais une balise absente.</p>
+        </a>
+      </li>
+      <li>
+        <a class="carte-article" href="/demos/fait-main/articles/sept-defauts-projet-deja-rendu/">
+          <p class="meta">
+            <span class="etiquette">Post-mortem</span>
+            <time datetime="2026-06-16">16 juin 2026</time>
+            <span>6 min de lecture</span>
+          </p>
+          <h2 class="carte-titre">Sept défauts dans un projet que j&#39;avais déjà rendu</h2>
+          <p class="carte-chapeau">J&#39;ai rouvert un projet noté et livré. En trois jours de relecture, j&#39;ai trouvé sept défauts — dont trois qui rendaient le système faux.</p>
+        </a>
+      </li>
+    </ul>
+
+  <section class="encart-lettre" aria-labelledby="titre-lettre">
+    <h2 id="titre-lettre">La lettre de l&#39;atelier</h2>
+    <p>Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.</p>
+    <form class="formulaire-lettre" action="https://buttondown.email/api/emails/embed-subscribe/fait-main" method="post" target="_blank">
+      <label class="visuellement-cache" for="courriel">Votre adresse e-mail</label>
+      <input type="email" id="courriel" name="email" required
+             placeholder="vous@exemple.com" autocomplete="email">
+      <button type="submit">S'abonner</button>
+    </form>
+  </section>
+  </div>
+</main>
+
+<footer class="site-pied">
+  <div class="enveloppe">
+    <p>Fait Main — écrit par Joyce Djomnang, Douala, Cameroun.<br>
+       Textes sous CC BY 4.0, code sous licence MIT.</p>
+    <ul>
+      <li><a href="/demos/fait-main/rss.xml">Flux RSS</a></li>
+      <li><a href="https://github.com/Djomnang8" rel="noopener">GitHub</a></li>
+      <li><a href="https://djomnang-portfolio-1.netlify.app" rel="noopener">Portfolio</a></li>
+      <li><a href="mailto:joycedjomnang@gmail.com">Écrire</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Bascule de thème : système -> clair -> sombre -> système. */
+(function () {
+  var bouton = document.getElementById('bascule-theme');
+  if (!bouton) return;
+  var etats = ['systeme', 'light', 'dark'];
+  var libelles = { systeme: 'Thème : système', light: 'Thème : clair', dark: 'Thème : sombre' };
+
+  function lire() {
+    try { return localStorage.getItem('fm-theme') || 'systeme'; } catch (e) { return 'systeme'; }
+  }
+  function appliquer(etat) {
+    if (etat === 'systeme') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', etat);
+    bouton.textContent = libelles[etat];
+    try {
+      if (etat === 'systeme') localStorage.removeItem('fm-theme');
+      else localStorage.setItem('fm-theme', etat);
+    } catch (e) { /* réglage non mémorisable : la page reste correcte */ }
+  }
+  appliquer(lire());
+  bouton.addEventListener('click', function () {
+    appliquer(etats[(etats.indexOf(lire()) + 1) % etats.length]);
+  });
+})();
+</script>
+</body>
+</html>

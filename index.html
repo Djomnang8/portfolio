@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr" data-theme="light">
   <head>
     <meta charset="UTF-8" />
@@ -151,7 +151,7 @@
 
           <div class="hero__stats">
             <div class="stat">
-              <div class="stat__num">10</div>
+              <div class="stat__num">11</div>
               <div class="stat__label">applications développées</div>
             </div>
             <div class="stat">
@@ -324,7 +324,7 @@
           <h2 class="section__title">Ce que j'ai construit</h2>
           <p class="section__desc">
             Chaque carte indique le problème traité et la pile technique réellement
-            utilisée. <strong>Dix projets se lancent directement ici</strong> : le bouton
+            utilisée. <strong>Douze projets se lancent directement ici</strong> : le bouton
             « Lancer la démo » ouvre l'application, sans installation, sans compte et sans
             serveur à démarrer. Les applications qui ont besoin d'une API basculent sur un
             jeu de données local quand aucune n'est joignable, et gardent exactement les
@@ -332,233 +332,6 @@
           </p>
 
           <div class="projects__grid">
-            <!-- ---------- MODULE E-LEARNING ACCESSIBLE ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/projets/cover-module-a11y.svg"
-                  alt="Module e-learning accessible : 1 211 textes mesurés, 0 non-conformité, contraste moyen 7,64:1"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--live"
-                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">
-                  Les bases de l'accessibilité numérique — module e-learning
-                </h3>
-                <p class="project__desc">
-                  Un module de 12 minutes qui enseigne l'accessibilité et qui l'applique
-                  à lui-même. 7 écrans, 4 exercices réellement jouables : un vérificateur
-                  de contraste qui applique la formule exacte de la norme WCAG, un
-                  exercice d'alternatives textuelles, un bac à sable clavier où un faux
-                  bouton ne reçoit jamais le focus, et une chasse aux titres fautifs.
-                  <strong>1 211 textes mesurés dans 5 modes d'affichage, 0
-                  non-conformité</strong>, contraste moyen 7,64:1 pour un seuil AA à
-                  4,5:1. Contenu pédagogique séparé du code, illustrations SVG générées
-                  par script (18,4 Ko les neuf), transcription intégrale produite depuis
-                  la source.
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">HTML sémantique</span>
-                  <span class="tag">CSS variables</span>
-                  <span class="tag">JavaScript</span>
-                  <span class="tag">WCAG 2.1 AA</span>
-                  <span class="tag">ARIA</span>
-                  <span class="tag">SVG généré</span>
-                  <span class="tag">Zéro dépendance</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="demos/module-a11y/"
-                    class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/module-elearning-accessible"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Code source</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/module-elearning-accessible/blob/main/04-accessibilite/audit-wcag.md"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Rapport WCAG</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- ---------- AUDIT D'ACCESSIBILITÉ ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/projets/cover-audit-a11y.svg"
-                  alt="Audit d'accessibilité : 46 non-conformités avant, 0 après, contraste moyen passé de 2,36:1 à 11,93:1"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--live"
-                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">
-                  Audit d'accessibilité de supports pédagogiques
-                </h3>
-                <p class="project__desc">
-                  Une fiche de cours auditée contre WCAG 2.1 AA, puis reconstruite. Les
-                  deux versions mesurées avec le même script :
-                  <strong>46 non-conformités ramenées à 0</strong>, contraste moyen passé
-                  de 2,36:1 à 11,93:1. Le chiffre qui frappe : sans balise viewport, la
-                  version d'origine rend son texte de 13 px à 3,6 px physiques sur un
-                  téléphone. Le dépôt contient aussi une checklist interactive de
-                  38 points à score pondéré — dès qu'un point bloquant échoue, le
-                  pourcentage cède la place au verdict « Non livrable ».
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">WCAG 2.1 AA</span>
-                  <span class="tag">RGAA</span>
-                  <span class="tag">JavaScript</span>
-                  <span class="tag">Audit automatisé</span>
-                  <span class="tag">ARIA</span>
-                  <span class="tag">localStorage</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="demos/audit-a11y/"
-                    class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/audit-accessibilite-supports-pedagogiques"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Code source</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/audit-accessibilite-supports-pedagogiques/blob/main/audit/rapport-wcag.md"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ L'audit avant / après</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- ---------- KIT DESIGN PÉDAGOGIQUE & IA ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/projets/cover-kit-design.svg"
-                  alt="Kit design pédagogique : 40 paires de couleurs vérifiées, 0 non conforme, tout généré depuis tokens.json"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--live"
-                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">
-                  Kit Design Pédagogique &amp; IA — système de design vérifiable
-                </h3>
-                <p class="project__desc">
-                  Un système de design pour supports pédagogiques, où
-                  <strong>chaque paire de couleurs est mesurée</strong> : 40 paires
-                  vérifiées, 0 non conforme. Le script de contrôle sort en code d'erreur
-                  si une seule échoue — il se branche tel quel dans une CI. Source unique
-                  dans <code>tokens.json</code>, d'où sont générés le CSS, les 20 icônes,
-                  les 6 gabarits et le rapport de contraste. S'y ajoutent une
-                  bibliothèque de 12 prompts sur bloc de style figé, et une charte de
-                  production IA qui tranche ce qui est généré, ce qui ne l'est jamais, et
-                  comment tracer chaque visuel.
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">Design tokens</span>
-                  <span class="tag">Node.js</span>
-                  <span class="tag">CSS variables</span>
-                  <span class="tag">SVG</span>
-                  <span class="tag">WCAG 2.1</span>
-                  <span class="tag">IA générative</span>
-                  <span class="tag">Canva / Genially</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="demos/kit-design/"
-                    class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/kit-design-pedagogique-ia"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Code source</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/kit-design-pedagogique-ia/blob/main/charte-ia.md"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ La charte IA</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- ---------- PROJET 1 (conservé tel quel) ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/jpeg/multi.jpeg"
-                  alt="Aperçu du site Cuisine Locale"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--live"
-                  ><span class="badge__dot"></span>DÉMO</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">Cuisine Locale</h3>
-                <p class="project__desc">
-                  Découvrez l’authenticité des saveurs camerounaises ! Chez Cuisine
-                  Locale, nous revisitons vos plats traditionnels préparés avec des
-                  produits frais et locaux. Ndolé, poulet braisé, mbongo tchobi…
-                  Laissez-vous tenter par une expérience culinaire unique, livrée chez
-                  vous ou à déguster sur place.
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">HTML5</span>
-                  <span class="tag">CSS3</span>
-                  <span class="tag">Bootstrap 4</span>
-                  <span class="tag">JavaScript</span>
-                  <span class="tag">jQuery</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="projet1/index.html"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Voir plus</a
-                  >
-                </div>
-              </div>
-            </article>
-
             <!-- ---------- MECATRACK ---------- -->
             <article class="project">
               <div class="project__media">
@@ -597,7 +370,9 @@
                   <a
                     href="demos/mecatrack/"
                     class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
                   >
                   <a
                     href="https://github.com/Djomnang8/MecaTrack"
@@ -654,7 +429,9 @@
                   <a
                     href="demos/devispro/"
                     class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
                   >
                   <a
                     href="https://github.com/Djomnang8/DevisPro"
@@ -710,7 +487,9 @@
                   <a
                     href="demos/buildtrack/"
                     class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
                   >
                   <a
                     href="https://github.com/Djomnang8/BuildTrack"
@@ -773,7 +552,9 @@
                   <a
                     href="demos/stock/"
                     class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
                   >
                   <a
                     href="https://github.com/Djomnang8/Gestion_Produit_Commandes"
@@ -788,66 +569,6 @@
                     target="_blank"
                     rel="noreferrer"
                     >&#8594; Les défauts corrigés</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- ---------- ENTREPÔT DE DONNÉES ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/projets/entrepot-donnees.png"
-                  alt="Tableau de bord de qualité des données : lignes lues, rejetées, corrigées et signalées, produites par le pipeline"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--live"
-                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">
-                  Entrepôt de données et qualité — de la source au tableau de bord
-                </h3>
-                <p class="project__desc">
-                  Une chaîne complète : trois fichiers sources hétérogènes (CSV en UTF-8,
-                  TSV en latin-1, JSON), un contrôle qualité en dix règles, un entrepôt en
-                  étoile et un tableau de bord généré. Les défauts ne sont pas supposés :
-                  ils sont <strong>plantés en quantités connues par le générateur</strong>,
-                  ce qui rend le rapport vérifiable plutôt qu'affirmatif. Chaque ligne
-                  écartée, corrigée ou signalée garde la trace de la règle qui l'a
-                  décidée. Une réconciliation indépendante recompte tout et doit tomber
-                  exactement juste.
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">Python 3</span>
-                  <span class="tag">SQLite</span>
-                  <span class="tag">Schéma en étoile</span>
-                  <span class="tag">ETL</span>
-                  <span class="tag">Zéro dépendance</span>
-                  <span class="tag">GitHub Actions</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="demos/entrepot-bi/"
-                    class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/entrepot-donnees-qualite"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >&#8594; Code source</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/entrepot-donnees-qualite#readme"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >&#8594; Rapport qualité</a
                   >
                 </div>
               </div>
@@ -892,114 +613,6 @@
                     target="_blank"
                     rel="noreferrer"
                     >→ Code source</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- ---------- ENERGYTRACK API ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/projets/cover-energytrack.svg"
-                  alt="Aperçu des endpoints de l'API EnergyTrack"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--code"
-                  ><span class="badge__dot"></span>PYTHON</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">
-                  EnergyTrack API — Suivi de consommation électrique
-                </h3>
-                <p class="project__desc">
-                  API REST de gestion des relevés de consommation : clients,
-                  compteurs, saisie des index et facturation par tranches
-                  progressives. Trois contrôles se déclenchent à chaque saisie —
-                  index non régressif refusé, consommation supérieure au double de
-                  la moyenne signalée, compteur bloqué détecté. Authentification
-                  JWT à trois rôles et 36 tests sur les règles métier.
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">Python 3.12</span>
-                  <span class="tag">FastAPI</span>
-                  <span class="tag">SQLAlchemy 2</span>
-                  <span class="tag">Pydantic v2</span>
-                  <span class="tag">PostgreSQL</span>
-                  <span class="tag">JWT</span>
-                  <span class="tag">pytest</span>
-                  <span class="tag">Docker</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="https://github.com/Djomnang8/energytrack-api"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Code source</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/energytrack-api#readme"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Lancer en local</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- ---------- FACTURES INSIGHTS ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/projets/cover-factures.svg"
-                  alt="Aperçu du tableau de bord Factures Insights"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--code"
-                  ><span class="badge__dot"></span>DATA</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">
-                  Factures Insights — Analyse et tableau de bord
-                </h3>
-                <p class="project__desc">
-                  Transforme un export de factures brut en indicateurs de gestion :
-                  chiffre d'affaires, taux de recouvrement, délai moyen de paiement,
-                  balance âgée des impayés et liste des relances. Le chargement
-                  absorbe les données réelles — montants en trois formats, dates
-                  mélangées, doublons — et affiche ce qu'il a corrigé. Export en
-                  rapport Excel formaté.
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">Python 3.12</span>
-                  <span class="tag">pandas</span>
-                  <span class="tag">Plotly</span>
-                  <span class="tag">Streamlit</span>
-                  <span class="tag">openpyxl</span>
-                  <span class="tag">pytest</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="https://github.com/Djomnang8/factures-insights"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Code source</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/factures-insights#readme"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Lancer en local</a
                   >
                 </div>
               </div>
@@ -1060,62 +673,6 @@
               </div>
             </article>
 
-            <!-- ---------- RAG-BENCH ---------- -->
-            <article class="project">
-              <div class="project__media">
-                <img
-                  src="assets/projets/rag-bench.png"
-                  alt="Rapport de campagne de rag-bench"
-                  class="project__img"
-                  loading="lazy"
-                />
-                <span class="badge badge--live"
-                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
-                >
-              </div>
-              <div class="project__body">
-                <h3 class="project__title">
-                  rag-bench — Banc d'évaluation d'un système RAG
-                </h3>
-                <p class="project__desc">
-                  Mesure ce qu'un RAG fait réellement : le bon passage remonte-t-il, la
-                  réponse s'appuie-t-elle sur les documents, le système se tait-il quand
-                  il ne sait pas, et à quel prix en latence. Compare six configurations
-                  et désigne la meilleure avec des chiffres. La campagne a révélé un bug
-                  qu'aucun test unitaire ne cherchait.
-                </p>
-                <p class="project__stack-label">Stack</p>
-                <div class="project__tags">
-                  <span class="tag">Python 3.10+</span>
-                  <span class="tag">Zéro dépendance</span>
-                  <span class="tag">Recall@k · MRR</span>
-                  <span class="tag">pytest</span>
-                  <span class="tag">GitHub Actions</span>
-                </div>
-                <div class="project__links">
-                  <a
-                    href="demos/rag-bench/rapport.html"
-                    class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/rag-bench"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Code source</a
-                  >
-                  <a
-                    href="https://github.com/Djomnang8/rag-bench#readme"
-                    class="project__link"
-                    target="_blank"
-                    rel="noreferrer"
-                    >→ Lancer en local</a
-                  >
-                </div>
-              </div>
-            </article>
-
             <!-- ---------- ASSISTANT OPS ---------- -->
             <article class="project">
               <div class="project__media">
@@ -1155,7 +712,9 @@
                   <a
                     href="demos/assistant-ops/"
                     class="project__link project__link--demo"
-                    >&#9654; Lancer la démo</a
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
                   >
                   <a
                     href="https://github.com/Djomnang8/assistant-ops"
@@ -1170,6 +729,558 @@
                     target="_blank"
                     rel="noreferrer"
                     >→ Lancer en local</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- ENERGYTRACK API ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-energytrack.svg"
+                  alt="Aperçu des endpoints de l'API EnergyTrack"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--code"
+                  ><span class="badge__dot"></span>PYTHON</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  EnergyTrack API — Suivi de consommation électrique
+                </h3>
+                <p class="project__desc">
+                  API REST de gestion des relevés de consommation : clients,
+                  compteurs, saisie des index et facturation par tranches
+                  progressives. Trois contrôles se déclenchent à chaque saisie —
+                  index non régressif refusé, consommation supérieure au double de
+                  la moyenne signalée, compteur bloqué détecté. Authentification
+                  JWT à trois rôles et 36 tests sur les règles métier.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">Python 3.12</span>
+                  <span class="tag">FastAPI</span>
+                  <span class="tag">SQLAlchemy 2</span>
+                  <span class="tag">Pydantic v2</span>
+                  <span class="tag">PostgreSQL</span>
+                  <span class="tag">JWT</span>
+                  <span class="tag">pytest</span>
+                  <span class="tag">Docker</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="https://github.com/Djomnang8/energytrack-api"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/energytrack-api#readme"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Lancer en local</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- ENTREPÔT DE DONNÉES ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/entrepot-donnees.png"
+                  alt="Tableau de bord de qualité des données : lignes lues, rejetées, corrigées et signalées, produites par le pipeline"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Entrepôt de données et qualité — de la source au tableau de bord
+                </h3>
+                <p class="project__desc">
+                  Une chaîne complète : trois fichiers sources hétérogènes (CSV en UTF-8,
+                  TSV en latin-1, JSON), un contrôle qualité en dix règles, un entrepôt en
+                  étoile et un tableau de bord généré. Les défauts ne sont pas supposés :
+                  ils sont <strong>plantés en quantités connues par le générateur</strong>,
+                  ce qui rend le rapport vérifiable plutôt qu'affirmatif. Chaque ligne
+                  écartée, corrigée ou signalée garde la trace de la règle qui l'a
+                  décidée. Une réconciliation indépendante recompte tout et doit tomber
+                  exactement juste.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">Python 3</span>
+                  <span class="tag">SQLite</span>
+                  <span class="tag">Schéma en étoile</span>
+                  <span class="tag">ETL</span>
+                  <span class="tag">Zéro dépendance</span>
+                  <span class="tag">GitHub Actions</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="demos/entrepot-bi/"
+                    class="project__link project__link--demo"
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/entrepot-donnees-qualite"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >&#8594; Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/entrepot-donnees-qualite#readme"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >&#8594; Rapport qualité</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- FACTURES INSIGHTS ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-factures.svg"
+                  alt="Aperçu du tableau de bord Factures Insights"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--code"
+                  ><span class="badge__dot"></span>DATA</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Factures Insights — Analyse et tableau de bord
+                </h3>
+                <p class="project__desc">
+                  Transforme un export de factures brut en indicateurs de gestion :
+                  chiffre d'affaires, taux de recouvrement, délai moyen de paiement,
+                  balance âgée des impayés et liste des relances. Le chargement
+                  absorbe les données réelles — montants en trois formats, dates
+                  mélangées, doublons — et affiche ce qu'il a corrigé. Export en
+                  rapport Excel formaté.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">Python 3.12</span>
+                  <span class="tag">pandas</span>
+                  <span class="tag">Plotly</span>
+                  <span class="tag">Streamlit</span>
+                  <span class="tag">openpyxl</span>
+                  <span class="tag">pytest</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="https://github.com/Djomnang8/factures-insights"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/factures-insights#readme"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Lancer en local</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- RAG-BENCH ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/rag-bench.png"
+                  alt="Rapport de campagne de rag-bench"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  rag-bench — Banc d'évaluation d'un système RAG
+                </h3>
+                <p class="project__desc">
+                  Mesure ce qu'un RAG fait réellement : le bon passage remonte-t-il, la
+                  réponse s'appuie-t-elle sur les documents, le système se tait-il quand
+                  il ne sait pas, et à quel prix en latence. Compare six configurations
+                  et désigne la meilleure avec des chiffres. La campagne a révélé un bug
+                  qu'aucun test unitaire ne cherchait.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">Python 3.10+</span>
+                  <span class="tag">Zéro dépendance</span>
+                  <span class="tag">Recall@k · MRR</span>
+                  <span class="tag">pytest</span>
+                  <span class="tag">GitHub Actions</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="demos/rag-bench/rapport.html"
+                    class="project__link project__link--demo"
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/rag-bench"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/rag-bench#readme"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Lancer en local</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- FAIT MAIN — BLOG ET NEWSLETTER ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-fait-main.svg"
+                  alt="Fait Main : la ligne éditoriale écrite en 11 règles devient un script qui sort en erreur — 6 articles, 5 733 mots, 468 contrôles verts"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Fait Main — blog technique et newsletter
+                </h3>
+                <p class="project__desc">
+                  Un blog où la ligne éditoriale n'est pas un document d'intention :
+                  c'est un script qui bloque la publication. Longueur, cadence,
+                  vocabulaire banni, section de sortie obligatoire —
+                  <strong>11 règles vérifiées à chaque intégration</strong>, et un
+                  article hors format ne peut pas être fusionné. Six articles tirés
+                  des projets de ce portfolio, trois numéros de newsletter,
+                  <strong>468 contrôles automatiques</strong> répartis sur
+                  l'analyseur Markdown maison, les 32 paires de contraste, la
+                  conformité éditoriale, les métadonnées SEO et les liens internes.
+                  Le vérificateur a refusé son propre article sur la relecture — il
+                  citait deux formules bannies au lieu de les employer.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">Node.js</span>
+                  <span class="tag">Générateur statique</span>
+                  <span class="tag">Markdown maison</span>
+                  <span class="tag">Design tokens</span>
+                  <span class="tag">WCAG 2.1 AA</span>
+                  <span class="tag">SEO · JSON-LD</span>
+                  <span class="tag">RSS</span>
+                  <span class="tag">GitHub Actions</span>
+                  <span class="tag">Zéro dépendance</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="demos/fait-main/"
+                    class="project__link project__link--demo"
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/fait-main"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/fait-main/blob/main/ligne-editoriale.md"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ La ligne éditoriale</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- MODULE E-LEARNING ACCESSIBLE ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-module-a11y.svg"
+                  alt="Module e-learning accessible : 1 211 textes mesurés, 0 non-conformité, contraste moyen 7,64:1"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Les bases de l'accessibilité numérique — module e-learning
+                </h3>
+                <p class="project__desc">
+                  Un module de 12 minutes qui enseigne l'accessibilité et qui l'applique
+                  à lui-même. 7 écrans, 4 exercices réellement jouables : un vérificateur
+                  de contraste qui applique la formule exacte de la norme WCAG, un
+                  exercice d'alternatives textuelles, un bac à sable clavier où un faux
+                  bouton ne reçoit jamais le focus, et une chasse aux titres fautifs.
+                  <strong>1 211 textes mesurés dans 5 modes d'affichage, 0
+                  non-conformité</strong>, contraste moyen 7,64:1 pour un seuil AA à
+                  4,5:1. Contenu pédagogique séparé du code, illustrations SVG générées
+                  par script (18,4 Ko les neuf), transcription intégrale produite depuis
+                  la source.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">HTML sémantique</span>
+                  <span class="tag">CSS variables</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">WCAG 2.1 AA</span>
+                  <span class="tag">ARIA</span>
+                  <span class="tag">SVG généré</span>
+                  <span class="tag">Zéro dépendance</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="demos/module-a11y/"
+                    class="project__link project__link--demo"
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/module-elearning-accessible"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/module-elearning-accessible/blob/main/04-accessibilite/audit-wcag.md"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Rapport WCAG</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- KIT DESIGN PÉDAGOGIQUE & IA ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-kit-design.svg"
+                  alt="Kit design pédagogique : 40 paires de couleurs vérifiées, 0 non conforme, tout généré depuis tokens.json"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Kit Design Pédagogique &amp; IA — système de design vérifiable
+                </h3>
+                <p class="project__desc">
+                  Un système de design pour supports pédagogiques, où
+                  <strong>chaque paire de couleurs est mesurée</strong> : 40 paires
+                  vérifiées, 0 non conforme. Le script de contrôle sort en code d'erreur
+                  si une seule échoue — il se branche tel quel dans une CI. Source unique
+                  dans <code>tokens.json</code>, d'où sont générés le CSS, les 20 icônes,
+                  les 6 gabarits et le rapport de contraste. S'y ajoutent une
+                  bibliothèque de 12 prompts sur bloc de style figé, et une charte de
+                  production IA qui tranche ce qui est généré, ce qui ne l'est jamais, et
+                  comment tracer chaque visuel.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">Design tokens</span>
+                  <span class="tag">Node.js</span>
+                  <span class="tag">CSS variables</span>
+                  <span class="tag">SVG</span>
+                  <span class="tag">WCAG 2.1</span>
+                  <span class="tag">IA générative</span>
+                  <span class="tag">Canva / Genially</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="demos/kit-design/"
+                    class="project__link project__link--demo"
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/kit-design-pedagogique-ia"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/kit-design-pedagogique-ia/blob/main/charte-ia.md"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ La charte IA</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- AUDIT D'ACCESSIBILITÉ ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/projets/cover-audit-a11y.svg"
+                  alt="Audit d'accessibilité : 46 non-conformités avant, 0 après, contraste moyen passé de 2,36:1 à 11,93:1"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Audit d'accessibilité de supports pédagogiques
+                </h3>
+                <p class="project__desc">
+                  Une fiche de cours auditée contre WCAG 2.1 AA, puis reconstruite. Les
+                  deux versions mesurées avec le même script :
+                  <strong>46 non-conformités ramenées à 0</strong>, contraste moyen passé
+                  de 2,36:1 à 11,93:1. Le chiffre qui frappe : sans balise viewport, la
+                  version d'origine rend son texte de 13 px à 3,6 px physiques sur un
+                  téléphone. Le dépôt contient aussi une checklist interactive de
+                  38 points à score pondéré — dès qu'un point bloquant échoue, le
+                  pourcentage cède la place au verdict « Non livrable ».
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">WCAG 2.1 AA</span>
+                  <span class="tag">RGAA</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Audit automatisé</span>
+                  <span class="tag">ARIA</span>
+                  <span class="tag">localStorage</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="demos/audit-a11y/"
+                    class="project__link project__link--demo"
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/audit-accessibilite-supports-pedagogiques"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/audit-accessibilite-supports-pedagogiques/blob/main/audit/rapport-wcag.md"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ L'audit avant / après</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- ---------- PROJET 1 (conservé tel quel) ---------- -->
+            <article class="project">
+              <div class="project__media">
+                <img
+                  src="assets/jpeg/multi.jpeg"
+                  alt="Plats camerounais du site Cuisine Locale : ndolé, poulet braisé et taro"
+                  class="project__img"
+                  loading="lazy"
+                />
+                <span class="badge badge--live"
+                  ><span class="badge__dot"></span>DÉMO EN LIGNE</span
+                >
+              </div>
+              <div class="project__body">
+                <h3 class="project__title">
+                  Cuisine Locale — site de restaurant, refonte complète
+                </h3>
+                <p class="project__desc">
+                  Reprise d'une page unique écrite en deuxième année, qui pesait
+                  <strong>55 Mo et 3 359 fichiers</strong> — presque uniquement des
+                  bibliothèques recopiées en entier dans le dépôt, démos et tests
+                  compris. Le site fait aujourd'hui davantage avec
+                  <strong>46 fois moins de fichiers et zéro dépendance</strong> : sept
+                  pages, carte filtrable avec recherche par ingrédient, panier persistant,
+                  frais de livraison par quartier de Douala, commande validée et
+                  réservation qui refuse une heure hors des horaires du jour choisi.
+                  326 contrôles automatiques couvrent le contraste, le catalogue, les
+                  liens, les alternatives textuelles et le poids du dépôt.
+                </p>
+                <p class="project__stack-label">Stack</p>
+                <div class="project__tags">
+                  <span class="tag">HTML sémantique</span>
+                  <span class="tag">CSS Grid</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">localStorage</span>
+                  <span class="tag">WCAG 2.1 AA</span>
+                  <span class="tag">SVG généré</span>
+                  <span class="tag">Zéro dépendance</span>
+                </div>
+                <div class="project__links">
+                  <a
+                    href="demos/cuisine-locale/"
+                    class="project__link project__link--demo"
+                    target="_blank"
+                    rel="noopener"
+                    >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/Cuisine_Locale"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Code source</a
+                  >
+                  <a
+                    href="https://github.com/Djomnang8/Cuisine_Locale/blob/main/outils/verifier.js"
+                    class="project__link"
+                    target="_blank"
+                    rel="noreferrer"
+                    >→ Les 326 contrôles</a
                   >
                 </div>
               </div>

@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apprendre à un RAG à dire « je ne sais pas » — Fait Main</title>
+<meta name="description" content="Mon assistant documentaire refusait de répondre au mauvais moment. Le banc d&#39;essai a montré que le seuil de refus ne mesurait rien du tout.">
+<meta name="author" content="Emmanuella Joyce Djomnang">
+<link rel="canonical" href="https://fait-main-joyce.netlify.app/articles/apprendre-a-un-rag-a-se-taire/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fait Main">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Apprendre à un RAG à dire « je ne sais pas »">
+<meta property="og:description" content="Mon assistant documentaire refusait de répondre au mauvais moment. Le banc d&#39;essai a montré que le seuil de refus ne mesurait rien du tout.">
+<meta property="og:url" content="https://fait-main-joyce.netlify.app/articles/apprendre-a-un-rag-a-se-taire/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apprendre à un RAG à dire « je ne sais pas »">
+<meta name="twitter:description" content="Mon assistant documentaire refusait de répondre au mauvais moment. Le banc d&#39;essai a montré que le seuil de refus ne mesurait rien du tout.">
+
+<link rel="alternate" type="application/rss+xml" title="Fait Main" href="/demos/fait-main/rss.xml">
+<link rel="stylesheet" href="/demos/fait-main/assets/style.css">
+<link rel="icon" href="/demos/fait-main/assets/favicon.svg" type="image/svg+xml">
+
+<script>
+/* Appliqué avant le premier rendu : sans ça, une page sombre clignoterait en clair. */
+(function () {
+  try {
+    var choix = localStorage.getItem('fm-theme');
+    if (choix) document.documentElement.setAttribute('data-theme', choix);
+  } catch (e) { /* navigation privée : on garde le réglage système */ }
+})();
+</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Apprendre à un RAG à dire « je ne sais pas »","description":"Mon assistant documentaire refusait de répondre au mauvais moment. Le banc d'essai a montré que le seuil de refus ne mesurait rien du tout.","datePublished":"2026-07-14","dateModified":"2026-07-14","inLanguage":"fr","wordCount":1136,"articleSection":"IA appliquée","keywords":"rag, evaluation, recherche-hybride, mesure","mainEntityOfPage":{"@type":"WebPage","@id":"https://fait-main-joyce.netlify.app/articles/apprendre-a-un-rag-a-se-taire/"},"author":{"@type":"Person","name":"Emmanuella Joyce Djomnang","url":"https://djomnang-portfolio-1.netlify.app"},"publisher":{"@type":"Person","name":"Emmanuella Joyce Djomnang"}}</script>
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="site-entete">
+  <div class="enveloppe">
+    <div>
+      <p class="site-titre"><a href="/demos/fait-main/">Fait Main</a></p>
+      <p class="site-accroche">Comment les logiciels sont réellement fabriqués</p>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="/demos/fait-main/">Articles</a>
+          <a href="/demos/fait-main/newsletter/">Newsletter</a>
+          <a href="/demos/fait-main/a-propos/">À propos</a>
+      <button type="button" class="bascule-theme" id="bascule-theme" aria-live="polite">Thème</button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <article class="enveloppe">
+    <header class="article-entete mesure">
+      <p class="meta">
+        <span class="etiquette">IA appliquée</span>
+        <time datetime="2026-07-14">14 juillet 2026</time>
+        <span>6 min de lecture</span>
+        <span>1136 mots</span>
+      </p>
+      <h1 class="article-titre">Apprendre à un RAG à dire « je ne sais pas »</h1>
+      <p class="article-chapeau">Mon assistant documentaire refusait de répondre au mauvais moment. Le banc d&#39;essai a montré que le seuil de refus ne mesurait rien du tout.</p>
+      <p class="meta">Projet : DocuRAG et rag-bench</p>
+    </header>
+
+  <details class="sommaire">
+    <summary>Sommaire — 7 sections</summary>
+    <ol>
+      <li><a href="#le-seuil-que-j-avais-pose">Le seuil que j&#39;avais posé</a></li>
+      <li><a href="#le-banc-d-essai-et-le-chiffre-qui-n-allait-pas">Le banc d&#39;essai, et le chiffre qui n&#39;allait pas</a></li>
+      <li><a href="#pourquoi-ce-seuil-ne-pouvait-pas-fonctionner">Pourquoi ce seuil ne pouvait pas fonctionner</a></li>
+      <li><a href="#le-correctif-separer-classer-et-decider">Le correctif : séparer classer et décider</a></li>
+      <li><a href="#choisir-le-seuil-par-balayage-pas-au-juge">Choisir le seuil par balayage, pas au jugé</a></li>
+      <li><a href="#ce-que-j-ai-change-dans-ma-facon-de-tester">Ce que j&#39;ai changé dans ma façon de tester</a></li>
+      <li><a href="#ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</a></li>
+    </ol>
+  </details>
+
+    <div class="article-corps">
+<p>Un assistant documentaire qui répond toujours est un assistant dangereux.</p>
+<p>Posez-lui une question dont la réponse n&#39;est nulle part dans le corpus : il
+répondra quand même. Poliment, dans le bon format, avec une citation qui a l&#39;air
+juste. C&#39;est le comportement par défaut d&#39;un modèle de langage, et sur des
+documents métier, c&#39;est le pire des comportements possibles — une erreur
+reconnaissable est moins coûteuse qu&#39;une erreur crédible.</p>
+<p>Je voulais donc que le mien sache se taire. J&#39;ai mis un seuil. Le seuil marchait
+mal, et il m&#39;a fallu un banc d&#39;essai pour comprendre que <strong>il ne pouvait pas
+marcher.</strong></p>
+<h2 id="le-seuil-que-j-avais-pose">Le seuil que j&#39;avais posé</h2>
+<p>L&#39;architecture était classique. Deux recherches en parallèle sur le corpus :</p>
+<ul><li><strong>BM25</strong>, lexicale, qui trouve les documents partageant les mots de la question.</li><li><strong>Vectorielle</strong>, sémantique, qui trouve ceux qui parlent de la même chose avec d&#39;autres mots.</li></ul>
+<p>Les deux listes sont ensuite fusionnées par <strong>rang réciproque</strong> (RRF), une
+méthode simple et efficace : chaque document reçoit, pour chaque liste où il
+apparaît, un score de <code>1 / (60 + rang)</code>, et on additionne.</p>
+<pre data-langue="js"><code class="langue-js">const scoreRRF = (rangBM25, rangVecteur) =&gt;
+  1 / (60 + rangBM25) + 1 / (60 + rangVecteur);</code></pre>
+<p>Le document trouvé premier par les deux méthodes obtient
+<code>1/61 + 1/61 ≈ 0,0328</code>. Un document trouvé dixième par les deux obtient
+<code>1/70 + 1/70 ≈ 0,0286</code>. Le classement fonctionne très bien.</p>
+<p>J&#39;ai donc fait ce qui semblait évident : <strong>si le meilleur score RRF passe sous un
+seuil, on refuse de répondre.</strong> J&#39;ai réglé ce seuil à la main, sur une dizaine
+d&#39;essais, et je suis passée à autre chose.</p>
+<h2 id="le-banc-d-essai-et-le-chiffre-qui-n-allait-pas">Le banc d&#39;essai, et le chiffre qui n&#39;allait pas</h2>
+<p>Quelques semaines plus tard, j&#39;ai écrit un banc d&#39;essai pour comparer six
+configurations de recherche. Il me fallait, pour ça, un jeu de questions.</p>
+<p>J&#39;en ai construit deux, et c&#39;est la seule décision vraiment importante de tout
+cet article :</p>
+<ul><li><strong>90 questions dont la réponse est dans le corpus.</strong> Pour mesurer si le bon passage remonte.</li><li><strong>30 questions dont la réponse n&#39;y est pas.</strong> Formulées dans le même vocabulaire métier, sur des sujets voisins, pour qu&#39;elles soient réellement difficiles à distinguer. Ce sont elles qui mesurent le refus.</li></ul>
+<p>Sans le second jeu, on ne mesure jamais le silence. On mesure la parole, et on
+suppose le reste.</p>
+<p>Le premier passage a donné ceci :</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Mesure</th><th scope="col" style="text-align:right">Résultat</th></tr></thead><tbody><tr><td>Questions sans réponse, correctement refusées</td><td style="text-align:right"><strong>37 %</strong></td></tr><tr><td>Questions avec réponse, refusées à tort</td><td style="text-align:right"><strong>12 %</strong></td></tr></tbody></table></div>
+<p>Autrement dit : sur trente questions auxquelles il ne pouvait pas répondre,
+l&#39;assistant en fabriquait dix-neuf. Et il refusait onze questions parfaitement
+légitimes. Le seuil ne triait pas mal — <strong>il ne triait pas.</strong></p>
+<h2 id="pourquoi-ce-seuil-ne-pouvait-pas-fonctionner">Pourquoi ce seuil ne pouvait pas fonctionner</h2>
+<p>En regardant la distribution des scores RRF sur les deux jeux, j&#39;ai vu le
+problème. Les deux courbes se superposaient presque exactement.</p>
+<p>La raison est dans la formule, et j&#39;aurais pu la voir sans aucune mesure :</p>
+<blockquote><p><strong>Le score RRF ne dépend que du rang. Jamais de la ressemblance.</strong></p></blockquote>
+<p>Une recherche renvoie toujours un premier résultat. Toujours. Que le corpus
+contienne la réponse parfaite ou une collection de textes sans rapport, il existe
+un document mieux classé que les autres — et <strong>ce document reçoit exactement le
+même score RRF dans les deux cas.</strong></p>
+<p><code>1/61 + 1/61</code> vaut 0,0328 pour un document qui répond mot pour mot à la question,
+et 0,0328 pour un document qui n&#39;a rien à voir. C&#39;est un classement, pas une
+mesure de qualité. J&#39;avais posé mon seuil sur une grandeur qui, par construction,
+ne contient pas l&#39;information que je lui demandais.</p>
+<p>Aucun test unitaire ne pouvait attraper ça. J&#39;en avais une trentaine, tous verts.
+Ils vérifiaient que la fusion classait dans le bon ordre — ce qu&#39;elle faisait
+parfaitement. <strong>Ils prenaient tous un corpus contenant la réponse</strong>, parce que
+c&#39;est ce qu&#39;on écrit spontanément quand on teste une recherche. Le cas absent
+n&#39;était testé nulle part.</p>
+<h2 id="le-correctif-separer-classer-et-decider">Le correctif : séparer classer et décider</h2>
+<p>Ce sont deux questions différentes, et elles demandent deux grandeurs différentes.</p>
+<ul><li><strong>Classer</strong> — quel document présenter en premier ? Le rang suffit, RRF reste parfait pour ça.</li><li><strong>Décider</strong> — ce document mérite-t-il qu&#39;on réponde ? Il faut une grandeur <strong>absolue</strong>, comparable d&#39;une question à l&#39;autre.</li></ul>
+<p>J&#39;ai gardé RRF pour l&#39;ordre, et déplacé la décision de refus sur la <strong>similarité
+cosinus brute du meilleur résultat vectoriel</strong> — un nombre entre 0 et 1 qui dit
+réellement à quel point le passage ressemble à la question.</p>
+<pre data-langue="js"><code class="langue-js">// Classer : rang réciproque, inchangé.
+const ordonnes = fusionRRF(resultatsBM25, resultatsVecteur);
+
+// Décider : une grandeur absolue, calibrée sur les deux jeux de questions.
+const meilleureSimilarite = Math.max(...resultatsVecteur.map((r) =&gt; r.cosinus));
+if (meilleureSimilarite &lt; SEUIL_REFUS) {
+  return reponseDeRefus();
+}</code></pre>
+<h2 id="choisir-le-seuil-par-balayage-pas-au-juge">Choisir le seuil par balayage, pas au jugé</h2>
+<p>Restait à fixer <code>SEUIL_REFUS</code>. Cette fois, je ne l&#39;ai pas deviné : j&#39;ai fait
+tourner les 120 questions pour chaque valeur de 0,20 à 0,50, par pas de 0,01, et
+j&#39;ai regardé les deux courbes.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col" style="text-align:right">Seuil</th><th scope="col" style="text-align:right">Refus corrects (sur 30)</th><th scope="col" style="text-align:right">Refus abusifs (sur 90)</th></tr></thead><tbody><tr><td style="text-align:right">0,25</td><td style="text-align:right">18 (60 %)</td><td style="text-align:right">1 (1 %)</td></tr><tr><td style="text-align:right">0,31</td><td style="text-align:right"><strong>27 (90 %)</strong></td><td style="text-align:right"><strong>4 (4 %)</strong></td></tr><tr><td style="text-align:right">0,38</td><td style="text-align:right">29 (97 %)</td><td style="text-align:right">17 (19 %)</td></tr><tr><td style="text-align:right">0,45</td><td style="text-align:right">30 (100 %)</td><td style="text-align:right">41 (46 %)</td></tr></tbody></table></div>
+<p>Le tableau rend l&#39;arbitrage visible, et il montre surtout qu&#39;<strong>il n&#39;existe pas de
+bonne valeur dans l&#39;absolu</strong>. À 0,45, l&#39;assistant ne fabrique plus jamais rien :
+il refuse aussi près d&#39;une question légitime sur deux. À 0,25, il répond presque
+toujours, y compris quand il ne devrait pas.</p>
+<p>J&#39;ai retenu <strong>0,31</strong>. Pas parce que c&#39;est un optimum mathématique, mais parce que
+sur un corpus de documents métier, une réponse inventée coûte plus cher qu&#39;un
+« je ne trouve pas » de trop. C&#39;est une décision de produit, prise avec le tableau
+sous les yeux — pas une constante trouvée au jugé.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Mesure</th><th scope="col" style="text-align:right">Avant</th><th scope="col" style="text-align:right">Après</th></tr></thead><tbody><tr><td>Refus corrects</td><td style="text-align:right">37 %</td><td style="text-align:right"><strong>90 %</strong></td></tr><tr><td>Refus abusifs</td><td style="text-align:right">12 %</td><td style="text-align:right"><strong>4 %</strong></td></tr></tbody></table></div>
+<h2 id="ce-que-j-ai-change-dans-ma-facon-de-tester">Ce que j&#39;ai changé dans ma façon de tester</h2>
+<p>Le banc d&#39;essai a trouvé en une campagne ce que trente tests unitaires n&#39;ont pas
+vu en trois mois. La différence n&#39;est pas la quantité, c&#39;est la <strong>direction</strong>.</p>
+<p>Mes tests unitaires étaient tous écrits depuis l&#39;intérieur du code : je savais
+comment la fusion marchait, je vérifiais qu&#39;elle marchait comme je le pensais. Le
+banc d&#39;essai était écrit depuis l&#39;extérieur : je ne savais pas ce qu&#39;il allait
+donner. C&#39;est la seule espèce de test qui peut vous apprendre quelque chose.</p>
+<p>Trois habitudes en sont sorties :</p>
+<ol><li><strong>Toujours constituer un jeu de cas négatifs</strong>, et le constituer en premier. Ce qu&#39;un système doit refuser est aussi spécifié que ce qu&#39;il doit accepter.</li><li><strong>Vérifier qu&#39;une grandeur contient l&#39;information qu&#39;on lui demande</strong>, avant de poser un seuil dessus. La question « de quoi ce nombre dépend-il ? » aurait suffi ici, et elle ne demandait aucune mesure.</li><li><strong>Publier la courbe de l&#39;arbitrage</strong>, pas seulement la valeur retenue. Le seuil change avec le corpus et avec l&#39;usage ; le tableau, lui, permet à la personne suivante de le rechoisir sans tout refaire.</li></ol>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Un seuil est une affirmation sur une grandeur. Avant de le régler, il faut
+vérifier que la grandeur mesure bien ce qu&#39;on croit — sinon on règle finement un
+instrument débranché, et on obtient exactement ce que j&#39;avais : un dispositif de
+refus qui rassure, qui a l&#39;air travaillé, et qui laisse passer deux erreurs sur
+trois.</p>
+<p>La capacité à se taire ne s&#39;ajoute pas à un système documentaire. Elle se mesure,
+au même titre que la capacité à répondre.</p>
+    </div>
+
+    <nav class="nav-article" aria-label="Articles voisins">
+      <a href="/demos/fait-main/articles/texte-13px-rendu-3-6px/"><span>Précédent</span>Votre texte de 13 px en fait 3,6 sur un téléphone</a>
+      <a href="/demos/fait-main/articles/saboter-ses-donnees-pour-tester-son-controle/"><span>Suivant</span>J&#39;ai saboté mes données pour tester mon contrôle qualité</a>
+    </nav>
+
+  <section class="encart-lettre" aria-labelledby="titre-lettre">
+    <h2 id="titre-lettre">La lettre de l&#39;atelier</h2>
+    <p>Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.</p>
+    <form class="formulaire-lettre" action="https://buttondown.email/api/emails/embed-subscribe/fait-main" method="post" target="_blank">
+      <label class="visuellement-cache" for="courriel">Votre adresse e-mail</label>
+      <input type="email" id="courriel" name="email" required
+             placeholder="vous@exemple.com" autocomplete="email">
+      <button type="submit">S'abonner</button>
+    </form>
+  </section>
+  </article>
+</main>
+
+<footer class="site-pied">
+  <div class="enveloppe">
+    <p>Fait Main — écrit par Joyce Djomnang, Douala, Cameroun.<br>
+       Textes sous CC BY 4.0, code sous licence MIT.</p>
+    <ul>
+      <li><a href="/demos/fait-main/rss.xml">Flux RSS</a></li>
+      <li><a href="https://github.com/Djomnang8" rel="noopener">GitHub</a></li>
+      <li><a href="https://djomnang-portfolio-1.netlify.app" rel="noopener">Portfolio</a></li>
+      <li><a href="mailto:joycedjomnang@gmail.com">Écrire</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Bascule de thème : système -> clair -> sombre -> système. */
+(function () {
+  var bouton = document.getElementById('bascule-theme');
+  if (!bouton) return;
+  var etats = ['systeme', 'light', 'dark'];
+  var libelles = { systeme: 'Thème : système', light: 'Thème : clair', dark: 'Thème : sombre' };
+
+  function lire() {
+    try { return localStorage.getItem('fm-theme') || 'systeme'; } catch (e) { return 'systeme'; }
+  }
+  function appliquer(etat) {
+    if (etat === 'systeme') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', etat);
+    bouton.textContent = libelles[etat];
+    try {
+      if (etat === 'systeme') localStorage.removeItem('fm-theme');
+      else localStorage.setItem('fm-theme', etat);
+    } catch (e) { /* réglage non mémorisable : la page reste correcte */ }
+  }
+  appliquer(lire());
+  bouton.addEventListener('click', function () {
+    appliquer(etats[(etats.indexOf(lire()) + 1) % etats.length]);
+  });
+})();
+</script>
+</body>
+</html>

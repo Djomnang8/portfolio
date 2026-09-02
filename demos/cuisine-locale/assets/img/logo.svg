@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Cuisine Locale">
+  <circle cx="24" cy="24" r="24" fill="#14532D"/>
+  <path d="M12 21h24v9a7 7 0 0 1-7 7H19a7 7 0 0 1-7-7z" fill="#C2410C"/>
+  <path d="M9 21h30" stroke="#FDF9F3" stroke-width="3" stroke-linecap="round"/>
+  <path d="M19 15c0-2.5 2-2.5 2-5M24 14c0-3 2-3 2-6M29 15c0-2.5 2-2.5 2-5"
+        stroke="#FDF9F3" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+</svg>

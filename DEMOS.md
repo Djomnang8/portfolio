@@ -1,11 +1,19 @@
 # Les démos du portfolio
 
-Dix projets se lancent directement depuis le portfolio, sans installation,
+Douze projets se lancent directement depuis le portfolio, sans installation,
 sans compte et sans serveur à démarrer. C'est le point qui change tout :
-un recruteur ne clonera pas dix dépôts pour vérifier si le travail tient.
+un recruteur ne clonera pas douze dépôts pour vérifier si le travail tient.
+
+Chaque bouton « Lancer la démo » ouvre l'application **dans un nouvel onglet** :
+le portfolio reste ouvert derrière, et revenir ne coûte pas de retrouver sa
+place dans la grille. Le lien porte `rel="noopener"` et une mention
+« (nouvel onglet) » masquée visuellement — un changement de fenêtre doit être
+annoncé à qui ne le voit pas se produire.
 
 | Démo | Ce qu'on peut faire | Sans serveur ? |
 |---|---|---|
+| [Cuisine Locale](demos/cuisine-locale/) | Filtrer la carte, remplir un panier, commander, réserver une table | Panier et validations dans le navigateur |
+| [Fait Main](demos/fait-main/) | Lire les 6 articles, parcourir les numéros de la lettre, basculer le thème | Site généré, entièrement statique |
 | [Module e-learning](demos/module-a11y/) | Suivre les 7 écrans, jouer les 4 exercices | Entièrement statique |
 | [Kit design](demos/kit-design/) | Voir les 20 paires de contraste recalculées à l'affichage | Entièrement statique |
 | [Audit accessibilité](demos/audit-a11y/) | Comparer avant / après, remplir la grille des 38 points | Entièrement statique |
@@ -40,11 +48,12 @@ dépôt d'origine — qui reste la seule source de vérité — et produit :
 - `demos/index.json` l'inventaire, avec le poids réel de chaque démo ;
 - `_redirects` les règles de routage Netlify.
 
-Trois modes de fabrication :
+Quatre modes de fabrication :
 
 | Mode | Ce qu'il fait | Démos concernées |
 |---|---|---|
 | `copie` | Recopie les fichiers statiques | les six premières |
+| `node` | Lance le générateur du dépôt avec un préfixe et un dossier de sortie | Fait Main |
 | `vite` | `vite build --base=/demos/<slug>/` | Assistant Ops, BuildTrack, DevisPro |
 | `angular` | `ng build --base-href=/demos/<slug>/` | MecaTrack |
 
@@ -54,6 +63,19 @@ racine du domaine. Côté application, le routeur lit ce même préfixe
 (`import.meta.env.BASE_URL` en React et Vue, `<base href>` en Angular), ce qui
 permet à chacune de fonctionner à la racine d'un domaine comme dans un
 sous-répertoire — sans code conditionnel.
+
+Le mode `node` applique le même principe à un générateur maison, sans passer par
+npm :
+
+```
+node outils/build-site.js --base=/demos/fait-main --sortie=dist-demo
+```
+
+La sortie va dans un dossier à part, jamais dans le dépôt d'origine : le blog
+reste servi à la racine de son propre domaine, et la version préfixée n'existe
+que le temps d'être recopiée ici. Les `robots.txt` et `sitemap.xml` produits sont
+supprimés au passage — sous `/demos/`, ils feraient double emploi avec ceux du
+portfolio, et un second `robots.txt` n'est de toute façon jamais lu.
 
 ## Les règles de routage
 
@@ -107,10 +129,22 @@ build.
 
    ```html
    <a href="demos/<slug>/" class="project__link project__link--demo"
-      >&#9654; Lancer la démo</a>
+      target="_blank" rel="noopener"
+      >&#9654; Lancer la démo<span class="sr-only"> (nouvel onglet)</span></a>
    ```
 
-4. Commiter `demos/`, `_redirects` et `index.html` ensemble.
+4. Placer la carte dans `outils/ordonner-projets.js`, puis :
+
+   ```bash
+   node outils/ordonner-projets.js --verifier   # contrôle, sans rien écrire
+   node outils/ordonner-projets.js              # applique l'ordre
+   ```
+
+   Le script refuse de réécrire la page si une carte manque à la liste ou si un
+   titre de la liste est introuvable : une carte perdue en silence est
+   exactement le défaut qu'il doit empêcher.
+
+5. Commiter `demos/`, `_redirects` et `index.html` ensemble.
 
 Une démo dont la construction échoue disparaît de `demos/index.json` au lieu
 d'y laisser un lien mort.

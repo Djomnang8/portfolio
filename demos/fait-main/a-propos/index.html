@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos — Fait Main</title>
+<meta name="description" content="Qui écrit ici, pourquoi, et selon quelles règles — y compris ce que je m&#39;interdis de publier et la façon dont ce site est fabriqué.">
+<meta name="author" content="Emmanuella Joyce Djomnang">
+<link rel="canonical" href="https://fait-main-joyce.netlify.app/a-propos/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fait Main">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="À propos">
+<meta property="og:description" content="Qui écrit ici, pourquoi, et selon quelles règles — y compris ce que je m&#39;interdis de publier et la façon dont ce site est fabriqué.">
+<meta property="og:url" content="https://fait-main-joyce.netlify.app/a-propos/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="À propos">
+<meta name="twitter:description" content="Qui écrit ici, pourquoi, et selon quelles règles — y compris ce que je m&#39;interdis de publier et la façon dont ce site est fabriqué.">
+
+<link rel="alternate" type="application/rss+xml" title="Fait Main" href="/demos/fait-main/rss.xml">
+<link rel="stylesheet" href="/demos/fait-main/assets/style.css">
+<link rel="icon" href="/demos/fait-main/assets/favicon.svg" type="image/svg+xml">
+
+<script>
+/* Appliqué avant le premier rendu : sans ça, une page sombre clignoterait en clair. */
+(function () {
+  try {
+    var choix = localStorage.getItem('fm-theme');
+    if (choix) document.documentElement.setAttribute('data-theme', choix);
+  } catch (e) { /* navigation privée : on garde le réglage système */ }
+})();
+</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Fait Main","description":"Un carnet d'atelier sur la fabrication des logiciels : bugs disséqués, mesures reproductibles et décisions expliquées. En français, chiffres à l'appui.","url":"https://fait-main-joyce.netlify.app","inLanguage":"fr","author":{"@type":"Person","name":"Emmanuella Joyce Djomnang","url":"https://djomnang-portfolio-1.netlify.app"}}</script>
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="site-entete">
+  <div class="enveloppe">
+    <div>
+      <p class="site-titre"><a href="/demos/fait-main/">Fait Main</a></p>
+      <p class="site-accroche">Comment les logiciels sont réellement fabriqués</p>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="/demos/fait-main/">Articles</a>
+          <a href="/demos/fait-main/newsletter/">Newsletter</a>
+          <a href="/demos/fait-main/a-propos/" aria-current="page">À propos</a>
+      <button type="button" class="bascule-theme" id="bascule-theme" aria-live="polite">Thème</button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <article class="enveloppe">
+    <header class="article-entete mesure">
+      <h1 class="article-titre">À propos</h1>
+      <p class="article-chapeau">Qui écrit ici, pourquoi, et selon quelles règles — y compris ce que je m&#39;interdis de publier et la façon dont ce site est fabriqué.</p>
+    </header>
+    <div class="article-corps">
+<h2 id="ce-qu-est-ce-carnet">Ce qu&#39;est ce carnet</h2>
+<p><strong>Fait Main</strong> raconte comment les logiciels sont réellement fabriqués : les
+défauts trouvés trop tard, les mesures qui contredisent l&#39;intuition, les décisions
+prises sans information complète.</p>
+<p>Chaque article part d&#39;un projet que j&#39;ai construit, et se termine par quelque
+chose que vous pouvez vérifier vous-même — une formule, un script, un protocole de
+mesure. Jamais par une opinion seule.</p>
+<p>La règle qui structure tout le reste :</p>
+<blockquote><p><strong>Un article ne peut pas affirmer ce qu&#39;il n&#39;a pas mesuré.</strong></p></blockquote>
+<p>En pratique : un chiffre cite le script qui l&#39;a produit, une affirmation
+s&#39;accompagne du test qui la contredirait si elle était fausse, et « je ne sais pas
+pourquoi » est une phrase publiable.</p>
+<p>La <a href="https://github.com/Djomnang8/fait-main/blob/main/ligne-editoriale.md" rel="noopener">ligne éditoriale complète</a>
+est publique, y compris ce que je m&#39;interdis de publier et l&#39;usage que je fais de
+l&#39;IA dans la rédaction.</p>
+<h2 id="qui-ecrit">Qui écrit</h2>
+<p>Je m&#39;appelle <strong>Emmanuella Joyce Djomnang</strong>. Je suis ingénieure DevOps et
+développeuse full stack, à Douala, au Cameroun.</p>
+<p>Je conçois des applications métier de la modélisation des données jusqu&#39;à la mise
+en production conteneurisée : API REST, authentification par jetons et par rôles,
+interfaces web et mobiles, intégration continue. J&#39;ai livré trois applications
+dans le secteur de l&#39;énergie, et je travaille depuis quelque temps sur les
+architectures RAG et l&#39;évaluation des systèmes qui s&#39;appuient sur des modèles de
+langage.</p>
+<p>J&#39;écris en français parce que la documentation technique exigeante y est rare, et
+qu&#39;elle manque particulièrement aux personnes qui apprennent en Afrique
+francophone.</p>
+<h2 id="pourquoi-ce-carnet-existe">Pourquoi ce carnet existe</h2>
+<p>Trois raisons, dans l&#39;ordre d&#39;importance.</p>
+<p><strong>Pour comprendre.</strong> Un défaut qu&#39;on explique par écrit est un défaut qu&#39;on a
+compris. Plusieurs articles ici ont trouvé leur vraie cause pendant la rédaction,
+pas avant — écrire oblige à une continuité que la lecture de code n&#39;impose pas.</p>
+<p><strong>Pour laisser une trace utilisable.</strong> Les projets se rangent, les enseignements
+se perdent. Un carnet garde les seconds quand les premiers ne servent plus.</p>
+<p><strong>Pour le rendre.</strong> J&#39;ai appris avec des articles écrits par des gens qui
+prenaient le temps d&#39;expliquer leurs erreurs. C&#39;est ma contribution au même stock.</p>
+<h2 id="comment-ce-site-est-fait">Comment ce site est fait</h2>
+<p>Sans dépendance. Aucun <code>npm install</code>, aucun <code>node_modules</code>, aucune bibliothèque
+tierce.</p>
+<ul><li>Les articles sont des fichiers Markdown avec un en-tête de métadonnées.</li><li>Un analyseur Markdown maison, couvert par 34 tests, produit le HTML.</li><li>Toutes les couleurs viennent d&#39;un fichier <code>tokens.json</code> unique ; le CSS en est généré, et un script vérifie les 32 paires de contraste à chaque intégration.</li><li>Quatre vérifications tournent en intégration continue et <strong>bloquent la publication</strong> en cas d&#39;échec : contraste, conformité éditoriale, métadonnées SEO, liens internes.</li></ul>
+<p>Le tout est dans un dépôt public, y compris les scripts de vérification et le
+rapport éditorial généré à chaque publication.</p>
+<h2 id="ecrire-corriger-reutiliser">Écrire, corriger, réutiliser</h2>
+<p><strong>Une erreur dans un article ?</strong> Écrivez-moi. Les corrections de fond sont
+signalées en pied d&#39;article avec leur date : effacer une erreur sans le dire
+reviendrait à publier deux versions de la vérité.</p>
+<p><strong>Réutilisation.</strong> Les textes sont sous licence CC BY 4.0, le code sous licence
+MIT. Vous pouvez les reprendre, y compris commercialement, en citant la source.</p>
+<p><strong>Me contacter :</strong> <a href="mailto:joycedjomnang@gmail.com">joycedjomnang@gmail.com</a> ·
+<a href="https://github.com/Djomnang8" rel="noopener">GitHub</a> ·
+<a href="https://djomnang-portfolio-1.netlify.app" rel="noopener">Portfolio</a></p>
+    </div>
+  </article>
+</main>
+
+<footer class="site-pied">
+  <div class="enveloppe">
+    <p>Fait Main — écrit par Joyce Djomnang, Douala, Cameroun.<br>
+       Textes sous CC BY 4.0, code sous licence MIT.</p>
+    <ul>
+      <li><a href="/demos/fait-main/rss.xml">Flux RSS</a></li>
+      <li><a href="https://github.com/Djomnang8" rel="noopener">GitHub</a></li>
+      <li><a href="https://djomnang-portfolio-1.netlify.app" rel="noopener">Portfolio</a></li>
+      <li><a href="mailto:joycedjomnang@gmail.com">Écrire</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Bascule de thème : système -> clair -> sombre -> système. */
+(function () {
+  var bouton = document.getElementById('bascule-theme');
+  if (!bouton) return;
+  var etats = ['systeme', 'light', 'dark'];
+  var libelles = { systeme: 'Thème : système', light: 'Thème : clair', dark: 'Thème : sombre' };
+
+  function lire() {
+    try { return localStorage.getItem('fm-theme') || 'systeme'; } catch (e) { return 'systeme'; }
+  }
+  function appliquer(etat) {
+    if (etat === 'systeme') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', etat);
+    bouton.textContent = libelles[etat];
+    try {
+      if (etat === 'systeme') localStorage.removeItem('fm-theme');
+      else localStorage.setItem('fm-theme', etat);
+    } catch (e) { /* réglage non mémorisable : la page reste correcte */ }
+  }
+  appliquer(lire());
+  bouton.addEventListener('click', function () {
+    appliquer(etats[(etats.indexOf(lire()) + 1) % etats.length]);
+  });
+})();
+</script>
+</body>
+</html>

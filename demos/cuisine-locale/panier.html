@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mon panier — Cuisine Locale</title>
+<meta name="description" content="Votre commande chez Cuisine Locale : récapitulatif, frais de livraison par quartier de Douala et validation. Paiement à la livraison ou par Mobile Money.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="36" height="36">
+      Cuisine Locale
+    </a>
+    <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="nav-principale">Menu</button>
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="menu.html">Menu</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="reservation.html">Réserver</a>
+      <a href="contact.html">Contact</a>
+      <a class="lien-panier" href="panier.html" aria-current="page">
+        <span data-libelle-panier>Panier vide</span>
+        <span class="pastille" data-pastille-panier hidden>0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="conteneur">
+    <nav class="fil" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a> › <span aria-current="page">Panier</span>
+    </nav>
+
+    <div id="zone-panier"></div>
+  </div>
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <h3>Cuisine Locale</h3>
+        <p>La cuisine camerounaise, préparée le jour même. Rue Joss, Akwa — Douala.</p>
+      </div>
+      <div>
+        <h3>Le site</h3>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="reservation.html">Réserver une table</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Mon panier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nous joindre</h3>
+        <ul>
+          <li><a href="tel:+237659271281">+237 6 59 27 12 81</a></li>
+          <li><a href="mailto:bonjour@cuisinelocale.cm">bonjour@cuisinelocale.cm</a></li>
+          <li>Rue Joss, Akwa — Douala</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ouverture</h3>
+        <ul>
+          <li>Lundi à vendredi : 8 h – 22 h</li>
+          <li>Samedi : 8 h – 23 h</li>
+          <li>Dimanche : 10 h – 21 h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© <span data-annee>2026</span> Cuisine Locale — site de démonstration.</span>
+      <span>Conçu et développé par Joyce Djomnang.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/donnees.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/panier-page.js"></script>
+</body>
+</html>

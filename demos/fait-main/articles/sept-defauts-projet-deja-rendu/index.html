@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sept défauts dans un projet que j&#39;avais déjà rendu — Fait Main</title>
+<meta name="description" content="J&#39;ai rouvert un projet noté et livré. En trois jours de relecture, j&#39;ai trouvé sept défauts — dont trois qui rendaient le système faux.">
+<meta name="author" content="Emmanuella Joyce Djomnang">
+<link rel="canonical" href="https://fait-main-joyce.netlify.app/articles/sept-defauts-projet-deja-rendu/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fait Main">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Sept défauts dans un projet que j&#39;avais déjà rendu">
+<meta property="og:description" content="J&#39;ai rouvert un projet noté et livré. En trois jours de relecture, j&#39;ai trouvé sept défauts — dont trois qui rendaient le système faux.">
+<meta property="og:url" content="https://fait-main-joyce.netlify.app/articles/sept-defauts-projet-deja-rendu/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sept défauts dans un projet que j&#39;avais déjà rendu">
+<meta name="twitter:description" content="J&#39;ai rouvert un projet noté et livré. En trois jours de relecture, j&#39;ai trouvé sept défauts — dont trois qui rendaient le système faux.">
+
+<link rel="alternate" type="application/rss+xml" title="Fait Main" href="/demos/fait-main/rss.xml">
+<link rel="stylesheet" href="/demos/fait-main/assets/style.css">
+<link rel="icon" href="/demos/fait-main/assets/favicon.svg" type="image/svg+xml">
+
+<script>
+/* Appliqué avant le premier rendu : sans ça, une page sombre clignoterait en clair. */
+(function () {
+  try {
+    var choix = localStorage.getItem('fm-theme');
+    if (choix) document.documentElement.setAttribute('data-theme', choix);
+  } catch (e) { /* navigation privée : on garde le réglage système */ }
+})();
+</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Sept défauts dans un projet que j'avais déjà rendu","description":"J'ai rouvert un projet noté et livré. En trois jours de relecture, j'ai trouvé sept défauts — dont trois qui rendaient le système faux.","datePublished":"2026-06-16","dateModified":"2026-06-16","inLanguage":"fr","wordCount":1139,"articleSection":"Post-mortem","keywords":"java, spring-boot, concurrence, relecture","mainEntityOfPage":{"@type":"WebPage","@id":"https://fait-main-joyce.netlify.app/articles/sept-defauts-projet-deja-rendu/"},"author":{"@type":"Person","name":"Emmanuella Joyce Djomnang","url":"https://djomnang-portfolio-1.netlify.app"},"publisher":{"@type":"Person","name":"Emmanuella Joyce Djomnang"}}</script>
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="site-entete">
+  <div class="enveloppe">
+    <div>
+      <p class="site-titre"><a href="/demos/fait-main/">Fait Main</a></p>
+      <p class="site-accroche">Comment les logiciels sont réellement fabriqués</p>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="/demos/fait-main/">Articles</a>
+          <a href="/demos/fait-main/newsletter/">Newsletter</a>
+          <a href="/demos/fait-main/a-propos/">À propos</a>
+      <button type="button" class="bascule-theme" id="bascule-theme" aria-live="polite">Thème</button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <article class="enveloppe">
+    <header class="article-entete mesure">
+      <p class="meta">
+        <span class="etiquette">Post-mortem</span>
+        <time datetime="2026-06-16">16 juin 2026</time>
+        <span>6 min de lecture</span>
+        <span>1139 mots</span>
+      </p>
+      <h1 class="article-titre">Sept défauts dans un projet que j&#39;avais déjà rendu</h1>
+      <p class="article-chapeau">J&#39;ai rouvert un projet noté et livré. En trois jours de relecture, j&#39;ai trouvé sept défauts — dont trois qui rendaient le système faux.</p>
+      <p class="meta">Projet : Gestion des stocks et des commandes — microservices Spring Boot</p>
+    </header>
+
+  <details class="sommaire">
+    <summary>Sommaire — 6 sections</summary>
+    <ol>
+      <li><a href="#defaut-n-1-la-passerelle-repondait-404-sur-toutes-les-routes">Défaut n° 1 : la passerelle répondait 404 sur toutes les routes</a></li>
+      <li><a href="#defaut-n-2-deux-commandes-simultanees-vendaient-le-meme-arti">Défaut n° 2 : deux commandes simultanées vendaient le même article</a></li>
+      <li><a href="#defaut-n-3-une-quantite-negative-augmentait-le-stock">Défaut n° 3 : une quantité négative augmentait le stock</a></li>
+      <li><a href="#ce-que-ces-trois-defauts-ont-en-commun">Ce que ces trois défauts ont en commun</a></li>
+      <li><a href="#la-question-que-je-pose-maintenant-a-chaque-fonctionnalite">La question que je pose maintenant à chaque fonctionnalité</a></li>
+      <li><a href="#ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</a></li>
+    </ol>
+  </details>
+
+    <div class="article-corps">
+<p>Le projet était rendu. Noté. Rangé.</p>
+<p>Quatre services Spring Boot — découverte, passerelle, produits, commandes — un
+<code>docker-compose.yml</code> qui démarre, une démonstration qui passe. J&#39;avais coché la
+grille d&#39;évaluation ligne à ligne.</p>
+<p>Six mois plus tard, j&#39;ai voulu le remettre dans mon portfolio. Avant de le
+montrer, j&#39;ai relu le code comme si quelqu&#39;un d&#39;autre l&#39;avait écrit. <strong>Trois jours
+plus tard, j&#39;avais sept défauts.</strong> Trois d&#39;entre eux ne dégradaient pas le
+système : ils le rendaient faux.</p>
+<p>Voici les trois, et ce que leur découverte a changé dans ma façon de relire.</p>
+<h2 id="defaut-n-1-la-passerelle-repondait-404-sur-toutes-les-routes">Défaut n° 1 : la passerelle répondait 404 sur toutes les routes</h2>
+<p>Le plus embarrassant, parce que le plus visible — et que personne ne l&#39;avait vu,
+moi comprise.</p>
+<p>L&#39;architecture prévoyait que tout passe par la passerelle : le client appelle
+<code>localhost:8080/api/produits</code>, Spring Cloud Gateway consulte Eureka, trouve le
+service <code>produits</code>, et transmet. Pendant la démonstration, j&#39;avais appelé les
+services <strong>directement sur leurs ports</strong>, parce que c&#39;était ce que j&#39;avais sous
+la main dans Postman. La passerelle démarrait. Elle apparaissait dans Eureka.
+Elle était verte.</p>
+<p>Elle ne routait rien.</p>
+<p>La cause tenait en une ligne de configuration :</p>
+<pre data-langue="yaml"><code class="langue-yaml">spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false</code></pre>
+<p><code>enabled: false</code>. La valeur par défaut. Je n&#39;avais jamais écrit <code>true</code>, et rien
+ne me l&#39;avait signalé — une passerelle sans route n&#39;est pas une passerelle en
+erreur, c&#39;est une passerelle vide. Elle démarre parfaitement.</p>
+<p><strong>Ce que j&#39;en retiens :</strong> un composant qui démarre n&#39;est pas un composant qui
+fonctionne. « Vert dans Eureka » répond à la question « est-ce que le processus
+tourne », pas à la question « est-ce qu&#39;il fait son travail ». Ce sont deux
+questions distinctes, et je n&#39;en avais posé qu&#39;une.</p>
+<p>Le dépôt contient maintenant un script qui appelle <strong>chaque route via la
+passerelle</strong> et compare le résultat à un appel direct. Il tourne dans la CI. Si
+la passerelle redevient vide, la fusion est bloquée.</p>
+<h2 id="defaut-n-2-deux-commandes-simultanees-vendaient-le-meme-arti">Défaut n° 2 : deux commandes simultanées vendaient le même article</h2>
+<p>Celui-là ne se voit pas en cliquant. Il faut le chercher.</p>
+<p>Le service <code>commandes</code> réservait le stock en trois temps :</p>
+<pre data-langue="java"><code class="langue-java">Produit p = produitClient.getProduit(id);   // 1. lire
+if (p.getQuantite() &lt; demande) {            // 2. vérifier
+    throw new StockInsuffisantException();
+}
+produitClient.decrementer(id, demande);     // 3. écrire</code></pre>
+<p>Lire, vérifier, écrire. Trois appels réseau séparés, et <strong>rien entre eux</strong>.</p>
+<p>Avec un seul client, ce code est juste. Avec deux clients simultanés sur le
+dernier article en stock, les deux lisent <code>quantite = 1</code>, les deux passent la
+vérification, les deux décrémentent. Le stock tombe à <code>-1</code>, et deux personnes
+ont acheté le même objet.</p>
+<p>Je ne l&#39;ai pas trouvé en lisant. Je l&#39;ai trouvé en écrivant un test qui lance
+deux commandes en parallèle sur un stock de 1 :</p>
+<pre data-langue="java"><code class="langue-java">@Test
+void deuxCommandesSimultanees_uneSeuleDoitReussir() throws Exception {
+    creerProduit(&quot;P1&quot;, 1);
+    var pool = Executors.newFixedThreadPool(2);
+    var barriere = new CyclicBarrier(2);
+
+    List&lt;Future&lt;Boolean&gt;&gt; resultats = List.of(
+        pool.submit(() -&gt; { barriere.await(); return commander(&quot;P1&quot;, 1); }),
+        pool.submit(() -&gt; { barriere.await(); return commander(&quot;P1&quot;, 1); })
+    );
+
+    long reussies = resultats.stream().filter(this::sansErreur).count();
+    assertEquals(1, reussies);      // avant correctif : 2
+    assertEquals(0, stockDe(&quot;P1&quot;)); // avant correctif : -1
+}</code></pre>
+<p>La <code>CyclicBarrier</code> est la partie importante. Sans elle, les deux tâches
+démarrent à quelques millisecondes d&#39;écart et la première a le temps de finir :
+le test passe, et il ne prouve rien. La barrière les fait partir <strong>au même
+instant</strong>. C&#39;est ce qui rend le défaut reproductible au lieu d&#39;intermittent.</p>
+<p>Le correctif n&#39;a pas été de mettre un verrou dans le service <code>commandes</code> — il
+aurait protégé une instance et une seule. Il a été de déplacer la décision là où
+se trouve la donnée : le service <code>produits</code> décrémente désormais de façon
+conditionnelle, en une seule requête.</p>
+<pre data-langue="sql"><code class="langue-sql">UPDATE produit
+   SET quantite = quantite - :demande
+ WHERE id = :id
+   AND quantite &gt;= :demande</code></pre>
+<p>Zéro ligne modifiée signifie stock insuffisant. La base tranche, une seule fois,
+et le résultat ne dépend plus de l&#39;ordre d&#39;arrivée.</p>
+<p><strong>Ce que j&#39;en retiens :</strong> dès qu&#39;une décision porte sur une donnée partagée, la
+séquence lire-vérifier-écrire est fausse par construction. Elle n&#39;est pas
+« risquée sous forte charge » : elle est fausse. Deux requêtes suffisent à le
+démontrer.</p>
+<h2 id="defaut-n-3-une-quantite-negative-augmentait-le-stock">Défaut n° 3 : une quantité négative augmentait le stock</h2>
+<p>Celui-ci m&#39;a coûté le plus en amour-propre, parce qu&#39;il est trivial.</p>
+<p>Commander <code>-5</code> articles appelait <code>decrementer(id, -5)</code>, qui exécutait
+<code>quantite = quantite - (-5)</code>. <strong>Le stock montait.</strong> Le total de la commande, lui,
+devenait négatif.</p>
+<p>Il n&#39;y avait aucune validation sur la quantité entrante. Aucune. J&#39;avais annoté
+mes DTO avec <code>@NotNull</code> et je m&#39;étais arrêtée là, en confondant deux questions :
+« le champ est-il présent ? » et « la valeur a-t-elle un sens ? »</p>
+<pre data-langue="java"><code class="langue-java">public record LigneCommande(
+    @NotNull String produitId,
+    @NotNull @Min(1) Integer quantite   // @Min(1) : ajouté après coup
+) {}</code></pre>
+<p>Une annotation. Le correctif fait un caractère de plus que le défaut.</p>
+<p><strong>Ce que j&#39;en retiens :</strong> la validation d&#39;entrée n&#39;est pas une politesse
+défensive, c&#39;est une règle métier écrite à l&#39;endroit où elle se vérifie. « Une
+quantité commandée est un entier strictement positif » est une phrase du domaine
+autant que « une commande appartient à un client ». Je traitais la première comme
+de la plomberie et la seconde comme du métier. C&#39;est la même chose.</p>
+<h2 id="ce-que-ces-trois-defauts-ont-en-commun">Ce que ces trois défauts ont en commun</h2>
+<p>En les alignant, un motif est apparu — et c&#39;est ça, le vrai enseignement.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Défaut</th><th scope="col">Ce que je testais</th><th scope="col">Ce que je ne testais pas</th></tr></thead><tbody><tr><td>Passerelle vide</td><td>Le service démarre</td><td>Le service remplit son rôle</td></tr><tr><td>Vente double</td><td>Un utilisateur à la fois</td><td>Deux utilisateurs au même instant</td></tr><tr><td>Quantité négative</td><td>Les valeurs plausibles</td><td>Les valeurs hostiles</td></tr></tbody></table></div>
+<p>Trois fois la même erreur : <strong>j&#39;avais testé le cas que j&#39;avais en tête en
+écrivant le code.</strong> Or c&#39;est exactement le cas qui ne peut rien révéler. Le code
+et le test sortaient de la même hypothèse ; ils ne pouvaient que s&#39;accorder.</p>
+<p>Un test n&#39;a de valeur que s&#39;il vient d&#39;ailleurs que du code qu&#39;il vérifie.</p>
+<h2 id="la-question-que-je-pose-maintenant-a-chaque-fonctionnalite">La question que je pose maintenant à chaque fonctionnalité</h2>
+<p>J&#39;ai gardé trois questions de cette relecture. Elles tiennent en une ligne
+chacune et elles ont trouvé des défauts dans tous les projets où je les ai
+posées depuis.</p>
+<ol><li><strong>Si ce composant tombait en panne silencieusement, est-ce que je le verrais ?</strong> Si la seule preuve de bon fonctionnement est « ça démarre », la réponse est non.</li><li><strong>Que se passe-t-il si deux personnes font ça au même instant ?</strong> Pas « en forte charge ». Deux personnes. Un test à deux fils suffit à répondre.</li><li><strong>Quelle est la valeur la plus hostile que ce champ accepte ?</strong> Zéro, négatif, vide, très grand, la chaîne vide. Une par une.</li></ol>
+<p>Aucune ne demande d&#39;outil. Elles demandent de se placer ailleurs qu&#39;à l&#39;endroit
+d&#39;où on a écrit le code.</p>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Un projet rendu et noté n&#39;est pas un projet vérifié. La note évalue ce qui a été
+montré ; la relecture évalue ce qui a été écrit. Ce ne sont pas les mêmes objets.</p>
+<p>Ce que je referais dans cet ordre :</p>
+<ul><li><strong>Relire à froid</strong>, plusieurs mois après, en se donnant le rôle d&#39;une personne extérieure. Trois jours ont suffi pour sept défauts.</li><li><strong>Écrire le test avant le correctif</strong>, et vérifier qu&#39;il échoue. Un test qui n&#39;a jamais échoué ne prouve rien — il documente une intention, pas un comportement.</li><li><strong>Faire de la démonstration une commande</strong>, pas une séquence de clics. Ce qui n&#39;est pas scripté n&#39;est pas reproductible, et ce qui n&#39;est pas reproductible finit par ne plus être vrai sans que personne ne le remarque.</li></ul>
+<p>Les sept défauts sont documentés un par un dans le dépôt, chacun avec le script
+qui le démontre et le correctif qui le ferme. Les quatre que je n&#39;ai pas racontés
+ici sont plus ennuyeux — mais ils sont là aussi, parce qu&#39;un post-mortem qui ne
+garde que les défauts intéressants n&#39;est plus un post-mortem.</p>
+    </div>
+
+    <nav class="nav-article" aria-label="Articles voisins">
+      <span></span>
+      <a href="/demos/fait-main/articles/texte-13px-rendu-3-6px/"><span>Suivant</span>Votre texte de 13 px en fait 3,6 sur un téléphone</a>
+    </nav>
+
+  <section class="encart-lettre" aria-labelledby="titre-lettre">
+    <h2 id="titre-lettre">La lettre de l&#39;atelier</h2>
+    <p>Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.</p>
+    <form class="formulaire-lettre" action="https://buttondown.email/api/emails/embed-subscribe/fait-main" method="post" target="_blank">
+      <label class="visuellement-cache" for="courriel">Votre adresse e-mail</label>
+      <input type="email" id="courriel" name="email" required
+             placeholder="vous@exemple.com" autocomplete="email">
+      <button type="submit">S'abonner</button>
+    </form>
+  </section>
+  </article>
+</main>
+
+<footer class="site-pied">
+  <div class="enveloppe">
+    <p>Fait Main — écrit par Joyce Djomnang, Douala, Cameroun.<br>
+       Textes sous CC BY 4.0, code sous licence MIT.</p>
+    <ul>
+      <li><a href="/demos/fait-main/rss.xml">Flux RSS</a></li>
+      <li><a href="https://github.com/Djomnang8" rel="noopener">GitHub</a></li>
+      <li><a href="https://djomnang-portfolio-1.netlify.app" rel="noopener">Portfolio</a></li>
+      <li><a href="mailto:joycedjomnang@gmail.com">Écrire</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Bascule de thème : système -> clair -> sombre -> système. */
+(function () {
+  var bouton = document.getElementById('bascule-theme');
+  if (!bouton) return;
+  var etats = ['systeme', 'light', 'dark'];
+  var libelles = { systeme: 'Thème : système', light: 'Thème : clair', dark: 'Thème : sombre' };
+
+  function lire() {
+    try { return localStorage.getItem('fm-theme') || 'systeme'; } catch (e) { return 'systeme'; }
+  }
+  function appliquer(etat) {
+    if (etat === 'systeme') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', etat);
+    bouton.textContent = libelles[etat];
+    try {
+      if (etat === 'systeme') localStorage.removeItem('fm-theme');
+      else localStorage.setItem('fm-theme', etat);
+    } catch (e) { /* réglage non mémorisable : la page reste correcte */ }
+  }
+  appliquer(lire());
+  bouton.addEventListener('click', function () {
+    appliquer(etats[(etats.indexOf(lire()) + 1) % etats.length]);
+  });
+})();
+</script>
+</body>
+</html>

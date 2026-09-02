@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Votre texte de 13 px en fait 3,6 sur un téléphone — Fait Main</title>
+<meta name="description" content="Une fiche de cours passait sur ordinateur et devenait illisible sur mobile. La cause n&#39;était pas la taille de police, mais une balise absente.">
+<meta name="author" content="Emmanuella Joyce Djomnang">
+<link rel="canonical" href="https://fait-main-joyce.netlify.app/articles/texte-13px-rendu-3-6px/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Fait Main">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Votre texte de 13 px en fait 3,6 sur un téléphone">
+<meta property="og:description" content="Une fiche de cours passait sur ordinateur et devenait illisible sur mobile. La cause n&#39;était pas la taille de police, mais une balise absente.">
+<meta property="og:url" content="https://fait-main-joyce.netlify.app/articles/texte-13px-rendu-3-6px/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Votre texte de 13 px en fait 3,6 sur un téléphone">
+<meta name="twitter:description" content="Une fiche de cours passait sur ordinateur et devenait illisible sur mobile. La cause n&#39;était pas la taille de police, mais une balise absente.">
+
+<link rel="alternate" type="application/rss+xml" title="Fait Main" href="/demos/fait-main/rss.xml">
+<link rel="stylesheet" href="/demos/fait-main/assets/style.css">
+<link rel="icon" href="/demos/fait-main/assets/favicon.svg" type="image/svg+xml">
+
+<script>
+/* Appliqué avant le premier rendu : sans ça, une page sombre clignoterait en clair. */
+(function () {
+  try {
+    var choix = localStorage.getItem('fm-theme');
+    if (choix) document.documentElement.setAttribute('data-theme', choix);
+  } catch (e) { /* navigation privée : on garde le réglage système */ }
+})();
+</script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Votre texte de 13 px en fait 3,6 sur un téléphone","description":"Une fiche de cours passait sur ordinateur et devenait illisible sur mobile. La cause n'était pas la taille de police, mais une balise absente.","datePublished":"2026-06-30","dateModified":"2026-06-30","inLanguage":"fr","wordCount":880,"articleSection":"Accessibilité","keywords":"wcag, mobile, viewport, audit","mainEntityOfPage":{"@type":"WebPage","@id":"https://fait-main-joyce.netlify.app/articles/texte-13px-rendu-3-6px/"},"author":{"@type":"Person","name":"Emmanuella Joyce Djomnang","url":"https://djomnang-portfolio-1.netlify.app"},"publisher":{"@type":"Person","name":"Emmanuella Joyce Djomnang"}}</script>
+</head>
+<body>
+<a class="lien-evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="site-entete">
+  <div class="enveloppe">
+    <div>
+      <p class="site-titre"><a href="/demos/fait-main/">Fait Main</a></p>
+      <p class="site-accroche">Comment les logiciels sont réellement fabriqués</p>
+    </div>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="/demos/fait-main/">Articles</a>
+          <a href="/demos/fait-main/newsletter/">Newsletter</a>
+          <a href="/demos/fait-main/a-propos/">À propos</a>
+      <button type="button" class="bascule-theme" id="bascule-theme" aria-live="polite">Thème</button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <article class="enveloppe">
+    <header class="article-entete mesure">
+      <p class="meta">
+        <span class="etiquette">Accessibilité</span>
+        <time datetime="2026-06-30">30 juin 2026</time>
+        <span>5 min de lecture</span>
+        <span>880 mots</span>
+      </p>
+      <h1 class="article-titre">Votre texte de 13 px en fait 3,6 sur un téléphone</h1>
+      <p class="article-chapeau">Une fiche de cours passait sur ordinateur et devenait illisible sur mobile. La cause n&#39;était pas la taille de police, mais une balise absente.</p>
+      <p class="meta">Projet : Audit d&#39;accessibilité de supports pédagogiques</p>
+    </header>
+
+  <details class="sommaire">
+    <summary>Sommaire — 6 sections</summary>
+    <ol>
+      <li><a href="#ce-que-fait-un-navigateur-mobile-quand-la-balise-manque">Ce que fait un navigateur mobile quand la balise manque</a></li>
+      <li><a href="#la-correction-tient-en-une-ligne">La correction tient en une ligne</a></li>
+      <li><a href="#pourquoi-augmenter-la-police-aurait-ete-une-erreur">Pourquoi augmenter la police aurait été une erreur</a></li>
+      <li><a href="#les-46-non-conformites-et-ce-que-les-mesurer-a-change">Les 46 non-conformités, et ce que les mesurer a changé</a></li>
+      <li><a href="#ce-que-je-verifie-maintenant-en-premier">Ce que je vérifie maintenant en premier</a></li>
+      <li><a href="#ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</a></li>
+    </ol>
+  </details>
+
+    <div class="article-corps">
+<p>On m&#39;a demandé d&#39;auditer une fiche de cours en HTML. Sur mon écran, elle était
+correcte : lisible, structurée, un peu terne. J&#39;ai ouvert la même page sur mon
+téléphone.</p>
+<p>Le texte était réduit à une trame grise. Pas petit — <strong>illisible</strong>, au sens où on
+ne distingue plus les lettres les unes des autres.</p>
+<p>La feuille de style annonçait <code>font-size: 13px</code>. Sur le téléphone, chaque
+caractère occupait <strong>3,6 px</strong>. Voici pourquoi, et pourquoi je n&#39;ai pas corrigé ça
+en augmentant la police.</p>
+<h2 id="ce-que-fait-un-navigateur-mobile-quand-la-balise-manque">Ce que fait un navigateur mobile quand la balise manque</h2>
+<p>Une page conçue pour un écran d&#39;ordinateur reste consultable sur un téléphone.
+Les navigateurs mobiles l&#39;ont rendu possible avec une astuce, en 2007, et cette
+astuce est toujours active par défaut.</p>
+<p>Le navigateur commence par <strong>mettre en page dans une fenêtre virtuelle large</strong> —
+980 px de large par défaut, ou davantage si le contenu l&#39;exige. Puis il
+<strong>réduit l&#39;ensemble</strong> pour le faire tenir dans la largeur réelle de l&#39;écran.
+C&#39;est ce qui vous donne, sur un vieux site, la page entière en miniature qu&#39;il
+faut agrandir aux doigts.</p>
+<p>La fiche contenait un tableau à largeur fixe :</p>
+<pre data-langue="css"><code class="langue-css">.tableau-notes { width: 1160px; }</code></pre>
+<p>Le navigateur ne peut pas mettre ça en page dans 980 px. Il élargit la fenêtre
+virtuelle à 1 160 px, puis réduit le tout pour tenir dans les 320 px de l&#39;écran.</p>
+<p>Le facteur de réduction se calcule sans mystère :</p>
+<pre><code>facteur = largeur écran / largeur de mise en page
+        = 320 / 1160
+        = 0,276
+
+taille rendue = 13 px × 0,276
+              = 3,6 px</code></pre>
+<p><strong>3,6 px.</strong> Une minuscule y occupe environ deux pixels de haut. Aucune police ne
+survit à ça.</p>
+<h2 id="la-correction-tient-en-une-ligne">La correction tient en une ligne</h2>
+<pre data-langue="html"><code class="langue-html">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</code></pre>
+<p>Cette balise dit au navigateur : ne construis pas de fenêtre virtuelle, mets en
+page directement à la largeur de l&#39;appareil, et n&#39;applique aucune réduction. Le
+13 px redevient 13 px.</p>
+<p>Elle ne suffit pas. Elle <strong>révèle</strong> le problème suivant : le tableau de 1 160 px
+déborde maintenant de l&#39;écran et fait défiler la page horizontalement. Il a fallu
+le laisser défiler dans son propre cadre :</p>
+<pre data-langue="css"><code class="langue-css">.tableau-defilant { overflow-x: auto; }
+.tableau-notes { width: 100%; min-width: 36rem; }</code></pre>
+<p>Le tableau défile ; la page, non. C&#39;est la règle : <strong>un contenu large défile dans
+son cadre, jamais le corps de la page.</strong></p>
+<h2 id="pourquoi-augmenter-la-police-aurait-ete-une-erreur">Pourquoi augmenter la police aurait été une erreur</h2>
+<p>Ma première idée avait été de passer de 13 px à 16 px. Elle était mauvaise, pour
+une raison arithmétique.</p>
+<p>Le facteur 0,276 s&#39;applique à <strong>tout</strong>. Passer à 16 px donne 16 × 0,276 = 4,4 px.
+On gagne huit dixièmes de pixel et on dégrade la mise en page sur ordinateur, où
+elle n&#39;avait aucun problème. Pour obtenir 16 px réels sous ce facteur, il aurait
+fallu déclarer une police de 58 px.</p>
+<p>C&#39;est le piège des symptômes : <strong>le nombre visible n&#39;est pas le nombre en cause.</strong>
+La police n&#39;était pas trop petite, elle était multipliée par 0,276. Tant qu&#39;on ne
+retire pas le facteur, aucune valeur de police n&#39;est bonne.</p>
+<h2 id="les-46-non-conformites-et-ce-que-les-mesurer-a-change">Les 46 non-conformités, et ce que les mesurer a changé</h2>
+<p>La balise manquante n&#39;était qu&#39;un point sur 46. J&#39;ai audité la version d&#39;origine
+avec un script, reconstruit la fiche, puis <strong>audité la version reconstruite avec
+le même script</strong>. C&#39;est ce point qui compte : deux mesures ne se comparent que si
+l&#39;instrument est identique.</p>
+<div class="tableau-defilant"><table><thead><tr><th scope="col">Mesure</th><th scope="col" style="text-align:right">Version d&#39;origine</th><th scope="col" style="text-align:right">Version reconstruite</th></tr></thead><tbody><tr><td>Non-conformités WCAG 2.1 AA</td><td style="text-align:right">46</td><td style="text-align:right">0</td></tr><tr><td>Contraste moyen du texte</td><td style="text-align:right">2,36:1</td><td style="text-align:right">11,93:1</td></tr><tr><td>Textes sous le seuil AA de 4,5:1</td><td style="text-align:right">31</td><td style="text-align:right">0</td></tr><tr><td>Images sans alternative textuelle</td><td style="text-align:right">9</td><td style="text-align:right">0</td></tr><tr><td>Balise viewport</td><td style="text-align:right">absente</td><td style="text-align:right">présente</td></tr></tbody></table></div>
+<p>Le contraste moyen de 2,36:1 mérite un mot. Le seuil AA pour du texte courant est
+4,5:1. La fiche n&#39;en était pas à un cheveu : elle était <strong>à peu près à la moitié</strong>
+de ce qu&#39;exige la norme. Du gris clair sur blanc, choisi parce que c&#39;est
+« élégant » — et validé sur l&#39;écran d&#39;un ordinateur portable neuf, dans un bureau
+éclairé.</p>
+<p>C&#39;est là qu&#39;un chiffre remplace utilement une discussion. « Ce gris est un peu
+clair » est une opinion, à laquelle on peut opposer une autre opinion. « Ce gris
+est à 2,36:1 pour un seuil de 4,5:1 » n&#39;est pas discutable — c&#39;est une soustraction.</p>
+<h2 id="ce-que-je-verifie-maintenant-en-premier">Ce que je vérifie maintenant en premier</h2>
+<p>L&#39;audit m&#39;a laissé un ordre de passage. Ces quatre points prennent moins de deux
+minutes et attrapent la majorité des dégâts :</p>
+<ol><li><strong>La balise viewport est-elle là ?</strong> Une ligne. Sans elle, tout le reste de l&#39;audit mobile mesure des valeurs fausses.</li><li><strong>La page défile-t-elle horizontalement à 320 px de large ?</strong> Si oui, un élément a une largeur fixe. C&#39;est presque toujours un tableau ou une image.</li><li><strong>Quel est le contraste du texte le plus clair de la page ?</strong> Le calcul est dans la norme, il tient en quinze lignes de code.</li><li><strong>Les titres descendent-ils sans saut ?</strong> Un <code>h1</code> suivi d&#39;un <code>h4</code> casse la navigation par titres, seul moyen de parcourir une page au lecteur d&#39;écran.</li></ol>
+<p>Les points 1 et 2 se testent en redimensionnant une fenêtre. Le 3 et le 4
+demandent un script — et un script se rejoue, ce qui est exactement l&#39;intérêt.</p>
+<h2 id="ce-qu-on-peut-en-retirer">Ce qu&#39;on peut en retirer</h2>
+<p>Une page « qui marche sur mon écran » ne dit rien de ce qu&#39;elle fait ailleurs.
+L&#39;écran de la personne qui produit un support est presque toujours le meilleur
+écran de la chaîne : grand, neuf, bien éclairé, à cinquante centimètres des yeux.
+C&#39;est le pire endroit d&#39;où juger de la lisibilité.</p>
+<p>Et une correction utile s&#39;attaque au facteur, pas au symptôme. Avant de changer
+une valeur qui vous déplaît, cherchez ce qui la multiplie.</p>
+    </div>
+
+    <nav class="nav-article" aria-label="Articles voisins">
+      <a href="/demos/fait-main/articles/sept-defauts-projet-deja-rendu/"><span>Précédent</span>Sept défauts dans un projet que j&#39;avais déjà rendu</a>
+      <a href="/demos/fait-main/articles/apprendre-a-un-rag-a-se-taire/"><span>Suivant</span>Apprendre à un RAG à dire « je ne sais pas »</a>
+    </nav>
+
+  <section class="encart-lettre" aria-labelledby="titre-lettre">
+    <h2 id="titre-lettre">La lettre de l&#39;atelier</h2>
+    <p>Un envoi tous les quinze jours : l&#39;article du moment, et une chose apprise en le fabriquant. Désinscription en un clic, aucune revente d&#39;adresse.</p>
+    <form class="formulaire-lettre" action="https://buttondown.email/api/emails/embed-subscribe/fait-main" method="post" target="_blank">
+      <label class="visuellement-cache" for="courriel">Votre adresse e-mail</label>
+      <input type="email" id="courriel" name="email" required
+             placeholder="vous@exemple.com" autocomplete="email">
+      <button type="submit">S'abonner</button>
+    </form>
+  </section>
+  </article>
+</main>
+
+<footer class="site-pied">
+  <div class="enveloppe">
+    <p>Fait Main — écrit par Joyce Djomnang, Douala, Cameroun.<br>
+       Textes sous CC BY 4.0, code sous licence MIT.</p>
+    <ul>
+      <li><a href="/demos/fait-main/rss.xml">Flux RSS</a></li>
+      <li><a href="https://github.com/Djomnang8" rel="noopener">GitHub</a></li>
+      <li><a href="https://djomnang-portfolio-1.netlify.app" rel="noopener">Portfolio</a></li>
+      <li><a href="mailto:joycedjomnang@gmail.com">Écrire</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Bascule de thème : système -> clair -> sombre -> système. */
+(function () {
+  var bouton = document.getElementById('bascule-theme');
+  if (!bouton) return;
+  var etats = ['systeme', 'light', 'dark'];
+  var libelles = { systeme: 'Thème : système', light: 'Thème : clair', dark: 'Thème : sombre' };
+
+  function lire() {
+    try { return localStorage.getItem('fm-theme') || 'systeme'; } catch (e) { return 'systeme'; }
+  }
+  function appliquer(etat) {
+    if (etat === 'systeme') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', etat);
+    bouton.textContent = libelles[etat];
+    try {
+      if (etat === 'systeme') localStorage.removeItem('fm-theme');
+      else localStorage.setItem('fm-theme', etat);
+    } catch (e) { /* réglage non mémorisable : la page reste correcte */ }
+  }
+  appliquer(lire());
+  bouton.addEventListener('click', function () {
+    appliquer(etats[(etats.indexOf(lire()) + 1) % etats.length]);
+  });
+})();
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 
    Pourquoi ce script existe
    -------------------------
-   Un recruteur ne va pas cloner neuf depots, installer Docker et lancer une
+   Un recruteur ne va pas cloner douze depots, installer Docker et lancer une
    base de donnees pour voir si le travail tient. Il ouvre le portfolio, il
    clique, et il juge en trente secondes. Les demos doivent donc etre servies
    par le portfolio lui-meme.
@@ -98,6 +98,20 @@ function fabriquerCopie(d, racineDepot, dest) {
   }
 }
 
+function fabriquerNode(d, racineDepot, dest) {
+  // Generateur maison, sans npm : on lui passe le prefixe d'URL et un dossier
+  // de sortie a part. Ecrire dans le depot d'origine melangerait la
+  // construction du portfolio avec la version servie a la racine du blog.
+  const args = d.commande.map((a) => a.replace('{slug}', d.slug));
+  execFileSync(process.execPath, args, { cwd: racineDepot, stdio: 'pipe' });
+  const sortie = path.join(racineDepot, d.sortie);
+  copier(sortie, dest);
+  effacer(sortie);
+  // Fichiers de service propres au blog : sous /demos/, ils feraient double
+  // emploi avec ceux du portfolio.
+  for (const nom of ['robots.txt', 'sitemap.xml']) effacer(path.join(dest, nom));
+}
+
 function fabriquerVite(d, racineDepot, dest) {
   const cwd = path.join(racineDepot, d.dossier);
   // --base indique a Vite le prefixe d'URL sous lequel l'application sera
@@ -157,6 +171,7 @@ for (const d of MANIFESTE.demos) {
     effacer(dest);
     fs.mkdirSync(dest, { recursive: true });
     if (d.mode === 'copie') fabriquerCopie(d, racineDepot, dest);
+    else if (d.mode === 'node') fabriquerNode(d, racineDepot, dest);
     else if (d.mode === 'vite') fabriquerVite(d, racineDepot, dest);
     else if (d.mode === 'angular') fabriquerAngular(d, racineDepot, dest);
     else throw new Error(`mode inconnu : ${d.mode}`);

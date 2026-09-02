@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nous contacter — Cuisine Locale</title>
+<meta name="description" content="Adresse, téléphone, horaires et formulaire de contact de Cuisine Locale, restaurant camerounais rue Joss à Akwa, Douala.">
+<meta property="og:title" content="Nous contacter — Cuisine Locale">
+<meta property="og:description" content="Rue Joss, Akwa — Douala. Ouvert de 8 h à 22 h, sept jours sur sept.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<a class="evitement" href="#contenu">Aller au contenu principal</a>
+
+<header class="entete">
+  <div class="conteneur">
+    <a class="marque" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="36" height="36">
+      Cuisine Locale
+    </a>
+    <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="nav-principale">Menu</button>
+    <nav class="nav" id="nav-principale" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="menu.html">Menu</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="reservation.html">Réserver</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+      <a class="lien-panier" href="panier.html">
+        <span data-libelle-panier>Panier vide</span>
+        <span class="pastille" data-pastille-panier hidden>0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <div class="conteneur">
+    <nav class="fil" aria-label="Fil d'Ariane">
+      <a href="index.html">Accueil</a> › <span aria-current="page">Contact</span>
+    </nav>
+
+    <h1>Nous contacter</h1>
+    <p style="color:var(--gris);max-width:58ch">Pour une commande urgente ou un groupe de
+       plus de douze personnes, le téléphone reste le plus rapide. Nous répondons aux
+       messages écrits sous 24 heures.</p>
+
+    <div class="grille-2" style="margin-top:2rem">
+      <section class="carte" aria-labelledby="titre-form">
+        <h2 id="titre-form" style="margin-top:0">Écrire un message</h2>
+        <form id="form-contact" novalidate>
+          <div class="champ" style="margin-bottom:1.25rem">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" required autocomplete="name">
+            <p class="erreur-champ" id="err-nom" hidden></p>
+          </div>
+          <div class="champ" style="margin-bottom:1.25rem">
+            <label for="email">Adresse e-mail</label>
+            <input type="email" id="email" required autocomplete="email">
+            <p class="erreur-champ" id="err-email" hidden></p>
+          </div>
+          <div class="champ" style="margin-bottom:1.25rem">
+            <label for="sujet">Sujet</label>
+            <select id="sujet">
+              <option>Une question sur la carte</option>
+              <option>Un groupe de plus de 12 personnes</option>
+              <option>Un événement privé</option>
+              <option>Une réclamation</option>
+              <option>Autre chose</option>
+            </select>
+          </div>
+          <div class="champ" style="margin-bottom:1.5rem">
+            <label for="message">Message</label>
+            <textarea id="message" required placeholder="Dites-nous tout."></textarea>
+            <p class="erreur-champ" id="err-message" hidden></p>
+          </div>
+          <button type="submit" class="btn btn--principal">Envoyer</button>
+          <p id="resultat" role="status" aria-live="polite" style="margin:1rem 0 0"></p>
+        </form>
+      </section>
+
+      <aside>
+        <div class="carte" style="margin-bottom:1.5rem">
+          <h2 style="margin-top:0">Coordonnées</h2>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="display:flex;gap:.75rem;margin-bottom:1rem;align-items:flex-start">
+              <img src="assets/img/icones/local.svg" alt="" width="22" height="22" style="color:var(--orange);flex:none;margin-top:3px">
+              <span>Rue Joss, Akwa<br>Douala, Cameroun</span>
+            </li>
+            <li style="display:flex;gap:.75rem;margin-bottom:1rem;align-items:flex-start">
+              <img src="assets/img/icones/telephone.svg" alt="" width="22" height="22" style="color:var(--orange);flex:none;margin-top:3px">
+              <a href="tel:+237659271281">+237 6 59 27 12 81</a>
+            </li>
+            <li style="display:flex;gap:.75rem;align-items:flex-start">
+              <img src="assets/img/icones/panier.svg" alt="" width="22" height="22" style="color:var(--orange);flex:none;margin-top:3px">
+              <a href="mailto:bonjour@cuisinelocale.cm">bonjour@cuisinelocale.cm</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="carte" style="margin-bottom:1.5rem">
+          <h2 style="margin-top:0">Horaires</h2>
+          <table>
+            <caption class="cache">Heures d'ouverture</caption>
+            <tbody id="table-horaires"></tbody>
+          </table>
+          <p id="etat-ouverture" style="margin:1rem 0 0;font-weight:600"></p>
+        </div>
+
+        <div class="carte">
+          <h2 style="margin-top:0">Livraison</h2>
+          <p style="color:var(--gris);margin-bottom:.75rem">Neuf quartiers desservis, de
+             25 à 55 minutes selon la distance.</p>
+          <p style="margin:0"><a href="menu.html#livraison">Voir les frais par quartier →</a></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="pied">
+  <div class="conteneur">
+    <div class="pied__grille">
+      <div>
+        <h3>Cuisine Locale</h3>
+        <p>La cuisine camerounaise, préparée le jour même. Rue Joss, Akwa — Douala.</p>
+      </div>
+      <div>
+        <h3>Le site</h3>
+        <ul>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="reservation.html">Réserver une table</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Mon panier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Nous joindre</h3>
+        <ul>
+          <li><a href="tel:+237659271281">+237 6 59 27 12 81</a></li>
+          <li><a href="mailto:bonjour@cuisinelocale.cm">bonjour@cuisinelocale.cm</a></li>
+          <li>Rue Joss, Akwa — Douala</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Ouverture</h3>
+        <ul>
+          <li>Lundi à vendredi : 8 h – 22 h</li>
+          <li>Samedi : 8 h – 23 h</li>
+          <li>Dimanche : 10 h – 21 h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied__bas">
+      <span>© <span data-annee>2026</span> Cuisine Locale — site de démonstration.</span>
+      <span>Conçu et développé par Joyce Djomnang.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/donnees.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('table-horaires').innerHTML = Object.values(HORAIRES)
+    .map((h) => `<tr><th scope="row" style="font-weight:600">${h.libelle}</th><td>${h.ouverture} – ${h.fermeture}</td></tr>`).join('');
+
+  // Ouvert ou fermé, calculé maintenant : un horaire affiché ne dit pas si on
+  // peut appeler tout de suite.
+  const n = new Date();
+  const jour = n.getDay();
+  const h = jour === 0 ? HORAIRES.dimanche : (jour === 6 ? HORAIRES.samedi : HORAIRES.semaine);
+  const minutes = n.getHours() * 60 + n.getMinutes();
+  const [ho, mo] = h.ouverture.split(':').map(Number);
+  const [hf, mf] = h.fermeture.split(':').map(Number);
+  const ouvert = minutes >= ho * 60 + mo && minutes < hf * 60 + mf;
+  const etat = document.getElementById('etat-ouverture');
+  etat.textContent = ouvert ? `Ouvert en ce moment — jusqu'à ${h.fermeture}.` : `Fermé en ce moment. Ouverture à ${h.ouverture}.`;
+  etat.style.color = ouvert ? 'var(--succes)' : 'var(--gris)';
+
+  const erreur = (champ, message) => {
+    const input = document.getElementById(champ);
+    const zone = document.getElementById(`err-${champ}`);
+    if (message) {
+      input.setAttribute('aria-invalid', 'true');
+      input.setAttribute('aria-describedby', `err-${champ}`);
+      zone.textContent = message; zone.hidden = false;
+    } else {
+      input.removeAttribute('aria-invalid'); zone.hidden = true;
+    }
+    return !message;
+  };
+
+  document.getElementById('form-contact').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nom = document.getElementById('nom').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const ok = [
+      erreur('nom', nom.trim().length < 2 ? 'Indiquez votre nom.' : ''),
+      erreur('email', /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim()) ? '' : 'Adresse e-mail invalide.'),
+      erreur('message', message.trim().length < 15 ? 'Votre message est trop court — quinze caractères au minimum.' : ''),
+    ].every(Boolean);
+
+    if (!ok) { document.querySelector('[aria-invalid="true"]').focus(); return; }
+
+    e.target.querySelectorAll('input, select, textarea, button').forEach((el) => { el.disabled = true; });
+    document.getElementById('resultat').innerHTML =
+      `<span class="message message--succes" style="display:block">Merci ${nom.trim().split(' ')[0]}, votre message est enregistré.
+       Nous répondons sous 24 heures. <br><small>Site de démonstration : rien n'est réellement envoyé.</small></span>`;
+  });
+});
+</script>
+</body>
+</html>
