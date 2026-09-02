@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85 55" width="85mm" height="55mm" role="img" aria-label="Carte de visite, recto, 85 × 55 mm">
+  <title>Carte de visite, recto, 85 × 55 mm</title>
+
+  <rect width="85" height="55" fill="#F8F2E7"/>
+  <rect x="0" y="0" width="4" height="55" fill="#C86A10"/>
+  <g transform="translate(10 8) scale(0.24) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="10" y="36" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="5.2" font-weight="600" fill="#221710">Élise Ngo Bassong</text>
+  <text x="10" y="41" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3" fill="#5E5147">Responsable qualité et traçabilité</text>
+  <text x="10" y="48" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3" fill="#221710">e.ngobassong@dibamba.cm</text>
+  <text x="10" y="52" font-family="SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace" font-size="3" fill="#221710">+237 6 77 41 22 08</text>
+  <text x="79" y="48" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="4.4" font-weight="700" text-anchor="end" letter-spacing="0.5" fill="#3B2418">DIBAMBA</text>
+  <text x="79" y="52" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="2.7" text-anchor="end" fill="#5E5147">Édéa · Cameroun</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155.365 172.252" role="img" aria-label="Logo Dibamba avec sa signature">
+  <title>Logo Dibamba avec sa signature</title>
+  <g transform="translate(52.682 0)"><g transform="translate(-35 -16.699)">
+  <path d="M 60 16.699 L 60 7.172" fill="none" stroke="#3B2418" stroke-width="7" stroke-linecap="round"/>
+  <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+  <path d="M 60 16.699 A 73.993 73.993 0 0 1 60 103.301" fill="none" stroke="#F8F2E7" stroke-width="3.5" stroke-linecap="round" opacity="0.3"/>
+  <path d="M 60 16.699 A 73.993 73.993 0 0 0 60 103.301" fill="none" stroke="#F8F2E7" stroke-width="3.5" stroke-linecap="round" opacity="0.3"/>
+  <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/></g></g>
+  <text x="77.682" y="128.432" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="39.837" font-weight="600" textLength="155.365" lengthAdjust="spacing" text-anchor="middle" fill="#3B2418">Dibamba</text>
+  <text x="77.682" y="156.318" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="9.362" textLength="142.936" lengthAdjust="spacing" text-anchor="middle" fill="#5E5147">CACAO DE LA SANAGA-MARITIME</text>
+</svg>

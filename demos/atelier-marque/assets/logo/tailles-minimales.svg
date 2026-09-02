@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 254.851 118" role="img" aria-label="Le symbole Dibamba rendu à ses tailles minimales">
+  <title>Le symbole Dibamba rendu à ses tailles minimales</title><rect width="254.851" height="118" fill="#F8F2E7"/>
+  <g transform="translate(24 80) scale(0.185)">
+    <g transform="translate(-35 -16.699)">
+      <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+      <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+  <text x="28.619" y="112" text-anchor="middle" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5E5147">16 px</text>
+  <g transform="translate(57.238 72) scale(0.277)">
+    <g transform="translate(-35 -16.699)">
+      <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+      <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+  <text x="64.166" y="112" text-anchor="middle" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5E5147">24 px</text>
+  <g transform="translate(95.094 64) scale(0.37)">
+    <g transform="translate(-35 -16.699)">
+      <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+      <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+  <text x="104.332" y="112" text-anchor="middle" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5E5147">32 px</text>
+  <g transform="translate(137.569 48) scale(0.554)">
+    <g transform="translate(-35 -16.699)">
+      <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+      <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+  <text x="151.426" y="112" text-anchor="middle" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5E5147">48 px</text>
+  <g transform="translate(189.282 24) scale(0.831)">
+    <g transform="translate(-35 -16.699)">
+      <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+      <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+  <text x="210.067" y="112" text-anchor="middle" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="8" fill="#5E5147">72 px</text>
+</svg>

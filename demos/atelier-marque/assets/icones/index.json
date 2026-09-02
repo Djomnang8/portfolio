@@ -1,0 +1,17 @@
+{
+  "genere_le": "2026-09-02",
+  "icones": {
+    "cabosse": "Cabosse",
+    "feve": "Fève",
+    "cacaoyer": "Cacaoyer",
+    "fermentation": "Fermentation",
+    "sechage": "Séchage",
+    "tracabilite": "Traçabilité",
+    "village": "Village de collecte",
+    "pesee": "Pesée",
+    "export": "Expédition",
+    "certification": "Certification",
+    "cooperative": "Coopérative",
+    "saison": "Saison de récolte"
+  }
+}

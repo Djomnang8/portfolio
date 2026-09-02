@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200mm" height="200mm" role="img" aria-label="Gabarit réseau social, format carré">
+  <title>Gabarit réseau social, format carré</title>
+
+  <rect width="200" height="200" fill="#3B2418"/>
+  <g opacity="0.14">
+    <g transform="translate(-18 130) scale(0.808) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#C86A10"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+  </g><g transform="translate(28 148) scale(0.808) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#C86A10"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+  </g><g transform="translate(74 130) scale(0.808) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#C86A10"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+  </g><g transform="translate(120 148) scale(0.808) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#C86A10"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+  </g><g transform="translate(166 130) scale(0.808) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#C86A10"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  </g>
+  <g transform="translate(18 20) scale(0.508) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#F8F2E7"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="18" y="96" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="20" font-weight="700" fill="#F8F2E7">La récolte</text>
+  <text x="18" y="118" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="20" font-weight="700" fill="#F8F2E7">d'octobre est</text>
+  <text x="18" y="140" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="20" font-weight="700" fill="#C86A10">partie au port.</text>
+  <path d="M18 152 H74" stroke="#C86A10" stroke-width="1.6"/>
+  <text x="18" y="168" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="5" fill="#F8F2E7">41 tonnes · 11 villages · lot DBM-2026-041</text>
+  <text x="18" y="186" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="4.6" letter-spacing="1.4" fill="#C86A10">DIBAMBA.CM</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Icône d'application Dibamba">
+  <title>Icône d'application Dibamba</title>
+  <rect width="120" height="120" rx="26.4" fill="#3B2418"/>
+  <g transform="translate(19.2 19.2) scale(0.68)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#F8F2E7"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="10.5" stroke-linecap="round"/>
+  </g>
+</svg>

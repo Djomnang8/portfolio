@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Construction géométrique du symbole Dibamba">
+  <title>Construction géométrique du symbole Dibamba</title>
+  <rect width="180" height="180" fill="#F8F2E7"/>
+  <g stroke="#8A7A68" stroke-width="0.6" fill="none" stroke-dasharray="3 3">
+    <circle cx="65" cy="90" r="50"/>
+    <circle cx="115" cy="90" r="50"/>
+    <path d="M 30 90 H 150"/>
+    <path d="M 90 30 V 150"/>
+  </g>
+  <g fill="#8A7A68">
+    <circle cx="65" cy="90" r="1.6"/>
+    <circle cx="115" cy="90" r="1.6"/>
+  </g>
+  <g transform="translate(30 30)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="none" stroke="#3B2418" stroke-width="1.6"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="1.6"/>
+  </g>
+  <g font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="6" fill="#5E5147">
+    <text x="65" y="100" text-anchor="middle">C1</text>
+    <text x="115" y="100" text-anchor="middle">C2</text>
+    <!-- Deux éléments distincts : SVG réduit toute suite d'espaces à un seul,
+         « R = 50    d = 50 » s'afficherait donc collé. -->
+    <text x="30" y="14" fill="#3B2418" font-size="7">R = 50</text>
+    <text x="70" y="14" fill="#3B2418" font-size="7">d = 50</text>
+    <text x="30" y="164" font-size="7">largeur 50 · hauteur 86.603</text>
+    <text x="30" y="174" font-size="7" fill="#C86A10">rapport = 1.7321 = racine(3)</text>
+  </g>
+</svg>

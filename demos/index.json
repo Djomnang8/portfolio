@@ -13,6 +13,17 @@
       "fichiers": 3
     },
     {
+      "slug": "atelier-marque",
+      "titre": "Atelier de marque — Dibamba",
+      "sous_titre": "Charte graphique : symbole construit sur grille, 17 paires recalculees a l'affichage",
+      "depot": "atelier-de-marque",
+      "url": "demos/atelier-marque/",
+      "hors_ligne": "Entierement statique. La charte recalcule les 17 contrastes dans le navigateur, sans rien demander a un serveur.",
+      "spa": false,
+      "ko": 67,
+      "fichiers": 40
+    },
+    {
       "slug": "audit-a11y",
       "titre": "Audit d'accessibilite : avant / apres",
       "sous_titre": "Le meme support en 46 non-conformites, puis en zero",
@@ -130,7 +141,7 @@
       "url": "demos/sanaga/",
       "hors_ligne": "Entierement statique. Le moteur de combat tourne dans l'onglet : c'est le meme fichier que celui du banc d'equilibrage.",
       "spa": false,
-      "ko": 45,
+      "ko": 47,
       "fichiers": 7
     },
     {

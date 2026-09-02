@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 297" width="210mm" height="297mm" role="img" aria-label="Papier à en-tête A4">
+  <title>Papier à en-tête A4</title>
+
+  <rect width="210" height="297" fill="#FFFFFF"/>
+  <g transform="translate(20 18) scale(0.231) translate(-35 -16.699)">
+    <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+    <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="37.547" y="30" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="9" font-weight="700" letter-spacing="1" fill="#3B2418">DIBAMBA</text>
+  <text x="37.547" y="35.5" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.1" letter-spacing="0.5" fill="#5E5147">COOPÉRATIVE CACAOYÈRE DE LA SANAGA-MARITIME</text>
+  <path d="M20 46 H190" stroke="#C86A10" stroke-width="0.8"/>
+
+  <text x="190" y="60" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.4" text-anchor="end" fill="#221710">Édéa, le 2 septembre 2026</text>
+  <text x="20" y="80" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.4" fill="#221710">Objet : confirmation de lot DBM-2026-041</text>
+  
+  <text x="20" y="92" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.4" fill="#221710">Madame,</text>
+  
+  <text x="20" y="104" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.4" fill="#221710">Le lot référencé ci-dessus a été fermenté sept jours et séché</text>
+  <text x="20" y="110" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.4" fill="#221710">douze jours au village de Ngwei. Son taux d'humidité mesuré à</text>
+  <text x="20" y="116" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.4" fill="#221710">l'expédition est de 7,2 %.</text>
+  
+  <text x="20" y="128" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="3.4" fill="#221710">Les certificats d'origine et d'analyse sont joints.</text>
+
+  <path d="M20 271 H190" stroke="#8A7A68" stroke-width="0.3"/>
+  <text x="20" y="277" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="2.6" fill="#5E5147">Coopérative Dibamba · BP 214, Édéa, Cameroun · +237 6 77 41 22 08 · dibamba.cm</text>
+  <text x="20" y="282" font-family="Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" font-size="2.6" fill="#5E5147">Certifiée biologique depuis 2019 · 340 producteurs · 11 villages</text>
+</svg>

@@ -4,7 +4,7 @@
 
    Pourquoi ce script existe
    -------------------------
-   Un recruteur ne va pas cloner douze depots, installer Docker et lancer une
+   Un recruteur ne va pas cloner quatorze depots, installer Docker et lancer une
    base de donnees pour voir si le travail tient. Il ouvre le portfolio, il
    clique, et il juge en trente secondes. Les demos doivent donc etre servies
    par le portfolio lui-meme.

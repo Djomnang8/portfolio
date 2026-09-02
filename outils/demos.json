@@ -78,6 +78,19 @@
       "entree": "index.html"
     },
     {
+      "slug": "atelier-marque",
+      "titre": "Atelier de marque — Dibamba",
+      "sous_titre": "Charte graphique : symbole construit sur grille, 17 paires recalculees a l'affichage",
+      "depot": "atelier-de-marque",
+      "mode": "copie",
+      "racine": "",
+      "$sources": "02-design/ est indispensable : la charte recupere tokens.json a l'execution pour recalculer la palette et les 17 contrastes. Sans lui, trois sections restent vides.",
+      "sources": ["index.html", "assets", "02-design"],
+      "spa": false,
+      "hors_ligne": "Entierement statique. La charte recalcule les 17 contrastes dans le navigateur, sans rien demander a un serveur.",
+      "entree": "index.html"
+    },
+    {
       "slug": "cuisine-locale",
       "titre": "Cuisine Locale",
       "sous_titre": "Site de restaurant : carte filtrable, panier persistant, commande et reservation",

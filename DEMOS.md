@@ -1,8 +1,8 @@
 # Les démos du portfolio
 
-Treize projets se lancent directement depuis le portfolio, sans installation,
+Quatorze projets se lancent directement depuis le portfolio, sans installation,
 sans compte et sans serveur à démarrer. C'est le point qui change tout :
-un recruteur ne clonera pas treize dépôts pour vérifier si le travail tient.
+un recruteur ne clonera pas quatorze dépôts pour vérifier si le travail tient.
 
 Chaque bouton « Lancer la démo » ouvre l'application **dans un nouvel onglet** :
 le portfolio reste ouvert derrière, et revenir ne coûte pas de retrouver sa
@@ -12,6 +12,7 @@ annoncé à qui ne le voit pas se produire.
 
 | Démo | Ce qu'on peut faire | Sans serveur ? |
 |---|---|---|
+| [Atelier de marque](demos/atelier-marque/) | Lire la charte, voir la construction du logo, les 17 contrastes recalculés | Recalcul dans le navigateur |
 | [Sanaga](demos/sanaga/) | Composer une armée, la placer, lancer le combat | Le moteur tourne dans l'onglet |
 | [Cuisine Locale](demos/cuisine-locale/) | Filtrer la carte, remplir un panier, commander, réserver une table | Panier et validations dans le navigateur |
 | [Fait Main](demos/fait-main/) | Lire les 6 articles, parcourir les numéros de la lettre, basculer le thème | Site généré, entièrement statique |
@@ -53,7 +54,7 @@ Quatre modes de fabrication :
 
 | Mode | Ce qu'il fait | Démos concernées |
 |---|---|---|
-| `copie` | Recopie les fichiers statiques | les six premières |
+| `copie` | Recopie les fichiers statiques | Sanaga, Cuisine Locale, Atelier de marque, et les cinq autres statiques |
 | `node` | Lance le générateur du dépôt avec un préfixe et un dossier de sortie | Fait Main |
 | `vite` | `vite build --base=/demos/<slug>/` | Assistant Ops, BuildTrack, DevisPro |
 | `angular` | `ng build --base-href=/demos/<slug>/` | MecaTrack |

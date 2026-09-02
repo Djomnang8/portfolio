@@ -1,0 +1,35 @@
+{
+  "genere_le": "2026-09-02",
+  "supports": [
+    {
+      "fichier": "sac-jute.svg",
+      "cotes": "600 × 900 mm · 2 encres",
+      "ko": 6.2
+    },
+    {
+      "fichier": "etiquette-lot.svg",
+      "cotes": "90 × 60 mm",
+      "ko": 3
+    },
+    {
+      "fichier": "carte-visite.svg",
+      "cotes": "85 × 55 mm",
+      "ko": 1.6
+    },
+    {
+      "fichier": "papeterie-a4.svg",
+      "cotes": "210 × 297 mm",
+      "ko": 2.7
+    },
+    {
+      "fichier": "reseau-social.svg",
+      "cotes": "carré 1:1",
+      "ko": 3
+    },
+    {
+      "fichier": "signaletique.svg",
+      "cotes": "900 × 600 mm",
+      "ko": 1.6
+    }
+  ]
+}

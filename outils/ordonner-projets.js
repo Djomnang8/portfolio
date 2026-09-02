@@ -63,6 +63,7 @@ const ORDRE = [
   'Kit Design Pédagogique',         // systeme de design verifiable
   'Audit d\'accessibilité',         // etude de cas avant / apres
   'Cuisine Locale',                 // site de restaurant statique
+  'Atelier de marque',              // identite de marque : SVG generes, charte statique
 ];
 
 const C = { reset: '\x1b[0m', red: '\x1b[31m', green: '\x1b[32m', dim: '\x1b[2m', bold: '\x1b[1m' };

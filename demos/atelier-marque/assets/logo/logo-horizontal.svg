@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230.365 86.603" role="img" aria-label="Logo Dibamba, disposition horizontale">
+  <title>Logo Dibamba, disposition horizontale</title>
+  <g transform="translate(-35 -16.699)">
+  <path d="M 60 16.699 L 60 7.172" fill="none" stroke="#3B2418" stroke-width="7" stroke-linecap="round"/>
+  <path d="M 60 16.699 A 50 50 0 0 1 60 103.301 A 50 50 0 0 1 60 16.699 Z" fill="#3B2418"/>
+  <path d="M 60 16.699 A 73.993 73.993 0 0 1 60 103.301" fill="none" stroke="#F8F2E7" stroke-width="3.5" stroke-linecap="round" opacity="0.3"/>
+  <path d="M 60 16.699 A 73.993 73.993 0 0 0 60 103.301" fill="none" stroke="#F8F2E7" stroke-width="3.5" stroke-linecap="round" opacity="0.3"/>
+  <path d="M 60 22.761 C 46 48.742, 74 71.258, 60 97.239" fill="none" stroke="#C86A10" stroke-width="7" stroke-linecap="round"/></g>
+  <text x="75" y="54.993" font-family="Iowan Old Style, Palatino Linotype, Palatino, Georgia, Cambria, serif" font-size="39.837" font-weight="600" textLength="155.365" lengthAdjust="spacing" text-anchor="start" fill="#3B2418">Dibamba</text>
+</svg>
