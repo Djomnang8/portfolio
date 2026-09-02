@@ -54,16 +54,17 @@ const ORDRE = [
   'Factures Insights',              // pandas + Plotly + Streamlit
   'rag-bench',                      // banc d'essai Python
 
-  // 4. Jeu : simulation deterministe, tests, barriere d'integration
-  'Sanaga',                         // moteur de combat + banc d'equilibrage
-
-  // 5. Front, contenu et design
+  // 4. Front, contenu et design
   'Fait Main',                      // generateur statique Node + editorial
   'accessibilité numérique',        // module e-learning
   'Kit Design Pédagogique',         // systeme de design verifiable
   'Audit d\'accessibilité',         // etude de cas avant / apres
   'Cuisine Locale',                 // site de restaurant statique
   'Atelier de marque',              // identite de marque : SVG generes, charte statique
+
+  // 5. Jeu video : hors du metier vise par le reste de la grille, donc en
+  // dernier — c'est pourtant le projet qui montre le plus de methode de mesure.
+  'Sanaga',                         // moteur de combat + banc d'equilibrage
 ];
 
 const C = { reset: '\x1b[0m', red: '\x1b[31m', green: '\x1b[32m', dim: '\x1b[2m', bold: '\x1b[1m' };

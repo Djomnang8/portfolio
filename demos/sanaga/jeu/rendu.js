@@ -49,7 +49,35 @@
 
     let survol = null;
     let flottants = [];
-    let minuteur = null;
+    let anim = null;
+
+    /**
+     * Ajoute un nombre flottant en le décalant si un autre occupe déjà la case.
+     * Plusieurs coups tombent souvent sur la même unité dans le même tour :
+     * sans ce décalage, les valeurs se superposent et aucune n'est lisible.
+     */
+    function ajouterFlottant(texte, couleur, cx, cy) {
+      const proches = flottants.filter(function (f) {
+        return Math.abs(f.ancreX - cx) < CASE * 0.6 && Math.abs(f.ancreY - cy) < CASE * 0.6;
+      });
+      // Au-delà de trois valeurs sur une même case, on remplace la plus
+      // ancienne : empiler davantage ne se lit plus, ça fait du bruit.
+      if (proches.length >= 3) {
+        flottants.splice(flottants.indexOf(proches[0]), 1);
+      }
+      const rang = Math.min(proches.length, 2);
+      // Sur la ligne du haut, la valeur monterait hors du plateau : elle
+      // s'affiche alors sous l'unité et dérive vers le bas. Borner la position
+      // ne suffisait pas — toutes les valeurs s'écrasaient sur la même ligne.
+      const sens = cy < CASE ? 1 : -1;
+      flottants.push({
+        texte: texte, couleur: couleur, vie: 18,
+        sens: sens,
+        ancreX: cx, ancreY: cy,
+        x: cx + (rang % 2 ? 24 : -24) * Math.ceil(rang / 2),
+        y: cy + sens * (26 + rang * 16),
+      });
+    }
 
     /* ---------- Primitives ---------- */
 
@@ -122,7 +150,7 @@
       for (const f of flottants) {
         ctx.globalAlpha = Math.max(0, f.vie / 18);
         ctx.fillStyle = f.couleur;
-        ctx.fillText(f.texte, f.x, f.y - (18 - f.vie) * 1.6);
+        ctx.fillText(f.texte, f.x, f.y + f.sens * (18 - f.vie) * 1.4);
         ctx.globalAlpha = 1;
       }
     }
@@ -156,55 +184,83 @@
 
       let i = 1;
       arreter();
+      flottants = [];
       dessiner(unites);
 
-      minuteur = setInterval(function () {
-        // Le temps du rejeu ne doit pas dépendre de la machine : on avance d'un
-        // événement par pas, et on laisse les flottants s'estomper.
-        flottants = flottants.map((f) => ({ ...f, vie: f.vie - 1 })).filter((f) => f.vie > 0);
-
-        if (i >= journal.length) {
-          if (!flottants.length) {
-            arreter();
-            if (opts.surFin) opts.surFin();
-            return;
-          }
-          dessiner(unites);
-          return;
-        }
-
-        const e = journal[i++];
+      /** Applique un événement du journal. Ne décide rien : il lit et recopie. */
+      function appliquer(e) {
         const acteur = parIndice[e.u];
-
         if (e.t === 'deplacement') {
-          acteur.x = e.x; acteur.y = e.y;
+          acteur.x = e.x;
+          acteur.y = e.y;
         } else if (e.t === 'attaque') {
           const victime = parIndice[e.c];
           victime.pv = e.pv;
-          flottants.push({
-            texte: '-' + e.d, couleur: COULEURS.degats, vie: 18,
-            x: victime.x * CASE + CASE / 2, y: victime.y * CASE + CASE / 2 - 26,
-          });
+          ajouterFlottant('-' + e.d, COULEURS.degats,
+            victime.x * CASE + CASE / 2, victime.y * CASE + CASE / 2);
           if (opts.surEvenement) opts.surEvenement(e, acteur, victime);
         } else if (e.t === 'soin') {
           const patient = parIndice[e.c];
           patient.pv = e.pv;
-          flottants.push({
-            texte: '+' + e.v, couleur: COULEURS.soin, vie: 18,
-            x: patient.x * CASE + CASE / 2, y: patient.y * CASE + CASE / 2 - 26,
-          });
+          ajouterFlottant('+' + e.v, COULEURS.soin,
+            patient.x * CASE + CASE / 2, patient.y * CASE + CASE / 2);
           if (opts.surEvenement) opts.surEvenement(e, acteur, patient);
         } else if (e.t === 'mort') {
           acteur.pv = 0;
           if (opts.surEvenement) opts.surEvenement(e, acteur, null);
         }
+      }
+
+      let precedent = performance.now();
+      let accumule = 0;
+
+      /**
+       * Boucle de rejeu.
+       *
+       * requestAnimationFrame plutôt que setInterval : le navigateur bride les
+       * minuteurs à une seconde dans un onglet caché, et le combat restait
+       * bloqué avec son bouton désactivé quand on changeait d'onglet en cours
+       * de partie. Ici la boucle s'interrompt proprement puis reprend, et le
+       * temps écoulé est rattrapé au retour.
+       */
+      function boucle(maintenant) {
+        // Borné des deux côtés : en haut pour ne pas rejouer tout le combat
+        // d'un coup au retour d'un onglet caché, en bas parce qu'un écart
+        // négatif ferait reculer l'accumulateur et figerait le rejeu.
+        const ecart = Math.max(0, Math.min(maintenant - precedent, 250));
+        precedent = maintenant;
+        accumule += ecart;
+
+        let pas = 0;
+        while (accumule >= delai && pas < 60) {
+          accumule -= delai;
+          pas++;
+
+          flottants = flottants
+            .map((f) => ({ ...f, vie: f.vie - 1 }))
+            .filter((f) => f.vie > 0);
+
+          if (i >= journal.length) {
+            if (!flottants.length) {
+              arreter();
+              dessiner(unites);
+              if (opts.surFin) opts.surFin();
+              return;
+            }
+            continue;
+          }
+          appliquer(journal[i++]);
+        }
 
         dessiner(unites);
-      }, delai);
+        anim = requestAnimationFrame(boucle);
+      }
+
+      anim = requestAnimationFrame(boucle);
     }
 
     function arreter() {
-      if (minuteur) { clearInterval(minuteur); minuteur = null; }
+      if (anim !== null) { cancelAnimationFrame(anim); anim = null; }
     }
 
     /** Case du plateau sous un événement de souris, ou null hors plateau. */
@@ -222,7 +278,7 @@
       arreter,
       caseDepuisEvenement,
       definirSurvol(c) { survol = c; },
-      enCours() { return minuteur !== null; },
+      enCours() { return anim !== null; },
       INITIALES,
     };
   }
